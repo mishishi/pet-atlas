@@ -11,6 +11,7 @@
 web/.next/
 web/out/
 web/node_modules/
+scripts/node_modules/
 web/.next-build-cache/
 web/.turbo/
 web/tsconfig.tsbuildinfo
