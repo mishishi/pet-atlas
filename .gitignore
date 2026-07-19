@@ -59,3 +59,7 @@ scripts/cloud-pet-pool.json
 
 # Worktrees (临时开发分支,不入主仓库)
 .worktrees/
+
+# build artifacts
+.next/
+package-lock.json
