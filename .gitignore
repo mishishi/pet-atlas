@@ -44,6 +44,9 @@ web/public/**/*.png
 web/public/**/**/*.png
 # 设计稿(_design 目录下是早期图,也不进)
 art/_design/*.png
+# 参考图临时目录(被 image_synthesize 用过)
+art/**/_ref/
+art/**/**/_ref/
 
 # 但 prompt 文档(.md)要进(记录每张图怎么生成的)
 !art/**/*.md
