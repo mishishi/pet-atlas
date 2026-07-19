@@ -17,6 +17,7 @@ import { notFound } from "next/navigation";
 import {
   ATLAS_SLOTS,
   getBreedAtlas,
+  getCoverUrl,
   getPetBySlug,
   isVintagePaperBreed,
 } from "@/lib/pets";
@@ -134,13 +135,12 @@ export default async function PetDetailPage({
           <div className="md:col-span-5 lg:col-span-5 flex justify-center md:justify-end">
             <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px]">
               <SpecimenFrame
-                slug={pet.slug}
+                url={getCoverUrl(pet.slug, "medium") || ""}
                 nameZh={pet.name.zh}
                 nameEn={pet.name.en}
                 width="100%"
                 priority
                 showRibbon
-                coverSize="medium"
               />
             </div>
           </div>

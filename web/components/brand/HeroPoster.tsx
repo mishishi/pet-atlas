@@ -12,16 +12,31 @@
  */
 
 import Link from "next/link";
-import { getAllPets } from "@/lib/pets";
+import { getAllPets, getCoverUrl } from "@/lib/pets";
 import { SpecimenFrame } from "./SpecimenFrame";
 import { BotanicalBorder, LeafDivider } from "./BotanicalBorder";
 
 /* 主组件 */
 export function HeroPoster() {
   const featured = [
-    { slug: "golden-retriever", nameZh: "金毛寻回犬", nameEn: "Golden Retriever" },
-    { slug: "persian-silver-chinchilla", nameZh: "银渐层波斯", nameEn: "Silver Chinchilla Persian" },
-    { slug: "bearded-dragon", nameZh: "鬃狮蜥", nameEn: "Bearded Dragon" },
+    {
+      slug: "golden-retriever",
+      nameZh: "金毛寻回犬",
+      nameEn: "Golden Retriever",
+      size: "thumb" as const,
+    },
+    {
+      slug: "persian-silver-chinchilla",
+      nameZh: "银渐层波斯",
+      nameEn: "Silver Chinchilla Persian",
+      size: "medium" as const,
+    },
+    {
+      slug: "bearded-dragon",
+      nameZh: "鬃狮蜥",
+      nameEn: "Bearded Dragon",
+      size: "thumb" as const,
+    },
   ];
 
   const allPets = getAllPets();
@@ -38,6 +53,7 @@ export function HeroPoster() {
               slug: p.slug,
               nameZh: p.name.zh,
               nameEn: p.name.en,
+              size: "medium" as const,
             }))
         );
 
@@ -193,7 +209,7 @@ export function HeroPoster() {
                 }}
               >
                 <SpecimenFrame
-                  slug={pet.slug}
+                  url={getCoverUrl(pet.slug, pet.size) || ""}
                   nameZh={pet.nameZh}
                   nameEn={pet.nameEn}
                   rotate={config.rotate}
@@ -201,7 +217,6 @@ export function HeroPoster() {
                   zIndex={config.zIndex}
                   priority={i === 1}
                   showRibbon
-                  coverSize={config.coverSize}
                 />
               </div>
             );

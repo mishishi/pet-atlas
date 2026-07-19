@@ -25,7 +25,12 @@ export default async function AtlasPage({
 
   return (
     <Suspense fallback={<div className="min-h-screen bg-oat" />}>
-      <AtlasViewer slug={slug} nameZh={pet.name.zh} gallery={atlas.gallery} />
+      <AtlasViewer
+        slug={slug}
+        nameZh={pet.name.zh}
+        nameEn={pet.name.en}
+        gallery={atlas.gallery}
+      />
     </Suspense>
   );
 }

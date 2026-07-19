@@ -1,10 +1,11 @@
 /**
- * SpecimenFrame · 标本卡木框(可复用)
+ * SpecimenFrame · 标本卡木框(可复用 · 纯展示组件,无 fs 依赖)
  *
  * 用在:
  *  - HeroPoster(主页 3 大画框)
  *  - PetDetailPage(详情页主封面)
  *  - PetCard(列表卡片)
+ *  - AtlasViewer(翻页主图)
  *
  * 视觉:
  *  - 外木框 (135° brown gradient)
@@ -14,16 +15,12 @@
  *  - 卡片底部名称 (中文 + 英文 italic)
  *  - 可选:VINTAGE PAPER 飘带
  *
- * coverSize:
- *  - "thumb"  512px  (HeroPoster 侧图, PetCard)
- *  - "medium" 1024px (HeroPoster 中间图, 详情页主封面)
- *  - "full"   原图   (AtlasViewer 6 页, 不推荐用在画框)
+ * url 由调用方(server component)构造,这样 SpecimenFrame 可以在 client component 中使用
  */
 import Image from "next/image";
-import { getCoverUrl, type CoverSize } from "@/lib/pets";
 
 export function SpecimenFrame({
-  slug,
+  url,
   nameZh,
   nameEn,
   rotate = 0,
@@ -34,9 +31,8 @@ export function SpecimenFrame({
   ribbonText = "Vintage Paper · 2026",
   priority = false,
   shadowLevel = "lg", // "sm" | "md" | "lg"
-  coverSize = "medium", // 默认 medium (1024px)
 }: {
-  slug: string;
+  url: string;
   nameZh: string;
   nameEn: string;
   rotate?: number;
@@ -47,9 +43,7 @@ export function SpecimenFrame({
   ribbonText?: string;
   priority?: boolean;
   shadowLevel?: "sm" | "md" | "lg";
-  coverSize?: CoverSize;
 }) {
-  const url = getCoverUrl(slug, coverSize) || "";
   const shadowMap = {
     sm: "0 6px 16px -4px rgba(74, 51, 28, 0.35), 0 2px 6px -2px rgba(74, 51, 28, 0.25)",
     md: "0 12px 28px -8px rgba(74, 51, 28, 0.45), 0 4px 10px -4px rgba(74, 51, 28, 0.3)",

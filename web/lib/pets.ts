@@ -3,6 +3,12 @@ import path from "path";
 import type { AtlasSlot, BreedAtlas, Pet } from "./types";
 import { ATLAS_SLOTS } from "./atlas-constants";
 export { ATLAS_PAGE_COUNT, ATLAS_SLOTS, ATLAS_SLOT_KEYS } from "./atlas-constants";
+export {
+  buildAtlasUrl,
+  buildCoverUrl,
+  isTcbMode,
+  type CoverSize,
+} from "./atlas-urls";
 
 /**
  * 宠物 JSON 目录
@@ -97,24 +103,10 @@ function atlasPublicUrl(pet: Pet, slotIndex: number): string {
   return ATLAS_BASE_URL ? `${ATLAS_BASE_URL}${path}` : path;
 }
 
-/**
- * 封面图尺寸变体
- * - "thumb"  512px 宽(侧图 / PetCard 缩略图,~250KB)
- * - "medium" 1024px 宽(中间大图 / 详情页主封面,~1MB)
- * - "full"   原图(~3-5MB,AtlasViewer 6 页用)
- */
-export type CoverSize = "thumb" | "medium" | "full";
-
-/**
- * 封面图 URL(带尺寸)
- *  - "full" 走原图(给 AtlasViewer 6 页用,要清晰)
- *  - "medium" 走 1024px(详情页主封面、HeroPoster 中间大画框)
- *  - "thumb" 走 512px(HeroPoster 侧画框、PetCard 卡片)
- *  - 本地 dev (没 TCB) 走原图
- */
+/** 封面图 URL(带尺寸) — 走 server-side,需要 fs 判断支持状态 */
 export function getCoverUrl(
   slug: string,
-  size: CoverSize = "full"
+  size: "thumb" | "medium" | "full" = "full"
 ): string | null {
   if (!hasBreedAtlas(slug)) return null;
   const pet = getPetBySlug(slug);
@@ -122,7 +114,6 @@ export function getCoverUrl(
   if (!ATLAS_BASE_URL || size === "full") {
     return atlasPublicUrl(pet, 1);
   }
-  // TCB 模式:用 -thumb.png / -medium.png
   const fileName = `01-cover-${size}.png`;
   return `${ATLAS_BASE_URL}/${atlasDirName(pet.category)}/${pet.slug}/${fileName}`;
 }
