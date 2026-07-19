@@ -121,9 +121,9 @@ function findSupportedBreeds(): Set<string> {
     }
   }
 
-  // TCB 模式:public/ 没图(部署时已删),fallback 到白名单
-  if (supported.size === 0 && ATLAS_BASE_URL) {
-    console.log(`[pets] public/ 无 PNG,使用 VINTAGE_PAPER_DONE (${VINTAGE_PAPER_DONE.size} 品种) — TCB 模式`);
+  // TCB 模式:只要 ATLAS_BASE_URL 设了,就走 VINTAGE_PAPER_DONE 白名单
+  // (本地 public/ 即便有遗留 PNG 也不算 — TCB 模式下全走云端,本地不算)
+  if (ATLAS_BASE_URL) {
     return new Set(VINTAGE_PAPER_DONE);
   }
 
