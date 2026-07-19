@@ -21,7 +21,8 @@ const CATEGORY_ZH: Record<string, string> = {
 };
 
 export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps) {
-  const cover = getCoverUrl(pet.slug) || "";
+  // 列表卡片用 thumb (512px, ~250KB) — 4 张卡同时加载不会卡
+  const cover = getCoverUrl(pet.slug, "thumb") || "";
   const cat = CATEGORY_ZH[pet.category] || pet.category;
 
   return (

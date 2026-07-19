@@ -176,10 +176,11 @@ export function HeroPoster() {
         {/* 中部:3 个大画框(中前左右后) */}
         <div className="relative h-[420px] md:h-[480px] lg:h-[540px] flex items-center justify-center gap-2 md:gap-3 lg:gap-4 mb-8 md:mb-10">
           {final3.map((pet, i) => {
+            // 中间 (i=1) 用 medium 1024px,清晰;侧图 (i=0,2) 用 thumb 512px,快
             const config = [
-              { rotate: -3, scale: 0.92, zIndex: 10 },
-              { rotate: 0, scale: 1.05, zIndex: 30 },
-              { rotate: 2.5, scale: 0.92, zIndex: 10 },
+              { rotate: -3, scale: 0.92, zIndex: 10, coverSize: "thumb" as const },
+              { rotate: 0, scale: 1.05, zIndex: 30, coverSize: "medium" as const },
+              { rotate: 2.5, scale: 0.92, zIndex: 10, coverSize: "thumb" as const },
             ][i];
             return (
               <div
@@ -200,6 +201,7 @@ export function HeroPoster() {
                   zIndex={config.zIndex}
                   priority={i === 1}
                   showRibbon
+                  coverSize={config.coverSize}
                 />
               </div>
             );

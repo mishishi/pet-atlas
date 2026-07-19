@@ -13,9 +13,14 @@
  *  - 9:16 封面图
  *  - 卡片底部名称 (中文 + 英文 italic)
  *  - 可选:VINTAGE PAPER 飘带
+ *
+ * coverSize:
+ *  - "thumb"  512px  (HeroPoster 侧图, PetCard)
+ *  - "medium" 1024px (HeroPoster 中间图, 详情页主封面)
+ *  - "full"   原图   (AtlasViewer 6 页, 不推荐用在画框)
  */
 import Image from "next/image";
-import { getCoverUrl } from "@/lib/pets";
+import { getCoverUrl, type CoverSize } from "@/lib/pets";
 
 export function SpecimenFrame({
   slug,
@@ -29,6 +34,7 @@ export function SpecimenFrame({
   ribbonText = "Vintage Paper · 2026",
   priority = false,
   shadowLevel = "lg", // "sm" | "md" | "lg"
+  coverSize = "medium", // 默认 medium (1024px)
 }: {
   slug: string;
   nameZh: string;
@@ -41,8 +47,9 @@ export function SpecimenFrame({
   ribbonText?: string;
   priority?: boolean;
   shadowLevel?: "sm" | "md" | "lg";
+  coverSize?: CoverSize;
 }) {
-  const url = getCoverUrl(slug) || "";
+  const url = getCoverUrl(slug, coverSize) || "";
   const shadowMap = {
     sm: "0 6px 16px -4px rgba(74, 51, 28, 0.35), 0 2px 6px -2px rgba(74, 51, 28, 0.25)",
     md: "0 12px 28px -8px rgba(74, 51, 28, 0.45), 0 4px 10px -4px rgba(74, 51, 28, 0.3)",

@@ -140,6 +140,7 @@ export default async function PetDetailPage({
                 width="100%"
                 priority
                 showRibbon
+                coverSize="medium"
               />
             </div>
           </div>
