@@ -258,7 +258,7 @@ if (WRITE) {
 - slot: ${r.slot}-${r.key}
 - template: ${pet.template}
 - category: ${pet.category}
-- generated: ${new Date().toISOString()}
+- generated: ${new Date().toISOString().slice(0, 10)}
 
 ## Prompt
 
