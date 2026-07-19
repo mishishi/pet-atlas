@@ -235,6 +235,7 @@ export function HeroPoster() {
           >
             <SpecimenFrame
               url={getCoverUrl(final3[0].slug, "thumb") || ""}
+              fallbackUrl={getCoverUrl(final3[0].slug, "full") || undefined}
               nameZh={final3[0].nameZh}
               nameEn={final3[0].nameEn}
               width="100%"
@@ -249,6 +250,7 @@ export function HeroPoster() {
           >
             <SpecimenFrame
               url={getCoverUrl(final3[2].slug, "thumb") || ""}
+              fallbackUrl={getCoverUrl(final3[2].slug, "full") || undefined}
               nameZh={final3[2].nameZh}
               nameEn={final3[2].nameEn}
               width="100%"
@@ -260,6 +262,7 @@ export function HeroPoster() {
           <div className="relative z-20 w-[55%]">
             <SpecimenFrame
               url={getCoverUrl(final3[1].slug, "medium") || ""}
+              fallbackUrl={getCoverUrl(final3[1].slug, "full") || undefined}
               nameZh={final3[1].nameZh}
               nameEn={final3[1].nameEn}
               width="100%"

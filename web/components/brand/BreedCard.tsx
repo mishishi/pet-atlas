@@ -2,8 +2,8 @@
  * BreedCard · 品种卡(图鉴)
  */
 import Link from "next/link";
-import Image from "next/image";
 import { getCoverUrl } from "@/lib/pets";
+import { SafeImage } from "../ui/SafeImage";
 import type { Pet } from "@/lib/types";
 
 export interface BreedCardProps {
@@ -22,7 +22,9 @@ const CATEGORY_ZH: Record<string, string> = {
 
 export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps) {
   // 列表卡片用 thumb (512px, ~250KB) — 4 张卡同时加载不会卡
+  // fallback: thumb 没生成时回落到 full (01-cover.png, 1-5MB 但保证能加载)
   const cover = getCoverUrl(pet.slug, "thumb") || "";
+  const fallback = getCoverUrl(pet.slug, "full") || "";
   const cat = CATEGORY_ZH[pet.category] || pet.category;
 
   return (
@@ -32,8 +34,9 @@ export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps)
     >
       <article className="bg-oat-100 border border-brown-200 rounded-[var(--radius)] overflow-hidden shadow-[var(--shadow-paper)] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-paper-lg)] group-hover:border-brown-400">
         <div className="relative aspect-[9/16] w-full overflow-hidden bg-oat-200">
-          <Image
+          <SafeImage
             src={cover}
+            fallback={fallback}
             alt={`${pet.name.zh} vintage paper 标本卡`}
             fill
             sizes={

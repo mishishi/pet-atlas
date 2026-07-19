@@ -18,9 +18,11 @@
  * url 由调用方(server component)构造,这样 SpecimenFrame 可以在 client component 中使用
  */
 import Image from "next/image";
+import { SafeImage } from "../ui/SafeImage";
 
 export function SpecimenFrame({
   url,
+  fallbackUrl,
   nameZh,
   nameEn,
   rotate = 0,
@@ -33,6 +35,7 @@ export function SpecimenFrame({
   shadowLevel = "lg", // "sm" | "md" | "lg"
 }: {
   url: string;
+  fallbackUrl?: string;
   nameZh: string;
   nameEn: string;
   rotate?: number;
@@ -94,8 +97,9 @@ export function SpecimenFrame({
 
           {/* 实际图 */}
           {url ? (
-            <Image
+            <SafeImage
               src={url}
+              fallback={fallbackUrl}
               alt={nameZh}
               fill
               sizes="(max-width: 768px) 60vw, 30vw"

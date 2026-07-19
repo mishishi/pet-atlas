@@ -136,6 +136,7 @@ export default async function PetDetailPage({
             <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px]">
               <SpecimenFrame
                 url={getCoverUrl(pet.slug, "medium") || ""}
+                fallbackUrl={getCoverUrl(pet.slug, "full") || undefined}
                 nameZh={pet.name.zh}
                 nameEn={pet.name.en}
                 width="100%"
