@@ -111,7 +111,8 @@ if (!NO_UPLOAD) {
   console.log("=".repeat(60));
   for (const cat of catsToUpload) {
     console.log(`\n📤 ${cat}/`);
-    const ok = safeExec(`node web/scripts/upload-atlas-tcb.mjs ${cat}`);
+    // upload-atlas-tcb.mjs 读 web/.env.local,所以要 cd web
+    const ok = safeExec(`node scripts/upload-atlas-tcb.mjs ${cat}`, { cwd: path.join(ROOT, "web") });
     if (ok === null) {
       console.error(`✗ ${cat} 上传失败,继续`);
     }

@@ -154,12 +154,13 @@ function pipelineFor(slug) {
 
   if (!SKIP_RENDER) {
     // 调 render-prompts.mjs 写 .md + 复制到 web/public
+    // stdio 改 'pipe' + inherit stderr,这样它的日志(✓ xx)走 stderr,stdout 留给我们的 JSON
     execSync(
       `node ${path.join(ROOT, "scripts", "render-prompts.mjs")} ${slug} --write --copy-web`,
-      { stdio: "inherit" },
+      { stdio: ["inherit", "pipe", "inherit"] },
     );
   } else {
-    console.log(`⏭️  ${slug} --skip-render,复用现有 .md`);
+    console.error(`⏭️  ${slug} --skip-render,复用现有 .md`);
   }
 
   // 读 6 个 .md 里的 prompt(从 ```text ... ``` 块)
@@ -201,9 +202,11 @@ function pipelineFor(slug) {
 
 const slugs = resolveSlugs();
 if (slugs.length === 0) {
-  console.log("⚠️ 没有要跑的品种(--remaining 列表为空? 50 个全做完了?)");
+  console.error("⚠️ 没有要跑的品种(--remaining 列表为空? 50 个全做完了?)");
   process.exit(0);
 }
 
 const breeds = slugs.map(pipelineFor);
-console.log(JSON.stringify({ total_breeds: breeds.length, breeds }, null, 2));
+// 最终 JSON 走 stdout,其他日志走 stderr(让 agent 抓 JSON 干净)
+process.stdout.write(JSON.stringify({ total_breeds: breeds.length, breeds }, null, 2));
+process.stdout.write("\n");

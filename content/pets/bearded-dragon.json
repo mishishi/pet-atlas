@@ -1,0 +1,65 @@
+{
+  "slug": "bearded-dragon",
+  "name": {
+    "zh": "鬃狮蜥",
+    "en": "Bearded Dragon",
+    "alias": {
+      "zh": ["鬃狮蜥", "胡子龙", "胡须蜥蜴", "BD"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-19",
+
+  "origin": {
+    "country": "澳大利亚",
+    "region": "澳大利亚中部干旱内陆",
+    "coordinates": [-25.0, 135.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "40-60",
+    "weightKg": "0.3-0.6",
+    "lifespanYears": "10-15",
+    "coat": "鳞甲:沙黄/橙红色底+棘状鳞片+下颚黑色'胡须'",
+    "coatColors": ["沙黄色", "橙红色", "浅棕色", "白色", "红色", "半透明"],
+    "eyeColors": ["黑色", "黄色", "红色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 2,
+    "intelligence": 6,
+    "summary": "会点头打招呼的小恐龙",
+    "tags": ["温顺", "日行", "会点头", "会挥手", "爱晒太阳", "易上手"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1829", "event": "德国动物学家描述命名 Pogona vitticeps" },
+      { "year": "1960s", "event": "美国开始作为宠物繁育" },
+      { "year": "1990s", "event": "全球爬宠热潮成为最受欢迎爬虫之一" },
+      { "year": "2010s", "event": "国内爬宠市场引入,价格从万元降至百元" }
+    ]
+  },
+
+  "care": {
+    "diet": "活虫(蟋蟀/杜比亚)+蔬菜(蒲公英/南瓜)+偶尔水果",
+    "exercise": "需 120cm 玻璃饲养箱+UVB 灯+晒点 40℃+凉区 25℃",
+    "health": "代谢性骨病(MBD) · 寄生虫 · 呼吸道感染",
+    "training": "温顺易上手,可用手喂建立信任,会认主人"
+  },
+
+  "famous": [
+    "受惊或求偶时下颚'胡须'会变黑膨胀,像在生气",
+    "会'点头'和'挥手'动作,跟主人互动",
+    "原住民传说中是'会微笑的小恐龙'",
+
+    "全球爬宠市场销量常年第一"
+  ]
+}
