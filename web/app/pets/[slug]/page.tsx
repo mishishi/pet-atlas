@@ -23,6 +23,7 @@ import {
 } from "@/lib/pets";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
 import { BotanicalBorder, LeafDivider } from "@/components/brand/BotanicalBorder";
+import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
 export async function generateStaticParams() {
@@ -46,13 +47,16 @@ export default async function PetDetailPage({
   const showLegacyBanner = Boolean(atlas) && !isVintagePaperBreed(slug);
 
   return (
-    <div
-      className="relative w-full overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, #F5E9D0 0%, #EFE0BE 60%, #E8D9B8 100%)",
-      }}
-    >
+    <>
+      {/* 2026-07-20: 读图鉴解锁 1 次 reroll(无 UI,纯 side effect) */}
+      <BreedReadTracker slug={slug} />
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, #F5E9D0 0%, #EFE0BE 60%, #E8D9B8 100%)",
+        }}
+      >
       {/* 纸张噪点 */}
       <div
         className="absolute inset-0 pointer-events-none opacity-25"
@@ -466,6 +470,7 @@ export default async function PetDetailPage({
         </div>
       </main>
     </div>
+    </>
   );
 }
 
