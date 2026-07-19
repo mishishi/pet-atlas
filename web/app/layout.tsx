@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { fontVariables } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "宠物大百科",
-  description: "为爱宠收藏一整套图鉴 — 拉布拉多、英短与更多品种的 6 页知识图谱。",
+  title: "宠物大百科 · Pet Atlas",
+  description:
+    "为爱宠收藏一整套图鉴 — 50 种动物的 vintage 标本卡图谱,犬、猫、小型哺乳、鸟、爬虫。",
 };
 
 export default function RootLayout({
@@ -12,8 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-oat text-ink">{children}</body>
+    <html
+      lang="zh-CN"
+      className={`h-full antialiased ${fontVariables}`}
+    >
+      <body className="min-h-full flex flex-col bg-oat-200 text-brown-900">
+        {children}
+      </body>
     </html>
   );
 }
