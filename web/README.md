@@ -1,8 +1,8 @@
-# Pet Atlas · Web App
+# pet-atlas · Web App
 
-> Next.js 16 + React 19 静态站,展示 50 个宠物品种的 6 页图鉴。
+> A flip-page visual encyclopedia for pet lovers — 6-page vintage museum specimen card atlas per breed (犬 / 猫 / 兔 / 仓鼠 / 鹦鹉 / 守宫)
 
-本目录是 pet-receiver 项目的 web 前端子项目。根目录的 [`../README.md`](../README.md) 有项目总览。
+本目录是 pet-atlas 项目的 web 前端子项目。根目录的 [`../README.md`](../README.md) 有项目总览。
 
 ## 命令
 

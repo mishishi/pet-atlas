@@ -1,6 +1,6 @@
-# 🐾 宠物大百科 · Pet Atlas
+# 🐾 pet-atlas
 
-> 为爱宠收藏一整套图鉴 — 50 个品种 × 6 页知识图谱的视觉百科 App。
+> A flip-page visual encyclopedia for pet lovers — 6-page vintage museum specimen card atlas per breed (犬 / 猫 / 兔 / 仓鼠 / 鹦鹉 / 守宫)
 
 一个面向移动端的宠物品种百科 App。每个品种是一份 9:16 翻页式图鉴(博物馆标本卡风格),包含 **6 张精心绘制的视觉页面**:封面 / 形态 / 性格 / 历史 / 养护 / 名场面。
 
