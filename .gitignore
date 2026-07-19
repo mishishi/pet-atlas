@@ -53,3 +53,6 @@ art/_design/*.png
 # 内部脚本产物(可选)
 scripts/atlas_requests.json
 # scripts/vintage-paper-batch.json  ← 留着,记录 50 品种清单
+
+# Worktrees (临时开发分支,不入主仓库)
+.worktrees/
