@@ -11,12 +11,12 @@
 
 | 决策点 | 选择 | 理由 |
 |---|---|---|
-| **云服务商** | 腾讯云 COS | 用户有 tcb-static-uploader skill 经验,国内节点稳定 |
-| **Region** | ap-shanghai (上海) | 华东节点,长三角访问快,腾讯云控制台默认 region |
-| **Bucket 名** | `pet-atlas` | 项目同名,腾讯云会强制加 APPID 后缀如 `pet-atlas-1307123456` |
-| **访问域名** | 绑 CDN + 自定义域名 | 国内访问快,带 HTTPS,URL 短 |
-| **存储类型** | 标准存储 | 高频访问(Atlas 页面图片,每次打开都读) |
-| **访问权限** | 公有读 + 私有写 | 公开可访问,写必须凭证 |
+| **云服务商** | 腾讯云 (CloudBase 底层 COS) | 用户用 TCB 环境 `cloud1-d9gv1q8ikad5e9721`,底层走标准 COS,直接调底层 bucket |
+| **Region** | ap-shanghai (上海) | 跟 TCB 环境一致 |
+| **Bucket** | TCB 底层 bucket(形如 `cloud1-d9gv1q8ikad5e9721-1307xxxxxx`) | 不新建,直接用现有 TCB 环境的存储 |
+| **上传方式** | 标准 cos-nodejs-sdk-v5 (CAM 密钥 + bucket) | skill 脚本直接复用,零重写 |
+| **访问域名** | 走 TCB 静态网站托管的免费域名(或 COS 默认域名) | 最简方案,免去 DNS 配置 |
+| **存储类型** | 标准存储 | TCB 默认 |
 | **网站改造深度** | 全部走 COS + Vercel 删 PNG | 降部署体积 + 国内快 + 长期存储 + 跨项目复用 |
 
 ---
@@ -35,33 +35,57 @@
 
 ## 4 阶段实施
 
-### P0 配置 (1-2h,用户操作)
+### P0 配置 (1h,用户操作)
 
-用户在腾讯云控制台做的事:
+用户用的是 TCB 环境 `cloud1-d9gv1q8ikad5e9721`,底层是标准 COS bucket。我们要拿到这个底层 bucket 的访问信息。
 
-1. **创建 Bucket** — 控制台 → 对象存储 → 创建
-   - 名称:`pet-atlas`
-   - 地域:**ap-shanghai**
-   - 权限:**公有读私有写**
-   - 存储类型:标准存储
+#### 步骤 1: 拿到底层 COS bucket 名
 
-2. **绑定 CDN 加速域名** (可选但推荐)
-   - 控制台 → CDN → 域名管理 → 添加域名
-   - 源站类型:COS 源
-   - 源站:选刚创建的 bucket
-   - 加速域名:`atlas.mishishi.com` (或别的,要自己 DNS 解析到 CDN 提供的 CNAME)
-   - 配置 HTTPS 证书 (腾讯云 SSL 证书或上传自己的)
+1. 打开 TCB 控制台 → 存储
+2. 创建一个测试文件夹(比如 `test-folder`),在里面随便上传一个文件(比如一个 txt)
+3. **点这个文件,看详情/属性** —— 完整路径会显示成:
+   ```
+   cloud://cloud1-d9gv1q8ikad5e9721.6368-cloud1-d9gv1q8ikad5e9721-1307xxxxxx/test-folder/test.txt
+   ```
+4. `6368-cloud1-d9gv1q8ikad5e9721-1307xxxxxx` 那一长串就是 **底层 bucket 名**(完整复制给我)
 
-3. **配 CORS** (允许 Vercel 域名跨域拉图)
-   - Bucket → 权限管理 → 跨域 CORS 设置
-   - 规则:`*` (或限定 `https://out-three-tan.vercel.app`)
+#### 步骤 2: 拿到访问域名(二选一)
 
-4. **创建 CAM API 密钥**
-   - 控制台 → 访问管理 → API 密钥管理
-   - 新建 → 拿到 **SecretId + SecretKey**
-   - 权限:给 `QcloudCOSFullAccess` (或更窄的自定义策略,只允许这个 bucket)
+**A. 用 TCB 静态网站托管 (推荐,简单)**
+- TCB 控制台 → 存储 → 静态网站托管 → 立即开通
+- 开通后会给你一个**默认域名**,形如 `cloud1-d9gv1q8ikad5e9721-1307xxxxxx.tcb.qcloud.la`
+- 复制这个完整域名给我
+- (如果想用自己的域名,可以配 CNAME,但默认域名够用了)
 
-5. **把 4 个值发给我** (SecretId / SecretKey / Bucket 全名 / 加速域名)
+**B. 用 COS 默认公有读域名**
+- COS 控制台 → 选这个 bucket → 域名管理 → 找到"默认访问域名"
+- 形如 `cloud1-d9gv1q8ikad5e9721-1307xxxxxx.cos.ap-shanghai.myqcloud.com`
+- 这个域名也走 CDN,直接能用
+
+**选 A 或 B 都行,A 更省事(TCB 自动帮你开 CDN)。**
+
+#### 步骤 3: 配 CORS(允许 Vercel 域名跨域拉图)
+- COS 控制台 → 选这个 bucket → 权限管理 → 跨域 CORS 设置
+- 添加规则:
+  - 来源 Origin: `*` (或 `https://out-three-tan.vercel.app` 限定)
+  - 操作 Methods: `GET, HEAD`
+  - 允许 Headers: `*`
+  - 暴露 Headers: `ETag, Content-Length, Content-Type`
+
+#### 步骤 4: 创建 CAM API 密钥
+- 打开 https://console.cloud.tencent.com/cam/capi
+- 点 **新建密钥** → **自定义创建**
+- 权限:绑 `QcloudCOSFullAccess` (或更窄的自定义策略,只允许这个 bucket,后面再收紧)
+- 创建后拿到 **SecretId + SecretKey**(只显示一次!复制保存)
+- ⚠️ 不要用 TCB 的"云开发 API 密钥",必须用 CAM 密钥,因为 skill 脚本走标准 COS API
+
+#### 步骤 5: 把 4 个值发给我
+1. **TCB 底层 bucket 名** (步骤 1 拿到的)
+2. **访问域名** (步骤 2 选的 A 或 B)
+3. **SecretId**
+4. **SecretKey**
+
+Region 我已经知道是 `ap-shanghai`,不用你提供。
 
 ---
 
