@@ -12,197 +12,16 @@
  */
 
 import Link from "next/link";
-import Image from "next/image";
-import { getAllPets, getCoverUrl } from "@/lib/pets";
+import { getAllPets } from "@/lib/pets";
+import { SpecimenFrame } from "./SpecimenFrame";
 import { BotanicalBorder, LeafDivider } from "./BotanicalBorder";
-
-/* 单个画框组件 */
-function SpecimenFrame({
-  slug,
-  nameZh,
-  nameEn,
-  rotate,
-  scale,
-  zIndex,
-  ribbon,
-}: {
-  slug: string;
-  nameZh: string;
-  nameEn: string;
-  rotate: number;
-  scale: number;
-  zIndex: number;
-  ribbon: string;
-}) {
-  const url = getCoverUrl(slug) || "";
-  return (
-    <div
-      className="relative shrink-0 transition-transform duration-700 hover:scale-[1.02]"
-      style={{
-        transform: `rotate(${rotate}deg) scale(${scale})`,
-        zIndex,
-        width: "clamp(180px, 24vw, 320px)",
-      }}
-    >
-      {/* 外木框 */}
-      <div
-        className="relative p-2 md:p-3"
-        style={{
-          background: "linear-gradient(135deg, #B8956A 0%, #8B6F47 50%, #6E5635 100%)",
-          boxShadow:
-            "0 18px 40px -12px rgba(74, 51, 28, 0.55), 0 6px 14px -6px rgba(74, 51, 28, 0.4), inset 0 0 0 1px rgba(255, 240, 200, 0.15)",
-        }}
-      >
-        {/* 内木线 */}
-        <div
-          className="absolute inset-1 md:inset-2 pointer-events-none"
-          style={{
-            border: "1px solid rgba(255, 240, 200, 0.25)",
-          }}
-        />
-
-        {/* 内卡纸 */}
-        <div
-          className="relative overflow-hidden"
-          style={{
-            aspectRatio: "9 / 16",
-            background:
-              "linear-gradient(180deg, #F5E9D0 0%, #EFE0C0 100%)",
-            boxShadow: "inset 0 0 30px rgba(139, 111, 71, 0.18)",
-          }}
-        >
-          {/* 内卡纸纸张质感 */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 30% 20%, rgba(139,111,71,0.12) 0%, transparent 40%), radial-gradient(circle at 70% 80%, rgba(139,111,71,0.1) 0%, transparent 35%)",
-            }}
-          />
-
-          {/* 实际图 */}
-          {url ? (
-            <Image
-              src={url}
-              alt={nameZh}
-              fill
-              sizes="(max-width: 768px) 30vw, 24vw"
-              className="object-cover"
-              priority={zIndex >= 20}
-            />
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-brown-400 text-sm">
-              {nameZh}
-            </div>
-          )}
-
-          {/* 卡片底部名称 */}
-          <div
-            className="absolute bottom-0 left-0 right-0 px-3 py-2 flex items-end justify-between"
-            style={{
-              background:
-                "linear-gradient(180deg, transparent 0%, rgba(245, 233, 208, 0.6) 60%, rgba(245, 233, 208, 0.95) 100%)",
-            }}
-          >
-            <div>
-              <div className="font-serif text-sm md:text-base font-semibold text-brown-900">
-                {nameZh}
-              </div>
-              <div className="font-mono text-[9px] md:text-[10px] uppercase tracking-wider text-brown-600 italic">
-                {nameEn}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* VINTAGE PAPER 飘带 — 浮在画框底部 */}
-      <div
-        className="absolute left-1/2 -translate-x-1/2 -bottom-3 md:-bottom-4 pointer-events-none"
-        style={{ zIndex: zIndex + 5 }}
-      >
-        <RibbonBanner text={ribbon} />
-      </div>
-    </div>
-  );
-}
-
-/* 飘带(两端凹口) */
-function RibbonBanner({ text }: { text: string }) {
-  return (
-    <svg
-      viewBox="0 0 220 32"
-      className="w-32 md:w-44 lg:w-52 h-auto"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient id="ribbon-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#F5E9D0" />
-          <stop offset="100%" stopColor="#E8D9B8" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M 14 4 L 206 4 L 198 16 L 206 28 L 14 28 L 22 16 Z"
-        fill="url(#ribbon-fill)"
-        stroke="#8B6F47"
-        strokeWidth="0.8"
-      />
-      <text
-        x="110"
-        y="20"
-        textAnchor="middle"
-        fontFamily="var(--font-mono), monospace"
-        fontSize="9"
-        fontWeight="600"
-        letterSpacing="0.15em"
-        fill="#6E5635"
-        style={{ textTransform: "uppercase" }}
-      >
-        {text}
-      </text>
-    </svg>
-  );
-}
-
-/* 红色印章 "No. 051 / 050" */
-function SpecimenStamp() {
-  return (
-    <div className="relative inline-block">
-      <div
-        className="relative px-5 py-2 md:px-7 md:py-3"
-        style={{
-          background: "rgba(164, 74, 63, 0.92)",
-          clipPath:
-            "polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px))",
-          boxShadow:
-            "0 2px 8px rgba(164, 74, 63, 0.3), inset 0 0 0 1px rgba(255, 220, 200, 0.3)",
-        }}
-      >
-        <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-[#F5E9D0] flex items-center gap-2">
-          <span>No.</span>
-          <span className="text-base md:text-xl font-bold">051</span>
-          <span className="opacity-60">/</span>
-          <span className="text-base md:text-xl font-bold">050</span>
-        </div>
-        <div
-          className="absolute inset-0 pointer-events-none opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.3) 31%, transparent 32%, transparent 50%, rgba(255,255,255,0.2) 51%, transparent 52%)",
-            mixBlendMode: "overlay",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
 
 /* 主组件 */
 export function HeroPoster() {
   const featured = [
-    { slug: "golden-retriever", nameZh: "金毛寻回犬", nameEn: "Golden Retriever", ribbon: "Vintage Paper · 2026" },
-    { slug: "persian-silver-chinchilla", nameZh: "银渐层波斯", nameEn: "Silver Chinchilla Persian", ribbon: "Vintage Paper · 2026" },
-    { slug: "bearded-dragon", nameZh: "鬃狮蜥", nameEn: "Bearded Dragon", ribbon: "Vintage Paper · 2026" },
+    { slug: "golden-retriever", nameZh: "金毛寻回犬", nameEn: "Golden Retriever" },
+    { slug: "persian-silver-chinchilla", nameZh: "银渐层波斯", nameEn: "Silver Chinchilla Persian" },
+    { slug: "bearded-dragon", nameZh: "鬃狮蜥", nameEn: "Bearded Dragon" },
   ];
 
   const allPets = getAllPets();
@@ -219,7 +38,6 @@ export function HeroPoster() {
               slug: p.slug,
               nameZh: p.name.zh,
               nameEn: p.name.en,
-              ribbon: "Vintage Paper · 2026",
             }))
         );
 
@@ -236,7 +54,6 @@ export function HeroPoster() {
             "linear-gradient(180deg, #F5E9D0 0%, #EFE0BE 60%, #E8D9B8 100%)",
         }}
       />
-      {/* 中心竖向折痕 */}
       <div
         className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-24 md:w-40 lg:w-56 pointer-events-none"
         style={{
@@ -244,7 +61,6 @@ export function HeroPoster() {
             "linear-gradient(90deg, transparent 0%, rgba(139, 111, 71, 0.06) 40%, rgba(139, 111, 71, 0.14) 50%, rgba(139, 111, 71, 0.06) 60%, transparent 100%)",
         }}
       />
-      {/* 副竖向折痕 (左 1/3) */}
       <div
         className="absolute top-0 bottom-0 left-1/3 w-12 md:w-20 pointer-events-none opacity-50"
         style={{
@@ -252,7 +68,6 @@ export function HeroPoster() {
             "linear-gradient(90deg, transparent 0%, rgba(139, 111, 71, 0.05) 50%, transparent 100%)",
         }}
       />
-      {/* 副竖向折痕 (右 1/3) */}
       <div
         className="absolute top-0 bottom-0 right-1/3 w-12 md:w-20 pointer-events-none opacity-50"
         style={{
@@ -260,7 +75,6 @@ export function HeroPoster() {
             "linear-gradient(90deg, transparent 0%, rgba(139, 111, 71, 0.05) 50%, transparent 100%)",
         }}
       />
-      {/* 横向折痕 (1/3) */}
       <div
         className="absolute left-0 right-0 top-1/3 h-6 md:h-10 pointer-events-none"
         style={{
@@ -268,7 +82,6 @@ export function HeroPoster() {
             "linear-gradient(180deg, transparent 0%, rgba(139, 111, 71, 0.08) 50%, transparent 100%)",
         }}
       />
-      {/* 横向折痕 (2/3) */}
       <div
         className="absolute left-0 right-0 top-2/3 h-6 md:h-10 pointer-events-none"
         style={{
@@ -385,7 +198,8 @@ export function HeroPoster() {
                   rotate={config.rotate}
                   scale={config.scale}
                   zIndex={config.zIndex}
-                  ribbon={pet.ribbon}
+                  priority={i === 1}
+                  showRibbon
                 />
               </div>
             );
@@ -425,5 +239,38 @@ export function HeroPoster() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* 红色印章 "No. 051 / 050" */
+function SpecimenStamp() {
+  return (
+    <div className="relative inline-block">
+      <div
+        className="relative px-5 py-2 md:px-7 md:py-3"
+        style={{
+          background: "rgba(164, 74, 63, 0.92)",
+          clipPath:
+            "polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px))",
+          boxShadow:
+            "0 2px 8px rgba(164, 74, 63, 0.3), inset 0 0 0 1px rgba(255, 220, 200, 0.3)",
+        }}
+      >
+        <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-[#F5E9D0] flex items-center gap-2">
+          <span>No.</span>
+          <span className="text-base md:text-xl font-bold">051</span>
+          <span className="opacity-60">/</span>
+          <span className="text-base md:text-xl font-bold">050</span>
+        </div>
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40"
+          style={{
+            backgroundImage:
+              "linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.3) 31%, transparent 32%, transparent 50%, rgba(255,255,255,0.2) 51%, transparent 52%)",
+            mixBlendMode: "overlay",
+          }}
+        />
+      </div>
+    </div>
   );
 }
