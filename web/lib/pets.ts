@@ -11,6 +11,16 @@ export { ATLAS_PAGE_COUNT, ATLAS_SLOTS, ATLAS_SLOT_KEYS } from "./atlas-constant
 const PETS_DIR = path.join(process.cwd(), "..", "content", "pets");
 
 /**
+ * TCB CDN base URL(2026-07-19 切图到腾讯云)
+ * 留空 = 用本地 public/ 静态资源(/dog/.../01-cover.png)
+ * 填了 = 走 TCB(https://<DOMAIN>/pet-atlas/atlas/dog/.../01-cover.png)
+ *
+ * Vercel env 必须设 NEXT_PUBLIC_ATLAS_BASE_URL
+ * 例:https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la/pet-atlas
+ */
+const ATLAS_BASE_URL = (process.env.NEXT_PUBLIC_ATLAS_BASE_URL || "").replace(/\/$/, "");
+
+/**
  * 读取所有已发布品种
  * 容错:任一 JSON 解析失败时跳过该文件,不抛错阻断整体读取
  */
@@ -77,13 +87,20 @@ function atlasFileName(slotIndex: number): string {
   return `${slot}-${key}.png`;
 }
 
-/** 单张图谱的公开 URL(例:`/dog/labrador-retriever/01-cover.png`) */
+/**
+ * 单张图谱的公开 URL
+ * - 有 ATLAS_BASE_URL(走 TCB):`https://<base>/<category>/<slug>/<slot>.png`
+ * - 无 ATLAS_BASE_URL(走本地):`/<category>/<slug>/<slot>.png`
+ */
 function atlasPublicUrl(pet: Pet, slotIndex: number): string {
-  return `/${atlasDirName(pet.category)}/${pet.slug}/${atlasFileName(slotIndex)}`;
+  const path = `/${atlasDirName(pet.category)}/${pet.slug}/${atlasFileName(slotIndex)}`;
+  return ATLAS_BASE_URL ? `${ATLAS_BASE_URL}${path}` : path;
 }
 
 /**
- * 已有图谱的品种集合(动态从 public/ 目录扫描)
+ * 已有图谱的品种集合
+ * 优先从 public/ 目录扫描(本地开发)
+ * 扫描为空时 fallback 到 VINTAGE_PAPER_DONE(TCB 模式,public/ 没图)
  * 这样新增品种自动支持,不需要手动维护
  */
 function findSupportedBreeds(): Set<string> {
@@ -103,6 +120,13 @@ function findSupportedBreeds(): Set<string> {
       }
     }
   }
+
+  // TCB 模式:public/ 没图(部署时已删),fallback 到白名单
+  if (supported.size === 0 && ATLAS_BASE_URL) {
+    console.log(`[pets] public/ 无 PNG,使用 VINTAGE_PAPER_DONE (${VINTAGE_PAPER_DONE.size} 品种) — TCB 模式`);
+    return new Set(VINTAGE_PAPER_DONE);
+  }
+
   return supported;
 }
 
