@@ -54,6 +54,8 @@ art/_design/*.png
 # 内部脚本产物(可选)
 scripts/atlas_requests.json
 # scripts/vintage-paper-batch.json  ← 留着,记录 50 品种清单
+# cloud-pet 预生成 prompt JSON(跑 node scripts/cloud-pet-gen-prompts.mjs 重新生成)
+scripts/cloud-pet-pool.json
 
 # Worktrees (临时开发分支,不入主仓库)
 .worktrees/
