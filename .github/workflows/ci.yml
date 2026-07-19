@@ -61,8 +61,11 @@ jobs:
             echo "  *.html: $HTML_COUNT"
             echo "  dirs: $ROUTE_COUNT"
             echo "  size: $SIZE"
+            if [ "$PAGE_COUNT" -lt 30 ]; then
+              echo "::warning::Low page count: $PAGE_COUNT (expected 30+)"
+            fi
           else
-            echo "  out/ directory: NOT FOUND"
+            echo "::warning::out/ not generated — Vercel handles real build, this is fine"
             echo "  current dir: $(pwd)"
             echo "  contents: $(ls -la 2>&1 | head -20)"
           fi
