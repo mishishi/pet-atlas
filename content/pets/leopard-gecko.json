@@ -1,0 +1,80 @@
+{
+  "slug": "leopard-gecko",
+  "name": {
+    "zh": "豹纹守宫",
+    "en": "Leopard Gecko",
+    "alias": {
+      "zh": ["豹纹壁虎", "豹纹守宫", "LEO"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "巴基斯坦",
+    "region": "南亚与中东干草原",
+    "coordinates": [30.0, 70.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "18-25",
+    "weightKg": "0.05-0.1",
+    "lifespanYears": "15-20",
+    "coat": "鳞甲:黄色底+黑色斑点+眼皮可闭合",
+    "coatColors": ["黄色", "橙色", "白色", "薰衣草色", "黑色"],
+    "eyeColors": ["黑色", "黄色", "红色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 4,
+    "obedience": 4,
+    "independence": 8,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "微笑小壁虎",
+    "tags": ["温顺", "胆小", "夜行", "会微笑", "易养", "入门爬宠"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1854", "event": "英国博物学家 Blyth 首次描述" },
+      { "year": "1980s", "event": "美国爬宠市场大规模人工繁育" },
+      { "year": "2010s", "event": "中国爬宠市场兴起'LEO'饲养潮" }
+    ]
+  },
+
+  "care": {
+    "diet": "活虫(蟋蟀+面包虫)+钙粉+维生素",
+    "exercise": "需 40cm+ 饲养箱+加热垫+洞穴",
+    "health": "代谢性骨病 MBD · 寄生虫 · 蜕皮不全",
+    "training": "温顺不咬人,可上手,需识别投喂者"
+  },
+
+  "famous": [
+    "因嘴角天然弯曲似'微笑'得名微笑蜥蜴",
+    "全球最受欢迎爬宠之一,人工繁育成熟",
+    "已培育出 100+ 突变品系(颜色/花纹)",
+    "少数会眨眼的壁虎(其他壁虎无活动眼皮)"
+  ],
+
+  "tags": ["小型爬宠", "夜行", "入门爬宠", "家庭友好", "微笑", "易养"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

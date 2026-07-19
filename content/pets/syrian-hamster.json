@@ -1,0 +1,80 @@
+{
+  "slug": "syrian-hamster",
+  "name": {
+    "zh": "叙利亚仓鼠",
+    "en": "Syrian Hamster",
+    "alias": {
+      "zh": ["金丝熊", "黄金鼠", "叙利亚仓鼠"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "叙利亚",
+    "region": "阿勒颇地区",
+    "coordinates": [36.2, 37.1]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "13-18",
+    "weightKg": "0.12-0.2",
+    "lifespanYears": "2-3",
+    "coat": "短毛或长毛(金丝熊长毛品种)",
+    "coatColors": ["金黄色", "奶油色", "白色", "黑色", "三色", "玳瑁"],
+    "eyeColors": ["黑色", "红色", "粉色"]
+  },
+
+  "personality": {
+    "affection": 6,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 9,
+    "vocalization": 2,
+    "intelligence": 6,
+    "summary": "黄金小独行侠",
+    "tags": ["独立", "夜行", "温顺", "胆小", "独居", "爱囤食"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1839", "event": "英国动物学家 George Waterhouse 首次描述命名" },
+      { "year": "1930", "event": "以色列动物学家 Aharoni 捕获母鼠与 12 仔" },
+      { "year": "1940s", "event": "作为实验动物引入美国,后成为家宠" }
+    ]
+  },
+
+  "care": {
+    "diet": "仓鼠专用粮+蔬菜水果+少量蛋白",
+    "exercise": "每日跑轮 2-3 小时,需宽敞笼舍",
+    "health": "湿尾症 · 肿瘤 · 牙齿问题",
+    "training": "可训练上手,需独居,不能合笼"
+  },
+
+  "famous": [
+    "1930 年 Aharoni 野外捕获母鼠后裔是全球家宠金丝熊祖先",
+    "日本动漫 '哈姆太郎' 主角原型",
+    "最大型仓鼠品种,可重达 200g",
+    "中国俗称'金丝熊'因金黄色长毛最经典"
+  ],
+
+  "tags": ["小型", "短毛/长毛", "夜行", "独居", "适合儿童", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

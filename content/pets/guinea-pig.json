@@ -1,0 +1,80 @@
+{
+  "slug": "guinea-pig",
+  "name": {
+    "zh": "豚鼠",
+    "en": "Guinea Pig",
+    "alias": {
+      "zh": ["荷兰猪", "天竺鼠", "几内亚猪"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "秘鲁",
+    "region": "安第斯山脉",
+    "coordinates": [-9.2, -75.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-25",
+    "weightKg": "0.7-1.2",
+    "lifespanYears": "5-8",
+    "coat": "短毛 / 长毛 / 无毛三种",
+    "coatColors": ["三色", "白色", "黑色", "棕色", "玳瑁", "银色"],
+    "eyeColors": ["黑色", "红色", "粉色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 5,
+    "obedience": 5,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 5,
+    "summary": "咕咕叫的软萌猪",
+    "tags": ["温顺", "亲人", "爱叫", "胆小", "群居", "爱社交"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "5000 BC", "event": "南美安第斯山脉原住民驯化作为食物" },
+      { "year": "1500s", "event": "西班牙征服者带回欧洲作为奇珍" },
+      { "year": "1800s", "event": "英国 'Guinea Pig' 俗称出现并成为家宠" }
+    ]
+  },
+
+  "care": {
+    "diet": "干草+蔬菜+维 C 补充(自身不能合成)",
+    "exercise": "每日 1-2 小时,需宽敞笼舍与活动空间",
+    "health": "坏血病(缺 VC) · 呼吸道感染 · 牙齿问题",
+    "training": "温顺易上手,会'咕咕'叫声表达情绪"
+  },
+
+  "famous": [
+    "全球重要医学实验动物,贡献青霉素、维 C 发现",
+    "印加帝国驯化作为祭祀与食物来源",
+    "中国'荷兰猪'得名与荷兰无关,因叫声似猪",
+    "必须额外补充维 C 是该品种独特之处"
+  ],
+
+  "tags": ["小型", "短毛/长毛", "群居", "家庭友好", "适合儿童", "爱叫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

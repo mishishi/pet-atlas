@@ -1,0 +1,80 @@
+{
+  "slug": "english-angora",
+  "name": {
+    "zh": "英系安哥拉兔",
+    "en": "English Angora",
+    "alias": {
+      "zh": ["英系安哥拉", "长毛兔", "巨型毛球兔"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "英国",
+    "region": "英格兰",
+    "coordinates": [52.0, -1.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-30",
+    "weightKg": "2-3.5",
+    "lifespanYears": "7-12",
+    "coat": "超长毛,全身体毛覆盖包括脸部",
+    "coatColors": ["白色", "黑色", "蓝色", "巧克力色", "红色", "玳瑁"],
+    "eyeColors": ["粉色", "蓝色", "棕色", "红色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 5,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 3,
+    "intelligence": 6,
+    "summary": "巨型棉花糖",
+    "tags": ["温顺", "亲人", "高颜值", "需打理", "安静", "软萌"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1700s", "event": "法国首次培育出安哥拉长毛兔" },
+      { "year": "1800s", "event": "英国培育出英系安哥拉,毛可纺线" },
+      { "year": "1900s", "event": "成为欧美毛纺业重要经济兔种" }
+    ]
+  },
+
+  "care": {
+    "diet": "干草为主,补高蛋白支持毛发生长",
+    "exercise": "每日 1-2 小时,需防毛打结限制活动",
+    "health": "毛球症 · 皮肤真菌 · 散热困难(中暑)",
+    "training": "温顺,需每日梳毛防毛结,夏季需剪毛散热"
+  },
+
+  "famous": [
+    "安哥拉兔毛纤维被称'兔毛之王'",
+    "法国玛丽·安托瓦内特王后爱宠",
+    "因毛茸茸外形象巨型棉花糖成网红",
+    "中国安哥拉毛纺产业重要原料来源"
+  ],
+
+  "tags": ["小型", "长毛", "高颜值", "需打理", "伴侣兔", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

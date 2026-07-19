@@ -1,0 +1,83 @@
+{
+  "slug": "labrador-retriever",
+  "name": {
+    "zh": "拉布拉多寻回犬",
+    "en": "Labrador Retriever",
+    "alias": {
+      "zh": ["拉拉", "拉布拉多"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "加拿大",
+    "region": "纽芬兰",
+    "coordinates": [49.0, -53.0]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "54-62",
+    "weightKg": "25-32",
+    "lifespanYears": "10-12",
+    "coat": "双层短毛,防水",
+    "coatColors": ["黑色", "黄色", "巧克力色"],
+    "eyeColors": ["棕色", "榛色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 9,
+    "obedience": 9,
+    "independence": 3,
+    "vocalization": 4,
+    "intelligence": 9,
+    "summary": "家庭友好犬",
+    "tags": ["亲人", "活泼", "易训练", "忠诚", "稳定", "耐寒"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "加拿大纽芬兰渔民用犬,协助拉网捕鱼" },
+      { "year": "1830s", "event": "传入英国,被贵族培育为寻回犬" },
+      { "year": "1903", "event": "获 AKC(美国养犬俱乐部)正式认证" },
+      { "year": "1991", "event": "连续 31 年蝉联 AKC 最受欢迎犬种榜首" },
+      { "year": "2000s", "event": "成为全球家宠与导盲犬首选" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,300-400g,易胖体质需控量",
+    "exercise": "每日 60-90 分钟高强度运动,游泳最佳",
+    "health": "髋关节发育不良 · 进行性视网膜萎缩 · 肘关节发育不良",
+    "training": "智商排名第 7,易训练,需幼年社会化"
+  },
+
+  "famous": [
+    "导盲犬三巨头之一(与金毛、德牧并列)",
+    "电影《马利和我》(Marley & Me)主角",
+    "美国前总统克林顿家养犬",
+    "AKC 连续 31 年最受欢迎犬种(1991-2022)"
+  ],
+
+  "tags": ["大型犬", "短毛", "家庭友好", "运动型", "导盲犬", "寻回犬", "工作犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

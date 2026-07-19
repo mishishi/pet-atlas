@@ -1,0 +1,82 @@
+{
+  "slug": "maine-coon",
+  "name": {
+    "zh": "缅因猫",
+    "en": "Maine Coon",
+    "alias": {
+      "zh": ["缅因", "缅因库恩猫", "温柔的巨人"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "缅因州",
+    "coordinates": [45.4, -69.2]
+  },
+
+  "physical": {
+    "sizeGroup": "giant",
+    "heightCm": "25-41",
+    "weightKg": "5-12",
+    "lifespanYears": "12-15",
+    "coat": "长毛,防水双层",
+    "coatColors": ["棕色虎斑", "银虎斑", "红色", "蓝白", "三色"],
+    "eyeColors": ["绿色", "金色", "古铜色", "蓝色", "异色瞳"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 6,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "温柔巨人",
+    "tags": ["亲人", "聪明", "温顺", "爱玩", "友善", "大块头"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "美国缅因州农场主培育捕鼠工作猫" },
+      { "year": "1895", "event": "首届北美猫展 'Cosey' 缅因猫夺冠" },
+      { "year": "1950s", "event": "波斯猫风靡,缅因猫数量急剧下降" },
+      { "year": "1976", "event": "CFA 正式认证缅因猫为独立品种" },
+      { "year": "2010s", "event": "全球最大家猫品种,中国人称'温柔的巨人'" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,80-120g,大型猫需高蛋白配方",
+    "exercise": "每日 30-45 分钟,爱玩水可提供水盆嬉戏",
+    "health": "肥厚型心肌病 HCM · 髋关节发育不良 · 牙周病",
+    "training": "聪明易学 trick,会开门与捡球,善模仿主人"
+  },
+
+  "famous": [
+    "全球体型最大家猫品种,记录达 12.2kg",
+    "曾被 'Stewie' 以 123cm 创吉尼斯世界纪录",
+    "中国 '温柔的巨人' 网红昵称来源",
+    "美国缅因州州猫(1985)"
+  ],
+
+  "tags": ["大型猫", "长毛", "家庭友好", "工作猫", "高智商", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

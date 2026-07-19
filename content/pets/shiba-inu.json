@@ -1,0 +1,82 @@
+{
+  "slug": "shiba-inu",
+  "name": {
+    "zh": "柴犬",
+    "en": "Shiba Inu",
+    "alias": {
+      "zh": ["柴柴", "豆柴"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "日本",
+    "region": "本州中部山区",
+    "coordinates": [36.2, 138.2]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "35-41",
+    "weightKg": "8-11",
+    "lifespanYears": "13-16",
+    "coat": "双层短毛,浓密底绒",
+    "coatColors": ["红色", "黑色与棕褐色", "芝麻色", "白色"],
+    "eyeColors": ["深棕色", "三角形黑眼"]
+  },
+
+  "personality": {
+    "affection": 6,
+    "activity": 7,
+    "obedience": 5,
+    "independence": 8,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "独立日式小猎手",
+    "tags": ["独立", "警觉", "忠诚", "爱干净", "倔强", "冷静"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "300 BC", "event": "日本绳文时代已出现柴犬祖先" },
+      { "year": "1800s", "event": "明治维新引入西方犬种,本土柴犬濒临灭绝" },
+      { "year": "1928", "event": "日本成立 '柴犬保存会' 保护本土犬种" },
+      { "year": "1936", "event": "被日本指定为 '天然纪念物'" },
+      { "year": "2010s", "event": "Doge 表情包爆红,成为全球网红犬" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,120-180g,易过敏肠胃需选优质蛋白",
+    "exercise": "每日 45-60 分钟散步,喜独自巡视领地",
+    "health": "过敏性皮肤病 · 白内障 · 髋关节发育不良",
+    "training": "独立性强,服从度低,需耐心正向训练"
+  },
+
+  "famous": [
+    "Doge 神烦狗表情包原型(母 Kabosu)",
+    "日本指定 '天然纪念物' 六大犬种之一",
+    "网络流行语 'WOW such X, very Y' 来源",
+    "柴犬咖啡馆在日本风靡"
+  ],
+
+  "tags": ["小型犬", "短毛", "日系", "家庭友好", "猎犬", "网红犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

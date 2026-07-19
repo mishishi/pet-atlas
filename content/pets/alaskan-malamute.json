@@ -1,0 +1,82 @@
+{
+  "slug": "alaskan-malamute",
+  "name": {
+    "zh": "阿拉斯加雪橇犬",
+    "en": "Alaskan Malamute",
+    "alias": {
+      "zh": ["阿拉斯加", "马兰努阿犬"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "阿拉斯加",
+    "coordinates": [64.2, -149.5]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "58-71",
+    "weightKg": "34-43",
+    "lifespanYears": "10-14",
+    "coat": "双层厚毛,极耐寒",
+    "coatColors": ["灰白色", "黑白", "红白色", "纯白色", "银白色"],
+    "eyeColors": ["棕色", "杏仁形"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 9,
+    "obedience": 6,
+    "independence": 7,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "极地大型雪橇犬",
+    "tags": ["友善", "独立", "爱挖洞", "耐寒", "力气大", "忠诚"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "3000 BC", "event": "阿拉斯加 Mahlemiut 因纽特部落培育雪橇犬" },
+      { "year": "1896", "event": "阿拉斯加淘金热中作为主力运输犬" },
+      { "year": "1925", "event": "血清接力 'Balto' 事件中也有阿拉斯加参与" },
+      { "year": "1935", "event": "获 AKC 正式认证" },
+      { "year": "2010s", "event": "与哈士奇常被混淆,因体型更大被称为 '大阿拉'" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,400-500g,高蛋白高脂,幼犬期生长慢需控量",
+    "exercise": "每日 90-120 分钟负重训练,夏天严禁运动",
+    "health": "髋关节发育不良 · 糖尿病 · 甲状腺功能减退",
+    "training": "独立性强,幼年需坚定训练,社会化避免对同性犬攻击"
+  },
+
+  "famous": [
+    "阿拉斯加 Nome 镇血清接力救援事件参与犬种",
+    "因纽特部落 'Mahlemiut' 命名 'Malamute'",
+    "全球力量型雪橇犬代表,负重可超 20kg",
+    "美国州犬 '阿拉斯加州' 代表动物之一"
+  ],
+
+  "tags": ["大型犬", "长毛", "雪橇犬", "运动型", "工作犬", "极地犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

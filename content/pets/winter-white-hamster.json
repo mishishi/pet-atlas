@@ -1,0 +1,80 @@
+{
+  "slug": "winter-white-hamster",
+  "name": {
+    "zh": "加卡利亚仓鼠",
+    "en": "Winter White Hamster",
+    "alias": {
+      "zh": ["三线鼠", "银狐", "侏儒仓鼠", "冬白仓鼠"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "哈萨克斯坦",
+    "region": "中亚草原",
+    "coordinates": [48.0, 66.0]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "7-10",
+    "weightKg": "0.03-0.05",
+    "lifespanYears": "1.5-3",
+    "coat": "短毛,冬季换白色",
+    "coatColors": ["灰色", "蓝宝石色", "珍珠白色", "三色"],
+    "eyeColors": ["黑色", "红色"]
+  },
+
+  "personality": {
+    "affection": 6,
+    "activity": 7,
+    "obedience": 4,
+    "independence": 7,
+    "vocalization": 2,
+    "intelligence": 6,
+    "summary": "冬季换装小侏儒",
+    "tags": ["活泼", "胆小", "夜行", "好奇", "群居(同性)", "小巧"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1770", "event": "德国博物学家 Pallas 在中亚草原首次发现" },
+      { "year": "1900s", "event": "冬季节令性换毛行为被科学记录" },
+      { "year": "1970s", "event": "欧美市场作为小型家宠推广" }
+    ]
+  },
+
+  "care": {
+    "diet": "小颗粒侏儒粮+蔬菜+蛋白,严控糖分",
+    "exercise": "需跑轮+隧道,每日 2 小时活动",
+    "health": "糖尿病(高发) · 牙齿问题 · 湿尾症",
+    "training": "可上手但需温柔,避免惊吓咬人"
+  },
+
+  "famous": [
+    "因冬季会换一身白毛而得名 'Winter White'",
+    "中国宠物市场俗称'三线鼠'因背部三条线",
+    "全球最易发糖尿病的仓鼠品种",
+    "比叙利亚仓鼠小 1/3,寿命也更短"
+  ],
+
+  "tags": ["微型", "短毛", "夜行", "群居(同性)", "适合新手", "可爱"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "dutch-rabbit",
+  "name": {
+    "zh": "荷兰兔",
+    "en": "Dutch Rabbit",
+    "alias": {
+      "zh": ["荷兰兔", "道奇兔", "熊猫兔"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "荷兰",
+    "region": "荷兰本土",
+    "coordinates": [52.1, 5.3]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-25",
+    "weightKg": "1.5-2.5",
+    "lifespanYears": "5-10",
+    "coat": "短毛,光滑",
+    "coatColors": ["黑白", "巧克力色", "蓝色", "灰色", "黄褐色"],
+    "eyeColors": ["棕色", "蓝色", "灰色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 3,
+    "intelligence": 7,
+    "summary": "标志分色道奇兔",
+    "tags": ["聪明", "亲人", "温顺", "易训练", "好奇", "活泼"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "比利时从荷兰进口道奇兔作食用" },
+      { "year": "1800s", "event": "英国从比利时引入,改良为观赏兔" },
+      { "year": "1910s", "event": "美国引入道奇兔成为儿童宠物热门" }
+    ]
+  },
+
+  "care": {
+    "diet": "干草为主 80%,辅以兔粮和新鲜蔬菜",
+    "exercise": "每日 1-2 小时,需要宽敞空间跳跃",
+    "health": "牙齿咬合不正 · 呼吸道感染 · 球虫病",
+    "training": "极聪明,容易训练上厕所和 trick"
+  },
+
+  "famous": [
+    "以颜色'道奇'色块分布命名,与国家无关",
+    "儿童宠物展示 4-H 项目常胜将军",
+    "全球最古老的小型家兔品种之一",
+    "中国俗称'熊猫兔'因分色像熊猫"
+  ],
+
+  "tags": ["小型", "短毛", "家庭友好", "聪明", "伴侣兔", "儿童友好"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

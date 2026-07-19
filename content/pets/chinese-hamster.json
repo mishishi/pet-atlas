@@ -1,0 +1,80 @@
+{
+  "slug": "chinese-hamster",
+  "name": {
+    "zh": "中国仓鼠",
+    "en": "Chinese Hamster",
+    "alias": {
+      "zh": ["中国仓鼠", "中国侏儒鼠", "黑线仓鼠"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "中国",
+    "region": "中国北方与蒙古",
+    "coordinates": [40.0, 110.0]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "8-12",
+    "weightKg": "0.03-0.05",
+    "lifespanYears": "2-3",
+    "coat": "短毛,背部有黑线",
+    "coatColors": ["灰色", "棕色", "白色斑点"],
+    "eyeColors": ["黑色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 6,
+    "obedience": 4,
+    "independence": 8,
+    "vocalization": 2,
+    "intelligence": 6,
+    "summary": "尾巴长的小侏儒",
+    "tags": ["夜行", "胆小", "体型较长", "爱爬", "易咬", "独居"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1900s", "event": "从中国北方引入欧洲实验室" },
+      { "year": "1940s", "event": "作为医学研究动物广泛使用" },
+      { "year": "1980s", "event": "进入家宠市场,数量较少" }
+    ]
+  },
+
+  "care": {
+    "diet": "侏儒鼠粮+种子+少量蛋白",
+    "exercise": "需垂直空间与攀爬玩具,每日 2 小时",
+    "health": "糖尿病 · 牙齿问题 · 呼吸道感染",
+    "training": "需幼年频繁接触,成年后不易驯服"
+  },
+
+  "famous": [
+    "原产中国北方,故得名'中国仓鼠'",
+    "唯一仓鼠品种尾巴较长(约 3cm)",
+    "在欧美常作实验室动物使用",
+    "体型比'三线'大,比金丝熊小"
+  ],
+
+  "tags": ["微型", "短毛", "夜行", "中国本土", "观赏", "独居"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

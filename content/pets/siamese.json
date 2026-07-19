@@ -1,0 +1,82 @@
+{
+  "slug": "siamese",
+  "name": {
+    "zh": "暹罗猫",
+    "en": "Siamese",
+    "alias": {
+      "zh": ["暹罗", "泰国猫", "西母猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "泰国",
+    "region": "暹罗王国",
+    "coordinates": [13.7, 100.5]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-28",
+    "weightKg": "3-6",
+    "lifespanYears": "12-20",
+    "coat": "单层短毛,紧贴皮肤",
+    "coatColors": ["海豹重点色", "蓝色重点色", "巧克力重点色", "丁香重点色"],
+    "eyeColors": ["蓝色"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 8,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 9,
+    "intelligence": 9,
+    "summary": "爱聊天的东方明星",
+    "tags": ["爱叫", "聪明", "粘人", "活泼", "爱社交", "好奇心强"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1300s", "event": "暹罗国王专属宠物,记载于《猫之诗》" },
+      { "year": "1884", "event": "暹罗国王赠送给英驻曼谷领事 Owen Gould" },
+      { "year": "1885", "event": "首次登陆英国伦敦水晶宫猫展" },
+      { "year": "1906", "event": "CFA 首批认证品种之一" },
+      { "year": "1950s", "event": "现代东方型暹罗被培育,体型更纤细" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,50-70g,高蛋白支持高代谢",
+    "exercise": "每日 30-45 分钟,喜攀爬与互动玩具",
+    "health": "牙周病 · 呼吸道感染 · 进行性视网膜萎缩",
+    "training": "极聪明,擅长开门与学会 trick,需持续智力刺激"
+  },
+
+  "famous": [
+    "迪士尼《小姐与流氓》两只是经典暹罗形象",
+    "暹罗 'Siam' 古暹罗语意为 '月亮钻石'",
+    "英国首相 Anthony Eden 的暹罗 'Blenheim' 享誉政坛",
+    "善 '唱歌' 与主人对话,声线独特如婴儿啼哭"
+  ],
+
+  "tags": ["中型猫", "短毛", "爱叫", "高智商", "社交型", "东方猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

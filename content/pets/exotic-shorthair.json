@@ -1,0 +1,82 @@
+{
+  "slug": "exotic-shorthair",
+  "name": {
+    "zh": "异国短毛猫",
+    "en": "Exotic Shorthair",
+    "alias": {
+      "zh": ["加菲猫", "异短", "外来种短毛猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "美国本土",
+    "coordinates": [39.0, -95.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-30",
+    "weightKg": "4-7",
+    "lifespanYears": "12-15",
+    "coat": "双层短毛,绒密蓬松",
+    "coatColors": ["红白虎斑", "蓝白", "奶油色", "玳瑁", "白色"],
+    "eyeColors": ["古铜色", "蓝色", "异色瞳"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 4,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 3,
+    "intelligence": 6,
+    "summary": "加菲猫本尊萌物",
+    "tags": ["温顺", "粘人", "安静", "憨厚", "慵懒", "友善"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1950s", "event": "美国育种家用波斯×美短培育短毛版'波斯'" },
+      { "year": "1966", "event": "CFA 正式认证为 'Exotic Shorthair' 独立品种" },
+      { "year": "1978", "event": "《加菲猫》漫画首期登载,Jim Davis 创作" },
+      { "year": "1991", "event": "加菲猫同名动画电影风靡全球" },
+      { "year": "2010s", "event": "中国 '加菲猫' 昵称家喻户晓" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,50-70g,扁脸易脏需清洁泪痕",
+    "exercise": "每日 15-20 分钟短时互动,易胖需控量",
+    "health": "短头呼吸道综合征 · 多囊肾病 PKD · 泪痕阻塞",
+    "training": "温顺配合,正向训练效果佳,不喜剧烈运动"
+  },
+
+  "famous": [
+    "《加菲猫》漫画主角原型即异国短毛猫",
+    "短毛版的波斯猫,被称为'懒人版波斯'",
+    "CFA 常年最受欢迎品种 Top 10",
+    "全球 '加菲猫' IP 形象代言人"
+  ],
+
+  "tags": ["中型猫", "短毛", "安静", "家庭友好", "慵懒", "伴侣猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

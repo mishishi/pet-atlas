@@ -1,0 +1,80 @@
+{
+  "slug": "mini-rex",
+  "name": {
+    "zh": "迷你雷克斯兔",
+    "en": "Mini Rex",
+    "alias": {
+      "zh": ["迷你雷克斯", "丝绒兔", "迷你力克斯兔"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "法国",
+    "region": "法国本土",
+    "coordinates": [46.6, 2.2]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-25",
+    "weightKg": "1.5-2.5",
+    "lifespanYears": "6-10",
+    "coat": "超短绒毛,丝绒质感",
+    "coatColors": ["巧克力色", "海豹色", "白色", "蓝色", "玳瑁", "碎花色"],
+    "eyeColors": ["粉色", "棕色", "蓝色", "红色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 7,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 3,
+    "intelligence": 7,
+    "summary": "丝绒触感小可爱",
+    "tags": ["亲人", "温顺", "活泼", "好奇", "聪明", "萌系"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1900s", "event": "法国首次发现 Rex 基因突变短毛兔" },
+      { "year": "1920s", "event": "标准型 Rex 兔首次参加国际兔展" },
+      { "year": "1980s", "event": "美国育种家培育出 Mini Rex 独立品种" }
+    ]
+  },
+
+  "care": {
+    "diet": "干草为主 80%,辅以兔粮和新鲜蔬菜",
+    "exercise": "每日 1-2 小时,喜欢跳跃与探索",
+    "health": "脚皮炎 · 牙齿问题 · 呼吸道感染",
+    "training": "聪明,易训练如厕,亲近人"
+  },
+
+  "famous": [
+    "因毛发如丝绒般柔软而得名'丝绒兔'",
+    "Rex 基因突变首次在法国野兔中观察到",
+    "ARBA 认证超过 20 种花色",
+    "美国 4-H 青少年动物项目热门兔种"
+  ],
+
+  "tags": ["小型", "短毛", "家庭友好", "丝绒", "伴侣兔", "聪明"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

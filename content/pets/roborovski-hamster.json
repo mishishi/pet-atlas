@@ -1,0 +1,80 @@
+{
+  "slug": "roborovski-hamster",
+  "name": {
+    "zh": "罗伯罗夫斯基仓鼠",
+    "en": "Roborovski Hamster",
+    "alias": {
+      "zh": ["公婆鼠", "罗伯罗夫斯基", "小毛足鼠"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "蒙古",
+    "region": "蒙古与中国西北部沙漠",
+    "coordinates": [44.0, 105.0]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "5-7",
+    "weightKg": "0.02-0.05",
+    "lifespanYears": "3-4",
+    "coat": "短毛,沙黄色",
+    "coatColors": ["沙黄色", "白色", "斑点色"],
+    "eyeColors": ["黑色"]
+  },
+
+  "personality": {
+    "affection": 4,
+    "activity": 9,
+    "obedience": 3,
+    "independence": 9,
+    "vocalization": 2,
+    "intelligence": 6,
+    "summary": "速度最快小仓鼠",
+    "tags": ["胆小", "速度快", "夜行", "爱动", "难抓", "群居"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1894", "event": "俄罗斯探险家 Roborovski 在蒙古发现并命名" },
+      { "year": "1970s", "event": "引入欧美宠物市场" },
+      { "year": "2010s", "event": "在中国宠物市场流行'公婆鼠'昵称" }
+    ]
+  },
+
+  "care": {
+    "diet": "小颗粒仓鼠粮+种子+少量蛋白",
+    "exercise": "需超大跑轮与沙浴,每日 2-3 小时活动",
+    "health": "糖尿病 · 牙齿问题 · 骨折(跳跃)",
+    "training": "极难上手,观赏为主,不推荐儿童"
+  },
+
+  "famous": [
+    "全球最小仓鼠品种,体长仅 5-7cm",
+    "时速最快可达 10km/h 的小动物",
+    "野外分布于蒙古与中国西北沙漠",
+    "因'老公公''老婆婆'花白眉毛得名'公婆鼠'"
+  ],
+
+  "tags": ["微型", "短毛", "夜行", "观赏", "群居", "沙漠"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

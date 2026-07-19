@@ -1,0 +1,82 @@
+{
+  "slug": "sphynx",
+  "name": {
+    "zh": "斯芬克斯无毛猫",
+    "en": "Sphynx",
+    "alias": {
+      "zh": ["斯芬克斯", "加拿大无毛猫", "无毛猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "加拿大",
+    "region": "安大略省多伦多",
+    "coordinates": [43.65, -79.38]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-28",
+    "weightKg": "3-5",
+    "lifespanYears": "12-15",
+    "coat": "无毛,表面有绒绒细毛",
+    "coatColors": ["皮肤色", "肉色", "黑色", "蓝色", "红色", "玳瑁"],
+    "eyeColors": ["蓝色", "绿色", "黄色", "古铜色"]
+  },
+
+  "personality": {
+    "affection": 10,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "裸奔暖心话痨",
+    "tags": ["粘人", "活泼", "话痨", "爱社交", "怕冷", "爱玩"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1966", "event": "加拿大多伦多 'Prune' 首次发现无毛基因突变猫" },
+      { "year": "1975", "event": "美国明尼苏达 'Epidermis' 加入繁育计划" },
+      { "year": "1980s", "event": "通过与德文卷毛猫杂交稳定基因库" },
+      { "year": "1998", "event": "CFA 正式认证斯芬克斯为独立品种" },
+      { "year": "2010s", "event": "因低过敏特性在全球家宠市场走红" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 3-4 顿,60-80g,高代谢需少食多餐",
+    "exercise": "每日 30-45 分钟,需保暖环境与温暖窝",
+    "health": "肥厚型心肌病 HCM · 皮肤问题 · 怕冷怕晒",
+    "training": "极聪明,喜与人互动,需每周洗澡清洁皮脂"
+  },
+
+  "famous": [
+    "《老友记》中 Rachel 养的猫 'Mrs. Whiskerson' 是斯芬克斯",
+    "裸奔 '皱皮' 萌态是全球网红猫常客",
+    "低过敏特性适合过敏人群饲养",
+    "智商与粘人度在猫中名列前茅"
+  ],
+
+  "tags": ["中型猫", "无毛", "高智商", "粘人", "低过敏", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

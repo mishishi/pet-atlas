@@ -1,0 +1,80 @@
+{
+  "slug": "ferret",
+  "name": {
+    "zh": "雪貂",
+    "en": "Ferret",
+    "alias": {
+      "zh": ["雪貂", "蒙眼貂", "家养雪貂"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "欧洲",
+    "region": "欧洲与北非",
+    "coordinates": [50.0, 10.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "33-40",
+    "weightKg": "0.7-2",
+    "lifespanYears": "6-10",
+    "coat": "短毛,光滑有光泽",
+    "coatColors": ["肉桂色", "银色", "白色", "黑貂色", "巧克力色"],
+    "eyeColors": ["黑色", "红色", "蓝色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 10,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 4,
+    "intelligence": 9,
+    "summary": "好奇探险小耗子",
+    "tags": ["活泼", "聪明", "好奇", "爱玩", "爱钻洞", "臭腺"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500 BC", "event": "古希腊人驯化欧洲雪貂用于狩猎" },
+      { "year": "Middle Ages", "event": "欧洲贵族用雪貂狩猎兔子" },
+      { "year": "1980s", "event": "美国兴起将雪貂作为家宠热潮" }
+    ]
+  },
+
+  "care": {
+    "diet": "高蛋白肉食,专用雪貂粮或生骨肉",
+    "exercise": "每日 2-4 小时笼外活动,需严密防逃脱",
+    "health": "胰岛素瘤 · 肾上腺疾病 · 犬瘟热",
+    "training": "极聪明可训练如厕与 trick,需防咬合"
+  },
+
+  "famous": [
+    "已有 2500 年驯化史,曾被用于狩猎兔鼠",
+    "美国流行文化 'Ferret Legging' 雪貂裤挑战赛",
+    "好莱坞电影常客如《博物馆奇妙夜》",
+    "睡眠时间长达 18 小时/天"
+  ],
+
+  "tags": ["小型", "短毛", "高智商", "活泼", "运动型", "需空间"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

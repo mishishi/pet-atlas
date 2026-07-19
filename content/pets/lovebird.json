@@ -1,0 +1,80 @@
+{
+  "slug": "lovebird",
+  "name": {
+    "zh": "牡丹鹦鹉",
+    "en": "Lovebird",
+    "alias": {
+      "zh": ["牡丹", "情鸟", "爱情鹦鹉"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "非洲",
+    "region": "非洲大陆与马达加斯加",
+    "coordinates": [0.0, 25.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "13-17",
+    "weightKg": "0.04-0.06",
+    "lifespanYears": "10-15",
+    "coat": "羽毛:短尾粗短,色彩艳丽",
+    "coatColors": ["绿色", "蓝色", "黄色", "白色", "紫罗兰色", "肉桂色"],
+    "eyeColors": ["黑色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 8,
+    "obedience": 5,
+    "independence": 5,
+    "vocalization": 7,
+    "intelligence": 6,
+    "summary": "爱咬人的小情侣",
+    "tags": ["活泼", "爱叫", "咬人", "聪明", "占有欲", "小型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "欧洲探险家从非洲带回小型鹦鹉" },
+      { "year": "1900s", "event": "美国开始系统人工繁育与色系培育" },
+      { "year": "2010s", "event": "中国宠物市场出现'手养牡丹'热潮" }
+    ]
+  },
+
+  "care": {
+    "diet": "谷物+蔬果+墨鱼骨,需多样化饮食",
+    "exercise": "每日 1-2 小时,需丰富玩具防咬笼",
+    "health": "羽虱 · 鹦鹉喙羽症 PBFD · 肥胖",
+    "training": "幼鸟可上手,需提供咀嚼玩具"
+  },
+
+  "famous": [
+    "得名'情鸟'因双鸟间亲密互相梳理羽毛",
+    "全球最小鹦鹉之一,体长仅 13-17cm",
+    "配偶关系极忠诚,伴侣死亡可能绝食",
+    "野外共 9 种,主要分布于非洲"
+  ],
+
+  "tags": ["小型鸟", "群居", "爱叫", "情侣", "家庭友好", "咬人"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

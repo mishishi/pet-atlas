@@ -1,0 +1,12 @@
+# 01 cover · 非洲迷你刺猬 (African Pygmy Hedgehog)
+
+- slot: 01-cover
+- template: 3
+- category: small-mammal
+- generated: 2026-07-18T22:25:19.104Z
+
+## Prompt
+
+```text
+A vintage museum specimen card aesthetic, 9:16 vertical. Healing hand-drawn style with watercolor illustration + real pet photo. Subtle paper texture background (oat #F5EFE0) with a decorative frame border in warm brown #8B6F47. Top 55%: a real African Pygmy Hedgehog in a natural, gentle pose (sitting, foraging, or curled up, alert expression) with bright clear eyes, soft natural light, hand-drawn paw prints (small) and leaves as decorative anchor. Bottom 45%: within the frame, oat background with hand-drawn watercolor acorns, fallen leaves, mushrooms, tiny paw prints decorations. Breed name '非洲迷你刺猬' in bold rounded Chinese font, latin name 'African Pygmy Hedgehog' in handwritten English, origin chip '原产地 · 非洲 · 撒哈拉以南非洲', small icon row with size/weight/lifespan. Color palette: oat #F5EFE0, sand #E8D9B8, warm brown #8B6F47, mint #A8C5A0. Style: museum specimen card + healing watercolor + info graphic. Mood: gentle, healing, cute but professional.
+```

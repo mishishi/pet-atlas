@@ -1,0 +1,82 @@
+{
+  "slug": "persian-silver-chinchilla",
+  "name": {
+    "zh": "波斯银 / 金吉拉",
+    "en": "Persian Silver Chinchilla",
+    "alias": {
+      "zh": ["金吉拉", "银渐层波斯", "银色金吉拉"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "英国",
+    "region": "英格兰",
+    "coordinates": [52.0, -1.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-30",
+    "weightKg": "3-6",
+    "lifespanYears": "12-17",
+    "coat": "超长双层毛,银白色调",
+    "coatColors": ["银白渐层", "金白渐层", "银色阴影"],
+    "eyeColors": ["祖母绿", "蓝绿色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 3,
+    "obedience": 7,
+    "independence": 6,
+    "vocalization": 3,
+    "intelligence": 7,
+    "summary": "银辉闪烁精灵",
+    "tags": ["安静", "高冷", "温顺", "端庄", "灵动", "优雅"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1882", "event": "英国首次培育 '银色波斯' 单一色系" },
+      { "year": "1885", "event": "首批银渐层 'Chinnie' 出生于英国" },
+      { "year": "1900s", "event": "英国猫舍俱乐部正式命名 'Silver Chinchilla'" },
+      { "year": "1950s", "event": "金色渐层被单独分离为 'Golden Persian'" },
+      { "year": "2010s", "event": "中国 '金吉拉' 昵称家喻户晓" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,50-70g,扁脸需专用碗避免黑下巴",
+    "exercise": "每日 15-20 分钟,温和互动,室内饲养",
+    "health": "多囊肾病 PKD · 短头呼吸道问题 · 泪痕",
+    "training": "安静温顺,需耐心正向训练,每日梳毛防打结"
+  },
+
+  "famous": [
+    "维多利亚女王拥有第一只银渐层波斯猫",
+    "得名 'Chinchilla' 因毛色如南美栗鼠",
+    "祖母绿眼睛是金吉拉标志性特征",
+    "中国 '金吉拉' 是银渐层专属昵称"
+  ],
+
+  "tags": ["小型猫", "长毛", "安静", "家庭友好", "高颜值", "贵族猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

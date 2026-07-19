@@ -1,0 +1,79 @@
+{
+  "slug": "holland-lop",
+  "name": {
+    "zh": "荷兰垂耳兔",
+    "en": "Holland Lop",
+    "alias": {
+      "zh": ["垂耳兔", "荷兰垂耳", "荷垂"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "荷兰",
+    "region": "荷兰本土",
+    "coordinates": [52.1, 5.3]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "15-20",
+    "weightKg": "1.5-2",
+    "lifespanYears": "7-10",
+    "coat": "短毛,浓密柔软",
+    "coatColors": ["巧克力色", "橙色", "白色", "黑色", "玳瑁", "蓝色"],
+    "eyeColors": ["棕色", "蓝色", "灰色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 3,
+    "intelligence": 6,
+    "summary": "下垂耳萌系小球",
+    "tags": ["温顺", "亲人", "可爱", "好奇", "安静", "萌系"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1950s", "event": "荷兰育种家 Adriann de Cock 用法国垂耳兔×荷兰侏儒兔培育" },
+      { "year": "1970s", "event": "荷兰正式认证 Holland Lop 品种" }
+    ]
+  },
+
+  "care": {
+    "diet": "干草为主占 80%,辅以蔬菜和少量兔粮",
+    "exercise": "每日 1-2 小时笼外活动,需宽敞空间",
+    "health": "牙齿咬合不正 · 呼吸道感染 · 球虫病",
+    "training": "聪明可训练上厕所,需幼年社交化"
+  },
+
+  "famous": [
+    "全球最迷你垂耳兔之一,体重仅 1.5kg",
+    "标志性下垂耳萌态是网络表情包常客",
+    "美国兔子繁殖者协会 ARBA 认证品种",
+    "2010 年代起在中国宠物市场快速走红"
+  ],
+
+  "tags": ["小型", "短毛", "家庭友好", "可爱", "伴侣兔", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

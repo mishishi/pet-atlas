@@ -1,0 +1,82 @@
+{
+  "slug": "chinese-li-hua",
+  "name": {
+    "zh": "中国狸花猫",
+    "en": "Chinese Li Hua",
+    "alias": {
+      "zh": ["狸花猫", "狸猫", "中华田园狸花"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "中国",
+    "region": "中国本土",
+    "coordinates": [35.0, 105.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-30",
+    "weightKg": "4-7",
+    "lifespanYears": "15-20",
+    "coat": "短毛,虎斑纹明显",
+    "coatColors": ["棕色虎斑", "黑色虎斑", "黄虎斑", "灰虎斑"],
+    "eyeColors": ["黄色", "绿色", "棕色"]
+  },
+
+  "personality": {
+    "affection": 6,
+    "activity": 8,
+    "obedience": 5,
+    "independence": 9,
+    "vocalization": 5,
+    "intelligence": 9,
+    "summary": "中华田园精灵",
+    "tags": ["独立", "聪明", "健壮", "捕猎", "警觉", "野性"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "宋元时期", "event": "《猫苑》等古籍记载为本土'狸猫'" },
+      { "year": "明清", "event": "宫廷与民间广泛饲养,称'狸花' '花猫'" },
+      { "year": "2003", "event": "中国长城猫俱乐部申请国际品种认证" },
+      { "year": "2010", "event": "CFA 正式收录为中国本土品种" },
+      { "year": "2018", "event": "中国宠物市场掀起田园猫认养潮" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,杂食性强,适合天然粮",
+    "exercise": "每日 45-60 分钟,需大空间,喜户外活动",
+    "health": "基因强壮,几乎无品种遗传病",
+    "training": "智商高但服从性低,半野性化需正向训练"
+  },
+
+  "famous": [
+    "中国唯一被国际 CFA 认证的本土品种",
+    "故宫 '鳌拜' '如意' 等网红御猫主角",
+    "鲁迅笔下 '偷鱼的猫' 真实写照",
+    "中国农村'会抓老鼠的猫'经典代表"
+  ],
+
+  "tags": ["中型猫", "短毛", "中华田园猫", "工作猫", "独立", "健壮"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

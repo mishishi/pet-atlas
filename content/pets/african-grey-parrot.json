@@ -1,0 +1,80 @@
+{
+  "slug": "african-grey-parrot",
+  "name": {
+    "zh": "非洲灰鹦鹉",
+    "en": "African Grey Parrot",
+    "alias": {
+      "zh": ["非灰", "非洲灰", "灰鹦鹉"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "中非",
+    "region": "中非热带雨林",
+    "coordinates": [0.0, 23.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "33-41",
+    "weightKg": "0.4-0.65",
+    "lifespanYears": "50-60",
+    "coat": "羽毛:全身灰色+红色短尾",
+    "coatColors": ["灰色", "暗灰色", "深灰色"],
+    "eyeColors": ["黄色(成鸟)", "深灰(幼鸟)"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 5,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 9,
+    "intelligence": 10,
+    "summary": "鸟界爱因斯坦",
+    "tags": ["高智商", "学舌", "敏感", "长寿", "胆小", "需陪伴"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "葡萄牙探险家在非洲首次记录" },
+      { "year": "1843", "event": "英国动物学家 Temminck 正式分类" },
+      { "year": "1977", "event": "Alex 鹦鹉科研项目证明其认知能力" }
+    ]
+  },
+
+  "care": {
+    "diet": "专用颗粒+坚果+蔬果,避免高脂高糖",
+    "exercise": "每日 1-2 小时出笼,需大量益智玩具",
+    "health": "拔羽症 · 鹦鹉喙羽症 PBFD · 钙缺乏",
+    "training": "智商等同 4-5 岁儿童,可辨色、计数、对话"
+  },
+
+  "famous": [
+    "Alex 鹦鹉掌握 150+ 词汇,认知研究传奇",
+    "全球最长寿鸟类宠物之一,记录 60+ 年",
+    "被列入 CITES 附录 I 严禁国际贸易",
+    "学舌能力在动物界仅次于人类"
+  ],
+
+  "tags": ["中型鸟", "高智商", "学舌", "长寿", "家庭友好", "需陪伴"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

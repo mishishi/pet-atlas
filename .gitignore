@@ -1,0 +1,55 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Vercel
+.vercel
+
+# Next.js / web
+web/.next/
+web/out/
+web/node_modules/
+web/.next-build-cache/
+web/.turbo/
+web/tsconfig.tsbuildinfo
+web/next-env.d.ts
+web/.swc/
+
+# 临时文件 / 缓存
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+
+# 操作系统
+Thumbs.db
+
+# ============================================
+# 图片资源(1GB+,不进 git,部署时用云存储/CDN)
+# ============================================
+# AI 生成的图谱原图(300 张 × 2-3MB ≈ 700MB)
+art/**/*.png
+art/**/**/*.png
+# web 构建用的图(从 art 同步过来,1GB)
+web/public/**/*.png
+web/public/**/**/*.png
+# 设计稿(_design 目录下是早期图,也不进)
+art/_design/*.png
+
+# 但 prompt 文档(.md)要进(记录每张图怎么生成的)
+!art/**/*.md
+!art/**/**/*.md
+!web/public/**/*.md
+!web/public/**/**/*.md
+
+# 内部脚本产物(可选)
+scripts/atlas_requests.json
+# scripts/vintage-paper-batch.json  ← 留着,记录 50 品种清单

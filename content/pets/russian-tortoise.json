@@ -1,0 +1,80 @@
+{
+  "slug": "russian-tortoise",
+  "name": {
+    "zh": "俄罗斯陆龟",
+    "en": "Russian Tortoise",
+    "alias": {
+      "zh": ["四爪陆龟", "俄罗斯陆龟", "草原陆龟"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "俄罗斯",
+    "region": "中亚干草原",
+    "coordinates": [48.0, 50.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-25",
+    "weightKg": "0.5-1.5",
+    "lifespanYears": "40-50",
+    "coat": "鳞甲:圆形扁甲+黄褐色斑纹",
+    "coatColors": ["黄绿色", "棕色", "黑色斑纹"],
+    "eyeColors": ["黑色", "黄绿色"]
+  },
+
+  "personality": {
+    "affection": 3,
+    "activity": 4,
+    "obedience": 4,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "耐干小土龟",
+    "tags": ["耐干", "胆小", "长寿", "杂食", "独立", "小型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "俄罗斯动物学家首次科学描述" },
+      { "year": "1960s", "event": "美国宠物市场将其作为常见家宠推广" },
+      { "year": "2010s", "event": "中国爬宠市场逐渐流行" }
+    ]
+  },
+
+  "care": {
+    "diet": "深绿蔬菜+蒲公英+少量龟粮,严控蛋白",
+    "exercise": "需宽敞饲养箱+ UVB 灯+干燥环境",
+    "health": "呼吸道感染 · 结石 · 维生素缺乏",
+    "training": "可识别主人与定时投喂,胆小易紧张"
+  },
+
+  "famous": [
+    "因前肢四爪(其他陆龟多五爪)而得名'四爪'",
+    "寿命 40-50 年,小型陆龟长寿代表",
+    "中亚野外种群因宠物贸易被偷猎",
+    "冬眠习性明显,需低温刺激冬化"
+  ],
+
+  "tags": ["小型爬宠", "陆龟", "长寿", "耐干", "入门爬宠", "需冬化"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

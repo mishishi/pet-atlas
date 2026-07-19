@@ -1,0 +1,80 @@
+{
+  "slug": "red-eared-slider",
+  "name": {
+    "zh": "巴西龟",
+    "en": "Red-eared Slider",
+    "alias": {
+      "zh": ["巴西红耳龟", "红耳龟", "密西西比红耳龟"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "密西西比河流域",
+    "coordinates": [33.0, -90.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-30",
+    "weightKg": "0.5-2",
+    "lifespanYears": "20-30",
+    "coat": "鳞甲:绿色硬壳+耳后红斑",
+    "coatColors": ["绿色", "棕色", "橄榄色", "黄绿色"],
+    "eyeColors": ["黑色", "绿色虹膜"]
+  },
+
+  "personality": {
+    "affection": 3,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "晒背小绿壳",
+    "tags": ["胆大", "爱晒", "活泼", "独立", "杂食", "长寿"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "原产美国密西西比河,被土著作为食物" },
+      { "year": "1900s", "event": "宠物贸易让其成为全球常见家宠" },
+      { "year": "2016", "event": "中国生态环境部列为入侵物种" }
+    ]
+  },
+
+  "care": {
+    "diet": "龟粮+鱼虾+蔬菜水果,幼龟偏肉成龟偏素",
+    "exercise": "需 UVB 灯+晒台+过滤水体,日光浴",
+    "health": "腐皮病 · 肠胃炎 · 维生素缺乏(软壳)",
+    "training": "可认识主人与定时投喂互动"
+  },
+
+  "famous": [
+    "全球最常见家养龟类,俗称'巴西龟'实为美国产",
+    "因适应力强被 IUCN 列为全球 100 大入侵种",
+    "中国花鸟市场常见 5 元小龟原型",
+    "寿命可达 30+ 年,需长期饲养准备"
+  ],
+
+  "tags": ["小型爬宠", "水龟", "长寿", "家庭友好", "入侵物种", "入门爬宠"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

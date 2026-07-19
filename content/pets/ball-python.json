@@ -1,0 +1,80 @@
+{
+  "slug": "ball-python",
+  "name": {
+    "zh": "球蟒",
+    "en": "Ball Python",
+    "alias": {
+      "zh": ["球蟒", "王蛇", "皇家蟒"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "非洲",
+    "region": "非洲中西部草原",
+    "coordinates": [5.0, 15.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "90-150",
+    "weightKg": "1-2",
+    "lifespanYears": "20-30",
+    "coat": "鳞甲:棕色底+深色斑块+光滑鳞片",
+    "coatColors": ["棕色", "黑色", "黄色", "白色", "薰衣草色", "白化"],
+    "eyeColors": ["黑色", "红色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 2,
+    "obedience": 5,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "蜷成球的小蟒",
+    "tags": ["胆小", "温和", "夜行", "易紧张", "爱蜷球", "入门蛇类"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1840", "event": "德国动物学家首次描述命名" },
+      { "year": "1990s", "event": "美国开始人工繁育突变品系" },
+      { "year": "2010s", "event": "全球流行突变品系 5000+ 种" }
+    ]
+  },
+
+  "care": {
+    "diet": "冻鼠/活鼠(幼 5-7 天一次,成 10-14 天)",
+    "exercise": "需 60cm+ 饲养箱+加热垫+湿度 60%",
+    "health": "呼吸道感染 · 寄生虫 · 拒食症",
+    "training": "极胆小,需慢动作接触,熟悉后温顺"
+  },
+
+  "famous": [
+    "因受惊时蜷成球形而得名 'Ball Python'",
+    "全球人工繁育突变品系最多蛇类(5000+ 种)",
+    "非洲被作为'神蛇'崇拜,出口限制严格",
+    "饲养寿命记录 48 年,蛇类宠物长寿代表"
+  ],
+
+  "tags": ["小型爬宠", "夜行", "入门爬宠", "蛇类", "易养", "突变品系"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

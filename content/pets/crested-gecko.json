@@ -1,0 +1,80 @@
+{
+  "slug": "crested-gecko",
+  "name": {
+    "zh": "睫角守宫",
+    "en": "Crested Gecko",
+    "alias": {
+      "zh": ["睫角壁虎", "睫角守宫", "冠毛壁虎"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "新喀里多尼亚",
+    "region": "南太平洋新喀里多尼亚群岛",
+    "coordinates": [-22.0, 166.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-25",
+    "weightKg": "0.04-0.08",
+    "lifespanYears": "10-20",
+    "coat": "鳞甲:从眼部至尾部的睫毛状冠脊",
+    "coatColors": ["红棕色", "黄色", "奶油色", "虎斑", "斑纹", "无斑"],
+    "eyeColors": ["红色", "橙色", "黄色", "棕色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 8,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "睫毛精小攀爬家",
+    "tags": ["胆小", "爱跳跃", "夜行", "胆小", "高颜值", "易养"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1866", "event": "法国动物学家首次发现命名" },
+      { "year": "1994", "event": "被认为已灭绝 100 年后重新发现" },
+      { "year": "2010s", "event": "全球爬宠市场兴起主流品种" }
+    ]
+  },
+
+  "care": {
+    "diet": "睫角专用粉+果泥,无需活虫",
+    "exercise": "需垂直高箱+攀爬树枝+湿度 70%",
+    "health": "代谢性骨病 MBD · 蜕皮不全 · 呼吸道感染",
+    "training": "可上手但胆小,需轻缓动作"
+  },
+
+  "famous": [
+    "曾被认为灭绝 1994 年重新发现,科学奇闻",
+    "标志'睫毛状'冠脊贯穿眼部至尾部",
+    "没有眼睑,靠舌头清洁眼睛",
+    "尾巴可自断但不会再生"
+  ],
+
+  "tags": ["小型爬宠", "夜行", "入门爬宠", "高颜值", "易养", "垂直空间"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

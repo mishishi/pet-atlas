@@ -1,0 +1,82 @@
+{
+  "slug": "golden-retriever",
+  "name": {
+    "zh": "金毛寻回犬",
+    "en": "Golden Retriever",
+    "alias": {
+      "zh": ["金毛", "黄金猎犬"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "英国",
+    "region": "苏格兰高地",
+    "coordinates": [57.5, -5.0]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "55-61",
+    "weightKg": "25-34",
+    "lifespanYears": "10-12",
+    "coat": "双层被毛,长毛,防水",
+    "coatColors": ["金黄色", "奶油色", "深金色"],
+    "eyeColors": ["深棕色", "榛色"]
+  },
+
+  "personality": {
+    "affection": 10,
+    "activity": 8,
+    "obedience": 9,
+    "independence": 3,
+    "vocalization": 4,
+    "intelligence": 9,
+    "summary": "暖男家庭犬",
+    "tags": ["亲人", "温和", "易训练", "忠诚", "活泼", "耐寒"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1864", "event": "英国 Dudley Marjoribanks 培育黄色寻回犬" },
+      { "year": "1903", "event": "获 AKC 正式认证" },
+      { "year": "1925", "event": "因导盲犬故事《记事报》登出而广为人知" },
+      { "year": "1970s", "event": "成为全球最受欢迎家宠犬种之一" },
+      { "year": "2000s", "event": "导盲犬、治疗犬三巨头之一" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,300-400g,关节养护配方更佳",
+    "exercise": "每日 60-90 分钟,游泳与接球游戏最合适",
+    "health": "髋关节发育不良 · 癌症高发 · 心脏疾病",
+    "training": "智商高,正向激励效果极佳,幼年需社会化"
+  },
+
+  "famous": [
+    "电影《八公》中的小八原型为秋田犬,但同属治愈系金毛也常客串",
+    "美国前总统里根家养金毛 'Victory'",
+    "全球导盲犬与治疗犬主力犬种",
+    "AKC 常年最受欢迎犬种 Top 5"
+  ],
+
+  "tags": ["大型犬", "长毛", "家庭友好", "运动型", "导盲犬", "寻回犬", "工作犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "african-pygmy-hedgehog",
+  "name": {
+    "zh": "非洲迷你刺猬",
+    "en": "African Pygmy Hedgehog",
+    "alias": {
+      "zh": ["刺猬", "非洲迷你刺猬", "四趾刺猬"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "非洲",
+    "region": "撒哈拉以南非洲",
+    "coordinates": [0.0, 25.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "15-20",
+    "weightKg": "0.3-0.5",
+    "lifespanYears": "3-6",
+    "coat": "针刺毛覆盖背部和侧面",
+    "coatColors": ["白色", "盐胡椒色", "巧克力色", "肉桂色", "浅褐色"],
+    "eyeColors": ["黑色"]
+  },
+
+  "personality": {
+    "affection": 4,
+    "activity": 6,
+    "obedience": 3,
+    "independence": 8,
+    "vocalization": 3,
+    "intelligence": 5,
+    "summary": "卷成球的刺球",
+    "tags": ["夜行", "胆小", "独居", "怕冷", "怕热", "机警"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1990s", "event": "美国从非洲引入作为家宠培育" },
+      { "year": "1990s", "event": "IHA(国际刺猬协会)建立品种标准" },
+      { "year": "2010s", "event": "中国宠物市场兴起饲养热潮" }
+    ]
+  },
+
+  "care": {
+    "diet": "刺猬专用粮+昆虫+少量蛋白,严控脂肪",
+    "exercise": "每日 1 小时,需跑轮与探索空间",
+    "health": "肥胖症 · 肿瘤 · 牙周病 · WHS 摇摆综合症",
+    "training": "需幼年频繁接触社会化,受惊会卷成球"
+  },
+
+  "famous": [
+    "因'受惊变球'萌态在全球网络走红",
+    "《哈利·波特》中嗅嗅原型灵感",
+    "约 6000 根针刺每只刺猬",
+    "全球唯一可合法家养的刺猬品种"
+  ],
+
+  "tags": ["小型", "针刺", "夜行", "独居", "怕冷", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

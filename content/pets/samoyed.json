@@ -1,0 +1,82 @@
+{
+  "slug": "samoyed",
+  "name": {
+    "zh": "萨摩耶犬",
+    "en": "Samoyed",
+    "alias": {
+      "zh": ["萨摩耶", "微笑天使", "萨摩"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "俄罗斯",
+    "region": "西伯利亚萨莫耶德部落",
+    "coordinates": [68.0, 76.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "48-60",
+    "weightKg": "16-30",
+    "lifespanYears": "12-14",
+    "coat": "双层厚毛,毛色雪白蓬松",
+    "coatColors": ["纯白色", "奶油色", "白底饼干色"],
+    "eyeColors": ["深棕色", "黑色杏仁形"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "微笑雪地天使",
+    "tags": ["亲人", "友善", "爱叫", "活泼", "爱掉毛", "耐寒"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1000s", "event": "西伯利亚萨莫耶德部落驯化雪橇犬" },
+      { "year": "1889", "event": "极地探险家 Fridtjof Nansen 引入西方" },
+      { "year": "1906", "event": "首只萨摩耶进入英国犬舍俱乐部" },
+      { "year": "1923", "event": "获 AKC 正式认证" },
+      { "year": "2010s", "event": "'微笑天使' 称号在中国宠物圈走红" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,200-300g,选优质蛋白美毛粮",
+    "exercise": "每日 60-90 分钟,怕热需夏季降温",
+    "health": "髋关节发育不良 · 糖尿病 · 心脏疾病",
+    "training": "聪明爱表演,擅长 '微笑' 与人亲近互动"
+  },
+
+  "famous": [
+    "南极探险家 Amundsen 南极点远征使用萨摩耶",
+    "标志性 '萨摩耶微笑' 嘴角上扬源于寒地适应",
+    "中国 '微笑天使' 网红昵称来源",
+    "萨摩耶毛皮曾被部落用于编织保暖衣物"
+  ],
+
+  "tags": ["中型犬", "长毛", "雪橇犬", "家庭友好", "工作犬", "网红犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

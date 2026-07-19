@@ -1,0 +1,82 @@
+{
+  "slug": "orange-tabby",
+  "name": {
+    "zh": "橘猫",
+    "en": "Orange Tabby",
+    "alias": {
+      "zh": ["大橘", "黄猫", "橘子猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "中国",
+    "region": "中华田园猫",
+    "coordinates": [35.0, 105.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-30",
+    "weightKg": "4-8",
+    "lifespanYears": "12-18",
+    "coat": "短毛,虎斑花纹",
+    "coatColors": ["橘色", "橘白色", "奶油色"],
+    "eyeColors": ["黄色", "琥珀色", "绿色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "十橘九胖吉祥猫",
+    "tags": ["亲人", "贪吃", "友善", "憨厚", "易胖", "粘人"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "古时", "event": "中华田园猫代表色系,广泛生活于中国乡村" },
+      { "year": "明清", "event": "宫廷画作常见 '金丝虎' 橘猫形象" },
+      { "year": "1990s", "event": "随着城市家宠化进入千家万户" },
+      { "year": "2010s", "event": "'十橘九胖' 网络热梗引爆全网" },
+      { "year": "2020s", "event": "故宫橘猫 '御猫' 走红成为文化符号" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,60-90g,严格控量防胖,少食多餐",
+    "exercise": "每日 30-45 分钟,逗猫棒与攀爬架必备",
+    "health": "肥胖症 · 脂肪肝 · 糖尿病",
+    "training": "聪明,易被食物激励,需建立固定喂食时间"
+  },
+
+  "famous": [
+    "故宫 '御猫' 故宫博物院 200+ 只橘猫常驻",
+    "中国网络梗 '十橘九胖' 来源",
+    "梁实秋《雅舍小品》笔下慵懒大橘代表",
+    "科学发现橘色基因 80% 为公猫"
+  ],
+
+  "tags": ["中型猫", "短毛", "中华田园猫", "家庭友好", "贪吃", "吉祥猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

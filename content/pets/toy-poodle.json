@@ -1,0 +1,82 @@
+{
+  "slug": "toy-poodle",
+  "name": {
+    "zh": "玩具贵宾犬",
+    "en": "Toy Poodle",
+    "alias": {
+      "zh": ["泰迪", "玩具贵妇犬", "泰迪犬"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "德国",
+    "region": "巴伐利亚与法国",
+    "coordinates": [48.7, 11.5]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "24-28",
+    "weightKg": "2-4",
+    "lifespanYears": "14-18",
+    "coat": "单层卷毛,不掉毛",
+    "coatColors": ["红棕色", "杏色", "黑色", "白色", "灰色", "巧克力色"],
+    "eyeColors": ["深棕色", "黑色", "琥珀色"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 7,
+    "obedience": 9,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 10,
+    "summary": "聪明不掉毛小卷王",
+    "tags": ["聪明", "亲人", "活泼", "易训练", "不掉毛", "爱表演"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "德国 'Pudel' 意为 '水中溅水' 猎犬" },
+      { "year": "1700s", "event": "传入法国宫廷,被培育为小型伴侣犬" },
+      { "year": "1887", "event": "AKC 首次认证标准型贵宾" },
+      { "year": "1950s", "event": "玩具型与迷你型被系统培育" },
+      { "year": "2000s", "event": "中国 '泰迪装' 修剪使其家喻户晓" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,50-80g,小型犬专用高能粮",
+    "exercise": "每日 30-45 分钟,室内互动 + 短途散步",
+    "health": "髌骨脱位 · 库欣综合征 · 进行性视网膜萎缩",
+    "training": "智商极高,擅长 trick 与敏捷赛,需持续智力刺激"
+  },
+
+  "famous": [
+    "Stanley Coren 排名犬类智商第二名",
+    "全球最不掉毛犬种,过敏人群首选",
+    "中国 '泰迪' 昵称因 '泰迪装' 修剪风靡",
+    "马戏团与名媛标配,曾服务路易十六宫廷"
+  ],
+
+  "tags": ["小型犬", "卷毛", "低过敏", "高智商", "都市型", "伴侣犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

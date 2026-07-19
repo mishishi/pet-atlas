@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --oat: #f5efe0;
+  --oat-deep: #ebe3cf;
+  --ink: #2a2520;
+  --ink-soft: #6b6357;
+  --accent: #b07a3c;
+}
+
+@theme inline {
+  --color-oat: var(--oat);
+  --color-oat-deep: var(--oat-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  background: var(--oat);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}

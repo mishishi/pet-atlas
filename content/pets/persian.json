@@ -1,0 +1,82 @@
+{
+  "slug": "persian",
+  "name": {
+    "zh": "波斯猫",
+    "en": "Persian",
+    "alias": {
+      "zh": ["波斯", "波丝猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "伊朗",
+    "region": "波斯(今伊朗)",
+    "coordinates": [32.0, 53.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-30",
+    "weightKg": "3-7",
+    "lifespanYears": "12-17",
+    "coat": "超长双层毛,需每日梳理",
+    "coatColors": ["白色", "蓝色", "红白", "银色", "金色", "玳瑁色"],
+    "eyeColors": ["古铜色", "蓝色", "绿色", "异色瞳"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 3,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 4,
+    "intelligence": 6,
+    "summary": "雍容华贵贵妇猫",
+    "tags": ["安静", "温顺", "粘人", "慵懒", "高冷", "端庄"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1600s", "event": "意大利旅行家 Pietro della Valle 从波斯带回长毛猫" },
+      { "year": "1800s", "event": "维多利亚女王宠爱使波斯猫风靡欧洲" },
+      { "year": "1871", "event": "伦敦水晶宫猫展首次正式参展" },
+      { "year": "1906", "event": "CFA 早期认证品种之一" },
+      { "year": "1950s", "event": "美式 'peke-face' 扁脸波斯定型" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,50-80g,扁脸易掉食需专用碗",
+    "exercise": "每日 15-20 分钟,温和互动,不宜剧烈运动",
+    "health": "多囊肾病 PKD · 短头呼吸道综合征 · 泪痕问题",
+    "training": "温顺安静,需耐心正向训练,每日梳毛防毛结"
+  },
+
+  "famous": [
+    "维多利亚女王最爱的猫种之一",
+    "《穿靴子的猫》中柔声细语 '波斯猫' 形象",
+    "全球毛最长最豪华的猫种代表",
+    "猫展 'Ultimate Grand Champion' 头衔常客"
+  ],
+
+  "tags": ["中型猫", "长毛", "安静", "家庭友好", "贵族猫", "伴侣猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

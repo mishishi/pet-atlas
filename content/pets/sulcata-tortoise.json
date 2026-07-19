@@ -1,0 +1,80 @@
+{
+  "slug": "sulcata-tortoise",
+  "name": {
+    "zh": "苏卡达陆龟",
+    "en": "Sulcata Tortoise",
+    "alias": {
+      "zh": ["苏卡达", "非洲盾臂龟", "象龟"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "非洲",
+    "region": "撒哈拉以南非洲草原",
+    "coordinates": [15.0, 15.0]
+  },
+
+  "physical": {
+    "sizeGroup": "giant",
+    "heightCm": "60-90",
+    "weightKg": "30-60",
+    "lifespanYears": "70-100",
+    "coat": "鳞甲:巨大圆甲+深褐色斑纹",
+    "coatColors": ["黄褐色", "棕色", "沙黄色"],
+    "eyeColors": ["黑色", "棕色"]
+  },
+
+  "personality": {
+    "affection": 4,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "挖洞大力士",
+    "tags": ["力气大", "爱挖洞", "耐干", "长寿", "独立", "巨型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1779", "event": "法国动物学家首次描述命名" },
+      { "year": "1970s", "event": "美国作为家宠推广,但体型超预期" },
+      { "year": "2010s", "event": "因生长快常被弃养,需慎重考虑" }
+    ]
+  },
+
+  "care": {
+    "diet": "深绿蔬菜+牧草+低蛋白,严控高蛋白致隆背",
+    "exercise": "需超大空间饲养,户外放养最理想",
+    "health": "隆背 · 结石 · 呼吸道感染",
+    "training": "可识别主人与定时投喂,智商不低"
+  },
+
+  "famous": [
+    "全球第三大陆龟,成年可达 60-90cm",
+    "野外擅长挖 1m 深冬眠洞穴",
+    "饲养寿命记录超过 100 年",
+    "因生长迅速成为被弃养最多的大型陆龟"
+  ],
+
+  "tags": ["巨型爬宠", "陆龟", "长寿", "挖洞", "需空间", "慎养"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

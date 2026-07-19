@@ -1,0 +1,80 @@
+{
+  "slug": "cockatiel",
+  "name": {
+    "zh": "玄凤鹦鹉",
+    "en": "Cockatiel",
+    "alias": {
+      "zh": ["玄凤", "太阳鸟", "鸡尾鹦鹉"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "澳大利亚",
+    "region": "澳大利亚半干旱地区",
+    "coordinates": [-25.0, 135.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "30-33",
+    "weightKg": "0.08-0.1",
+    "lifespanYears": "15-25",
+    "coat": "羽毛:灰身黄脸+头顶冠羽+脸颊橙斑",
+    "coatColors": ["原色灰", "黄化", "白化", "珍珠色", "肉桂色", "银色"],
+    "eyeColors": ["黑色", "红色(黄化)"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "会吹口哨的凤头",
+    "tags": ["亲人", "聪明", "爱叫", "会吹口哨", "温顺", "可爱"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1788", "event": "欧洲探险家在澳洲首次记录该鸟" },
+      { "year": "1830s", "event": "引入欧洲作为笼养鸟" },
+      { "year": "1950s", "event": "美国规模化人工繁育实现" }
+    ]
+  },
+
+  "care": {
+    "diet": "谷物+蔬果+墨鱼骨,避免高脂高糖",
+    "exercise": "每日 1-2 小时出笼飞行,需防误食",
+    "health": "羽虱 · 自残症(无聊) · 维生素 A 缺乏",
+    "training": "擅长吹口哨学曲,公鸟尤其会唱"
+  },
+
+  "famous": [
+    "全球第二常见家养鹦鹉(仅次于虎皮)",
+    "原住民土语 'Quarrion' 音译命名",
+    "寿命可达 25 年,鸟类宠物长寿代表",
+    "可学吹整首歌曲,被誉为'鸟中歌手'"
+  ],
+
+  "tags": ["小型鸟", "群居", "聪明", "学舌", "家庭友好", "网红鸟"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "greek-tortoise",
+  "name": {
+    "zh": "希腊陆龟",
+    "en": "Greek Tortoise",
+    "alias": {
+      "zh": ["希腊陆龟", "欧洲陆龟", "地中海陆龟"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "希腊",
+    "region": "地中海地区",
+    "coordinates": [38.0, 23.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-28",
+    "weightKg": "0.5-2",
+    "lifespanYears": "50-100",
+    "coat": "鳞甲:高圆顶甲+明显缘盾刺突",
+    "coatColors": ["黄绿色", "深绿色", "黑色斑纹", "棕色"],
+    "eyeColors": ["黑色", "深棕色"]
+  },
+
+  "personality": {
+    "affection": 3,
+    "activity": 4,
+    "obedience": 4,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "长寿欧洲小陆龟",
+    "tags": ["温顺", "胆小", "长寿", "杂食", "需冬化", "小型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "古希腊时期", "event": "古希腊家养与神话象征长寿" },
+      { "year": "1800s", "event": "科学命名 Testudo graeca" },
+      { "year": "1990s", "event": "因栖息地破坏野外种群减少" }
+    ]
+  },
+
+  "care": {
+    "diet": "深绿蔬菜+野草+少量水果,低蛋白",
+    "exercise": "需宽敞饲养+ UVB 灯+干燥环境",
+    "health": "结石 · 呼吸道感染 · 寄生虫",
+    "training": "胆小需安静环境,识别投喂者"
+  },
+
+  "famous": [
+    "古希腊家养宠物常见文化符号",
+    "有 50+ 个亚种,主要分布地中海",
+    "欧洲宠物市场最常见陆龟之一",
+    "寿命 50-100 年,家庭长期伴侣"
+  ],
+
+  "tags": ["小型爬宠", "陆龟", "长寿", "家庭友好", "需冬化", "入门爬宠"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "slug": "miniature-schnauzer",
+  "name": {
+    "zh": "迷你雪纳瑞",
+    "en": "Miniature Schnauzer",
+    "alias": {
+      "zh": ["迷你雪", "小雪纳瑞"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "德国",
+    "region": "巴伐利亚与符腾堡",
+    "coordinates": [48.7, 9.3]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "30-36",
+    "weightKg": "5-9",
+    "lifespanYears": "12-15",
+    "coat": "双层刚毛,粗硬不掉毛",
+    "coatColors": ["椒盐色", "黑银色", "纯黑色", "纯白色"],
+    "eyeColors": ["深棕色", "黑色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 8,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "白胡子小卫士",
+    "tags": ["聪明", "警觉", "忠诚", "活泼", "易训练", "勇敢"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "德国农场用标准型雪纳瑞捕鼠看家" },
+      { "year": "1800s", "event": "19 世纪末培育迷你型用于捕鼠" },
+      { "year": "1899", "event": "德国雪纳瑞俱乐部成立" },
+      { "year": "1926", "event": "迷你型作为独立犬种被区分" },
+      { "year": "1933", "event": "获 AKC 正式认证" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,80-120g,易胖体质需控量",
+    "exercise": "每日 30-45 分钟,散步与互动游戏即可",
+    "health": "胰腺炎 · 高脂血症 · 眼部白内障",
+    "training": "智商高服从性好,擅长 trick 与敏捷赛"
+  },
+
+  "famous": [
+    "德国 'Schnauze'(口鼻部)命名的特征性大胡子",
+    "美国 'Miss Asia' 雪纳瑞获威斯敏斯特犬展奖项",
+    "全球不掉毛小型犬 Top 3,过敏人群首选",
+    "美国前第一夫人 Barbara Bush 的爱犬"
+  ],
+
+  "tags": ["小型犬", "刚毛", "低过敏", "家庭友好", "都市型", "伴侣犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

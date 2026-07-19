@@ -1,0 +1,82 @@
+{
+  "slug": "british-shorthair",
+  "name": {
+    "zh": "英国短毛猫",
+    "en": "British Shorthair",
+    "alias": {
+      "zh": ["英短", "蓝胖子"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "英国",
+    "region": "英格兰",
+    "coordinates": [52.0, -1.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "28-33",
+    "weightKg": "4-8",
+    "lifespanYears": "14-20",
+    "coat": "单层短毛,浓密绒密",
+    "coatColors": ["蓝色", "银渐层", "金渐层", "蓝白", "奶油色"],
+    "eyeColors": ["古铜色", "金色", "蓝色", "绿色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 4,
+    "obedience": 7,
+    "independence": 8,
+    "vocalization": 3,
+    "intelligence": 7,
+    "summary": "安静英伦绅士",
+    "tags": ["安静", "独立", "稳重", "亲人", "友善", "憨厚"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "公元 1 世纪", "event": "罗马人入侵不列颠时携带家猫" },
+      { "year": "1800s", "event": "英国育种家 Harrison Weir 系统选育" },
+      { "year": "1871", "event": "首登伦敦水晶宫猫展引发热潮" },
+      { "year": "1900s", "event": "二战后与波斯猫杂交形成圆脸特征" },
+      { "year": "1980s", "event": "获 CFA 与 TICA 全面认证" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,严格控量防胖",
+    "exercise": "每日 20-30 分钟互动,逗猫棒与小球游戏",
+    "health": "肥厚型心肌病 HCM · 多囊肾病 PKD · 肥胖症",
+    "training": "聪明独立,不喜强制抱,正向训练配合零食"
+  },
+
+  "famous": [
+    "刘易斯·卡罗尔《爱丽丝梦游仙境》'柴郡猫'原型灵感",
+    "蓝猫 'Tarte Tatin' 网络治愈系网红猫",
+    "CFA 常年 Top 5 热门品种",
+    "英国名画中常现的 '英伦家猫' 代表"
+  ],
+
+  "tags": ["中型猫", "短毛", "安静", "家庭友好", "都市型", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

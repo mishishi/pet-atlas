@@ -1,0 +1,82 @@
+{
+  "slug": "dachshund",
+  "name": {
+    "zh": "腊肠犬",
+    "en": "Dachshund",
+    "alias": {
+      "zh": ["腊肠", "獾犬", "Dackel"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "德国",
+    "region": "巴伐利亚与符腾堡",
+    "coordinates": [48.7, 9.3]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-23",
+    "weightKg": "4-9",
+    "lifespanYears": "12-16",
+    "coat": "短毛 / 长毛 / 刚毛三种类型",
+    "coatColors": ["红色", "黑棕色", "巧克力色", "斑纹", "奶油色"],
+    "eyeColors": ["深棕色", "黑色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 7,
+    "vocalization": 7,
+    "intelligence": 7,
+    "summary": "长身短腿小猎手",
+    "tags": ["勇敢", "固执", "警觉", "聪明", "爱挖洞", "亲人"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "德国培育用于钻入獾穴捕猎" },
+      { "year": "1800s", "event": "维多利亚女王将其带入英国" },
+      { "year": "1885", "event": "AKC 早期认证犬种之一" },
+      { "year": "1972", "event": "慕尼黑奥运会吉祥物 'Waldi' 为腊肠造型" },
+      { "year": "2010s", "event": "全球网红 'Crusoe the Celebrity Dachshund' 走红" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,60-100g,易胖需严格控量防脊椎负担",
+    "exercise": "每日 30-45 分钟,禁止跳跃与上下楼梯",
+    "health": "椎间盘疾病(IVDD) · 肥胖症 · 牙周病",
+    "training": "聪明但固执,正向激励 + 耐心,需控制吠叫"
+  },
+
+  "famous": [
+    "1972 慕尼黑奥运会吉祥物 'Waldi' 原型",
+    "毕加索画作中多次出现腊肠犬 'Lump'",
+    "美国第一只官方卡通犬 'Schhbooky' 形象",
+    "网红 'Crusoe' 在 YouTube 拥有百万粉丝"
+  ],
+
+  "tags": ["小型犬", "短毛/长毛", "猎犬", "家庭友好", "都市型", "伴侣犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

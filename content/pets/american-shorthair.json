@@ -1,0 +1,82 @@
+{
+  "slug": "american-shorthair",
+  "name": {
+    "zh": "美国短毛猫",
+    "en": "American Shorthair",
+    "alias": {
+      "zh": ["美短", "美国短毛"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "美国本土",
+    "coordinates": [39.0, -95.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-28",
+    "weightKg": "3-7",
+    "lifespanYears": "15-20",
+    "coat": "单层短毛,厚实",
+    "coatColors": ["银色虎斑", "棕色虎斑", "蓝白", "黑色", "白色"],
+    "eyeColors": ["金色", "绿色", "古铜色", "榛色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 7,
+    "vocalization": 4,
+    "intelligence": 7,
+    "summary": "美国农场健将",
+    "tags": ["活泼", "聪明", "友善", "健壮", "亲人", "爱玩"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1620", "event": "五月花号清教徒带猫到北美灭鼠" },
+      { "year": "1800s", "event": "美国本土农场广泛饲养工作猫" },
+      { "year": "1906", "event": "CFA 早期认证 '短毛家猫' 类" },
+      { "year": "1966", "event": "正式更名为 American Shorthair" },
+      { "year": "2010s", "event": "中国美短与英短并列成为家宠首选" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,活泼好动可适当加量",
+    "exercise": "每日 30-45 分钟,喜欢爬高与扑抓游戏",
+    "health": "肥厚型心肌病 HCM · 髋关节发育不良 · 牙周病",
+    "training": "聪明易学 trick,可训练捡球与开门"
+  },
+
+  "famous": [
+    "五月花号清教徒随船家猫后代",
+    "美国 'Working Cat' 工作猫代表品种",
+    "银虎斑美短是 CFA 比赛热门色系",
+    "被誉为 '猫中绅士' 性格稳定"
+  ],
+
+  "tags": ["中型猫", "短毛", "家庭友好", "活泼", "工作猫", "健壮"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

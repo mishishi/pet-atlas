@@ -1,0 +1,82 @@
+{
+  "slug": "french-bulldog",
+  "name": {
+    "zh": "法国斗牛犬",
+    "en": "French Bulldog",
+    "alias": {
+      "zh": ["法斗", "法牛"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "法国",
+    "region": "巴黎",
+    "coordinates": [48.85, 2.35]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "27-33",
+    "weightKg": "8-13",
+    "lifespanYears": "10-12",
+    "coat": "单层短毛,光滑",
+    "coatColors": ["驼色", "斑纹", "奶油色", "黑白花"],
+    "eyeColors": ["深棕色", "黑色"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 4,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 3,
+    "intelligence": 6,
+    "summary": "都市公寓小绅士",
+    "tags": ["亲人", "慵懒", "安静", "友善", "憨厚", "可爱"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "英国玩具斗牛梗随工人传入法国" },
+      { "year": "1880s", "event": "巴黎妓院与艺术家圈流行养法斗" },
+      { "year": "1898", "event": "法国斗牛犬俱乐部成立" },
+      { "year": "1913", "event": "获 AKC 正式认证" },
+      { "year": "2022", "event": "AKC 年度最受欢迎犬种第一" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,100-150g,易胖需控量,选低敏粮",
+    "exercise": "每日 20-30 分钟散步,避免高温剧烈运动",
+    "health": "短头综合征呼吸道问题 · 椎间盘疾病 · 皮肤褶皱炎",
+    "training": "智商中等,易训练但需耐心,不能过度惩罚"
+  },
+
+  "famous": [
+    "Lady Gaga、巨石强森等众多明星家宠",
+    "2022 年 AKC 全美最受欢迎犬种冠军",
+    "英国 'Bulle' 法斗因坐游艇环游世界走红",
+    "曾被巴黎妓院作为 '吉祥物' 流行"
+  ],
+
+  "tags": ["小型犬", "短毛", "家庭友好", "都市型", "安静", "伴侣犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

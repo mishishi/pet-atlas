@@ -1,0 +1,82 @@
+{
+  "slug": "ragdoll",
+  "name": {
+    "zh": "布偶猫",
+    "en": "Ragdoll",
+    "alias": {
+      "zh": ["布偶", "布拉多尔猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "美国",
+    "region": "加利福尼亚州",
+    "coordinates": [36.8, -119.4]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "28-33",
+    "weightKg": "4-9",
+    "lifespanYears": "12-17",
+    "coat": "中长毛,丝滑不易打结",
+    "coatColors": ["海豹色重点", "蓝色重点", "巧克力重点", "丁香重点", "双色"],
+    "eyeColors": ["蓝色"]
+  },
+
+  "personality": {
+    "affection": 10,
+    "activity": 4,
+    "obedience": 8,
+    "independence": 3,
+    "vocalization": 4,
+    "intelligence": 7,
+    "summary": "融化人心布娃娃",
+    "tags": ["亲人", "温顺", "粘人", "温驯", "安静", "软糯"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1960s", "event": "加州 Ann Baker 培育首只布偶猫" },
+      { "year": "1971", "event": "注册 Ragdoll 商标并成立国际协会" },
+      { "year": "1993", "event": "正式登陆英国猫舍协会 GCCF" },
+      { "year": "2000s", "event": "因温驯性格成为全球热门家宠" },
+      { "year": "2010s", "event": "在中国 '仙女猫' 美誉网络走红" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,70-100g,大型猫需高蛋白支持",
+    "exercise": "每日 20-30 分钟,温和游戏避免跳跃受伤",
+    "health": "肥厚型心肌病 HCM · 多囊肾病 PKD · 膀胱结石",
+    "training": "温驯易训练,可学捡球与坐下,喜与人互动"
+  },
+
+  "famous": [
+    "得名 'Ragdoll' 因抱起时全身松弛如布偶",
+    "全球体型最大家猫品种之一,公猫可达 9kg",
+    "中国 '仙女猫' 网红昵称来源",
+    "唯一公认所有个体必须蓝色眼睛的品种"
+  ],
+
+  "tags": ["大型猫", "中长毛", "家庭友好", "温顺", "伴侣猫", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

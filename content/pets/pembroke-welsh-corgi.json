@@ -1,0 +1,82 @@
+{
+  "slug": "pembroke-welsh-corgi",
+  "name": {
+    "zh": "彭布罗克威尔士柯基犬",
+    "en": "Pembroke Welsh Corgi",
+    "alias": {
+      "zh": ["柯基", "彭布罗克柯基"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "英国",
+    "region": "威尔士彭布罗克郡",
+    "coordinates": [51.7, -4.9]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-30",
+    "weightKg": "10-14",
+    "lifespanYears": "12-15",
+    "coat": "双层短毛,防水",
+    "coatColors": ["红色", "三色", "貂色", "黄白色"],
+    "eyeColors": ["深棕色", "琥珀色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 6,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "短腿牧牛小将",
+    "tags": ["活泼", "警觉", "聪明", "勇敢", "爱叫", "亲人"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1107s", "event": "随佛兰德斯织工传入威尔士" },
+      { "year": "1800s", "event": "成为威尔士农场主放牛主力犬" },
+      { "year": "1934", "event": "获 AKC 正式认证" },
+      { "year": "1953", "event": "伊丽莎白二世登基获赠柯基,成为皇室爱宠" },
+      { "year": "2010s", "event": "网络表情包时代全球爆红" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,150-200g,易胖体质严格控量",
+    "exercise": "每日 45-60 分钟,避免高跳损伤脊椎",
+    "health": "椎间盘疾病 · 髋关节发育不良 · 退行性脊髓病",
+    "training": "智商高但倔强,正向激励,需控制吠叫"
+  },
+
+  "famous": [
+    "英国女王伊丽莎白二世终身爱犬",
+    "动漫《国王排名》主角波吉的原型",
+    "网络表情包 '短腿小柯基' 标志形象",
+    "曾被威尔士当作 'nanny dog' 看护小孩"
+  ],
+
+  "tags": ["小型犬", "短毛", "牧牛犬", "家庭友好", "活泼", "皇室犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

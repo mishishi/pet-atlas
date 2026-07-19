@@ -1,0 +1,80 @@
+{
+  "slug": "budgerigar",
+  "name": {
+    "zh": "虎皮鹦鹉",
+    "en": "Budgerigar",
+    "alias": {
+      "zh": ["虎皮", "皮皮", "阿苏儿", "石燕"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-18",
+
+  "origin": {
+    "country": "澳大利亚",
+    "region": "澳大利亚内陆草原",
+    "coordinates": [-25.0, 135.0]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "18-20",
+    "weightKg": "0.03-0.04",
+    "lifespanYears": "5-10",
+    "coat": "羽毛:头部虎皮纹,长尾",
+    "coatColors": ["黄绿色", "蓝色", "白色", "紫色", "灰色"],
+    "eyeColors": ["黑色", "虹膜黄"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 8,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 7,
+    "intelligence": 7,
+    "summary": "学舌小虎皮",
+    "tags": ["爱叫", "活泼", "聪明", "学舌", "群居", "小型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1805", "event": "英国博物学家 Shaw 首次科学描述" },
+      { "year": "1840", "event": "英国自然博物馆首次收到活体标本" },
+      { "year": "1850s", "event": "澳洲人 Gould 引入欧洲开始繁育" }
+    ]
+  },
+
+  "care": {
+    "diet": "虎皮专用粮+谷物+墨鱼骨补钙",
+    "exercise": "每日 1-2 小时出笼飞行,需宽敞鸟笼",
+    "health": "羽虱 · 螨虫 · 营养不良",
+    "training": "可学 100+ 词汇,公鸟学舌能力强"
+  },
+
+  "famous": [
+    "吉尼斯纪录 'Puck' 会 1728 个单词",
+    "全球最常见家养鸟类,数量超过 500 万只",
+    "澳大利亚野外最大群体可达数百万只",
+    "原住民土语 'Betcherrygah' 音译命名"
+  ],
+
+  "tags": ["小型鸟", "群居", "学舌", "家庭友好", "适合新手", "网红鸟"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}
