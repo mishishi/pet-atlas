@@ -6,7 +6,18 @@
 
 **线上地址** · https://out-three-tan.vercel.app
 
+**GitHub** · https://github.com/mishishi/pet-atlas
+
 ---
+
+## ✨ 项目亮点
+
+- **51 个品种**:15 犬 + 12 猫 + 12 小型哺乳 + 4 鸟 + 8 爬虫
+- **306 张图谱**:全部由 AI 生成,统一 **vintage museum specimen card** 风格
+- **6 张/品种**:封面 + 形态特征表 + 性格雷达 + 演化时间线 + 养护指南 + 名场面
+- **4 套模板**:犬 / 猫 / 小型哺乳 / 鸟+爬虫,各物种专属装饰
+- **可翻页图鉴 Viewer**:键盘 ←→/Home/End/F、触摸滑动、CSS 3D flip、6 缩略图、全屏模式
+- **每张图配 prompt 文档**:同目录 `.md` 文件,方便追溯
 
 ## ✨ 项目亮点
 
@@ -121,15 +132,24 @@ npx serve web/out -l tcp://0.0.0.0:3000
 - `/pets/labrador-retriever/` — 单品种详情 + 6 张图谱
 - `/pets/labrador-retriever/atlas?page=1` — 翻页图鉴 viewer
 
-### 部署到 Vercel
+### 部署到 Vercel(自动)
+
+项目已配 **GitHub auto-deploy**:每次 `git push origin main`,Vercel 自动 build + 部署到 `out-three-tan.vercel.app`。
+
+不需要任何手动部署命令。
+
+### 本地部署(CLI 备用)
+
+如果不想用 git 集成:
 
 ```bash
-cd web/out
+cd web
+npm run build         # 输出到 web/out/
+cd out
 npx vercel --prod --yes
-# 部署后得到一个 https://out-*.vercel.app URL
 ```
 
-**注意:** `web/out/` 是构建产物(~1GB),已经在 `.gitignore` 里。部署时 vercel CLI 会读取本地目录上传。
+**注意:** `web/out/` 是构建产物(~50MB,PNG 在 TCB),已经在 `.gitignore` 里。
 
 ---
 
@@ -152,7 +172,7 @@ node scripts/render-prompts.mjs <slug> --write --copy-web  # 同步到 web/publi
 
 ---
 
-## 📦 50 品种清单
+## 📦 51 品种清单
 
 | Category | 品种 |
 |----------|------|
@@ -160,7 +180,7 @@ node scripts/render-prompts.mjs <slug> --write --copy-web  # 同步到 web/publi
 | 🐈 **猫 (12)** | 英短 · 阿比 · 美短 · 中华狸花 · 加菲 · 缅因 · 橘 · 波斯 · 金吉拉 · 布偶 · 暹罗 · 斯芬克斯 |
 | 🐹 **小哺乳 (12)** | 叙利亚仓鼠 · 中国仓鼠 · 公婆鼠 · 三线鼠 · 荷兰兔 · 安哥拉兔 · 垂耳兔 · 雷克斯兔 · 豚鼠 · 长尾龙猫 · 雪貂 · 刺猬 |
 | 🦜 **鸟 (4)** | 非洲灰鹦鹉 · 虎皮鹦鹉 · 玄凤 · 牡丹鹦鹉 |
-| 🐍 **爬虫 (7)** | 球蟒 · 睫角守宫 · 希腊陆龟 · 豹纹守宫 · 巴西龟 · 俄罗斯陆龟 · 苏卡达陆龟 |
+| 🐍 **爬虫 (8)** | 球蟒 · **鬃狮蜥** · 睫角守宫 · 希腊陆龟 · 豹纹守宫 · 巴西龟 · 俄罗斯陆龟 · 苏卡达陆龟 |
 
 ---
 
@@ -185,5 +205,9 @@ node scripts/render-prompts.mjs <slug> --write --copy-web  # 同步到 web/publi
 
 ## 📜 License
 
-MIT — 自由使用、修改、分发。
+MIT — 自由使用、修改、分发。详见 [LICENSE](./LICENSE)。
+
+## 🤝 贡献
+
+欢迎开 Issue 报错或提建议。代码贡献看 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 

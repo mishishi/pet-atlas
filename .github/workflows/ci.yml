@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  build:
+    name: Build & Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: TypeScript type check
+        working-directory: web
+        run: npx tsc --noEmit
+
+      - name: Build (Next.js static export)
+        working-directory: web
+        run: npm run build
+
+      - name: Verify build output
+        working-directory: web
+        run: |
+          if [ ! -d "out" ]; then
+            echo "❌ out/ directory not generated"
+            exit 1
+          fi
+          PAGE_COUNT=$(find out -name "index.html" | wc -l | tr -d ' ')
+          echo "✅ out/ generated with $PAGE_COUNT HTML pages"
+          if [ "$PAGE_COUNT" -lt 50 ]; then
+            echo "❌ Expected 50+ pages, got $PAGE_COUNT"
+            exit 1
+          fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pet-atlas-build
+          path: web/out/
+          retention-days: 7
+          if-no-files-found: error
+
+  lint:
+    name: Lint Markdown (README/docs)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check markdown files exist
+        run: |
+          for f in README.md CONTRIBUTING.md LICENSE docs/ATLAS-PIPELINE.md docs/UX-DESIGN.md docs/COS-MIGRATION.md docs/GITHUB-DEPLOY.md; do
+            if [ ! -f "$f" ]; then
+              echo "❌ Missing: $f"
+              exit 1
+            fi
+          done
+          echo "✅ All required docs present"

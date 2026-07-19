@@ -158,3 +158,43 @@ body::before {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================================
+   植物微动画(标本卡海报的"活气")
+   桉树/薰衣草/干花 极缓摇摆(0.5°,7-9s 周期)
+   ========================================================= */
+@keyframes plantSwayLeft {
+  0%, 100% { transform: rotate(-0.4deg) translateY(0); }
+  50% { transform: rotate(0.4deg) translateY(-1px); }
+}
+@keyframes plantSwayRight {
+  0%, 100% { transform: rotate(0.4deg) translateY(0); }
+  50% { transform: rotate(-0.4deg) translateY(-1px); }
+}
+@keyframes plantSwayTall {
+  0%, 100% { transform: rotate(-0.3deg) translateY(0); }
+  50% { transform: rotate(0.3deg) translateY(-1.5px); }
+}
+@keyframes stampPulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.02); filter: brightness(1.05); }
+}
+
+.plant-sway-left { animation: plantSwayLeft 8s ease-in-out infinite; transform-origin: bottom center; }
+.plant-sway-right { animation: plantSwayRight 9s ease-in-out infinite; transform-origin: bottom center; }
+.plant-sway-tall { animation: plantSwayTall 11s ease-in-out infinite; transform-origin: bottom center; }
+.stamp-pulse { animation: stampPulse 4s ease-in-out infinite; transform-origin: center; }
+
+/* 印章 hover 印泥扩散 */
+@keyframes inkBleed {
+  0% { box-shadow: 0 0 0 0 rgba(164, 74, 63, 0); }
+  100% { box-shadow: 0 0 0 8px rgba(164, 74, 63, 0); }
+}
+.stamp-ink {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.stamp-ink:hover {
+  animation: inkBleed 0.8s ease-out;
+  transform: scale(1.05) rotate(-2deg);
+}

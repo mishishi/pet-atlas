@@ -429,29 +429,29 @@ export function BotanicalBorder() {
     <>
       {/* 左上:大桉树 + 一小束干花 */}
       <div
-        className="absolute -left-4 -top-2 w-28 md:w-40 lg:w-48 pointer-events-none z-10"
+        className="absolute -left-4 -top-2 w-28 md:w-40 lg:w-48 pointer-events-none z-10 plant-sway-left"
         aria-hidden="true"
       >
         <EucalyptusBranch className="w-full h-auto" rotate={8} />
-        <div className="absolute left-2 top-1/2 w-20 md:w-28 opacity-90">
+        <div className="absolute left-2 top-1/2 w-20 md:w-28 opacity-90 plant-sway-right">
           <DriedFlowerStem className="w-full h-auto" rotate={-15} scale={0.7} />
         </div>
       </div>
 
       {/* 右上:桉树镜像 */}
       <div
-        className="absolute -right-4 -top-2 w-28 md:w-40 lg:w-48 pointer-events-none z-10"
+        className="absolute -right-4 -top-2 w-28 md:w-40 lg:w-48 pointer-events-none z-10 plant-sway-right"
         aria-hidden="true"
       >
         <EucalyptusBranch className="w-full h-auto" rotate={-8} flip />
-        <div className="absolute right-2 top-1/3 w-20 md:w-28 opacity-90">
+        <div className="absolute right-2 top-1/3 w-20 md:w-28 opacity-90 plant-sway-left">
           <DriedFlowerStem className="w-full h-auto" rotate={15} scale={0.7} />
         </div>
       </div>
 
       {/* 左下:干花 + 多肉 */}
       <div
-        className="absolute -left-4 bottom-4 w-24 md:w-36 lg:w-44 pointer-events-none z-10"
+        className="absolute -left-4 bottom-4 w-24 md:w-36 lg:w-44 pointer-events-none z-10 plant-sway-right"
         aria-hidden="true"
       >
         <DriedFlowerStem className="w-full h-auto" rotate={6} scale={0.95} />
@@ -462,13 +462,13 @@ export function BotanicalBorder() {
 
       {/* 右下:薰衣草 + 谷穗 + 多肉 */}
       <div
-        className="absolute -right-4 bottom-4 w-24 md:w-36 lg:w-44 pointer-events-none z-10"
+        className="absolute -right-4 bottom-4 w-24 md:w-36 lg:w-44 pointer-events-none z-10 plant-sway-left"
         aria-hidden="true"
       >
-        <div className="absolute left-2 top-0 w-16 md:w-20 lg:w-24">
+        <div className="absolute left-2 top-0 w-16 md:w-20 lg:w-24 plant-sway-tall">
           <LavenderStem className="w-full h-auto" rotate={5} />
         </div>
-        <div className="absolute right-2 bottom-2 w-14 md:w-16 lg:w-20">
+        <div className="absolute right-2 bottom-2 w-14 md:w-16 lg:w-20 plant-sway-right">
           <GrainHead className="w-full h-auto" rotate={-8} />
         </div>
         <div className="absolute left-1/2 -translate-x-1/2 bottom-12 w-14 md:w-18 lg:w-20">
@@ -478,7 +478,7 @@ export function BotanicalBorder() {
 
       {/* 左侧中部:小一束干花 */}
       <div
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-14 md:w-20 lg:w-24 pointer-events-none z-10 hidden md:block"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-14 md:w-20 lg:w-24 pointer-events-none z-10 hidden md:block plant-sway-tall"
         aria-hidden="true"
       >
         <DriedFlowerStem className="w-full h-auto" rotate={-8} scale={0.8} />
@@ -486,7 +486,7 @@ export function BotanicalBorder() {
 
       {/* 右侧中部:小一束薰衣草 */}
       <div
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-14 md:w-20 lg:w-24 pointer-events-none z-10 hidden md:block"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-14 md:w-20 lg:w-24 pointer-events-none z-10 hidden md:block plant-sway-tall"
         aria-hidden="true"
       >
         <LavenderStem className="w-full h-auto" rotate={8} scale={0.85} />

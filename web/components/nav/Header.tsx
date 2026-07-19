@@ -55,6 +55,12 @@ export function Header({
           >
             分类
           </Link>
+          <Link
+            href="/about"
+            className="text-brown-700 hover:text-brown-900 transition-colors"
+          >
+            关于
+          </Link>
           <a
             href="https://github.com/mishishi/pet-atlas"
             target="_blank"

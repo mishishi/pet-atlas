@@ -12,6 +12,7 @@ import { Header } from "@/components/nav/Header";
 import { Footer } from "@/components/nav/Footer";
 import { Container } from "@/components/ui/Container";
 import { BreedCard } from "@/components/brand/BreedCard";
+import { CategoryFilter } from "@/components/pets/CategoryFilter";
 import { getAllPets } from "@/lib/pets";
 import type { Pet } from "@/lib/types";
 
@@ -36,12 +37,16 @@ export default function PetsListPage() {
     pets: pets.filter((p) => p.category === cat.key),
   }));
 
+  const filterOptions = grouped
+    .filter((g) => g.pets.length > 0)
+    .map((g) => ({ key: g.key, zh: g.zh, count: g.pets.length }));
+
   return (
     <>
       <Header />
       <main className="flex-1">
         {/* Page title */}
-        <section className="pt-12 md:pt-20 pb-8 md:pb-12">
+        <section className="pt-12 md:pt-20 pb-6 md:pb-8">
           <Container size="xl">
             <div className="font-mono text-xs uppercase tracking-[0.2em] text-brick mb-4 flex items-center gap-3">
               <span className="inline-block w-8 h-px bg-brick" />
@@ -56,12 +61,15 @@ export default function PetsListPage() {
           </Container>
         </section>
 
+        {/* Sticky 分类筛选 */}
+        <CategoryFilter categories={filterOptions} />
+
         {/* Category groups */}
         <section>
-          <Container size="xl" className="space-y-20 md:space-y-28 pb-20 md:pb-28">
+          <Container size="xl" className="space-y-20 md:space-y-28 pt-10 md:pt-12 pb-20 md:pb-28">
             {grouped.map((group, i) =>
               group.pets.length === 0 ? null : (
-                <div key={group.key} id={`cat-${group.key}`}>
+                <div key={group.key} id={`cat-${group.key}`} className="scroll-mt-32">
                   <div className="flex items-end justify-between flex-wrap gap-4 mb-8 pb-4 border-b border-brown-200">
                     <div>
                       <div className="flex items-baseline gap-4 mb-2">

@@ -66,3 +66,5 @@ scripts/cloud-pet-pool.json
 # build artifacts
 .next/
 package-lock.json
+web/.env.local
+web/.env.local

@@ -14,6 +14,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import {
   ATLAS_SLOTS,
   getBreedAtlas,
@@ -29,6 +30,45 @@ import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
 export async function generateStaticParams() {
   const { getAllPets } = await import("@/lib/pets");
   return getAllPets().map((p) => ({ slug: p.slug }));
+}
+
+/** Per-breed OG meta — 分享时显示该品种的封面 + 名字 */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const pet = getPetBySlug(slug);
+  if (!pet) return {};
+  const cover = getCoverUrl(slug, "medium") || getCoverUrl(slug, "full");
+  const title = `${pet.name.zh} · ${pet.name.en}`;
+  const description = `查看 ${pet.name.zh} 的 6 页 vintage 标本卡图谱 —— 形态、性格、历史、养护。${pet.origin?.country ? `原产 ${pet.origin.country}。` : ""}`;
+  return {
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      images: cover
+        ? [
+            {
+              url: cover,
+              width: 1024,
+              height: 1820,
+              alt: `${pet.name.zh} vintage 标本卡`,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: cover ? [cover] : undefined,
+    },
+  };
 }
 
 export default async function PetDetailPage({
@@ -218,9 +258,56 @@ export default async function PetDetailPage({
           </div>
         </div>
 
+        {/* ============ In-page TOC ============ */}
+        <nav
+          aria-label="本页目录"
+          className="mb-10 md:mb-16 flex flex-wrap items-center gap-x-1 gap-y-2 px-4 md:px-6 py-3 md:py-4 rounded-xl"
+          style={{
+            background: "rgba(245, 233, 208, 0.5)",
+            border: "1px solid rgba(139, 111, 71, 0.15)",
+            boxShadow: "var(--shadow-paper)",
+          }}
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brown-500 mr-3 hidden sm:inline">
+            目录
+          </span>
+          {personality && (
+            <a
+              href="#personality"
+              className="px-3 py-1.5 font-serif text-sm text-brown-700 hover:text-brown-900 hover:bg-oat-200 rounded transition-colors"
+            >
+              性格
+            </a>
+          )}
+          {atlas && (
+            <a
+              href="#atlas"
+              className="px-3 py-1.5 font-serif text-sm text-brown-700 hover:text-brown-900 hover:bg-oat-200 rounded transition-colors"
+            >
+              图谱
+            </a>
+          )}
+          {pet.history?.timeline && pet.history.timeline.length > 0 && (
+            <a
+              href="#history"
+              className="px-3 py-1.5 font-serif text-sm text-brown-700 hover:text-brown-900 hover:bg-oat-200 rounded transition-colors"
+            >
+              历史
+            </a>
+          )}
+          {pet.famous && pet.famous.length > 0 && (
+            <a
+              href="#famous"
+              className="px-3 py-1.5 font-serif text-sm text-brown-700 hover:text-brown-900 hover:bg-oat-200 rounded transition-colors"
+            >
+              名场面
+            </a>
+          )}
+        </nav>
+
         {/* ============ Personality Section ============ */}
         {personality && (
-          <section className="mb-12 md:mb-20">
+          <section id="personality" className="mb-12 md:mb-20 scroll-mt-20">
             <SectionHeading
               eyebrow="No. 02"
               title="性格"
@@ -297,7 +384,7 @@ export default async function PetDetailPage({
 
         {/* ============ 6 张图谱缩略图 ============ */}
         {atlas && (
-          <section className="mb-12 md:mb-20">
+          <section id="atlas" className="mb-12 md:mb-20 scroll-mt-20">
             <SectionHeading
               eyebrow="No. 03"
               title="图谱"
@@ -361,7 +448,7 @@ export default async function PetDetailPage({
 
         {/* ============ History Timeline ============ */}
         {pet.history?.timeline && pet.history.timeline.length > 0 && (
-          <section className="mb-12 md:mb-20">
+          <section id="history" className="mb-12 md:mb-20 scroll-mt-20">
             <SectionHeading eyebrow="No. 04" title="历史" en="History" />
 
             <ol className="relative max-w-2xl mx-auto pl-8 md:pl-0">
@@ -410,7 +497,7 @@ export default async function PetDetailPage({
 
         {/* ============ Famous ============ */}
         {pet.famous && pet.famous.length > 0 && (
-          <section className="mb-12 md:mb-20">
+          <section id="famous" className="mb-12 md:mb-20 scroll-mt-20">
             <SectionHeading eyebrow="No. 05" title="名场面" en="Famous For" />
             <ul className="max-w-2xl mx-auto space-y-3">
               {pet.famous.map((item, i) => (

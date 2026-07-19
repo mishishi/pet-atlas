@@ -312,7 +312,7 @@ export function HeroPoster() {
 /* 红色印章 "No. 051 / 050" */
 function SpecimenStamp() {
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block stamp-ink stamp-pulse cursor-pointer">
       <div
         className="relative px-3 py-1.5 sm:px-5 sm:py-2 md:px-7 md:py-3"
         style={{
