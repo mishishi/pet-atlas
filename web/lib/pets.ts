@@ -179,6 +179,7 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "alaskan-malamute",
   "american-shorthair",
   "ball-python",
+  "bearded-dragon",
   "bichon-frise",
   "border-collie",
   "british-shorthair",

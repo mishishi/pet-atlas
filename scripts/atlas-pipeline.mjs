@@ -61,6 +61,7 @@ const VINTAGE_PAPER_DONE = new Set([
   "alaskan-malamute",
   "american-shorthair",
   "ball-python",
+  "bearded-dragon",
   "bichon-frise",
   "border-collie",
   "british-shorthair",
