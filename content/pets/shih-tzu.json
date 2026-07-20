@@ -1,0 +1,82 @@
+{
+  "slug": "shih-tzu",
+  "name": {
+    "zh": "西施犬",
+    "en": "Shih Tzu",
+    "alias": {
+      "zh": ["西施", "狮子犬", " Chrysanthemum Dog"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "中国",
+    "region": "西藏 / 清宫",
+    "coordinates": [29.6, 91.1]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "20-28",
+    "weightKg": "4-7",
+    "lifespanYears": "10-18",
+    "coat": "双层长丝毛,毛脸似菊花",
+    "coatColors": ["金色", "白色", "黑色", "红棕色", "银色", "虎斑"],
+    "eyeColors": ["深棕色", "黑色", "圆形"]
+  },
+
+  "personality": {
+    "affection": 10,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "菊花脸温柔小狮子",
+    "tags": ["亲人", "友善", "温顺", "粘人", "开朗", "爱玩"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1600s", "event": "达赖喇嘛向清廷进贡拉萨狮子犬" },
+      { "year": "1908", "event": "慈禧太后病逝后,清宫西施犬流落民间" },
+      { "year": "1930s", "event": "经英国引入欧洲,获名 'Shih Tzu'(狮子)" },
+      { "year": "1969", "event": "AKC 正式认证" },
+      { "year": "2010s", "event": "中国家庭最受欢迎小型犬之一" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,60-100g,小型犬专用配方",
+    "exercise": "每日 30 分钟温和散步即可",
+    "health": "短头综合征呼吸道问题 · 眼角膜擦伤 · 椎间盘疾病",
+    "training": "温顺配合但有主见,需正向激励,坚持梳理"
+  },
+
+  "famous": [
+    "中国清宫御犬,慈禧太后最爱,称 '狮子狗'",
+    "原产西藏神庙护法犬,与北京犬同源",
+    "因毛脸似菊花又名 '菊花犬'(Chrysanthemum Dog)",
+    "全球玩具犬组常年 TOP5 热门"
+  ],
+
+  "tags": ["小型犬", "长毛", "短鼻犬", "玩具犬组", "伴侣犬", "中国犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

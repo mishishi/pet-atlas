@@ -1,0 +1,82 @@
+{
+  "slug": "corn-snake",
+  "name": {
+    "zh": "玉米蛇",
+    "en": "Corn Snake",
+    "alias": {
+      "zh": ["玉米锦蛇", "玉米蛇", "红鼠蛇"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "美国",
+    "region": "东南部至中部",
+    "coordinates": [35.0, -85.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "61-182(含尾)",
+    "weightKg": "0.5-0.9",
+    "lifespanYears": "6-8(野生) / 15-20(人工)",
+    "coat": "光滑鳞片,腹面方格纹如玉米粒",
+    "coatColors": ["橙红底+深红斑", "白化", "薰衣草", "焦糖", "无纹", "雪花"],
+    "eyeColors": ["红色(白化)", "黑色", "粉色", "橙色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 5,
+    "obedience": 7,
+    "independence": 8,
+    "vocalization": 1,
+    "intelligence": 5,
+    "summary": "新手友好的温和蛇类",
+    "tags": ["温和", "害羞", "夜行", "独居", "不咬人", "低维护"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1700s", "event": "美国原住民将玉米蛇作装饰纹样" },
+      { "year": "1800s", "event": "得名 'corn snake' 因常出没于玉米粮仓捕鼠" },
+      { "year": "1960s", "event": "美国宠物蛇爱好者开始人工繁育" },
+      { "year": "1990s", "event": "白化 'Blizzard' 变种商业化,价格亲民" },
+      { "year": "2010s", "event": "中国异宠市场引入,'无毒温顺' 成新手指南首选" }
+    ]
+  },
+
+  "care": {
+    "diet": "肉食:乳鼠(按体重 10-15%),7-10 天一次,幼蛇 5 天一次",
+    "exercise": "需 60cm+ 爬箱,水盆泡澡,躲避洞 2 个",
+    "health": "口腔炎 · 寄生虫 · 蜕皮困难(湿度不够)",
+    "training": "极温顺基本不咬,可上手把玩,需注意温度梯度 21-32°C"
+  },
+
+  "famous": [
+    "美国 '三大新手友好蛇' 之一(玉米蛇/球蟒/王蛇)",
+    "得名因常在玉米粮仓捕鼠,农场主喜爱",
+    "全球宠物蛇市场最受欢迎品种,变种 700+",
+    "寿命 20 年,等于 1 只中型犬的陪伴"
+  ],
+
+  "tags": ["中型蛇", "温顺", "夜行", "异宠", "新手友好", "变种多"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

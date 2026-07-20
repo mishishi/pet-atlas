@@ -1,0 +1,82 @@
+{
+  "slug": "macaw",
+  "name": {
+    "zh": "金刚鹦鹉",
+    "en": "Macaw",
+    "alias": {
+      "zh": ["金刚鹦鹉", "大紫蓝鹦鹉", "五彩金刚"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "中美洲 / 南美洲",
+    "region": "墨西哥至阿根廷北部热带雨林",
+    "coordinates": [-5.0, -60.0]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "30-100(依品种)",
+    "weightKg": "0.3-1.7",
+    "lifespanYears": "30-80",
+    "coat": "羽色艳丽,大色块红蓝黄绿组合",
+    "coatColors": ["猩红色", "金黄色", "蓝色", "绿色", "紫蓝", "五彩"],
+    "eyeColors": ["黄色", "红色", "棕色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 8,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 10,
+    "intelligence": 9,
+    "summary": "雨林彩虹大嗓门",
+    "tags": ["聪慧", "吵", "粘人", "活泼", "爱叫", "需陪伴"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500s", "event": "欧洲探险家首次在亚马逊见到金刚鹦鹉" },
+      { "year": "1800s", "event": "贵族宠儿,皮毛贸易导致野外种群下降" },
+      { "year": "1970s", "event": "濒危野生动植物种国际贸易公约(CITES)列入附录 II" },
+      { "year": "1990s", "event": "手养鹦鹉保育项目在美国兴起" },
+      { "year": "2010s", "event": "蓝黄金刚 'Blu' 动画电影《里约大冒险》全球走红" }
+    ]
+  },
+
+  "care": {
+    "diet": "种子坚果 30% + 蔬果 50% + 颗粒粮 20%,需矿物块",
+    "exercise": "需大型笼舍(高 2m+),每日 3+ 小时放飞互动",
+    "health": "喙羽症 PBFD · 鹦鹉喙羽病 · 脂肪肝 · 拨羽症",
+    "training": "极聪慧,可学 100+ 词汇,需从小社会化,寿命长主需做遗书"
+  },
+
+  "famous": [
+    "全球最大鹦鹉之一,紫蓝金刚可达 100cm 体重 1.7kg",
+    "喙力极强可咬开巴西坚果,曾被印第安人作装饰品",
+    "野外观测显示与人类寿命接近,可达 80 岁",
+    "动画《里约大冒险》主角原型蓝黄金刚"
+  ],
+
+  "tags": ["大型鹦鹉", "羽色艳丽", "极聪慧", "需陪伴", "网红鸟", "长寿"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

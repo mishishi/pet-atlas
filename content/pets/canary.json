@@ -1,0 +1,82 @@
+{
+  "slug": "canary",
+  "name": {
+    "zh": "金丝雀",
+    "en": "Canary",
+    "alias": {
+      "zh": ["金丝雀", "芙蓉鸟", "玉鸟"]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "加那利群岛 / 亚速尔群岛 / 马德拉",
+    "region": "大西洋东部群岛",
+    "coordinates": [28.3, -16.5]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "12-20",
+    "weightKg": "0.015-0.030",
+    "lifespanYears": "10-15",
+    "coat": "羽毛密实,黄色基础变种最多",
+    "coatColors": ["金黄色", "橘红色", "白色", "绿色", "花色", "古铜色"],
+    "eyeColors": ["黑色", "深红色(红金丝雀)"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 6,
+    "obedience": 3,
+    "independence": 7,
+    "vocalization": 10,
+    "intelligence": 6,
+    "summary": "鸣唱界的金嗓子",
+    "tags": ["鸣唱", "胆小", "警觉", "独立", "胆小", "漂亮"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1400s", "event": "西班牙人征服加那利群岛,首次记载金丝雀" },
+      { "year": "1500s", "event": "金丝雀随船运到欧洲,只有雄鸟,西班牙垄断" },
+      { "year": "1600s", "event": "走私雌鸟成功后,金丝雀遍布欧洲" },
+      { "year": "1800s", "event": "煤矿用金丝雀检测一氧化碳,救无数矿工" },
+      { "year": "2010s", "event": "现代家养金丝雀 300+ 变种" }
+    ]
+  },
+
+  "care": {
+    "diet": "种子粮 70% + 蔬果 20% + 蛋粮 10%(换羽期增)",
+    "exercise": "需 60cm+ 大笼,每日 1-2 小时放飞",
+    "health": "螨虫 · 脱羽症 · 肥胖 · 输卵管阻塞(母鸟)",
+    "training": "鸣唱训练,雄鸟可学 100+ 旋律,母鸟基本不叫"
+  },
+
+  "famous": [
+    "19 世纪英国煤矿 '一氧化碳检测员',救无数矿工生命",
+    "全球最古老笼养鸟之一,500 年驯化史",
+    "现代培育 300+ 变种,鸣唱型/羽色型/姿态型分系",
+    "德国 '哈勒地区' 金丝雀以鸣声婉转闻名"
+  ],
+
+  "tags": ["小型鸟", "鸣唱", "笼养", "羽色多变", "金丝雀系", "宠物鸟"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

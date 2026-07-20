@@ -1,0 +1,82 @@
+{
+  "slug": "munchkin",
+  "name": {
+    "zh": "曼基康矮脚猫",
+    "en": "Munchkin",
+    "alias": {
+      "zh": ["曼基康", "短腿猫", "腊肠猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "美国",
+    "region": "路易斯安那州",
+    "coordinates": [30.5, -91.2]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "15-20",
+    "weightKg": "2-4",
+    "lifespanYears": "12-14",
+    "coat": "短毛或长毛,质地柔软",
+    "coatColors": ["所有猫色均允许"],
+    "eyeColors": ["所有颜色均允许"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "永远长不大的小猫",
+    "tags": ["活泼", "爱玩", "好奇", "粘人", "聪明", "友善"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1944", "event": "英国兽医记录 '短腿黑猫' 现象" },
+      { "year": "1983", "event": "美国路易斯安那教师发现 'Blackberry' 短腿流浪猫" },
+      { "year": "1991", "event": "TICA 首次接受曼基康品种注册申请" },
+      { "year": "1995", "event": "TICA 正式认定为新品种" },
+      { "year": "2010s", "event": "因短视频 '小短腿' 走红中国市场" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,50-70g,关节保健配方",
+    "exercise": "每日 20-30 分钟低强度游戏,避免高处跳跃",
+    "health": "漏斗胸(严重者) · 脊柱前凸 · 关节磨损",
+    "training": "聪明爱玩,可学捡球,需控制体重保护关节"
+  },
+
+  "famous": [
+    "1944 年英国首次记录短腿猫基因突变",
+    "1991 年 TICA 认证,争议性品种",
+    "短视频时代 '永远的小猫' 形象风靡全球",
+    "因短腿外形得名 '腊肠猫'(Sausage cat)"
+  ],
+
+  "tags": ["小型猫", "短腿", "活泼", "伴侣猫", "网红猫", "争议品种"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

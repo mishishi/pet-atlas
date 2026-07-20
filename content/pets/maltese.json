@@ -1,0 +1,82 @@
+{
+  "slug": "maltese",
+  "name": {
+    "zh": "马尔济斯犬",
+    "en": "Maltese",
+    "alias": {
+      "zh": ["马尔济斯", "摩天使"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "马耳他",
+    "region": "地中海马耳他岛",
+    "coordinates": [35.9, 14.4]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "20-25",
+    "weightKg": "2-3.5",
+    "lifespanYears": "12-15",
+    "coat": "纯白长丝毛,无底绒,单层被毛",
+    "coatColors": ["纯白色", "象牙白"],
+    "eyeColors": ["深棕色", "黑色", "圆形"]
+  },
+
+  "personality": {
+    "affection": 10,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "雪白小棉花糖",
+    "tags": ["亲人", "温顺", "粘人", "勇敢", "活泼", "聪明"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1500 BC", "event": "古希腊罗马时代已出现马尔济斯祖先" },
+      { "year": "1804", "event": "英国斯宾塞夫人将马尔济斯带至英国" },
+      { "year": "1888", "event": "AKC 正式认证,是首批认证品种之一" },
+      { "year": "1950s", "event": "成为欧美贵妇手提包标准配置" },
+      { "year": "2010s", "event": "全球玩具犬组常年 TOP10 热门" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,40-60g,小型犬专用粮",
+    "exercise": "每日 20-30 分钟温和运动",
+    "health": "髌骨脱位 · 肝门静脉分流 · 白色狗震动综合征",
+    "training": "聪明易训练,需坚持社会化避免分离焦虑"
+  },
+
+  "famous": [
+    "古罗马贵妇挚爱犬,称 'Comforter'(安慰犬)",
+    "玛丽莲·梦露、米克·贾格尔均养马尔济斯",
+    "古希腊坟墓中出土过马尔济斯造型陶器",
+    "全球最古老玩具犬品种之一,3000 年未变外貌"
+  ],
+
+  "tags": ["小型犬", "长毛", "纯白", "玩具犬组", "伴侣犬", "贵族犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

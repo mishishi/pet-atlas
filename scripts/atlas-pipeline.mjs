@@ -106,6 +106,16 @@ const VINTAGE_PAPER_DONE = new Set([
   "syrian-hamster",
   "toy-poodle",
   "winter-white-hamster",
+  "yorkshire-terrier",
+  "maltese",
+  "shih-tzu",
+  "scottish-fold",
+  "munchkin",
+  "sugar-glider",
+  "capybara",
+  "canary",
+  "macaw",
+  "corn-snake",
 ]);
 
 function categoryDirName(category) {
