@@ -501,6 +501,108 @@ export const BREED_FEATURES: BreedFeatures[] = [
       "Sulcata Tortoise: large domed tan-brown shell with growth rings, thick scaly stumpy legs with spurs, large head, broad flat shape, wrinkled skin",
     decoration: DECORATION_BY_CATEGORY.reptile,
   },
+
+  // ===== 新增 49 品种 · 第一批 10 =====
+
+  // 犬 (3)
+  {
+    slug: "yorkshire-terrier",
+    breedEn: "Yorkshire Terrier",
+    breedZh: "约克夏梗",
+    category: "dog",
+    features:
+      "Yorkshire Terrier: long silky straight steel-blue and tan coat parting down the back, small toy build, erect V-shaped ears, bright dark eyes, confident terrier expression",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "maltese",
+    breedEn: "Maltese",
+    breedZh: "马尔济斯犬",
+    category: "dog",
+    features:
+      "Maltese: pure white long silky single-layer coat reaching the ground, small compact toy build, round dark eyes, drop ears covered in long hair, gentle expression",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "shih-tzu",
+    breedEn: "Shih Tzu",
+    breedZh: "西施犬",
+    category: "dog",
+    features:
+      "Shih Tzu: long flowing double coat in many colors, flat pushed-in face with short muzzle, large round dark eyes, drop ears heavily feathered, sturdy toy build, chrysanthemum face",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+
+  // 猫 (2)
+  {
+    slug: "scottish-fold",
+    breedEn: "Scottish Fold",
+    breedZh: "苏格兰折耳猫",
+    category: "cat",
+    features:
+      "Scottish Fold: distinctively folded forward and down ears, round head with big round eyes, dense plush coat in many colors, medium cobby build, owl-like expression",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "munchkin",
+    breedEn: "Munchkin",
+    breedZh: "曼基康矮脚猫",
+    category: "cat",
+    features:
+      "Munchkin: distinctly short legs due to genetic dwarfism, normal-sized body, all coat colors and patterns, walnut-shaped eyes, medium triangular ears, low-to-ground stance",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+
+  // 小型哺乳 (2)
+  {
+    slug: "sugar-glider",
+    breedEn: "Sugar Glider",
+    breedZh: "蜜袋鼯",
+    category: "small-mammal",
+    features:
+      "Sugar Glider: small marsupial with patagium (gliding membrane) from wrists to ankles, large dark eyes for nocturnal life, soft grey-brown fur with cream belly, long prehensile tail, pointed snout",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+  {
+    slug: "capybara",
+    breedEn: "Capybara",
+    breedZh: "水豚",
+    category: "small-mammal",
+    features:
+      "Capybara: world's largest rodent, barrel-shaped body with sparse coarse brown fur, blunt rounded snout, small round ears, webbed feet, semi-aquatic build, calm expression",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+
+  // 鸟 (2)
+  {
+    slug: "canary",
+    breedEn: "Canary",
+    breedZh: "金丝雀",
+    category: "bird",
+    features:
+      "Canary: small songbird with smooth compact body, short conical beak, predominantly yellow or orange plumage in wild type, multiple domesticated color varieties, melodious song in males",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "macaw",
+    breedEn: "Macaw",
+    breedZh: "金刚鹦鹉",
+    category: "bird",
+    features:
+      "Macaw: large parrot with long tapered tail, massive hooked beak, bare facial patch with fine feather lines, brilliant multi-color plumage in red/blue/yellow/green, powerful zygodactyl feet",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+
+  // 爬虫 (1)
+  {
+    slug: "corn-snake",
+    breedEn: "Corn Snake",
+    breedZh: "玉米蛇",
+    category: "reptile",
+    features:
+      "Corn Snake: slender non-venomous colubrid with orange-red base color and dark red saddle markings bordered in black, checkered belly pattern resembling corn kernels, smooth scales, alert round pupils",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
 ];
 
 /** 按 slug 查表,找不到时返回 null */

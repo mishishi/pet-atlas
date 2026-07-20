@@ -1,0 +1,82 @@
+{
+  "slug": "sugar-glider",
+  "name": {
+    "zh": "蜜袋鼯",
+    "en": "Sugar Glider",
+    "alias": {
+      "zh": ["蜜袋鼯", "小飞鼠", "糖袋鼯"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "澳大利亚 / 印尼 / 新几内亚",
+    "region": "桉树林",
+    "coordinates": [-25.0, 133.0]
+  },
+
+  "physical": {
+    "sizeGroup": "miniature",
+    "heightCm": "12-32(含尾)",
+    "weightKg": "0.1-0.16",
+    "lifespanYears": "10-15(人工饲养)",
+    "coat": "细软短毛,灰黑主色,腹部奶白",
+    "coatColors": ["标准灰", "奶油色", "白脸", "黑被", "白化"],
+    "eyeColors": ["黑色", "深棕色"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 9,
+    "obedience": 4,
+    "independence": 3,
+    "vocalization": 7,
+    "intelligence": 7,
+    "summary": "会滑翔的掌心小精灵",
+    "tags": ["夜行", "群居", "粘人", "爱叫", "活泼", "需要陪伴"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "欧洲博物学家首次命名 Petaurus breviceps" },
+      { "year": "1990s", "event": "美国开始作为宠物繁育,出现 '标准灰' 色系" },
+      { "year": "2010s", "event": "因《银河系漫游指南》'果汁' 走红中国市场" },
+      { "year": "2015", "event": "中国异宠市场爆发,蜜袋鼯单价从 200 涨至 3000+" },
+      { "year": "2020s", "event": "中国异宠社群人数突破百万,衍生产业链" }
+    ]
+  },
+
+  "care": {
+    "diet": "杂食:蛋白质 50%(虫/瘦肉/蛋)+ 蔬果 25% + 蜜粮 25%,补钙粉",
+    "exercise": "夜间活动,需大型笼子(高 1m+),每日 1-2 小时放飞",
+    "health": "低血糖 · 缺钙瘫痪 HLP · 自残 · 牙齿过长",
+    "training": "需从小手养建立信任,叫声嘈杂夜间活动可能扰民"
+  },
+
+  "famous": [
+    "得名 'Sugar Glider' 因喜甜食且可滑翔",
+    "滑翔距离可达 50 米,靠翼膜 patagium 滑行",
+    "中国 2015-2020 异宠经济现象级代表",
+    "野外群居动物,单独饲养易抑郁自残"
+  ],
+
+  "tags": ["小型哺乳", "夜行", "群居", "异宠", "滑翔", "需陪伴"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

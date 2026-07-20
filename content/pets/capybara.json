@@ -1,0 +1,82 @@
+{
+  "slug": "capybara",
+  "name": {
+    "zh": "水豚",
+    "en": "Capybara",
+    "alias": {
+      "zh": ["水豚", "卡皮巴拉", "Capy"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "南美洲",
+    "region": "巴拿马至阿根廷北部,湿地草原",
+    "coordinates": [-15.0, -55.0]
+  },
+
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "50-62",
+    "weightKg": "35-66",
+    "lifespanYears": "8-12(野生) / 10-15(人工)",
+    "coat": "稀疏粗毛,棕褐色,几乎无毛质感",
+    "coatColors": ["棕褐色", "红棕色", "灰褐色"],
+    "eyeColors": ["深棕色", "黑色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "万物皆可搭的佛系大老鼠",
+    "tags": ["温和", "群居", "水栖", "佛系", "粘人", "治愈"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1764", "event": "法国博物学家 Buffon 首次科学描述水豚" },
+      { "year": "1800s", "event": "南美原住民狩猎取肉,天主教解禁为 '鱼'" },
+      { "year": "2000s", "event": "日本动物园水豚泡温泉照片走红网络" },
+      { "year": "2023", "event": "因 '卡皮巴拉' 佛系梗在中国市场爆红" },
+      { "year": "2024", "event": "中国多地动物园开 '水豚互动' 项目,人豚共眠成爆款" }
+    ]
+  },
+
+  "care": {
+    "diet": "草食:干草 70% + 蔬果 25% + 颗粒 5%,需补维生素 C",
+    "exercise": "半水栖,需大水池,陆地奔跑空间 20㎡+",
+    "health": "皮肤寄生虫 · 牙齿错位 · 维生素 C 缺乏症",
+    "training": "温顺亲人但群居性强,需同伴,国内合法饲养需林业审批"
+  },
+
+  "famous": [
+    "全球最大啮齿动物,体重可达 66kg",
+    "2023-2024 中国 '卡皮巴拉' 佛系梗代表动物",
+    "日本动物园水豚泡温泉系列风靡亚洲",
+    "万物皆可搭:小动物都喜欢趴在水豚背上"
+  ],
+
+  "tags": ["大型啮齿", "水栖", "群居", "异宠", "网红", "治愈系"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}
