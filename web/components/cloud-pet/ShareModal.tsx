@@ -1,0 +1,349 @@
+/**
+ * web/components/cloud-pet/ShareModal.tsx · M2 D 分享海报
+ *
+ * 流程:
+ * 1. 用户点 /profile 的"分享我的云宠物"按钮
+ * 2. Modal 弹出,显示 9:16 海报预览(html2canvas 截图)
+ * 3. 用户点"保存到相册/下载"→ 生成 PNG blob → 触发下载
+ * 4. 用户可长按图片(移动端)/右键保存(桌面端)
+ *
+ * 关键技术:
+ * - html2canvas-pro 客户端截图(SSR 时不 import)
+ * - 9:16 比例 (跟图鉴一致) 固定 720x1280 渲染后缩放
+ * - 跨域图片需 TCB 配置 CORS(已有,见 web/next.config.ts)
+ *
+ * 升级路径 (M3+):
+ * - Web Share API (移动端直接调起系统分享面板)
+ * - 微信 SDK 分享朋友圈(需微信开放平台)
+ */
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { type CloudPet, PERSONALITY_LABEL } from "@/lib/cloudPet";
+
+export function ShareModal({
+  pet,
+  onClose,
+}: {
+  pet: CloudPet;
+  onClose: () => void;
+}) {
+  const posterRef = useRef<HTMLDivElement>(null);
+  const [busy, setBusy] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // ESC 关闭
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  // 锁背景滚动
+  useEffect(() => {
+    const orig = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = orig;
+    };
+  }, []);
+
+  async function handleDownload() {
+    if (!posterRef.current) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const { default: html2canvas } = await import("html2canvas-pro");
+      const canvas = await html2canvas(posterRef.current, {
+        backgroundColor: "#F5EFE0",
+        scale: 2, // 高清
+        logging: false,
+        useCORS: true,
+        allowTaint: false,
+      });
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, "image/png", 0.95)
+      );
+      if (!blob) throw new Error("生成图片失败");
+      const url = URL.createObjectURL(blob);
+      setPreviewUrl(url);
+      // 触发下载
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `pet-atlas-${pet.petName}-${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error("[ShareModal] 生成失败:", err);
+      setError(err instanceof Error ? err.message : "生成失败");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleRegenerate() {
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    setPreviewUrl(null);
+    setError(null);
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(42, 37, 32, 0.75)" }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-oat-100 border-2 border-warm-brown shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-brown-200 bg-oat-50/95 backdrop-blur">
+          <h3 className="font-serif text-lg font-bold text-brown-900">
+            🎁 分享我的云宠物
+          </h3>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-full hover:bg-brown-100 flex items-center justify-center text-brown-600 text-xl"
+            aria-label="关闭"
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-4">
+          {/* 海报预览(9:16) */}
+          <div className="flex justify-center mb-4">
+            <SharePoster ref={posterRef} pet={pet} />
+          </div>
+
+          {/* 错误提示 */}
+          {error && (
+            <div className="mb-3 p-3 rounded-lg bg-brick/10 border border-brick/30 text-sm text-brick">
+              ⚠️ {error}
+            </div>
+          )}
+
+          {/* 预览已生成(可长按保存 / 重新生成) */}
+          {previewUrl && (
+            <div className="mb-3 p-3 rounded-lg bg-forest/10 border border-forest/30 text-xs text-forest">
+              ✅ 已下载！手机端可长按图片保存,桌面端已自动下载
+            </div>
+          )}
+
+          {/* 操作按钮 */}
+          <div className="flex gap-2">
+            {previewUrl ? (
+              <>
+                <button
+                  onClick={handleRegenerate}
+                  className="flex-1 py-2.5 rounded-lg border-2 border-warm-brown text-warm-brown font-medium hover:bg-warm-brown/5 transition-colors text-sm"
+                >
+                  重新生成
+                </button>
+                <a
+                  href={previewUrl}
+                  download={`pet-atlas-${pet.petName}.png`}
+                  className="flex-1 py-2.5 rounded-lg bg-warm-brown text-white font-medium text-center text-sm hover:bg-warm-brown/90 transition-colors"
+                >
+                  再次下载
+                </a>
+              </>
+            ) : (
+              <button
+                onClick={handleDownload}
+                disabled={busy}
+                className="w-full py-3 rounded-lg bg-warm-brown text-white font-bold hover:bg-warm-brown/90 transition-colors disabled:bg-brown-300 disabled:cursor-not-allowed"
+              >
+                {busy ? "生成中..." : "保存为图片 (PNG)"}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== 海报本体 (9:16, 720x1280 内部坐标系) =====
+
+import { forwardRef } from "react";
+
+const POSTER_WIDTH = 720;
+const POSTER_HEIGHT = 1280;
+const POSTER_SCALE = 0.45; // 展示缩放比例
+
+export const SharePoster = forwardRef<HTMLDivElement, { pet: CloudPet }>(
+  function SharePoster({ pet }, ref) {
+    return (
+      <div
+        ref={ref}
+        className="relative overflow-hidden"
+        style={{
+          width: POSTER_WIDTH * POSTER_SCALE,
+          height: POSTER_HEIGHT * POSTER_SCALE,
+          background: "#F5EFE0",
+        }}
+      >
+        {/* 内部内容按 1:1 渲染,通过外层 transform 缩放展示 */}
+        <div
+          style={{
+            width: POSTER_WIDTH,
+            height: POSTER_HEIGHT,
+            transform: `scale(${POSTER_SCALE})`,
+            transformOrigin: "top left",
+          }}
+        >
+          <PosterContent pet={pet} />
+        </div>
+      </div>
+    );
+  }
+);
+
+function PosterContent({ pet }: { pet: CloudPet }) {
+  return (
+    <div
+      className="relative w-full h-full flex flex-col"
+      style={{
+        background: `
+          linear-gradient(180deg, #F5E9D0 0%, #EFE0BE 50%, #E8D9B8 100%),
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/></svg>")
+        `,
+      }}
+    >
+      {/* 顶部:小标 + 编号 */}
+      <div className="px-12 pt-10 flex items-baseline justify-between">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-brown-600">
+          MUSEUM SPECIMEN
+        </span>
+        <span className="font-mono text-sm font-bold text-brick">No.052</span>
+      </div>
+
+      {/* 立绘 */}
+      <div className="flex-1 flex items-center justify-center px-12 py-8">
+        <div
+          className="relative w-full aspect-square rounded-2xl overflow-hidden border-4 border-warm-brown"
+          style={{
+            boxShadow: "0 8px 32px rgba(110, 86, 53, 0.3)",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={pet.tcbUrl}
+            alt={pet.petName}
+            className="w-full h-full object-cover"
+            crossOrigin="anonymous"
+          />
+        </div>
+      </div>
+
+      {/* 名字 + 品种 */}
+      <div className="px-12 text-center">
+        <h1
+          className="font-serif text-5xl font-bold text-brown-900 mb-2"
+          style={{ letterSpacing: "0.05em" }}
+        >
+          {pet.petName}
+        </h1>
+        <p className="font-mono text-sm uppercase tracking-[0.18em] text-brown-600">
+          {pet.breedZh}
+        </p>
+      </div>
+
+      {/* 分隔 */}
+      <div className="flex items-center justify-center my-6 px-12">
+        <div className="flex-1 h-px bg-warm-brown/40" />
+        <span className="px-3 text-warm-brown">✦</span>
+        <div className="flex-1 h-px bg-warm-brown/40" />
+      </div>
+
+      {/* 性格 + 品种 chip */}
+      <div className="px-12 flex items-center justify-center gap-3 mb-6">
+        <div
+          className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium"
+          style={{ color: "#8B6F47" }}
+        >
+          {PERSONALITY_LABEL[pet.personality]}
+        </div>
+        <div className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium text-brown-700">
+          变体 v{pet.variantIndex}
+        </div>
+      </div>
+
+      {/* 印章 */}
+      <div className="flex justify-center mb-6">
+        <div
+          className="px-8 py-3 text-center"
+          style={{
+            background: "rgba(164, 74, 63, 0.92)",
+            clipPath:
+              "polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px))",
+            boxShadow:
+              "0 4px 12px rgba(164, 74, 63, 0.3), inset 0 0 0 1px rgba(255, 220, 200, 0.3)",
+          }}
+        >
+          <div className="font-serif text-lg font-bold text-[#F5E9D0] tracking-widest">
+            我的云宠物
+          </div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#F5E9D0]/80 mt-0.5">
+            MY CLOUD PET · PET ATLAS
+          </div>
+        </div>
+      </div>
+
+      {/* 底部:URL */}
+      <div className="px-12 pb-8 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brown-500">
+          out-three-tan.vercel.app
+        </p>
+      </div>
+
+      {/* 4 角装饰(老画框角) */}
+      <CornerOrnament position="tl" />
+      <CornerOrnament position="tr" />
+      <CornerOrnament position="bl" />
+      <CornerOrnament position="br" />
+    </div>
+  );
+}
+
+function CornerOrnament({
+  position,
+}: {
+  position: "tl" | "tr" | "bl" | "br";
+}) {
+  const map = {
+    tl: { top: 16, left: 16, transform: "rotate(0deg)" },
+    tr: { top: 16, right: 16, transform: "rotate(90deg)" },
+    bl: { bottom: 16, left: 16, transform: "rotate(-90deg)" },
+    br: { bottom: 16, right: 16, transform: "rotate(180deg)" },
+  };
+  const p = map[position];
+  return (
+    <div
+      className="absolute pointer-events-none"
+      style={{ ...p, color: "#8B6F47", opacity: 0.5 }}
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M 0 12 L 0 0 L 12 0" />
+        <circle cx="0" cy="0" r="2" fill="currentColor" />
+      </svg>
+    </div>
+  );
+}
