@@ -58,19 +58,44 @@ export function ShareModal({
     };
   }, []);
 
-  // 加载状态: 直接用原 URL,不 fetch
-  // (fetch + blob 方案在用户环境失败,可能是某些浏览器 quirks)
-  // <img> 不带 crossOrigin → 简单 GET(无 preflight) → 直接加载
-  // html2canvas useCORS:false + allowTaint:true 处理污染 canvas
+  // 加载立绘 → 转为 data URL(关键!)
+  // 流程:
+  //  1. fetch(url, { mode: "no-cors" }) — no-cors 不触发 preflight,响应 opaque
+  //  2. response.blob() — opaque 响应仍能拿 body 字节
+  //  3. FileReader.readAsDataURL → "data:image/png;base64,..." 
+  //  4. <img src={dataUrl}> — data URL 浏览器视作 same-origin
+  //  5. canvas 不污染 → toBlob 成功
+  // 为什么不用 crossOrigin: 用户环境 fetch/img 带 CORS 都失败(原因待查)
+  // 为什么不用 mode: "cors": 用户浏览器里 fetch 也失败(可能 TCB 桶 OPTIONS 头不全)
   useEffect(() => {
-    setPortraitUrl(pet.tcbUrl);
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(pet.tcbUrl, { mode: "no-cors" });
+        const blob = await res.blob();
+        if (cancelled) return;
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+        setPortraitUrl(dataUrl);
+      } catch (err) {
+        console.warn("[ShareModal] 加载立绘失败,回退原 URL:", err);
+        if (!cancelled) setPortraitUrl(pet.tcbUrl);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [pet.tcbUrl]);
 
   // 图片加载失败回调
   const handlePortraitError = useCallback(() => {
-    console.warn("[ShareModal] 立绘 img 加载失败:", pet.tcbUrl);
+    console.warn("[ShareModal] 立绘 img 加载失败:", portraitUrl);
     setPortraitFailed(true);
-  }, [pet.tcbUrl]);
+  }, [portraitUrl]);
 
   async function handleDownload() {
     if (!posterRef.current) return;
@@ -82,9 +107,9 @@ export function ShareModal({
         backgroundColor: "#F5EFE0",
         scale: 2, // 高清
         logging: false,
-        // 直接用原 URL,canvas 被污染(tainted)但 toBlob 还能用
+        // img 用的是 data URL(同源),canvas 不会被污染
         useCORS: false,
-        allowTaint: true,
+        allowTaint: false,
       });
       const blob = await new Promise<Blob | null>((resolve) =>
         canvas.toBlob(resolve, "image/png", 0.95)
