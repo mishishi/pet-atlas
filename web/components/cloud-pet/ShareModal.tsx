@@ -21,7 +21,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { type CloudPet, PERSONALITY_LABEL } from "@/lib/cloudPet";
 
 export function ShareModal({
@@ -58,27 +58,18 @@ export function ShareModal({
     };
   }, []);
 
-  // 预 fetch 宠物立绘 → blob URL
+  // 加载状态: 直接用原 URL,不 fetch
+  // (fetch + blob 方案在用户环境失败,可能是某些浏览器 quirks)
+  // <img> 不带 crossOrigin → 简单 GET(无 preflight) → 直接加载
+  // html2canvas useCORS:false + allowTaint:true 处理污染 canvas
   useEffect(() => {
-    let cancelled = false;
-    let objectUrl: string | null = null;
-    (async () => {
-      try {
-        const res = await fetch(pet.tcbUrl, { mode: "cors" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const blob = await res.blob();
-        if (cancelled) return;
-        objectUrl = URL.createObjectURL(blob);
-        setPortraitUrl(objectUrl);
-      } catch (err) {
-        console.warn("[ShareModal] 预 fetch 立绘失败,回退原始 URL:", err);
-        if (!cancelled) setPortraitFailed(true);
-      }
-    })();
-    return () => {
-      cancelled = true;
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
-    };
+    setPortraitUrl(pet.tcbUrl);
+  }, [pet.tcbUrl]);
+
+  // 图片加载失败回调
+  const handlePortraitError = useCallback(() => {
+    console.warn("[ShareModal] 立绘 img 加载失败:", pet.tcbUrl);
+    setPortraitFailed(true);
   }, [pet.tcbUrl]);
 
   async function handleDownload() {
@@ -91,7 +82,7 @@ export function ShareModal({
         backgroundColor: "#F5EFE0",
         scale: 2, // 高清
         logging: false,
-        // 因为立绘已经是 blob URL(同源),不需要 CORS
+        // 直接用原 URL,canvas 被污染(tainted)但 toBlob 还能用
         useCORS: false,
         allowTaint: true,
       });
@@ -157,6 +148,7 @@ export function ShareModal({
               pet={pet}
               portraitUrl={portraitUrl}
               portraitFailed={portraitFailed}
+              onPortraitError={handlePortraitError}
             />
           </div>
 
@@ -234,8 +226,12 @@ export const SharePoster = forwardRef<
     pet: CloudPet;
     portraitUrl: string | null;
     portraitFailed: boolean;
+    onPortraitError: () => void;
   }
->(function SharePoster({ pet, portraitUrl, portraitFailed }, ref) {
+>(function SharePoster(
+  { pet, portraitUrl, portraitFailed, onPortraitError },
+  ref
+) {
   return (
     <div
       ref={ref}
@@ -259,6 +255,7 @@ export const SharePoster = forwardRef<
           pet={pet}
           portraitUrl={portraitUrl}
           portraitFailed={portraitFailed}
+          onPortraitError={onPortraitError}
         />
       </div>
     </div>
@@ -269,10 +266,12 @@ function PosterContent({
   pet,
   portraitUrl,
   portraitFailed,
+  onPortraitError,
 }: {
   pet: CloudPet;
   portraitUrl: string | null;
   portraitFailed: boolean;
+  onPortraitError: () => void;
 }) {
   return (
     <div
@@ -306,6 +305,7 @@ function PosterContent({
               src={portraitUrl}
               alt={pet.petName}
               className="w-full h-full object-cover"
+              onError={onPortraitError}
             />
           ) : portraitFailed ? (
             // 加载失败,显示占位
