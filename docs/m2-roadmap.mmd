@@ -1,0 +1,72 @@
+---
+title: Pet Atlas M2 Roadmap & Architecture
+---
+%% Pet Atlas M2 综合路线图
+%% 数据流 + 事件流 + 部署 + 路线图 一图全
+
+flowchart TB
+    subgraph M2A["M2-A 互动 (commit 06494ae)"]
+        A1[PetStatusCard]
+        A2[petStats.ts]
+        A3[3 维状态 + 衰减 + 6 mood]
+        A2 --> A1
+        A2 --> A3
+    end
+
+    subgraph M25["M2.5 TCB 同步 (commit 0dfb59d)"]
+        S1[deviceId.ts UUID]
+        S2[tcb.ts CloudBase 懒加载]
+        S3[tcbSync.ts 适配器]
+        S4["pet_stats / cloud_pets 集合"]
+        S1 --> S3
+        S2 --> S3
+        S3 --> S4
+    end
+
+    subgraph M2B["M2-B 日记 (commit 8a38ce4)"]
+        B1[petDiary.ts 模板文案]
+        B2[PetDiary.tsx UI]
+        B3[pet_diary 集合]
+        B1 --> B2
+        B2 --> B3
+    end
+
+    subgraph M2D["M2-D 分享 (commit dc9a272)"]
+        D1[ShareModal.tsx]
+        D2[html2canvas-pro]
+        D3[9:16 海报 + 4 角装饰]
+        D1 --> D2
+        D2 --> D3
+    end
+
+    A1 -->|event 触发| B1
+    A2 -->|写 stats| S3
+    S3 -->|读/写| B2
+    B2 -->|UI| D1
+
+    subgraph DEPLOY["部署管线"]
+        P1[git push origin main]
+        P2[Vercel webhook]
+        P3[auto build + deploy]
+        P4[域名 out-three-tan 自动跟]
+        P1 --> P2 --> P3 --> P4
+    end
+
+    subgraph M3ROAD["M3 路线图"]
+        N1[OAuth 微信/邮箱]
+        N2[deviceId → userId 迁移]
+        N3[收紧 TCB 集合权限]
+        N4[LLM 写日记文案]
+        N5[独立 /diary 路由]
+        N6[朋友圈 SDK 分享]
+        N1 --> N2 --> N3
+        N3 --> N4 --> N5 --> N6
+    end
+
+    M2D --> DEPLOY
+    DEPLOY -.升级.-> M3
+
+    classDef done fill:#4A5D3A,color:#fff
+    classDef todo fill:#C9A14A,color:#fff
+    class M2A,M25,M2B,M2D done
+    class M3 todo
