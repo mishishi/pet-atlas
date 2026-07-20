@@ -24,6 +24,7 @@ import {
 import { getBreedVariants } from "@/lib/cloud-pet-urls";
 import { PERSONALITY_LABEL } from "@/lib/cloudPet";
 import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
+import { PetDiary } from "@/components/cloud-pet/PetDiary";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
 
@@ -42,6 +43,34 @@ export default function ProfilePage() {
       if (freshPet) setPet(freshPet);
       // stats 同步(内部会触发 PetStatusCard re-render via storage event)
       await syncFromTcb();
+      // M2 B 日记:拉 TCB 合并
+      try {
+        const { fetchDiaryEntriesFromTcb } = await import("@/lib/tcbSync");
+        const { getAllDiaryEntries, markDiarySynced } = await import("@/lib/petDiary");
+        const remote = await fetchDiaryEntriesFromTcb();
+        if (remote.length > 0) {
+          const local = getAllDiaryEntries();
+          const localIds = new Set(local.map((e) => e.id));
+          // 远程有本地无 → 追加
+          const toAdd = remote.filter((e) => !localIds.has(e.id));
+          if (toAdd.length > 0) {
+            // import writeJSON 不暴露,直接复用 getAllDiaryEntries + manual merge
+            const merged = [...local, ...toAdd].sort(
+              (a, b) => b.timestamp - a.timestamp
+            );
+            localStorage.setItem(
+              "pet-atlas:pet-diary:v1",
+              JSON.stringify(merged)
+            );
+            window.dispatchEvent(new StorageEvent("storage", { key: "pet-atlas:pet-diary:v1" }));
+          }
+          // 本地 pending 的 → 标 synced
+          const syncedIds = remote.map((e) => e.id);
+          markDiarySynced(syncedIds);
+        }
+      } catch (err) {
+        console.warn("[profile] diary TCB merge 失败", err);
+      }
       // 强制刷新页面(因为 PetStatusCard 自己 useEffect 只在 mount 读一次)
       window.dispatchEvent(new StorageEvent("storage", { key: "pet-atlas:pet-stats:v1" }));
     })();
@@ -115,6 +144,9 @@ export default function ProfilePage() {
 
               {/* M2 · 宠物状态卡(喂食/玩耍/休息) */}
               <PetStatusCard />
+
+              {/* M2 B · 我的日记 */}
+              <PetDiary />
 
               <div className="grid grid-cols-3 gap-2 text-center mb-6">
                 <Stat

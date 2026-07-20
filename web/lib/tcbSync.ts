@@ -239,6 +239,88 @@ export async function deleteCloudPetFromTcb(): Promise<boolean> {
   }
 }
 
+// ===== pet_diary 同步 (M2 B) =====
+
+import type { DiaryEntry } from "./petDiary";
+
+/** 拉取 TCB 上本设备的所有 diary entries */
+export async function fetchDiaryEntriesFromTcb(): Promise<DiaryEntry[]> {
+  const db = await tryDb();
+  if (!db) return [];
+  const deviceId = getDeviceId();
+  if (!deviceId) return [];
+  try {
+    const res = await db
+      .collection("pet_diary")
+      .where({ deviceId })
+      .limit(500) // 单设备单宠物最多 200,留余量
+      .get();
+    const list = (res?.data || []) as any[];
+    return list.map((r) => ({
+      id: r.entryId || r._id, // entryId 是业务 id(本地生成); fallback 用 _id
+      timestamp: r.timestamp,
+      actionType: r.actionType,
+      petSnapshot: {
+        petId: r.petSnapshot?.petId || "",
+        petName: r.petSnapshot?.petName || "",
+        breedZh: r.petSnapshot?.breedZh || "",
+        mood: r.petSnapshot?.mood || "calm",
+      },
+      stats: {
+        hunger: r.stats?.hunger || 0,
+        energy: r.stats?.energy || 0,
+        happiness: r.stats?.happiness || 0,
+      },
+      text: r.text || "",
+      syncStatus: "synced",
+    }));
+  } catch (err) {
+    console.warn("[tcbSync] fetch pet_diary 失败", err);
+    return [];
+  }
+}
+
+/**
+ * 批量推送 diary entries 到 TCB
+ * - 逐条 add (TCB 没有原生 batch upsert)
+ * - 成功返回推送成功的 id 列表
+ */
+export async function pushDiaryEntriesToTcb(
+  entries: DiaryEntry[]
+): Promise<string[]> {
+  if (!entries.length) return [];
+  const db = await tryDb();
+  if (!db) return [];
+  const deviceId = getDeviceId();
+  if (!deviceId) return [];
+  const successIds: string[] = [];
+  try {
+    setStatus("syncing");
+    for (const entry of entries) {
+      try {
+        await db.collection("pet_diary").add({
+          deviceId,
+          entryId: entry.id, // 业务 id 存为字段(供 last-write-wins 去重)
+          timestamp: entry.timestamp,
+          actionType: entry.actionType,
+          petSnapshot: entry.petSnapshot,
+          stats: entry.stats,
+          text: entry.text,
+        });
+        successIds.push(entry.id);
+      } catch (err) {
+        console.warn("[tcbSync] push single entry 失败", err);
+      }
+    }
+    setStatus("synced");
+    return successIds;
+  } catch (err) {
+    console.warn("[tcbSync] pushDiaryEntriesToTcb 失败", err);
+    setStatus("error");
+    return successIds;
+  }
+}
+
 // ===== 在线/离线检测 =====
 
 let _onlineHandler: (() => void) | null = null;

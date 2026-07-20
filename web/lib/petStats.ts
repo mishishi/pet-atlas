@@ -272,6 +272,9 @@ export function performAction(action: ActionType): ActionResult {
   writeJSON(KEY_STATS, newStats);
   syncToTcb(newStats);
 
+  // M2 B 日记:动作后自动追加一条
+  appendDiaryForAction(action, newStats);
+
   return {
     ok: true,
     stats: newStats,
@@ -386,4 +389,24 @@ export async function syncFromTcb(): Promise<PetStats | null> {
     if (fresh) await pushPetStatsToTcb(fresh);
     return fresh;
   }
+}
+
+// ===== M2 B 日记钩子 =====
+
+/**
+ * 喂食/玩耍/休息后追加 diary entry
+ * fire-and-forget,不影响主流程
+ */
+function appendDiaryForAction(
+  action: "feed" | "play" | "rest",
+  stats: PetStats
+): void {
+  if (!isClient()) return;
+  const pet = getAdoptedPet();
+  if (!pet) return;
+  const mood = deriveMood(stats);
+  // 动态 import 避免循环依赖
+  import("./petDiary")
+    .then(({ appendDiaryEntry }) => appendDiaryEntry(action, pet, stats, mood))
+    .catch((err) => console.warn("[petStats] appendDiary 失败", err));
 }

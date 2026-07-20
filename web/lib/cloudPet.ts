@@ -94,14 +94,32 @@ export function saveAdoptedPet(pet: CloudPet): void {
     import("./tcbSync")
       .then(({ pushCloudPetToTcb }) => pushCloudPetToTcb(pet))
       .catch((err) => console.warn("[cloudPet] sync 调度失败", err));
+    // M2 B 日记:领养事件
+    import("./petStats")
+      .then(({ getCurrentStats, deriveMood }) => {
+        const stats = getCurrentStats();
+        if (!stats) return;
+        const mood = deriveMood(stats);
+        return import("./petDiary").then(({ appendDiaryEntry }) =>
+          appendDiaryEntry("adopt", pet, stats, mood)
+        );
+      })
+      .catch((err) => console.warn("[cloudPet] appendDiary(adopt) 失败", err));
   }
 }
 
 export function clearAdoptedPet(): void {
   if (!isClient()) return;
+  const pet = getAdoptedPet();
   localStorage.removeItem(KEY_PET);
   localStorage.removeItem(KEY_REROLL);
   localStorage.removeItem(KEY_READS);
+  // M2 B 清 diary
+  if (pet) {
+    import("./petDiary")
+      .then(({ clearDiaryForPet }) => clearDiaryForPet(pet.petId))
+      .catch((err) => console.warn("[cloudPet] clearDiary 失败", err));
+  }
   // M2.5+ TCB 同步删除
   import("./tcbSync")
     .then(({ deleteCloudPetFromTcb }) => deleteCloudPetFromTcb())
