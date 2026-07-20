@@ -10,7 +10,9 @@
  * 关键技术:
  * - html2canvas-pro 客户端截图(SSR 时不 import)
  * - 9:16 比例 (跟图鉴一致) 固定 720x1280 渲染后缩放
- * - 跨域图片需 TCB 配置 CORS(已有,见 web/next.config.ts)
+ * - **图片预加载为 blob URL**(避 CORS + 兼容 html2canvas)
+ *   - 第一次 render 时 fetch(pet.tcbUrl) → blob → blob URL
+ *   - 失败时回退原始 URL + 显示错误提示
  *
  * 升级路径 (M3+):
  * - Web Share API (移动端直接调起系统分享面板)
@@ -34,6 +36,10 @@ export function ShareModal({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // 把 TCB 图片预 fetch 成 blob URL(同源,html2canvas 不会污染 canvas)
+  const [portraitUrl, setPortraitUrl] = useState<string | null>(null);
+  const [portraitFailed, setPortraitFailed] = useState(false);
+
   // ESC 关闭
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -52,6 +58,29 @@ export function ShareModal({
     };
   }, []);
 
+  // 预 fetch 宠物立绘 → blob URL
+  useEffect(() => {
+    let cancelled = false;
+    let objectUrl: string | null = null;
+    (async () => {
+      try {
+        const res = await fetch(pet.tcbUrl, { mode: "cors" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const blob = await res.blob();
+        if (cancelled) return;
+        objectUrl = URL.createObjectURL(blob);
+        setPortraitUrl(objectUrl);
+      } catch (err) {
+        console.warn("[ShareModal] 预 fetch 立绘失败,回退原始 URL:", err);
+        if (!cancelled) setPortraitFailed(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [pet.tcbUrl]);
+
   async function handleDownload() {
     if (!posterRef.current) return;
     setBusy(true);
@@ -62,8 +91,9 @@ export function ShareModal({
         backgroundColor: "#F5EFE0",
         scale: 2, // 高清
         logging: false,
-        useCORS: true,
-        allowTaint: false,
+        // 因为立绘已经是 blob URL(同源),不需要 CORS
+        useCORS: false,
+        allowTaint: true,
       });
       const blob = await new Promise<Blob | null>((resolve) =>
         canvas.toBlob(resolve, "image/png", 0.95)
@@ -122,8 +152,25 @@ export function ShareModal({
         <div className="p-4">
           {/* 海报预览(9:16) */}
           <div className="flex justify-center mb-4">
-            <SharePoster ref={posterRef} pet={pet} />
+            <SharePoster
+              ref={posterRef}
+              pet={pet}
+              portraitUrl={portraitUrl}
+              portraitFailed={portraitFailed}
+            />
           </div>
+
+          {/* 加载状态 */}
+          {!portraitUrl && !portraitFailed && (
+            <div className="mb-3 p-2 rounded-lg bg-brown-50 border border-brown-200 text-xs text-brown-600 text-center">
+              ⏳ 正在加载立绘...
+            </div>
+          )}
+          {portraitFailed && (
+            <div className="mb-3 p-2 rounded-lg bg-amber-50 border border-amber-300 text-xs text-amber-800 text-center">
+              ⚠️ 立绘加载失败,海报将显示占位
+            </div>
+          )}
 
           {/* 错误提示 */}
           {error && (
@@ -132,10 +179,10 @@ export function ShareModal({
             </div>
           )}
 
-          {/* 预览已生成(可长按保存 / 重新生成) */}
+          {/* 预览已生成 */}
           {previewUrl && (
             <div className="mb-3 p-3 rounded-lg bg-forest/10 border border-forest/30 text-xs text-forest">
-              ✅ 已下载！手机端可长按图片保存,桌面端已自动下载
+              ✅ 已下载!手机端可长按图片保存,桌面端已自动下载
             </div>
           )}
 
@@ -181,35 +228,52 @@ const POSTER_WIDTH = 720;
 const POSTER_HEIGHT = 1280;
 const POSTER_SCALE = 0.45; // 展示缩放比例
 
-export const SharePoster = forwardRef<HTMLDivElement, { pet: CloudPet }>(
-  function SharePoster({ pet }, ref) {
-    return (
+export const SharePoster = forwardRef<
+  HTMLDivElement,
+  {
+    pet: CloudPet;
+    portraitUrl: string | null;
+    portraitFailed: boolean;
+  }
+>(function SharePoster({ pet, portraitUrl, portraitFailed }, ref) {
+  return (
+    <div
+      ref={ref}
+      className="relative overflow-hidden"
+      style={{
+        width: POSTER_WIDTH * POSTER_SCALE,
+        height: POSTER_HEIGHT * POSTER_SCALE,
+        background: "#F5EFE0",
+      }}
+    >
+      {/* 内部内容按 1:1 渲染,通过外层 transform 缩放展示 */}
       <div
-        ref={ref}
-        className="relative overflow-hidden"
         style={{
-          width: POSTER_WIDTH * POSTER_SCALE,
-          height: POSTER_HEIGHT * POSTER_SCALE,
-          background: "#F5EFE0",
+          width: POSTER_WIDTH,
+          height: POSTER_HEIGHT,
+          transform: `scale(${POSTER_SCALE})`,
+          transformOrigin: "top left",
         }}
       >
-        {/* 内部内容按 1:1 渲染,通过外层 transform 缩放展示 */}
-        <div
-          style={{
-            width: POSTER_WIDTH,
-            height: POSTER_HEIGHT,
-            transform: `scale(${POSTER_SCALE})`,
-            transformOrigin: "top left",
-          }}
-        >
-          <PosterContent pet={pet} />
-        </div>
+        <PosterContent
+          pet={pet}
+          portraitUrl={portraitUrl}
+          portraitFailed={portraitFailed}
+        />
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
 
-function PosterContent({ pet }: { pet: CloudPet }) {
+function PosterContent({
+  pet,
+  portraitUrl,
+  portraitFailed,
+}: {
+  pet: CloudPet;
+  portraitUrl: string | null;
+  portraitFailed: boolean;
+}) {
   return (
     <div
       className="relative w-full h-full flex flex-col"
@@ -236,13 +300,36 @@ function PosterContent({ pet }: { pet: CloudPet }) {
             boxShadow: "0 8px 32px rgba(110, 86, 53, 0.3)",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={pet.tcbUrl}
-            alt={pet.petName}
-            className="w-full h-full object-cover"
-            crossOrigin="anonymous"
-          />
+          {portraitUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={portraitUrl}
+              alt={pet.petName}
+              className="w-full h-full object-cover"
+            />
+          ) : portraitFailed ? (
+            // 加载失败,显示占位
+            <div
+              className="w-full h-full flex flex-col items-center justify-center bg-oat-200"
+              style={{ color: "#8B6F47" }}
+            >
+              <div className="text-6xl mb-2">🐾</div>
+              <div className="font-serif text-2xl font-bold text-brown-900">
+                {pet.petName}
+              </div>
+              <div className="text-xs text-brown-600 mt-1">
+                立绘加载失败
+              </div>
+            </div>
+          ) : (
+            // 加载中,显示骨架
+            <div
+              className="w-full h-full flex items-center justify-center bg-oat-200 animate-pulse"
+              style={{ color: "#A89A78" }}
+            >
+              <span className="text-sm">载入中...</span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -307,7 +394,7 @@ function PosterContent({ pet }: { pet: CloudPet }) {
         </p>
       </div>
 
-      {/* 4 角装饰(老画框角) */}
+      {/* 4 角装饰 */}
       <CornerOrnament position="tl" />
       <CornerOrnament position="tr" />
       <CornerOrnament position="bl" />
