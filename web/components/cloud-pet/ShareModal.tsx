@@ -1,27 +1,28 @@
 /**
- * web/components/cloud-pet/ShareModal.tsx · M2 D 分享海报
+ * web/components/cloud-pet/ShareModal.tsx · M2 D 分享海报(v4:无立绘)
  *
  * 流程:
  * 1. 用户点 /profile 的"分享我的云宠物"按钮
- * 2. Modal 弹出,显示 9:16 海报预览(html2canvas 截图)
- * 3. 用户点"保存到相册/下载"→ 生成 PNG blob → 触发下载
+ * 2. Modal 弹出,显示 9:16 海报预览
+ * 3. 用户点"保存为图片"→ html2canvas 截图 → 触发下载
  * 4. 用户可长按图片(移动端)/右键保存(桌面端)
  *
- * 关键技术:
- * - html2canvas-pro 客户端截图(SSR 时不 import)
- * - 9:16 比例 (跟图鉴一致) 固定 720x1280 渲染后缩放
- * - **图片预加载为 blob URL**(避 CORS + 兼容 html2canvas)
- *   - 第一次 render 时 fetch(pet.tcbUrl) → blob → blob URL
- *   - 失败时回退原始 URL + 显示错误提示
+ * 关键变更 (v4):
+ * - **不再尝试加载立绘到 canvas** (v0-v3 全部失败,见 M2-RELEASE §8 经验)
+ * - 海报中央用大型爪印 + 名字 + 装饰替代立绘(specimen card mini-frame)
+ * - html2canvas 渲染 DOM,无 tainted canvas 风险,toBlob 100% 成功
+ * - 保留:4 角装饰 / 砖红印章 / 暖棕边框 / 性格 chip
  *
  * 升级路径 (M3+):
  * - Web Share API (移动端直接调起系统分享面板)
  * - 微信 SDK 分享朋友圈(需微信开放平台)
+ * - 如果未来 CORS 解锁,可以加一个 toggle "显示立绘" 走 crossOrigin + canvas 路径
  */
 
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { forwardRef } from "react";
 import { type CloudPet, PERSONALITY_LABEL } from "@/lib/cloudPet";
 
 export function ShareModal({
@@ -35,10 +36,6 @@ export function ShareModal({
   const [busy, setBusy] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  // 把 TCB 图片预 fetch 成 blob URL(同源,html2canvas 不会污染 canvas)
-  const [portraitUrl, setPortraitUrl] = useState<string | null>(null);
-  const [portraitFailed, setPortraitFailed] = useState(false);
 
   // ESC 关闭
   useEffect(() => {
@@ -58,45 +55,6 @@ export function ShareModal({
     };
   }, []);
 
-  // 加载立绘 → 转为 data URL(关键!)
-  // 流程:
-  //  1. fetch(url, { mode: "no-cors" }) — no-cors 不触发 preflight,响应 opaque
-  //  2. response.blob() — opaque 响应仍能拿 body 字节
-  //  3. FileReader.readAsDataURL → "data:image/png;base64,..." 
-  //  4. <img src={dataUrl}> — data URL 浏览器视作 same-origin
-  //  5. canvas 不污染 → toBlob 成功
-  // 为什么不用 crossOrigin: 用户环境 fetch/img 带 CORS 都失败(原因待查)
-  // 为什么不用 mode: "cors": 用户浏览器里 fetch 也失败(可能 TCB 桶 OPTIONS 头不全)
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch(pet.tcbUrl, { mode: "no-cors" });
-        const blob = await res.blob();
-        if (cancelled) return;
-        const dataUrl = await new Promise<string>((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result as string);
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
-        });
-        setPortraitUrl(dataUrl);
-      } catch (err) {
-        console.warn("[ShareModal] 加载立绘失败,回退原 URL:", err);
-        if (!cancelled) setPortraitUrl(pet.tcbUrl);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [pet.tcbUrl]);
-
-  // 图片加载失败回调
-  const handlePortraitError = useCallback(() => {
-    console.warn("[ShareModal] 立绘 img 加载失败:", portraitUrl);
-    setPortraitFailed(true);
-  }, [portraitUrl]);
-
   async function handleDownload() {
     if (!posterRef.current) return;
     setBusy(true);
@@ -107,7 +65,7 @@ export function ShareModal({
         backgroundColor: "#F5EFE0",
         scale: 2, // 高清
         logging: false,
-        // img 用的是 data URL(同源),canvas 不会被污染
+        // 无立绘,无 crossOrigin img,canvas 永远不会污染
         useCORS: false,
         allowTaint: false,
       });
@@ -168,26 +126,13 @@ export function ShareModal({
         <div className="p-4">
           {/* 海报预览(9:16) */}
           <div className="flex justify-center mb-4">
-            <SharePoster
-              ref={posterRef}
-              pet={pet}
-              portraitUrl={portraitUrl}
-              portraitFailed={portraitFailed}
-              onPortraitError={handlePortraitError}
-            />
+            <SharePoster ref={posterRef} pet={pet} />
           </div>
 
-          {/* 加载状态 */}
-          {!portraitUrl && !portraitFailed && (
-            <div className="mb-3 p-2 rounded-lg bg-brown-50 border border-brown-200 text-xs text-brown-600 text-center">
-              ⏳ 正在加载立绘...
-            </div>
-          )}
-          {portraitFailed && (
-            <div className="mb-3 p-2 rounded-lg bg-amber-50 border border-amber-300 text-xs text-amber-800 text-center">
-              ⚠️ 立绘加载失败,海报将显示占位
-            </div>
-          )}
+          {/* 设计说明 (只读,不进截图) */}
+          <div className="mb-3 p-2 rounded-lg bg-forest/10 border border-forest/30 text-xs text-forest leading-relaxed">
+            💡 海报采用纯文字 + 装饰设计,避免跨域图加载问题,任何浏览器都能正常生成
+          </div>
 
           {/* 错误提示 */}
           {error && (
@@ -239,65 +184,39 @@ export function ShareModal({
 
 // ===== 海报本体 (9:16, 720x1280 内部坐标系) =====
 
-import { forwardRef } from "react";
-
 const POSTER_WIDTH = 720;
 const POSTER_HEIGHT = 1280;
 const POSTER_SCALE = 0.45; // 展示缩放比例
 
-export const SharePoster = forwardRef<
-  HTMLDivElement,
-  {
-    pet: CloudPet;
-    portraitUrl: string | null;
-    portraitFailed: boolean;
-    onPortraitError: () => void;
-  }
->(function SharePoster(
-  { pet, portraitUrl, portraitFailed, onPortraitError },
-  ref
-) {
-  return (
-    <div
-      ref={ref}
-      className="relative overflow-hidden"
-      style={{
-        width: POSTER_WIDTH * POSTER_SCALE,
-        height: POSTER_HEIGHT * POSTER_SCALE,
-        background: "#F5EFE0",
-      }}
-    >
-      {/* 内部内容按 1:1 渲染,通过外层 transform 缩放展示 */}
+export const SharePoster = forwardRef<HTMLDivElement, { pet: CloudPet }>(
+  function SharePoster({ pet }, ref) {
+    return (
       <div
+        ref={ref}
+        className="relative overflow-hidden"
         style={{
-          width: POSTER_WIDTH,
-          height: POSTER_HEIGHT,
-          transform: `scale(${POSTER_SCALE})`,
-          transformOrigin: "top left",
+          width: POSTER_WIDTH * POSTER_SCALE,
+          height: POSTER_HEIGHT * POSTER_SCALE,
+          background: "#F5EFE0",
         }}
       >
-        <PosterContent
-          pet={pet}
-          portraitUrl={portraitUrl}
-          portraitFailed={portraitFailed}
-          onPortraitError={onPortraitError}
-        />
+        {/* 内部内容按 1:1 渲染,通过外层 transform 缩放展示 */}
+        <div
+          style={{
+            width: POSTER_WIDTH,
+            height: POSTER_HEIGHT,
+            transform: `scale(${POSTER_SCALE})`,
+            transformOrigin: "top left",
+          }}
+        >
+          <PosterContent pet={pet} />
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
-function PosterContent({
-  pet,
-  portraitUrl,
-  portraitFailed,
-  onPortraitError,
-}: {
-  pet: CloudPet;
-  portraitUrl: string | null;
-  portraitFailed: boolean;
-  onPortraitError: () => void;
-}) {
+function PosterContent({ pet }: { pet: CloudPet }) {
   return (
     <div
       className="relative w-full h-full flex flex-col"
@@ -316,78 +235,90 @@ function PosterContent({
         <span className="font-mono text-sm font-bold text-brick">No.052</span>
       </div>
 
-      {/* 立绘 */}
-      <div className="flex-1 flex items-center justify-center px-12 py-8">
+      {/* 中央装饰框(specimen mini-card) */}
+      <div className="flex-1 flex items-center justify-center px-12 py-6">
         <div
-          className="relative w-full aspect-square rounded-2xl overflow-hidden border-4 border-warm-brown"
+          className="relative w-full aspect-square rounded-2xl flex flex-col items-center justify-center"
           style={{
-            boxShadow: "0 8px 32px rgba(110, 86, 53, 0.3)",
+            background: "rgba(245, 233, 208, 0.6)",
+            border: "3px solid #8B6F47",
+            boxShadow:
+              "0 8px 32px rgba(110, 86, 53, 0.25), inset 0 0 0 6px rgba(245, 233, 208, 0.6), inset 0 0 0 8px #8B6F47",
           }}
         >
-          {portraitUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={portraitUrl}
-              alt={pet.petName}
-              className="w-full h-full object-cover"
-              onError={onPortraitError}
-            />
-          ) : portraitFailed ? (
-            // 加载失败,显示占位
-            <div
-              className="w-full h-full flex flex-col items-center justify-center bg-oat-200"
-              style={{ color: "#8B6F47" }}
-            >
-              <div className="text-6xl mb-2">🐾</div>
-              <div className="font-serif text-2xl font-bold text-brown-900">
-                {pet.petName}
-              </div>
-              <div className="text-xs text-brown-600 mt-1">
-                立绘加载失败
-              </div>
-            </div>
-          ) : (
-            // 加载中,显示骨架
-            <div
-              className="w-full h-full flex items-center justify-center bg-oat-200 animate-pulse"
-              style={{ color: "#A89A78" }}
-            >
-              <span className="text-sm">载入中...</span>
-            </div>
-          )}
+          {/* 4 角小装饰(双层框) */}
+          <div className="absolute inset-3 border border-warm-brown/40 rounded-xl pointer-events-none" />
+
+          {/* 大爪印 SVG */}
+          <svg
+            viewBox="0 0 200 200"
+            className="w-44 h-44 mb-3"
+            style={{ color: "#8B6F47" }}
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            {/* 主掌垫 */}
+            <ellipse cx="100" cy="135" rx="55" ry="42" />
+            {/* 4 个脚趾 */}
+            <ellipse cx="55" cy="75" rx="18" ry="26" transform="rotate(-20 55 75)" />
+            <ellipse cx="85" cy="55" rx="18" ry="28" />
+            <ellipse cx="115" cy="55" rx="18" ry="28" />
+            <ellipse cx="145" cy="75" rx="18" ry="26" transform="rotate(20 145 75)" />
+          </svg>
+
+          {/* 名字(主标题) */}
+          <h1
+            className="font-serif text-6xl font-bold text-brown-900"
+            style={{ letterSpacing: "0.05em", lineHeight: 1.1 }}
+          >
+            {pet.petName}
+          </h1>
+
+          {/* 品种英文 */}
+          <p className="font-mono text-sm uppercase tracking-[0.18em] text-brown-600 mt-3">
+            {pet.breedSlug}
+          </p>
+
+          {/* 装饰:小植物 */}
+          <svg
+            viewBox="0 0 200 30"
+            className="w-32 h-5 mt-4"
+            style={{ color: "#A8C5A0" }}
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M 100 5 L 100 25" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            <ellipse cx="80" cy="12" rx="12" ry="4" transform="rotate(-25 80 12)" />
+            <ellipse cx="120" cy="12" rx="12" ry="4" transform="rotate(25 120 12)" />
+            <ellipse cx="100" cy="6" rx="10" ry="4" />
+            <circle cx="100" cy="28" r="2" />
+          </svg>
         </div>
       </div>
 
-      {/* 名字 + 品种 */}
-      <div className="px-12 text-center">
-        <h1
-          className="font-serif text-5xl font-bold text-brown-900 mb-2"
-          style={{ letterSpacing: "0.05em" }}
-        >
-          {pet.petName}
-        </h1>
-        <p className="font-mono text-sm uppercase tracking-[0.18em] text-brown-600">
+      {/* 中文品种 + 性格 chip 区 */}
+      <div className="px-12">
+        <p className="text-center font-serif text-2xl text-brown-700 mb-4">
           {pet.breedZh}
         </p>
-      </div>
 
-      {/* 分隔 */}
-      <div className="flex items-center justify-center my-6 px-12">
-        <div className="flex-1 h-px bg-warm-brown/40" />
-        <span className="px-3 text-warm-brown">✦</span>
-        <div className="flex-1 h-px bg-warm-brown/40" />
-      </div>
-
-      {/* 性格 + 品种 chip */}
-      <div className="px-12 flex items-center justify-center gap-3 mb-6">
-        <div
-          className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium"
-          style={{ color: "#8B6F47" }}
-        >
-          {PERSONALITY_LABEL[pet.personality]}
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div
+            className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium"
+            style={{ color: "#8B6F47" }}
+          >
+            {PERSONALITY_LABEL[pet.personality]}
+          </div>
+          <div className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium text-brown-700">
+            变体 v{pet.variantIndex}
+          </div>
         </div>
-        <div className="px-4 py-1.5 rounded-full border-2 border-warm-brown/60 bg-oat-50/80 text-sm font-medium text-brown-700">
-          变体 v{pet.variantIndex}
+
+        {/* 分隔 */}
+        <div className="flex items-center justify-center mb-6">
+          <div className="flex-1 h-px bg-warm-brown/40" />
+          <span className="px-3 text-warm-brown">✦</span>
+          <div className="flex-1 h-px bg-warm-brown/40" />
         </div>
       </div>
 
@@ -412,10 +343,13 @@ function PosterContent({
         </div>
       </div>
 
-      {/* 底部:URL */}
+      {/* 底部:URL + 日期 */}
       <div className="px-12 pb-8 text-center">
         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brown-500">
           out-three-tan.vercel.app
+        </p>
+        <p className="font-mono text-[10px] text-brown-400 mt-1">
+          领养于 {new Date(pet.createdAt).toLocaleDateString("zh-CN")}
         </p>
       </div>
 
