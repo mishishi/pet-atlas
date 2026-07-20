@@ -68,3 +68,4 @@ scripts/cloud-pet-pool.json
 package-lock.json
 web/.env.local
 web/.env.local
+.env*
