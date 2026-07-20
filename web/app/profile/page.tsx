@@ -25,6 +25,7 @@ import { getBreedVariants } from "@/lib/cloud-pet-urls";
 import { PERSONALITY_LABEL } from "@/lib/cloudPet";
 import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
 import { PetDiary } from "@/components/cloud-pet/PetDiary";
+import { ShareModal } from "@/components/cloud-pet/ShareModal";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
 
@@ -172,6 +173,7 @@ export default function ProfilePage() {
                   重新领养
                 </Link>
                 <RerollButton pet={pet} disabled={rerolls === 0} />
+                <ShareTrigger pet={pet} />
               </div>
 
               <p className="text-xs text-brown-500 text-center mt-4">
@@ -206,6 +208,21 @@ function Stat({ label, value }: { label: string; value: string }) {
       <div className="text-xs text-brown-600">{label}</div>
       <div className="font-mono font-bold text-warm-brown">{value}</div>
     </div>
+  );
+}
+
+function ShareTrigger({ pet }: { pet: CloudPet }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className="block w-full py-3 text-center rounded-lg border-2 border-warm-brown/40 text-brown-800 font-medium hover:bg-warm-brown/5 hover:border-warm-brown transition-colors"
+      >
+        🎁 分享我的云宠物
+      </button>
+      {open && <ShareModal pet={pet} onClose={() => setOpen(false)} />}
+    </>
   );
 }
 
