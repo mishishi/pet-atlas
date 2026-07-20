@@ -27,6 +27,11 @@ import {
   getActionConfig,
   ALL_ACTIONS,
 } from "@/lib/petStats";
+import {
+  getSyncStatus,
+  onSyncStatusChange,
+  type SyncStatus,
+} from "@/lib/tcbSync";
 
 const STAT_DISPLAY: Array<{
   key: "hunger" | "energy" | "happiness";
@@ -41,10 +46,25 @@ const STAT_DISPLAY: Array<{
 
 const COOLDOWN_TICK_MS = 1000;
 
+const SYNC_BADGE: Record<SyncStatus, { emoji: string; label: string; tone: string }> = {
+  idle: { emoji: "☁️", label: "本地", tone: "text-brown-500" },
+  syncing: { emoji: "🔄", label: "同步中", tone: "text-amber-600" },
+  synced: { emoji: "☁️", label: "已同步", tone: "text-forest" },
+  offline: { emoji: "📡", label: "离线", tone: "text-brown-400" },
+  error: { emoji: "⚠️", label: "同步失败", tone: "text-brick" },
+};
+
 export function PetStatusCard() {
   const [stats, setStats] = useState<PetStats | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [, forceTick] = useState(0); // 强制 re-render 倒计时
+
+  // 同步状态订阅
+  useEffect(() => {
+    setSyncStatus(getSyncStatus());
+    return onSyncStatusChange(setSyncStatus);
+  }, []);
 
   // 初次加载 + 监听 storage 变化(多 tab 同步)
   useEffect(() => {
@@ -88,12 +108,12 @@ export function PetStatusCard() {
           "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/></svg>\")",
       }}
     >
-      {/* 心情指示器 */}
+      {/* 心情指示器 + 同步状态 */}
       <div className="flex items-center gap-2 mb-4">
         <span className="text-2xl" aria-hidden>
           {moodMeta.emoji}
         </span>
-        <div>
+        <div className="flex-1">
           <div
             className="text-sm font-medium"
             style={{ color: moodMeta.color }}
@@ -101,6 +121,22 @@ export function PetStatusCard() {
             {moodMeta.label}
           </div>
           <div className="text-[11px] text-brown-600">{moodMeta.description}</div>
+        </div>
+        {/* M2.5 同步状态徽章 */}
+        <div
+          className={`flex items-center gap-1 text-[10px] font-mono ${SYNC_BADGE[syncStatus].tone}`}
+          title={
+            syncStatus === "offline"
+              ? "当前离线,数据存在本地,联网后自动同步"
+              : syncStatus === "error"
+              ? "云端同步失败,稍后重试"
+              : syncStatus === "synced"
+              ? "已同步到云端"
+              : "本地模式(未配云端)"
+          }
+        >
+          <span aria-hidden>{SYNC_BADGE[syncStatus].emoji}</span>
+          <span>{SYNC_BADGE[syncStatus].label}</span>
         </div>
       </div>
 

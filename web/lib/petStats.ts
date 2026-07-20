@@ -137,6 +137,14 @@ function writeJSON(key: string, value: unknown): void {
   }
 }
 
+/** fire-and-forget TCB 同步(若配了 envId) */
+function syncToTcb(stats: PetStats): void {
+  // 动态 import 避免循环依赖(tcbSync → petStats → tcbSync)
+  import("./tcbSync")
+    .then(({ pushPetStatsToTcb }) => pushPetStatsToTcb(stats))
+    .catch((err) => console.warn("[petStats] sync 调度失败", err));
+}
+
 // ===== 核心:读 = 算衰减 + 锁存 =====
 
 /**
@@ -153,6 +161,7 @@ export function getCurrentStats(): PetStats | null {
   if (!saved || saved.lastUpdatedAt === 0) {
     const fresh: PetStats = { ...DEFAULT_STATS, lastUpdatedAt: now };
     writeJSON(KEY_STATS, fresh);
+    syncToTcb(fresh);
     return fresh;
   }
 
@@ -170,6 +179,8 @@ export function getCurrentStats(): PetStats | null {
 
   // 锁存(防止下次读取再衰减)
   writeJSON(KEY_STATS, decayed);
+  // 衰减后的新基线同步 TCB(用户在其他设备看到的也是这个新基线)
+  syncToTcb(decayed);
   return decayed;
 }
 
@@ -259,6 +270,7 @@ export function performAction(action: ActionType): ActionResult {
   if (action === "rest") newStats.lastRestedAt = now;
 
   writeJSON(KEY_STATS, newStats);
+  syncToTcb(newStats);
 
   return {
     ok: true,
@@ -335,4 +347,43 @@ export const ALL_ACTIONS: ActionType[] = ["feed", "play", "rest"];
 export function clearPetStats(): void {
   if (!isClient()) return;
   localStorage.removeItem(KEY_STATS);
+}
+
+// ===== M2.5 TCB 同步(M2.5+) =====
+
+/**
+ * 拉 TCB + 合并到 localStorage(last-write-wins)
+ * 应该在 /profile mount 时调用一次,实现"打开就同步"
+ *
+ * 返回合并后的 PetStats(已含衰减)
+ */
+export async function syncFromTcb(): Promise<PetStats | null> {
+  if (!isClient()) return null;
+  if (!getAdoptedPet()) return null;
+
+  const { fetchPetStatsFromTcb, pushPetStatsToTcb } = await import("./tcbSync");
+  const remote = await fetchPetStatsFromTcb();
+  if (!remote) {
+    // TCB 没记录,推一份当前的上去
+    const local = getCurrentStats();
+    if (local) await pushPetStatsToTcb(local);
+    return local;
+  }
+
+  // 跟 localStorage 比 lastUpdatedAt
+  const local = readJSON<PetStats | null>(KEY_STATS, null);
+  const localTime = local?.lastUpdatedAt || 0;
+  const remoteTime = remote.lastUpdatedAt || 0;
+
+  if (remoteTime > localTime) {
+    // TCB 较新 → 用 TCB 数据覆盖 localStorage
+    writeJSON(KEY_STATS, remote);
+    // 之后读时会自动应用新基线 + 衰减
+    return getCurrentStats();
+  } else {
+    // 本地较新 → 推 localStorage 上 TCB
+    const fresh = getCurrentStats();
+    if (fresh) await pushPetStatsToTcb(fresh);
+    return fresh;
+  }
 }

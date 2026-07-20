@@ -19,10 +19,13 @@ import {
   remainingRerolls,
   recordBreedRead,
   type CloudPet,
+  syncCloudPetFromTcb,
 } from "@/lib/cloudPet";
 import { getBreedVariants } from "@/lib/cloud-pet-urls";
 import { PERSONALITY_LABEL } from "@/lib/cloudPet";
 import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
+import { syncFromTcb } from "@/lib/petStats";
+import { setupNetworkListeners } from "@/lib/tcbSync";
 
 export default function ProfilePage() {
   const [pet, setPet] = useState<CloudPet | null>(null);
@@ -31,6 +34,17 @@ export default function ProfilePage() {
   useEffect(() => {
     setMounted(true);
     setPet(getAdoptedPet());
+
+    // M2.5 TCB 同步:挂载时拉新 + 监听 online/offline
+    setupNetworkListeners();
+    (async () => {
+      const freshPet = await syncCloudPetFromTcb();
+      if (freshPet) setPet(freshPet);
+      // stats 同步(内部会触发 PetStatusCard re-render via storage event)
+      await syncFromTcb();
+      // 强制刷新页面(因为 PetStatusCard 自己 useEffect 只在 mount 读一次)
+      window.dispatchEvent(new StorageEvent("storage", { key: "pet-atlas:pet-stats:v1" }));
+    })();
   }, []);
 
   if (!mounted) {

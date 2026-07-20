@@ -89,6 +89,12 @@ export function saveAdoptedPet(pet: CloudPet): void {
   // 新领养 = 重置 reroll
   const fresh: RerollState = { used: 0, unlocked: 1, max: 3 };
   writeJSON(KEY_REROLL, fresh);
+  // M2.5+ fire-and-forget 同步到 TCB
+  if (isClient()) {
+    import("./tcbSync")
+      .then(({ pushCloudPetToTcb }) => pushCloudPetToTcb(pet))
+      .catch((err) => console.warn("[cloudPet] sync 调度失败", err));
+  }
 }
 
 export function clearAdoptedPet(): void {
@@ -96,6 +102,39 @@ export function clearAdoptedPet(): void {
   localStorage.removeItem(KEY_PET);
   localStorage.removeItem(KEY_REROLL);
   localStorage.removeItem(KEY_READS);
+  // M2.5+ TCB 同步删除
+  import("./tcbSync")
+    .then(({ deleteCloudPetFromTcb }) => deleteCloudPetFromTcb())
+    .catch((err) => console.warn("[cloudPet] delete sync 失败", err));
+}
+
+// ===== M2.5 TCB 拉新合并 =====
+
+/**
+ * 拉 TCB + 合并(简单 last-write-wins:用 createdAt 较新的)
+ * 应该在 /profile mount 时调用
+ */
+export async function syncCloudPetFromTcb(): Promise<CloudPet | null> {
+  if (!isClient()) return null;
+  const { fetchCloudPetFromTcb, pushCloudPetToTcb } = await import("./tcbSync");
+  const remote = await fetchCloudPetFromTcb();
+  if (!remote) {
+    const local = getAdoptedPet();
+    if (local) await pushCloudPetToTcb(local);
+    return local;
+  }
+  const local = getAdoptedPet();
+  if (!local) {
+    // 本地没记录 → 用 TCB 的(可能换设备场景)
+    writeJSON(KEY_PET, remote);
+    return remote;
+  }
+  // 两边都有 → 用 createdAt 较新的
+  if (remote.createdAt > local.createdAt) {
+    writeJSON(KEY_PET, remote);
+    return remote;
+  }
+  return local;
 }
 
 // ===== Reroll 配额 =====
