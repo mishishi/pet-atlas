@@ -17,7 +17,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
-dotenv.config({ path: path.join(process.cwd(), '.env.local') });
+// 优先 web/.env.local,fallback 到 repo 根 .env.local(因为 TCB 凭证通常放根)
+const LOCAL_ENV = path.join(process.cwd(), '.env.local');
+const ROOT_ENV = path.resolve(process.cwd(), '..', '.env.local');
+if (fs.existsSync(LOCAL_ENV)) {
+  dotenv.config({ path: LOCAL_ENV });
+} else if (fs.existsSync(ROOT_ENV)) {
+  dotenv.config({ path: ROOT_ENV });
+} else {
+  dotenv.config({ path: path.join(process.cwd(), '.env.local') });
+}
 import COS from 'cos-nodejs-sdk-v5';
 
 const BUCKET = process.env.TCB_BUCKET;
