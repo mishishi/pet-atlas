@@ -279,30 +279,50 @@ export function HeroPoster() {
             <p className="font-serif text-base md:text-lg text-brown-800 leading-snug">
               50 种动物的{" "}
               <span className="italic">vintage</span>{" "}
-              标本卡图谱
+              标本卡图鉴 + 你的云宠物
             </p>
             <p className="font-mono text-[10px] sm:text-xs md:text-sm text-brown-600 mt-1 tracking-wider">
-              犬 · 猫 · 小型哺乳 · 鸟 · 爬虫
+              犬 · 猫 · 小型哺乳 · 鸟 · 爬虫 · 云宠物养成
             </p>
           </div>
 
-          <Link href="/pets" className="group shrink-0">
-            <div
-              className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 font-serif text-sm sm:text-base md:text-lg text-brown-900 border-2 border-brown-700 transition-all duration-300 hover:bg-brown-700 hover:text-oat-100"
-              style={{
-                background: "rgba(245, 233, 208, 0.4)",
-                boxShadow: "0 4px 12px -4px rgba(110, 86, 53, 0.25)",
-              }}
-            >
-              <span>开始浏览</span>
-              <span
-                className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-                aria-hidden="true"
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+            <Link href="/adopt" className="group shrink-0">
+              <div
+                className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 md:py-3.5 font-serif text-sm sm:text-base md:text-lg text-oat-100 border-2 border-warm-brown transition-all duration-300 hover:bg-warm-brown hover:border-warm-brown stamp-pulse"
+                style={{
+                  background: "#8B6F47",
+                  boxShadow: "0 4px 12px -4px rgba(110, 86, 53, 0.4)",
+                }}
               >
-                →
-              </span>
-            </div>
-          </Link>
+                <span aria-hidden="true">🐾</span>
+                <span>领养一只</span>
+                <span
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </div>
+            </Link>
+            <Link href="/pets" className="group shrink-0">
+              <div
+                className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 md:py-3.5 font-serif text-sm sm:text-base md:text-lg text-brown-900 border-2 border-brown-700/70 transition-all duration-300 hover:bg-brown-700 hover:text-oat-100"
+                style={{
+                  background: "rgba(245, 233, 208, 0.4)",
+                  boxShadow: "0 4px 12px -4px rgba(110, 86, 53, 0.25)",
+                }}
+              >
+                <span>先看图鉴</span>
+                <span
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

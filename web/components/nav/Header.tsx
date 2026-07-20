@@ -42,7 +42,7 @@ export function Header({
         </Link>
 
         {/* Center nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
           <Link
             href="/pets"
             className="text-brown-700 hover:text-brown-900 transition-colors"
@@ -54,6 +54,18 @@ export function Header({
             className="text-brown-700 hover:text-brown-900 transition-colors"
           >
             分类
+          </Link>
+          <Link
+            href="/adopt"
+            className="text-brown-700 hover:text-brown-900 transition-colors"
+          >
+            领养
+          </Link>
+          <Link
+            href="/profile"
+            className="text-brown-700 hover:text-brown-900 transition-colors"
+          >
+            我的
           </Link>
           <Link
             href="/about"

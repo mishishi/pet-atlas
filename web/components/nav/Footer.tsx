@@ -27,6 +27,24 @@ export function Footer() {
             >
               全部品种
             </Link>
+            <Link
+              href="/adopt"
+              className="text-brown-700 hover:text-brown-900 transition-colors"
+            >
+              领养云宠物
+            </Link>
+            <Link
+              href="/profile"
+              className="text-brown-700 hover:text-brown-900 transition-colors"
+            >
+              我的宠物
+            </Link>
+            <Link
+              href="/about"
+              className="text-brown-700 hover:text-brown-900 transition-colors"
+            >
+              关于
+            </Link>
             <a
               href="https://github.com/mishishi/pet-atlas"
               target="_blank"
