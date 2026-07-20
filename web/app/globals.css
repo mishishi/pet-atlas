@@ -198,3 +198,9 @@ body::before {
   animation: inkBleed 0.8s ease-out;
   transform: scale(1.05) rotate(-2deg);
 }
+
+/* M2 · 云宠物 toast 反馈 */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

@@ -22,6 +22,7 @@ import {
 } from "@/lib/cloudPet";
 import { getBreedVariants } from "@/lib/cloud-pet-urls";
 import { PERSONALITY_LABEL } from "@/lib/cloudPet";
+import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
 
 export default function ProfilePage() {
   const [pet, setPet] = useState<CloudPet | null>(null);
@@ -89,7 +90,7 @@ export default function ProfilePage() {
                 </p>
               </div>
 
-              <div className="aspect-square max-w-md mx-auto rounded-xl overflow-hidden border-2 border-warm-brown/40 shadow-md mb-6">
+              <div className="aspect-square max-w-md mx-auto rounded-xl overflow-hidden border-2 border-warm-brown/40 shadow-md mb-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={pet.tcbUrl}
@@ -97,6 +98,9 @@ export default function ProfilePage() {
                   className="w-full h-full object-cover"
                 />
               </div>
+
+              {/* M2 · 宠物状态卡(喂食/玩耍/休息) */}
+              <PetStatusCard />
 
               <div className="grid grid-cols-3 gap-2 text-center mb-6">
                 <Stat
