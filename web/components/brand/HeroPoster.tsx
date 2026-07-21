@@ -226,12 +226,12 @@ export function HeroPoster() {
           })}
         </div>
 
-        {/* 移动端:只显示中间 1 个大画框 + 左右 peek */}
-        <div className="md:hidden relative h-[400px] sm:h-[440px] flex items-center justify-center mb-6">
+        {/* 移动端:只显示中间 1 个大画框 + 左右 peek (M3 polish: 高度紧凑) */}
+        <div className="md:hidden relative h-[340px] sm:h-[380px] flex items-center justify-center mb-6">
           {/* 左 peek(只有中画框高度的 80%,轻微 rotate,露一半) */}
           <div
-            className="absolute left-[6%] top-[10%] w-[26%] z-10 opacity-70"
-            style={{ transform: "rotate(-4deg)" }}
+            className="absolute left-[6%] top-[14%] w-[24%] z-10 opacity-60"
+            style={{ transform: "rotate(-5deg)" }}
           >
             <SpecimenFrame
               url={getCoverUrl(final3[0].slug, "thumb") || ""}
@@ -245,8 +245,8 @@ export function HeroPoster() {
           </div>
           {/* 右 peek */}
           <div
-            className="absolute right-[6%] top-[10%] w-[26%] z-10 opacity-70"
-            style={{ transform: "rotate(3deg)" }}
+            className="absolute right-[6%] top-[14%] w-[24%] z-10 opacity-60"
+            style={{ transform: "rotate(4deg)" }}
           >
             <SpecimenFrame
               url={getCoverUrl(final3[2].slug, "thumb") || ""}
@@ -259,7 +259,7 @@ export function HeroPoster() {
             />
           </div>
           {/* 主画框 */}
-          <div className="relative z-20 w-[55%]">
+          <div className="relative z-20 w-[52%]">
             <SpecimenFrame
               url={getCoverUrl(final3[1].slug, "medium") || ""}
               fallbackUrl={getCoverUrl(final3[1].slug, "full") || undefined}
@@ -277,7 +277,7 @@ export function HeroPoster() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 md:gap-6 pl-1 md:pl-4 pr-1 md:pr-4">
           <div>
             <p className="font-serif text-base md:text-lg text-brown-800 leading-snug">
-              50 种动物的{" "}
+              {allPets.length} 种动物的{" "}
               <span className="italic">vintage</span>{" "}
               标本卡图鉴 + 你的云宠物
             </p>
