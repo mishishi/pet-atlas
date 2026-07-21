@@ -17,6 +17,7 @@ import Link from "next/link";
 import { Header } from "@/components/nav/Header";
 import { Footer } from "@/components/nav/Footer";
 import { BottomNav } from "@/components/nav/BottomNav";
+import { Confetti } from "@/components/brand/Confetti";
 import {
   BREED_FEATURES,
   type BreedCategory,
@@ -60,6 +61,9 @@ export default function AdoptPage() {
   const [colorPreference, setColorPreference] =
     useState<ColorPreference>("classic");
   const [selectedVariant, setSelectedVariant] = useState<1 | 2 | 3>(1);
+  // M3 polish: 翻面状态 + 庆祝粒子
+  const [flipped, setFlipped] = useState<1 | 2 | 3 | null>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const groupedBreeds = useMemo(() => {
     const out: Record<BreedCategory, BreedFeatures[]> = {
@@ -102,11 +106,22 @@ export default function AdoptPage() {
     };
 
     saveAdoptedPet(pet);
-    router.push("/profile");
+    // M3 polish: 撒花庆祝 + 短暂延迟后跳转(让用户看到庆祝)
+    setShowConfetti(true);
+    setTimeout(() => {
+      router.push("/profile");
+    }, 1500);
+  }
+
+  // 翻面切换(只展示一个卡片的背面)
+  function handleFlipCard(v: 1 | 2 | 3) {
+    setFlipped((prev) => (prev === v ? null : v));
   }
 
   return (
     <>
+      {/* M3 polish: 庆祝粒子 */}
+      {showConfetti && <Confetti count={50} />}
       <Header />
       <main className="pb-24 md:pb-12 min-h-screen">
         <div
@@ -282,44 +297,107 @@ export default function AdoptPage() {
                   </div>
                 </div>
 
-                {/* 3 个变体 */}
+                {/* 3 个变体(flip-card) */}
                 <div>
                   <label className="block text-sm font-medium text-brown-900 mb-2">
                     选一只立绘
                     <span className="ml-2 text-xs text-brown-500 font-normal">
-                      (每个品种 AI 生成 3 张,选最合眼缘的)
+                      (每个品种 AI 生成 3 张,点击卡片翻面看名字)
                     </span>
                   </label>
                   <div className="grid grid-cols-3 gap-3">
                     {getBreedVariants(selectedBreed.slug).map((url, idx) => {
                       const v = (idx + 1) as 1 | 2 | 3;
+                      const isFlipped = flipped === v;
+                      const isSelected = selectedVariant === v;
                       return (
-                        <button
+                        <div
                           key={v}
-                          onClick={() => setSelectedVariant(v)}
-                          className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                            selectedVariant === v
-                              ? "border-warm-brown ring-2 ring-warm-brown/30 scale-[0.98]"
-                              : "border-brown-300/60 hover:border-brown-400"
+                          className={`flip-card aspect-square ${
+                            isFlipped ? "flipped" : ""
                           }`}
                         >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={url}
-                            alt={`${selectedBreed.breedZh} 变体 ${v}`}
-                            className="w-full h-full object-cover"
-                          />
-                          {selectedVariant === v && (
-                            <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-warm-brown text-white flex items-center justify-center text-xs font-bold">
-                              ✓
-                            </div>
-                          )}
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent p-2">
-                            <div className="text-white text-xs font-mono">
-                              v{v}
-                            </div>
+                          <div
+                            className="flip-card-inner rounded-xl"
+                            style={{
+                              border: isSelected
+                                ? "2px solid var(--warm-brown)"
+                                : "2px solid rgba(139, 111, 71, 0.25)",
+                              boxShadow: isSelected
+                                ? "0 0 0 4px rgba(139, 111, 71, 0.18), 0 4px 12px -2px rgba(110, 86, 53, 0.25)"
+                                : "0 2px 6px -2px rgba(110, 86, 53, 0.15)",
+                            }}
+                          >
+                            {/* 正面:立绘图 */}
+                            <button
+                              type="button"
+                              onClick={() => handleFlipCard(v)}
+                              className="flip-card-face front w-full h-full overflow-hidden bg-oat-200"
+                              aria-label={`翻面看 ${selectedBreed.breedZh} 变体 ${v} 名字`}
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={url}
+                                alt={`${selectedBreed.breedZh} 变体 ${v}`}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/40 text-white text-[10px] font-mono">
+                                v{v}
+                              </div>
+                              {isSelected && (
+                                <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-warm-brown text-white flex items-center justify-center text-xs font-bold animate-bounce-in">
+                                  ✓
+                                </div>
+                              )}
+                              <div className="absolute bottom-2 left-2 right-2 text-[10px] text-white/90 text-center">
+                                点击翻面
+                              </div>
+                            </button>
+
+                            {/* 背面:名字 + 性格 */}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                handleFlipCard(v);
+                                if (!isSelected) setSelectedVariant(v);
+                              }}
+                              className="flip-card-face back w-full h-full overflow-hidden p-3 flex flex-col items-center justify-center text-center"
+                              style={{
+                                background:
+                                  "linear-gradient(135deg, #F5E9D0 0%, #E8D9B8 100%)",
+                              }}
+                              aria-label={`翻回 ${selectedBreed.breedZh} 变体 ${v} 图片`}
+                            >
+                              <div className="font-mono text-[10px] uppercase tracking-widest text-brown-500 mb-1">
+                                MUSEUM SPECIMEN
+                              </div>
+                              <div className="font-serif text-lg font-bold text-brown-900 leading-tight mb-1">
+                                {petName || `${selectedBreed.breedZh}`}
+                              </div>
+                              <div className="text-[11px] text-brown-600 italic mb-2">
+                                {selectedBreed.breedEn}
+                              </div>
+                              <div
+                                className="px-2 py-0.5 rounded-full text-[10px] font-medium mb-2"
+                                style={{
+                                  background: "rgba(139, 111, 71, 0.1)",
+                                  color: "var(--warm-brown)",
+                                  border: "1px solid rgba(139, 111, 71, 0.3)",
+                                }}
+                              >
+                                {PERSONALITY_LABEL[personality]}
+                              </div>
+                              <div className="text-[10px] text-brown-500">
+                                变体 v{v}
+                              </div>
+                              {isSelected && (
+                                <div className="mt-2 text-[10px] font-medium text-warm-brown">
+                                  ✓ 已选中
+                                </div>
+                              )}
+                            </button>
                           </div>
-                        </button>
+                        </div>
                       );
                     })}
                   </div>
