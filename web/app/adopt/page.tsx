@@ -277,7 +277,7 @@ export default function AdoptPage() {
                   ))}
                 </div>
 
-                {/* 品种大图 grid */}
+                {/* 品种大图 grid — 卡片 aspect 与 v1 立绘一致 (9:16) */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                   {filteredBreeds.map((b) => (
                     <PetCard
@@ -550,9 +550,9 @@ function PetCard({
   return (
     <button
       onClick={onClick}
-      className="group relative aspect-[3/4] rounded-2xl overflow-hidden border-2 border-brown-200 bg-oat-100 hover:border-warm-brown hover:shadow-xl transition-all min-h-[200px] active:scale-[0.98]"
+      className="group relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-brown-200 bg-oat-100 hover:border-warm-brown hover:shadow-xl transition-all active:scale-[0.98]"
     >
-      {/* 主体图 */}
+      {/* 主体图 — 卡片 aspect 跟 v1 一致 (9:16),object-cover 不裁 */}
       <div className="absolute inset-0">
         <SafeImage
           src={v1}
@@ -562,12 +562,12 @@ function PetCard({
           className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
         />
       </div>
-      {/* 渐变底色 */}
+      {/* 渐变底色(增强文字可读) */}
       <div
-        className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(45, 35, 22, 0.55) 100%)",
+            "linear-gradient(180deg, transparent 0%, rgba(45, 35, 22, 0.7) 100%)",
         }}
       />
       {/* 文字 */}

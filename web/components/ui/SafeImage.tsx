@@ -20,7 +20,7 @@
 "use client";
 
 import Image, { ImageProps } from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface SafeImageProps
   extends Omit<ImageProps, "src" | "onError" | "onLoad"> {
@@ -41,9 +41,14 @@ export function SafeImage({
   const [hasErrored, setHasErrored] = useState(false);
   const [fullyFailed, setFullyFailed] = useState(false);
 
-  // src 变化时(比如 fallback swap),重置 loading 状态
-  // 用 useEffect 监听 currentSrc 变化,避免无限循环
-  // (简化:handleError 会显式调用 setIsLoading(true),这里不重复)
+  // ⭐ src 变化时(翻牌 / 选变体 / URL 切换),重置所有状态 + 换 currentSrc
+  // 不然 useState 只 init 一次,新 src 进来 currentSrc 还是旧的,图不换
+  useEffect(() => {
+    setCurrentSrc(src);
+    setIsLoading(true);
+    setHasErrored(false);
+    setFullyFailed(false);
+  }, [src]);
 
   const handleError = () => {
     if (!hasErrored && fallback && fallback !== currentSrc) {
@@ -86,6 +91,7 @@ export function SafeImage({
         className={className}
         onError={handleError}
         onLoad={handleLoad}
+        key={src}
       />
       {isLoading && (
         <div
