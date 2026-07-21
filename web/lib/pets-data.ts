@@ -76,6 +76,26 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "syrian-hamster",
   "toy-poodle",
   "winter-white-hamster",
+  // M2 扩品种补图 19 个(2026-07-21)
+  "axolotl",
+  "beagle",
+  "bengal",
+  "boxer",
+  "canary",
+  "capybara",
+  "corn-snake",
+  "macaw",
+  "maltese",
+  "munchkin",
+  "prairie-dog",
+  "pug",
+  "russian-blue",
+  "scottish-fold",
+  "shih-tzu",
+  "sugar-glider",
+  "tenrec",
+  "yorkshire-terrier",
+  "zebra-finch",
 ]);
 
 /** category → 目录名映射 */
