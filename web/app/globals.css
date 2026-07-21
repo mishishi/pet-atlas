@@ -207,6 +207,14 @@ body::before {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* M2.5 · 心情立绘雨滴动画 */
+@keyframes rainDrop {
+  0% { transform: translateY(-4px); opacity: 0; }
+  20% { opacity: 0.85; }
+  80% { opacity: 0.85; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+
 /* =========================================================
    M3 polish · 2026-07-21
    Flip card / Pulse / Confetti / Alert pulse

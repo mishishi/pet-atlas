@@ -26,6 +26,7 @@ import { PERSONALITY_LABEL } from "@/lib/cloudPet";
 import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
 import { PetDiary } from "@/components/cloud-pet/PetDiary";
 import { ShareModal } from "@/components/cloud-pet/ShareModal";
+import { MoodPortrait } from "@/components/cloud-pet/MoodPortrait";
 import { FavoritesList } from "@/components/brand/FavoritesList";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
@@ -136,11 +137,9 @@ export default function ProfilePage() {
               </div>
 
               <div className="aspect-square max-w-md mx-auto rounded-xl overflow-hidden border-2 border-warm-brown/40 shadow-md mb-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <MoodPortrait
                   src={pet.tcbUrl}
                   alt={pet.petName}
-                  className="w-full h-full object-cover"
                 />
               </div>
 
