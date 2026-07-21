@@ -98,6 +98,8 @@ export function PetSettings() {
   const [nameInput, setNameInput] = useState("");
   const [toast, setToast] = useState<string | null>(null);
   const [speaking, setSpeaking] = useState(false);
+  const [voiceExpanded, setVoiceExpanded] = useState(false);
+  const [activeVoice, setActiveVoice] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -209,6 +211,41 @@ export function PetSettings() {
         setTimeout(() => setSpeaking(false), ms);
       } else {
         flash("当前浏览器不支持语音");
+      }
+    },
+    [flash]
+  );
+
+  /** 试听 6 段:直接播指定 mood 的预生成音频 */
+  const handleTestVoice = useCallback(
+    (mood: string) => {
+      const audioUrl = MOOD_AUDIO[mood];
+      if (!audioRef.current || !audioUrl) return;
+      try {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current.src = audioUrl;
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setActiveVoice(mood);
+              const onEnded = () => {
+                setActiveVoice((cur) => (cur === mood ? null : cur));
+                audioRef.current?.removeEventListener("ended", onEnded);
+              };
+              audioRef.current?.addEventListener("ended", onEnded);
+              setTimeout(() => {
+                setActiveVoice((cur) => (cur === mood ? null : cur));
+              }, 6000);
+            })
+            .catch((err) => {
+              console.warn("[PetSettings] test voice 失败", err);
+              flash("播放失败,请点击页面任意位置再试");
+            });
+        }
+      } catch (err) {
+        console.warn("[PetSettings] test voice 异常", err);
       }
     },
     [flash]
@@ -345,6 +382,50 @@ export function PetSettings() {
         <p className="text-[10px] text-brown-500 mt-1.5 leading-relaxed">
           预留钩子 · M3+ 影响立绘滤镜色温
         </p>
+      </div>
+
+      {/* 6 段试听折叠区 */}
+      <div className="mt-4 pt-3 border-t border-brown-200/50">
+        <button
+          onClick={() => setVoiceExpanded((v) => !v)}
+          className="w-full flex items-center justify-between text-xs text-brown-700 hover:text-warm-brown transition-colors"
+          type="button"
+          aria-expanded={voiceExpanded}
+        >
+          <span>🎧 试一下 6 种心情</span>
+          <span className="text-[10px]">{voiceExpanded ? "▾ 收起" : "▸ 展开"}</span>
+        </button>
+
+        {voiceExpanded && (
+          <div className="mt-2 grid grid-cols-3 gap-1.5">
+            {[
+              { mood: "happy", label: "开心", emoji: "✨" },
+              { mood: "calm", label: "平静", emoji: "🍃" },
+              { mood: "hungry", label: "饿了", emoji: "🍖" },
+              { mood: "sleepy", label: "困了", emoji: "💤" },
+              { mood: "bored", label: "无聊", emoji: "🎾" },
+              { mood: "sad", label: "难过", emoji: "💧" },
+            ].map((m) => {
+              const isActive = activeVoice === m.mood;
+              return (
+                <button
+                  key={m.mood}
+                  onClick={() => handleTestVoice(m.mood)}
+                  className={[
+                    "flex flex-col items-center gap-0.5 py-1.5 rounded-lg border text-xs transition-all",
+                    isActive
+                      ? "bg-warm-brown/15 border-warm-brown text-brown-900 animate-pulse"
+                      : "bg-oat-50 border-warm-brown/30 text-brown-700 hover:bg-warm-brown/5",
+                  ].join(" ")}
+                  type="button"
+                >
+                  <span className="text-base">{m.emoji}</span>
+                  <span className="font-medium">{m.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* toast */}
