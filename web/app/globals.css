@@ -204,3 +204,101 @@ body::before {
   0% { opacity: 0; transform: translateY(4px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* =========================================================
+   M3 polish · 2026-07-21
+   Flip card / Pulse / Confetti / Alert pulse
+   ========================================================= */
+
+/* 翻转卡片 3D */
+.flip-card {
+  perspective: 1200px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.flip-card-face.back {
+  transform: rotateY(180deg);
+}
+
+/* Pulse 动画(强调一下) */
+@keyframes importantPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.animate-important-pulse {
+  animation: importantPulse 0.6s ease-in-out 2;
+}
+
+/* Action 按钮点击 ripple 效果 */
+@keyframes buttonRipple {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.btn-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(139, 111, 71, 0.3);
+  pointer-events: none;
+  animation: buttonRipple 0.6s ease-out;
+}
+
+/* Confetti 粒子(简化 CSS 动画) */
+@keyframes confettiFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+.confetti-piece {
+  position: absolute;
+  width: var(--w, 8px);
+  height: var(--h, 12px);
+  background: var(--color, #8B6F47);
+  top: var(--startY, 50%);
+  left: var(--startX, 50%);
+  animation: confettiFall var(--duration, 1.4s) ease-out forwards;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+}
+
+/* 提示性的小弹跳 */
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-bounce-in {
+  animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 状态栏条的"该喂食了"脉冲提示(只在数值低时) */
+@keyframes attentionPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(164, 74, 63, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(164, 74, 63, 0.18); }
+}
+.animate-attention-pulse {
+  animation: attentionPulse 2s ease-in-out infinite;
+}

@@ -15,7 +15,7 @@
 
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import {
   type PetStats,
   type ActionType,
@@ -58,6 +58,11 @@ export function PetStatusCard() {
   const [stats, setStats] = useState<PetStats | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
+  const [ripples, setRipples] = useState<Record<ActionType, number>>({
+    feed: 0,
+    play: 0,
+    rest: 0,
+  });
   const [, forceTick] = useState(0); // 强制 re-render 倒计时
 
   // 同步状态订阅
@@ -81,11 +86,37 @@ export function PetStatusCard() {
     return () => clearInterval(id);
   }, [stats]);
 
+  // M3 polish: 状态衰减提醒 toast(只在数值 < 25 时,首次进入页面才弹)
+  const alertedRef = useRef(false);
+  useEffect(() => {
+    if (!stats) return;
+    // 只在页面首次加载时检测一次(避免每次 stat 变化都弹)
+    if (alertedRef.current) return;
+    alertedRef.current = true;
+
+    const alerts: string[] = [];
+    if (stats.hunger < 25) alerts.push("🍖 肚子在叫,该喂食啦");
+    if (stats.energy < 25) alerts.push("⚡ 能量不足,需要休息");
+    if (stats.happiness < 25) alerts.push("❤️ 心情低落,陪它玩会儿");
+
+    if (alerts.length > 0) {
+      // 3s 后才弹(让用户先看页面)
+      const t = setTimeout(() => setToast(alerts.join(" · ")), 3000);
+      const t2 = setTimeout(() => setToast(null), 3000 + 2200);
+      return () => {
+        clearTimeout(t);
+        clearTimeout(t2);
+      };
+    }
+  }, [stats]);
+
   const handleAction = useCallback((action: ActionType) => {
     const result = performAction(action);
     if (result.ok) {
       setStats(result.stats);
       setToast(result.feedback);
+      // 触发 ripple
+      setRipples((r) => ({ ...r, [action]: r[action] + 1 }));
       // 1.5s 自动消失
       setTimeout(() => setToast(null), 1500);
     } else {
@@ -99,6 +130,13 @@ export function PetStatusCard() {
 
   const mood = deriveMood(stats);
   const moodMeta = MOOD_META[mood];
+
+  // 哪个 stat 处于低值(< 25),用于 stat bar pulse
+  const lowStats = {
+    hunger: stats.hunger < 25,
+    energy: stats.energy < 25,
+    happiness: stats.happiness < 25,
+  };
 
   return (
     <div
@@ -140,7 +178,7 @@ export function PetStatusCard() {
         </div>
       </div>
 
-      {/* 状态条 */}
+      {/* 状态条(数值低时 attention-pulse) */}
       <div className="space-y-2.5 mb-4">
         {STAT_DISPLAY.map((stat) => (
           <StatBar
@@ -149,11 +187,12 @@ export function PetStatusCard() {
             emoji={stat.emoji}
             value={stats[stat.key]}
             color={stat.color}
+            urgent={lowStats[stat.key]}
           />
         ))}
       </div>
 
-      {/* 动作按钮 */}
+      {/* 动作按钮(带 ripple) */}
       <div className="grid grid-cols-3 gap-2">
         {ALL_ACTIONS.map((action) => {
           const cfg = getActionConfig(action);
@@ -165,6 +204,7 @@ export function PetStatusCard() {
               action={action}
               disabled={disabled}
               onClick={() => handleAction(action)}
+              rippleKey={ripples[action]}
             />
           );
         })}
@@ -196,22 +236,34 @@ function StatBar({
   emoji,
   value,
   color,
+  urgent,
 }: {
   label: string;
   emoji: string;
   value: number;
   color: string;
+  urgent: boolean;
 }) {
   return (
-    <div>
+    <div className={urgent ? "rounded-md p-1 -m-1 animate-attention-pulse" : ""}>
       <div className="flex items-center justify-between text-xs mb-1">
         <span className="text-brown-700">
           <span className="mr-1" aria-hidden>
             {emoji}
           </span>
           {label}
+          {urgent && (
+            <span className="ml-1.5 text-[10px] font-medium" style={{ color }}>
+              需关注
+            </span>
+          )}
         </span>
-        <span className="font-mono text-brown-600">{value}</span>
+        <span
+          className={`font-mono ${urgent ? "font-bold" : ""}`}
+          style={{ color: urgent ? color : undefined }}
+        >
+          {value}
+        </span>
       </div>
       <div className="h-2 rounded-full bg-brown-100/80 overflow-hidden">
         <div
@@ -230,10 +282,12 @@ function ActionBtn({
   action,
   disabled,
   onClick,
+  rippleKey,
 }: {
   action: ActionType;
   disabled: boolean;
   onClick: () => void;
+  rippleKey: number;
 }) {
   const cfg = getActionConfig(action);
   return (
@@ -241,18 +295,26 @@ function ActionBtn({
       onClick={onClick}
       disabled={disabled}
       className={[
-        "flex flex-col items-center justify-center gap-0.5 py-2.5 rounded-lg border transition-all",
+        "relative overflow-hidden flex flex-col items-center justify-center gap-0.5 py-2.5 rounded-lg border transition-all",
         disabled
           ? "bg-brown-50 border-brown-200 text-brown-400 cursor-not-allowed"
-          : "bg-oat-50 border-warm-brown/40 text-brown-800 hover:bg-warm-brown/10 hover:border-warm-brown active:scale-95",
+          : "bg-oat-50 border-warm-brown/40 text-brown-800 hover:bg-warm-brown/10 hover:border-warm-brown hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]",
       ].join(" ")}
       type="button"
     >
-      <span className="text-lg" aria-hidden>
+      {/* Ripple 效果 */}
+      {rippleKey > 0 && (
+        <span
+          key={rippleKey}
+          className="btn-ripple"
+          aria-hidden
+        />
+      )}
+      <span className="text-lg relative z-10" aria-hidden>
         {cfg.emoji}
       </span>
-      <span className="text-xs font-medium">{cfg.label}</span>
-      <span className="text-[10px] text-brown-500">
+      <span className="text-xs font-medium relative z-10">{cfg.label}</span>
+      <span className="text-[10px] text-brown-500 relative z-10">
         {cfg.primaryDelta > 0 ? "+" : ""}
         {cfg.primaryDelta} {cfg.primary === "hunger" ? "饱腹" : cfg.primary === "energy" ? "能量" : "心情"}
       </span>

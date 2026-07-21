@@ -24,6 +24,7 @@ import {
 } from "@/lib/pets";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
 import { BotanicalBorder, LeafDivider } from "@/components/brand/BotanicalBorder";
+import { ScrollProgress } from "@/components/brand/ScrollProgress";
 import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
@@ -258,7 +259,7 @@ export default async function PetDetailPage({
           </div>
         </div>
 
-        {/* ============ In-page TOC ============ */}
+        {/* ============ In-page TOC (visible) ============ */}
         <nav
           aria-label="本页目录"
           className="mb-10 md:mb-16 flex flex-wrap items-center gap-x-1 gap-y-2 px-4 md:px-6 py-3 md:py-4 rounded-xl"
@@ -304,6 +305,20 @@ export default async function PetDetailPage({
             </a>
           )}
         </nav>
+
+        {/* ============ M3 polish: 滚动进度条 + Sticky TOC 高亮 ============ */}
+        <ScrollProgress
+          sections={[
+            ...(personality ? [{ id: "personality", label: "性格", en: "Personality" }] : []),
+            ...(atlas ? [{ id: "atlas", label: "图谱", en: "Plates" }] : []),
+            ...(pet.history?.timeline && pet.history.timeline.length > 0
+              ? [{ id: "history", label: "历史", en: "History" }]
+              : []),
+            ...(pet.famous && pet.famous.length > 0
+              ? [{ id: "famous", label: "名场面", en: "Famous" }]
+              : []),
+          ]}
+        />
 
         {/* ============ Personality Section ============ */}
         {personality && (

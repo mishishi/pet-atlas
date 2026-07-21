@@ -149,7 +149,7 @@ export default function ProfilePage() {
               {/* M2 B · 我的日记 */}
               <PetDiary />
 
-              <div className="grid grid-cols-3 gap-2 text-center mb-6">
+              <div className="grid grid-cols-3 gap-2 text-center mb-4">
                 <Stat
                   label="已解锁"
                   value={`${rerollState.unlocked}/${rerollState.max}`}
@@ -162,6 +162,28 @@ export default function ProfilePage() {
                   label="剩余换"
                   value={`${rerolls} 次`}
                 />
+              </div>
+
+              {/* M3 polish: reroll 次数清晰提示 */}
+              <div
+                className="mb-6 px-4 py-3 rounded-lg text-xs leading-relaxed"
+                style={{
+                  background: "rgba(139, 111, 71, 0.06)",
+                  border: "1px solid rgba(139, 111, 71, 0.18)",
+                  color: "var(--brown-700)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-base" aria-hidden>🦴</span>
+                  <span className="font-medium">换一只(选另外 2 个变体)</span>
+                </div>
+                <p className="text-[11px] text-brown-600">
+                  领养自带 1 次 · 读新图鉴每篇 +1 次(上限 3)· 当前剩余{" "}
+                  <span className="font-mono font-bold text-warm-brown">
+                    {rerolls}
+                  </span>{" "}
+                  次
+                </p>
               </div>
 
               {/* 操作区 */}
