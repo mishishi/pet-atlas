@@ -13,7 +13,8 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { getFavorites } from "@/lib/favorites";
-import { getAllPets, getCoverUrl } from "@/lib/pets";
+// 用 pets-data (client-safe) 而不是 lib/pets (有 fs,client bundle 会 build 失败)
+import { allPets, getCoverUrl } from "@/lib/pets-data";
 import type { Pet } from "@/lib/types";
 import { SafeImage } from "@/components/ui/SafeImage";
 
@@ -61,8 +62,7 @@ export function FavoritesList() {
     );
   }
 
-  // 用 getAllPets 找收藏的 Pet 对象
-  const allPets = getAllPets();
+  // 用 allPets 找收藏的 Pet 对象
   const favPets: Pet[] = favSlugs
     .map((slug) => allPets.find((p) => p.slug === slug))
     .filter((p): p is Pet => p !== undefined);
