@@ -27,6 +27,7 @@ import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
 import { PetDiary } from "@/components/cloud-pet/PetDiary";
 import { ShareModal } from "@/components/cloud-pet/ShareModal";
 import { MoodPortrait } from "@/components/cloud-pet/MoodPortrait";
+import { PetSettings } from "@/components/cloud-pet/PetSettings";
 import { FavoritesList } from "@/components/brand/FavoritesList";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
@@ -145,6 +146,9 @@ export default function ProfilePage() {
 
               {/* M2 · 宠物状态卡(喂食/玩耍/休息) */}
               <PetStatusCard />
+
+              {/* M2.5 · 宠物设置(改名/性格/色系/叫声) */}
+              <PetSettings />
 
               {/* M2 B · 我的日记 */}
               <PetDiary />

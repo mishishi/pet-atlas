@@ -108,6 +108,25 @@ export function saveAdoptedPet(pet: CloudPet): void {
   }
 }
 
+/**
+ * 部分更新已领养的 pet(改名/换 personality/换 color 等)
+ * 关键:不重置 reroll,保留 stats
+ * @returns 更新后的 pet,失败(null 表示没有 pet)
+ */
+export function updatePet(partial: Partial<CloudPet>): CloudPet | null {
+  const current = getAdoptedPet();
+  if (!current) return null;
+  const next: CloudPet = { ...current, ...partial };
+  writeJSON(KEY_PET, next);
+  // 同步到 TCB(不重置 stats,因为 stats 是独立的 storage key)
+  if (isClient()) {
+    import("./tcbSync")
+      .then(({ pushCloudPetToTcb }) => pushCloudPetToTcb(next))
+      .catch((err) => console.warn("[cloudPet] updatePet sync 调度失败", err));
+  }
+  return next;
+}
+
 export function clearAdoptedPet(): void {
   if (!isClient()) return;
   const pet = getAdoptedPet();
