@@ -261,27 +261,12 @@ export default function AtlasViewer({
           </div>
         </div>
 
-        {/* ============ 中部:大画框 + 左右翻页按钮 ============ */}
-        <div className="grid grid-cols-[auto_1fr] sm:grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-6 mb-4 md:mb-6">
-          {/* 左侧:上一张(桌机)/顶标(移动) */}
-          <div className="flex sm:block">
-            <button
-              onClick={() => goTo(page - 1, "prev")}
-              disabled={page === 1}
-              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
-              aria-label="上一张"
-            >
-              <span className="inline-block w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
-                ←
-              </span>
-              <span className="hidden md:inline">上一张</span>
-            </button>
-          </div>
-
-          {/* 中:大画框 */}
+        {/* ============ 中部:大画框(主)+ 左右翻页按钮(桌机) ============ */}
+        <div className="mb-4 md:mb-6">
+          {/* 大画框主体 — 满宽,只有 SpecimenFrame 内部 max-w 控制 */}
           <div className="flex justify-center">
             <div
-              className={`w-full max-w-[360px] sm:max-w-[440px] md:max-w-[520px] ${flipClass}`}
+              className={`w-full max-w-[420px] sm:max-w-[480px] md:max-w-[560px] ${flipClass}`}
               key={page}
             >
               <SpecimenFrame
@@ -308,18 +293,51 @@ export default function AtlasViewer({
             </div>
           </div>
 
-          {/* 右侧:下一张 */}
-          <div className="flex sm:block justify-end">
+          {/* 左右翻页按钮 — 桌机绝对定位在两侧,移动端放底下 */}
+          <div className="hidden md:block">
+            <button
+              onClick={() => goTo(page - 1, "prev")}
+              disabled={page === 1}
+              className="group fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
+              aria-label="上一张"
+            >
+              <span className="inline-block w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg shadow-md">
+                ←
+              </span>
+              <span className="hidden lg:inline font-serif">上一张</span>
+            </button>
             <button
               onClick={() => goTo(page + 1, "next")}
               disabled={page === total}
-              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
+              className="group fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
               aria-label="下一张"
             >
-              <span className="hidden md:inline">下一张</span>
-              <span className="inline-block w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
+              <span className="hidden lg:inline font-serif">下一张</span>
+              <span className="inline-block w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg shadow-md">
                 →
               </span>
+            </button>
+          </div>
+
+          {/* 移动端:翻页按钮放底下(占据空间小,大画框可以满宽) */}
+          <div className="flex md:hidden items-center justify-between gap-2 mt-6 px-2">
+            <button
+              onClick={() => goTo(page - 1, "prev")}
+              disabled={page === 1}
+              className="group flex-1 inline-flex items-center justify-center gap-2 py-2.5 rounded-full border-2 border-brown-300 bg-oat-200/80 text-brown-700 hover:border-brown-700 hover:bg-brown-700 hover:text-oat-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px] text-sm"
+              aria-label="上一张"
+            >
+              <span aria-hidden>←</span>
+              <span>上一张</span>
+            </button>
+            <button
+              onClick={() => goTo(page + 1, "next")}
+              disabled={page === total}
+              className="group flex-1 inline-flex items-center justify-center gap-2 py-2.5 rounded-full border-2 border-brown-300 bg-oat-200/80 text-brown-700 hover:border-brown-700 hover:bg-brown-700 hover:text-oat-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px] text-sm"
+              aria-label="下一张"
+            >
+              <span>下一张</span>
+              <span aria-hidden>→</span>
             </button>
           </div>
         </div>
