@@ -26,6 +26,7 @@ import { PERSONALITY_LABEL } from "@/lib/cloudPet";
 import { PetStatusCard } from "@/components/cloud-pet/PetStatusCard";
 import { PetDiary } from "@/components/cloud-pet/PetDiary";
 import { ShareModal } from "@/components/cloud-pet/ShareModal";
+import { FavoritesList } from "@/components/brand/FavoritesList";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
 
@@ -204,6 +205,9 @@ export default function ProfilePage() {
                 数据存在你的浏览器,清缓存会丢失
               </p>
             </div>
+
+            {/* M3 polish: 我的收藏 */}
+            <FavoritesList />
 
             {/* 怎么解锁换一只 */}
             <div className="mt-6 bg-oat-100/50 rounded-xl p-4 border border-brown-200/60">

@@ -25,6 +25,7 @@ import {
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
 import { BotanicalBorder, LeafDivider } from "@/components/brand/BotanicalBorder";
 import { ScrollProgress } from "@/components/brand/ScrollProgress";
+import { FavoriteButton } from "@/components/brand/FavoriteButton";
 import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
@@ -152,8 +153,12 @@ export default async function PetDetailPage({
             </span>
             <span>全部品种</span>
           </Link>
-          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brown-600">
-            {categoryLabel(pet.category)} · No. {petNum(slug)}
+          <div className="flex items-center gap-3">
+            {/* M3 polish: 收藏按钮 */}
+            <FavoriteButton slug={pet.slug} />
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brown-600 hidden sm:block">
+              {categoryLabel(pet.category)} · No. {petNum(slug)}
+            </div>
           </div>
         </div>
 
