@@ -281,11 +281,11 @@ export default function AtlasViewer({
           {/* 中:大画框 */}
           <div className="flex justify-center">
             <div
-              className={`w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] ${flipClass}`}
+              className={`w-full max-w-[360px] sm:max-w-[440px] md:max-w-[520px] ${flipClass}`}
               key={page}
             >
               <SpecimenFrame
-                url={fullCoverUrl}
+                url={currentImage || fullCoverUrl}
                 nameZh={nameZh}
                 nameEn={nameEn}
                 width="100%"
