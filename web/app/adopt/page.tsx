@@ -30,6 +30,7 @@ import {
   type BreedFeatures,
 } from "@/lib/breedFeatures";
 import { getBreedVariants } from "@/lib/cloud-pet-urls";
+import { allPets } from "@/lib/pets-data";
 import {
   saveAdoptedPet,
   generatePetId,
@@ -47,6 +48,16 @@ const CATEGORY_LABELS: Record<BreedCategory, string> = {
   bird: "鸟",
   reptile: "爬宠",
 };
+
+/** hero 右边的中文品种描述(2 句:`physical.coat` + `personality.summary`) */
+function getBreedZhDescription(slug: string): string {
+  const pet = allPets.find((p) => p.slug === slug);
+  if (!pet) return "";
+  const parts: string[] = [];
+  if (pet.physical?.coat) parts.push(pet.physical.coat);
+  if (pet.personality?.summary) parts.push(pet.personality.summary);
+  return parts.join("。") + "。";
+}
 
 const CATEGORY_FULL: Record<BreedCategory, string> = {
   dog: "犬 · Canis",
@@ -340,7 +351,7 @@ export default function AdoptPage() {
                         {selectedBreed.breedEn}
                       </p>
                       <p className="text-sm text-brown-700 leading-relaxed mb-4">
-                        {selectedBreed.features}
+                        {getBreedZhDescription(selectedBreed.slug)}
                       </p>
                     </div>
                   </div>
