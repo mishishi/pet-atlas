@@ -18,6 +18,9 @@ web/tsconfig.tsbuildinfo
 web/next-env.d.ts
 web/.swc/
 
+# Build-generated 客户端数据(prebuild 时生成)
+web/lib/pets-data.json
+
 # 临时文件 / 缓存
 *.log
 npm-debug.log*

@@ -2,7 +2,8 @@
  * BreedCard · 品种卡(图鉴)
  */
 import Link from "next/link";
-import { getCoverUrl } from "@/lib/pets";
+// 用 pets-data (client-safe) 而不是 lib/pets (有 fs)
+import { getCoverUrl } from "@/lib/pets-data";
 import { SafeImage } from "../ui/SafeImage";
 import type { Pet } from "@/lib/types";
 
