@@ -42,6 +42,7 @@
   --ink: var(--brown-900);
   --ink-soft: #6B6357;
   --accent: var(--brown-500);
+  --warm-brown: var(--brown-500); /* legacy alias used by 56+ Tailwind classes + inline styles */
 
   /* Spacing scale (8px grid) */
   --space-1: 0.25rem;
@@ -93,6 +94,7 @@
   --color-forest: var(--forest);
   --color-sage: var(--sage);
   --color-rose: var(--rose);
+  --color-warm-brown: var(--brown-500); /* 让 bg-warm-brown / text-warm-brown / border-warm-brown 活起来 */
 
   /* legacy */
   --color-oat: var(--oat);
