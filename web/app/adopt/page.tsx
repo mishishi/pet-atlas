@@ -550,9 +550,9 @@ function PetCard({
   return (
     <button
       onClick={onClick}
-      className="group relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-brown-200 bg-oat-100 hover:border-warm-brown hover:shadow-xl transition-all active:scale-[0.98]"
+      className="group relative aspect-square rounded-2xl overflow-hidden border-2 border-brown-200 bg-oat-100 hover:border-warm-brown hover:shadow-xl transition-all active:scale-[0.98]"
     >
-      {/* 主体图 — 卡片 aspect 跟 v1 一致 (9:16),object-cover 不裁 */}
+      {/* 主体图 — v1 立绘是 1:1 (2048×2048),aspect-square 完整展示不裁 */}
       <div className="absolute inset-0">
         <SafeImage
           src={v1}
