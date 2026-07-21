@@ -15,6 +15,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { Pet } from "@/lib/types";
 import {
   ATLAS_SLOTS,
   getBreedAtlas,
@@ -578,8 +579,47 @@ export default async function PetDetailPage({
         </div>
       </main>
     </div>
+    {/* JSON-LD 结构化数据:Google/Bing/百度 搜索结果富媒体卡 */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(pet, atlas?.gallery[0] ?? null)) }}
+    />
     </>
   );
+}
+
+/** Schema.org JSON-LD:用 Article + about=Thing 描述品种 */
+function buildJsonLd(pet: Pet, coverUrl: string | null) {
+  const additionalProperty: Array<{ "@type": "PropertyValue"; name: string; value: string | number }> = [];
+  if (pet.physical?.heightCm) additionalProperty.push({ "@type": "PropertyValue", name: "身高", value: `${pet.physical.heightCm} cm` });
+  if (pet.physical?.weightKg) additionalProperty.push({ "@type": "PropertyValue", name: "体重", value: `${pet.physical.weightKg} kg` });
+  if (pet.physical?.lifespanYears) additionalProperty.push({ "@type": "PropertyValue", name: "寿命", value: `${pet.physical.lifespanYears} 年` });
+  if (pet.origin?.country) additionalProperty.push({ "@type": "PropertyValue", name: "原产地", value: pet.origin.region ? `${pet.origin.country} · ${pet.origin.region}` : pet.origin.country });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${pet.name.zh} · ${pet.name.en}`,
+    image: coverUrl ?? undefined,
+    datePublished: pet.publishedAt,
+    author: { "@type": "Organization", name: "宠物大百科", url: "https://out-three-tan.vercel.app" },
+    publisher: {
+      "@type": "Organization",
+      name: "宠物大百科",
+      logo: { "@type": "ImageObject", url: "https://out-three-tan.vercel.app/icon.png" },
+    },
+    description: `${pet.name.zh} (${pet.name.en}) — vintage 标本卡图鉴,形态、性格、历史、养护全收录。${pet.origin?.country ? `原产 ${pet.origin.country}。` : ""}`,
+    inLanguage: "zh-CN",
+    about: {
+      "@type": "Thing",
+      name: pet.name.zh,
+      alternateName: pet.name.en,
+      description: pet.personality?.summary ?? `${pet.name.zh}品种图鉴`,
+      identifier: pet.slug,
+      ...(pet.tags && pet.tags.length > 0 ? { keywords: pet.tags.join(", ") } : {}),
+      ...(additionalProperty.length > 0 ? { additionalProperty } : {}),
+    },
+  };
 }
 
 /* ------------------------------------------------------------------ */
