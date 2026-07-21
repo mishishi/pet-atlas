@@ -603,6 +603,99 @@ export const BREED_FEATURES: BreedFeatures[] = [
       "Corn Snake: slender non-venomous colubrid with orange-red base color and dark red saddle markings bordered in black, checkered belly pattern resembling corn kernels, smooth scales, alert round pupils",
     decoration: DECORATION_BY_CATEGORY.reptile,
   },
+
+  // ===== 新增第二批 9 品种(到 70) =====
+
+  // 犬 (3)
+  {
+    slug: "pug",
+    breedEn: "Pug",
+    breedZh: "八哥犬",
+    category: "dog",
+    features:
+      "Pug: short smooth fawn or black coat, very flat pushed-in face with deep wrinkles, large round prominent dark eyes, small drop ears, compact square muscular toy build, curled tail",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "beagle",
+    breedEn: "Beagle",
+    breedZh: "比格犬",
+    category: "dog",
+    features:
+      "Beagle: short dense tri-color (black/tan/white) or lemon coat, medium compact hound build, long soft drop ears, expressive hazel eyes, merry alert expression, white-tipped tail",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "boxer",
+    breedEn: "Boxer",
+    breedZh: "拳师犬",
+    category: "dog",
+    features:
+      "Boxer: short smooth fawn or brindle coat, square muscular medium build, flat pushed-in face with undershot jaw, dark brown eyes, natural or cropped ears, docked tail historically, athletic powerful build",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+
+  // 猫 (2)
+  {
+    slug: "russian-blue",
+    breedEn: "Russian Blue",
+    breedZh: "俄罗斯蓝猫",
+    category: "cat",
+    features:
+      "Russian Blue: short dense plush double coat in uniform blue-grey, slender elegant foreign build, wedge-shaped head, large wide-set vivid green eyes, large pointed ears, long tapering tail",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "bengal",
+    breedEn: "Bengal",
+    breedZh: "孟加拉豹猫",
+    category: "cat",
+    features:
+      "Bengal: short dense pelt-like coat with distinctive leopard rosette or marble markings in brown/silver/snow, muscular wild-looking medium build, small rounded ears, dark-rimmed eyes in green or gold, long muscular body",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+
+  // 小型哺乳 (2)
+  {
+    slug: "prairie-dog",
+    breedEn: "Black-tailed Prairie Dog",
+    breedZh: "黑尾土拨鼠",
+    category: "small-mammal",
+    features:
+      "Prairie Dog: small ground squirrel with short tan-brown fur, distinctive black-tipped tail, alert small rounded ears, black eyes, sharp claws for digging, chubby compact body",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+  {
+    slug: "tenrec",
+    breedEn: "Lesser Hedgehog Tenrec",
+    breedZh: "马岛猬",
+    category: "small-mammal",
+    features:
+      "Tenrec: small Madagascar mammal resembling a tiny hedgehog, sharp spines on back and head, soft fur on belly, pointed snout with small black eyes, small rounded ears, can curl into a ball defensively",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+
+  // 鸟 (1)
+  {
+    slug: "zebra-finch",
+    breedEn: "Zebra Finch",
+    breedZh: "斑胸草雀",
+    category: "bird",
+    features:
+      "Zebra Finch: tiny songbird with grey plumage, distinctive black-and-white zebra-striped throat pattern in males, bright orange-red beak, orange cheeks, white-spotted black flanks, plump rounded body",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+
+  // 爬虫 (1) - axolotl 严格说属于两栖,但归到 reptile template 4
+  {
+    slug: "axolotl",
+    breedEn: "Axolotl",
+    breedZh: "墨西哥钝口螈",
+    category: "reptile",
+    features:
+      "Axolotl: aquatic salamander with smooth skin, six feathery external gills on each side of head, four short legs, long flat tail, pale pink/white albino or wild-type dark coloration, permanent larval features (neoteny)",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
 ];
 
 /** 按 slug 查表,找不到时返回 null */

@@ -1,0 +1,82 @@
+{
+  "slug": "tenrec",
+  "name": {
+    "zh": "马岛猬",
+    "en": "Lesser Hedgehog Tenrec",
+    "alias": {
+      "zh": ["马岛猬", "小刺猬猬", "马达加斯加猬"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "马达加斯加",
+    "region": "马达加斯加岛",
+    "coordinates": [-19.0, 47.0]
+  },
+
+  "physical": {
+    "sizeGroup": "miniature",
+    "heightCm": "15-20",
+    "weightKg": "0.1-0.25",
+    "lifespanYears": "8-10(野生) / 10-15(人工)",
+    "coat": "背部和头部有硬刺,腹部柔软绒毛",
+    "coatColors": ["棕褐色", "灰褐色", "背部刺黑色+白色"],
+    "eyeColors": ["黑色", "深棕色"]
+  },
+
+  "personality": {
+    "affection": 5,
+    "activity": 6,
+    "obedience": 2,
+    "independence": 7,
+    "vocalization": 5,
+    "intelligence": 6,
+    "summary": "马达加斯加迷你刺球",
+    "tags": ["夜行", "胆小", "冬眠", "群居", "安静", "不挑食"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "远古", "event": "马达加斯加与非洲大陆分离后独立演化" },
+      { "year": "1830s", "event": "首次被欧洲博物学家分类,称 Tenrecidae 科" },
+      { "year": "2000s", "event": "美国异宠市场进口,常被误认为'迷你刺猬'" },
+      { "year": "2010s", "event": "中国异宠社群开始引进,价格 1500-3000" },
+      { "year": "2020s", "event": "因 2021 年 B 站 '马岛猬睡觉' 视频走红中国市场" }
+    ]
+  },
+
+  "care": {
+    "diet": "杂食:昆虫 60%(蟋蟀/面包虫)+ 蔬果 30% + 蛋白 10%,需补钙",
+    "exercise": "需大笼 + 跑轮,夜间活动,室温 22-26°C",
+    "health": "螨虫 · 牙齿问题 · 低温冬眠触发 · 肥胖",
+    "training": "胆小需慢慢驯化,会冬眠(温度低于 18°C 触发)"
+  },
+
+  "famous": [
+    "马达加斯加特有种,与非洲刺猬无亲缘关系(独立演化)",
+    "全球变温能力最强的哺乳动物之一(可低至 12°C)",
+    "可冬眠 3-5 个月,温度低于 18°C 触发",
+    "常被误认为'迷你刺猬'但完全不同科"
+  ],
+
+  "tags": ["迷你哺乳", "夜行", "异宠", "冬眠", "马达加斯加", "刺"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

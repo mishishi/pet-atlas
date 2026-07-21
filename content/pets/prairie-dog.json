@@ -1,0 +1,82 @@
+{
+  "slug": "prairie-dog",
+  "name": {
+    "zh": "黑尾土拨鼠",
+    "en": "Black-tailed Prairie Dog",
+    "alias": {
+      "zh": ["土拨鼠", "黑尾草原犬鼠", "Prairie Dog"]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "北美洲",
+    "region": "美国中西部大草原",
+    "coordinates": [40.0, -100.0]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "30-40(含尾)",
+    "weightKg": "0.5-1.5",
+    "lifespanYears": "8-10(野生) / 10-13(人工)",
+    "coat": "短密绒毛,棕褐色,腹部浅",
+    "coatColors": ["棕褐色", "浅黄色", "灰褐色"],
+    "eyeColors": ["黑色", "深棕色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 8,
+    "obedience": 3,
+    "independence": 5,
+    "vocalization": 9,
+    "intelligence": 8,
+    "summary": "会亲嘴的小社牛",
+    "tags": ["群居", "活泼", "爱叫", "爱挖", "粘人", "聪明"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "美国西部拓荒时代因抢牧草被大规模毒杀" },
+      { "year": "1900s", "event": "因濒危 1973 立法保护,种群恢复" },
+      { "year": "1990s", "event": "美国宠物市场兴起,称 'prairie dog'" },
+      { "year": "2003", "event": "美国进口禁令后,中国异宠市场兴起,2003 年峰值" },
+      { "year": "2010s", "event": "因'亲嘴'短视频在中国走红,价格 2000-5000" }
+    ]
+  },
+
+  "care": {
+    "diet": "草食:干草 70% + 蔬果 25% + 颗粒 5%,需补维生素",
+    "exercise": "需大型笼子(高 1.5m+),每日 1-2 小时放风挖沙",
+    "health": "呼吸道感染 · 牙齿过长 · 肥胖 · 螨虫",
+    "training": "聪明可学简单指令,需 1+ 同伴(群居动物)"
+  },
+
+  "famous": [
+    "会'亲嘴'的视频让中国网友 2010s 认识它",
+    "群居动物,野生群体可达数百万只(被称'草原小镇')",
+    "叫声复杂,有'专门词汇'描述不同捕食者",
+    "电影《功夫熊猫》配角土拨鼠群原型"
+  ],
+
+  "tags": ["中型啮齿", "群居", "日行", "异宠", "挖洞", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

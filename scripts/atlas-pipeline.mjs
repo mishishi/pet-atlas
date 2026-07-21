@@ -116,6 +116,15 @@ const VINTAGE_PAPER_DONE = new Set([
   "canary",
   "macaw",
   "corn-snake",
+  "pug",
+  "beagle",
+  "boxer",
+  "russian-blue",
+  "bengal",
+  "prairie-dog",
+  "tenrec",
+  "zebra-finch",
+  "axolotl",
 ]);
 
 function categoryDirName(category) {

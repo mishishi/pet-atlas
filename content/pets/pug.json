@@ -1,0 +1,82 @@
+{
+  "slug": "pug",
+  "name": {
+    "zh": "八哥犬",
+    "en": "Pug",
+    "alias": {
+      "zh": ["八哥", "巴哥", "哈巴狗"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "中国",
+    "region": "古代宫廷",
+    "coordinates": [35.0, 105.0]
+  },
+
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "25-28",
+    "weightKg": "6-8",
+    "lifespanYears": "12-15",
+    "coat": "短毛光滑,柔软贴身",
+    "coatColors": ["浅黄褐色", "黑色", "银色", "杏色"],
+    "eyeColors": ["深棕色", "突出大眼"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 4,
+    "obedience": 6,
+    "independence": 4,
+    "vocalization": 5,
+    "intelligence": 6,
+    "summary": "皱脸大眼小老头",
+    "tags": ["亲人", "温和", "爱玩", "贪吃", "粘人", "爱睡"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "400 BC", "event": "中国宫廷培育短鼻犬种,称 '獅子狗'" },
+      { "year": "1500s", "event": "经荷兰东印度公司传入欧洲,称 'Pug'" },
+      { "year": "1572", "event": "一只八哥救下荷兰王子 William 生命,成奥兰治王朝吉祥物" },
+      { "year": "1860", "event": "英法战争后,英军从中国皇宫带回纯种八哥" },
+      { "year": "1885", "event": "AKC 正式认证" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,80-120g,易胖体质需严格控量",
+    "exercise": "每日 20-30 分钟温和运动,严禁高温剧烈活动",
+    "health": "短头综合征呼吸道问题 · 眼角膜擦伤 · 皮肤褶皱感染",
+    "training": "聪明但固执,需正向激励,坚持褶皱清洁"
+  },
+
+  "famous": [
+    "中国宫廷御犬,曾是皇帝专属宠物",
+    "荷兰奥兰治王朝吉祥物,救过王子命",
+    "《老友记》Monica 头号粉丝 'Chandler' 与八哥共度",
+    "维多利亚女王挚爱犬之一"
+  ],
+
+  "tags": ["小型犬", "短鼻犬", "家庭友好", "伴侣犬", "中国犬", "都市型"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

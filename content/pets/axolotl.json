@@ -1,0 +1,82 @@
+{
+  "slug": "axolotl",
+  "name": {
+    "zh": "墨西哥钝口螈",
+    "en": "Axolotl",
+    "alias": {
+      "zh": ["六角恐龙", "墨西哥蝾螈", "美西螈"]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "墨西哥",
+    "region": "墨西哥城 Xochimilco 湖",
+    "coordinates": [19.3, -99.1]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "15-30(含尾)",
+    "weightKg": "0.06-0.25",
+    "lifespanYears": "10-15",
+    "coat": "光滑皮肤,6 个外鳃(终生保留幼体特征)",
+    "coatColors": ["粉红/白化", "野生棕色", "金色白化", "黑色素", "GFP 荧光绿"],
+    "eyeColors": ["黑色", "金色(白化)"]
+  },
+
+  "personality": {
+    "affection": 3,
+    "activity": 3,
+    "obedience": 1,
+    "independence": 9,
+    "vocalization": 1,
+    "intelligence": 3,
+    "summary": "永远长不大的微笑蝾螈",
+    "tags": ["幼态延续", "水栖", "不咬人", "不挑食", "安静", "夜行"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1864", "event": "法国博物学家首次带活体回巴黎" },
+      { "year": "1865", "event": "Auguste Duméril 在巴黎植物园人工繁殖成功" },
+      { "year": "1960s", "event": "因'幼态延续'能力成为发育生物学明星" },
+      { "year": "2010s", "event": "野外种群因栖息地破坏极危(IUCN 评级)" },
+      { "year": "2020s", "event": "中国市场异宠热潮,价格 200-5000 看品相" }
+    ]
+  },
+
+  "care": {
+    "diet": "肉食:蚯蚓/红虫/虾肉/专用颗粒,幼体每天,成体 2-3 天一次",
+    "exercise": "需 40L+ 水族箱(单只),水冷 16-20°C(忌高温)",
+    "health": "真菌感染 · 肠梗阻 · 鳃萎缩(水质差) · 应力白化",
+    "training": "观赏性,无训练,主要保持水温水质稳定"
+  },
+
+  "famous": [
+    "野外仅存墨西哥 Xochimilco 湖,世界极危动物",
+    "全球再生医学研究明星,可再生四肢/心脏/脊髓",
+    "《我的世界》游戏 'Axolotl' 方块原型(2020 年加入)",
+    "中国市场'六角恐龙'异宠明星,会微笑表情"
+  ],
+
+  "tags": ["中型两栖", "水栖", "夜行", "幼态延续", "异宠", "网红"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-4-02.png",
+    "art/atlas-4-03.png",
+    "art/atlas-4-04.png",
+    "art/atlas-4-05.png",
+    "art/atlas-4-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}
