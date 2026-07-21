@@ -13,11 +13,13 @@
  */
 
 import type { Pet } from "./types";
-// @ts-expect-error - pets-data.json 由 scripts/build-pets-data.mjs 在 prebuild 时生成
+// pets-data.json 由 scripts/build-pets-data.mjs 在 prebuild 时生成
+// 用 unknown 强转避开 JSON 推断的 number/any 与 Pet 的 literal union 不匹配
+// (template 在 JSON 是 number 1-4,在 Pet 是 "1" | "2" | "3" | "4" string)
 import petsJson from "./pets-data.json";
 
 /** 全部已发布品种(去重 status==='published') */
-export const allPets: Pet[] = (petsJson as Pet[]).filter(
+export const allPets: Pet[] = (petsJson as unknown as Pet[]).filter(
   (p) => p && p.status === "published"
 );
 

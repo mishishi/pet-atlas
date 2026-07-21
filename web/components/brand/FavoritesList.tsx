@@ -38,7 +38,15 @@ export function FavoritesList() {
 
   if (!mounted) return null; // SSR 不渲染,避免 hydration mismatch
 
-  if (favSlugs.length === 0) {
+  // 用 allPets 找收藏的 Pet 对象
+  // 只保留有封面图谱的(VINTAGE_PAPER_DONE 里的)— 没有 cover 的不渲染图,
+  // 避免 SafeImage 拿到空 src 崩
+  const favPets: Pet[] = favSlugs
+    .map((slug) => allPets.find((p) => p.slug === slug))
+    .filter((p): p is Pet => p !== undefined)
+    .filter((p) => getCoverUrl(p.slug) !== null);
+
+  if (favSlugs.length === 0 || favPets.length === 0) {
     return (
       <div
         className="mt-6 rounded-2xl p-6 text-center"
@@ -48,9 +56,13 @@ export function FavoritesList() {
         }}
       >
         <div className="text-3xl mb-2 opacity-60">🤍</div>
-        <p className="text-sm text-brown-700 mb-1">还没有收藏品种</p>
+        <p className="text-sm text-brown-700 mb-1">
+          {favSlugs.length === 0 ? "还没有收藏品种" : "收藏的品种还没有封面图谱"}
+        </p>
         <p className="text-xs text-brown-500 mb-3">
-          进图鉴点 ♡ 收藏喜欢的品种
+          {favSlugs.length === 0
+            ? "进图鉴点 ♡ 收藏喜欢的品种"
+            : "图鉴正在补全,敬请期待"}
         </p>
         <Link
           href="/pets"
@@ -61,11 +73,6 @@ export function FavoritesList() {
       </div>
     );
   }
-
-  // 用 allPets 找收藏的 Pet 对象
-  const favPets: Pet[] = favSlugs
-    .map((slug) => allPets.find((p) => p.slug === slug))
-    .filter((p): p is Pet => p !== undefined);
 
   return (
     <div className="mt-6">
@@ -98,8 +105,8 @@ export function FavoritesList() {
                 className="relative aspect-[9/16] overflow-hidden rounded-md bg-oat-200 border border-brown-200/60 group-hover:border-warm-brown group-hover:-translate-y-0.5 transition-all"
               >
                 <SafeImage
-                  src={getCoverUrl(pet.slug, "thumb")}
-                  fallback={getCoverUrl(pet.slug, "full")}
+                  src={getCoverUrl(pet.slug, "thumb") || ""}
+                  fallback={getCoverUrl(pet.slug, "full") || ""}
                   alt={`${pet.name.zh} 收藏`}
                   fill
                   sizes="20vw"
