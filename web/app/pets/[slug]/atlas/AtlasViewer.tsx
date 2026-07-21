@@ -301,8 +301,8 @@ export default function AtlasViewer({
               className="group fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
               aria-label="上一张"
             >
-              <span className="inline-block w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg shadow-md">
-                ←
+              <span className="flex w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all items-center justify-center leading-none text-lg shadow-md">
+                <span aria-hidden style={{ marginLeft: '-1px' }}>←</span>
               </span>
               <span className="hidden lg:inline font-serif">上一张</span>
             </button>
@@ -313,8 +313,8 @@ export default function AtlasViewer({
               aria-label="下一张"
             >
               <span className="hidden lg:inline font-serif">下一张</span>
-              <span className="inline-block w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg shadow-md">
-                →
+              <span className="flex w-12 h-12 rounded-full border-2 border-brown-300 bg-oat-200/80 backdrop-blur-md group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all items-center justify-center leading-none text-lg shadow-md">
+                <span aria-hidden style={{ marginLeft: '-1px' }}>→</span>
               </span>
             </button>
           </div>
@@ -327,7 +327,7 @@ export default function AtlasViewer({
               className="group flex-1 inline-flex items-center justify-center gap-2 py-2.5 rounded-full border-2 border-brown-300 bg-oat-200/80 text-brown-700 hover:border-brown-700 hover:bg-brown-700 hover:text-oat-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px] text-sm"
               aria-label="上一张"
             >
-              <span aria-hidden>←</span>
+              <span aria-hidden className="leading-none">←</span>
               <span>上一张</span>
             </button>
             <button
@@ -337,7 +337,7 @@ export default function AtlasViewer({
               aria-label="下一张"
             >
               <span>下一张</span>
-              <span aria-hidden>→</span>
+              <span aria-hidden className="leading-none">→</span>
             </button>
           </div>
         </div>
