@@ -1,0 +1,82 @@
+{
+  "slug": "russian-blue",
+  "name": {
+    "zh": "俄罗斯蓝猫",
+    "en": "Russian Blue",
+    "alias": {
+      "zh": ["俄蓝", "俄罗斯蓝猫", "阿克西克斯蓝猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "俄罗斯",
+    "region": "阿尔汉格尔斯克港",
+    "coordinates": [64.5, 40.7]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "23-26",
+    "weightKg": "3-5",
+    "lifespanYears": "15-20",
+    "coat": "双层短密绒毛,丝绒触感",
+    "coatColors": ["均匀蓝色", "蓝灰色"],
+    "eyeColors": ["翠绿色", "鲜绿色"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 5,
+    "obedience": 6,
+    "independence": 8,
+    "vocalization": 3,
+    "intelligence": 8,
+    "summary": "安静神秘蓝宝石",
+    "tags": ["安静", "害羞", "聪明", "独立", "粘主人", "胆小"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "俄罗斯阿尔汉格尔斯克港船员带回英国" },
+      { "year": "1875", "event": "首次在英国水晶宫猫展亮相" },
+      { "year": "1912", "event": "AKC 正式认证" },
+      { "year": "1940s", "event": "二战后英国仅剩 1 只种猫,德国/北欧/英国/美国联合重建" },
+      { "year": "2010s", "event": "中国 '仙女猫' 网红昵称,小红书爆款" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,低敏高蛋白",
+    "exercise": "每日 20 分钟温和游戏,需垂直空间(猫爬架)",
+    "health": "膀胱结石 · 进行性视网膜萎缩 PRA(罕见) · 肥胖",
+    "training": "温顺安静,易应激,需安静环境,坚持社交化"
+  },
+
+  "famous": [
+    "俄罗斯沙皇宫廷御猫,贵族专属",
+    "几乎不掉毛,猫毛过敏者首选之一",
+    "中国 2020-2023 小红书爆款 '仙女猫'",
+    "绿眼睛 + 蓝被毛的经典组合"
+  ],
+
+  "tags": ["小型猫", "短毛", "低敏", "安静", "伴侣猫", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

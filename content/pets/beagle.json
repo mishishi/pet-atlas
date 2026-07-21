@@ -1,0 +1,82 @@
+{
+  "slug": "beagle",
+  "name": {
+    "zh": "比格犬",
+    "en": "Beagle",
+    "alias": {
+      "zh": ["比格", "米格鲁", "猎兔犬"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "英国",
+    "region": "英格兰",
+    "coordinates": [52.5, -1.5]
+  },
+
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "33-41",
+    "weightKg": "9-14",
+    "lifespanYears": "12-15",
+    "coat": "短密硬毛,防水",
+    "coatColors": ["三色(黑白棕)", "柠檬黄白", "红白", "巧克力三色"],
+    "eyeColors": ["深棕色", "榛色", "杏仁形"]
+  },
+
+  "personality": {
+    "affection": 8,
+    "activity": 9,
+    "obedience": 5,
+    "independence": 5,
+    "vocalization": 9,
+    "intelligence": 7,
+    "summary": "嗅觉爆表小猎手",
+    "tags": ["活泼", "爱叫", "好奇", "贪吃", "聪明", "友善"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1475", "event": "英国贵族用比格追猎野兔,称 'foot hound'" },
+      { "year": "1830s", "event": "英国牧师 Philip Honeywood 培育现代比格标准" },
+      { "year": "1885", "event": "AKC 正式认证" },
+      { "year": "1950", "event": "《花生漫画》史努比原型 = 比格犬" },
+      { "year": "2010s", "event": "全球实验室最常用犬种(药物/化妆品测试)" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,150-200g,极贪吃需严格控量防肥胖",
+    "exercise": "每日 60-90 分钟高强度,嗅觉游戏必需",
+    "health": "椎间盘疾病 · 耳道感染 · 癫痫 · 肥胖",
+    "training": "嗅觉本能强,嗅觉训练最有效,需活动空间与牵引"
+  },
+
+  "famous": [
+    "《花生漫画》史努比原型,全球最知名比格犬",
+    "嗅觉灵敏度仅次于血犬,海关缉毒常用",
+    "英国伊丽莎白一世 '口袋比格' 狩猎伴侣",
+    "美国前总统林肯 1860 年代饲养 'Fido'"
+  ],
+
+  "tags": ["小型犬", "嗅觉犬", "家庭友好", "工作犬", "猎犬", "网红犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

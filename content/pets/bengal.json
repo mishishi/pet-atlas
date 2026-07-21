@@ -1,0 +1,82 @@
+{
+  "slug": "bengal",
+  "name": {
+    "zh": "孟加拉豹猫",
+    "en": "Bengal",
+    "alias": {
+      "zh": ["孟加拉", "豹猫", "豹纹猫"]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "美国",
+    "region": "加利福尼亚州",
+    "coordinates": [36.8, -119.4]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-32",
+    "weightKg": "3.5-7",
+    "lifespanYears": "12-16",
+    "coat": "短密光滑,豹纹/大理石纹",
+    "coatColors": ["棕色豹纹", "银色豹纹", "雪色豹纹", "大理石纹", "蓝色"],
+    "eyeColors": ["金色", "绿色", "蓝色(雪色)"]
+  },
+
+  "personality": {
+    "affection": 7,
+    "activity": 10,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 9,
+    "summary": "家里的小豹子",
+    "tags": ["活泼", "聪明", "爱玩", "爱水", "粘人", "运动型"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1963", "event": "加州 Jean Mill 培育,亚洲豹猫 × 家猫杂交" },
+      { "year": "1986", "event": "TICA 接受品种注册" },
+      { "year": "1991", "event": "TICA 正式认定为新品种" },
+      { "year": "2010s", "event": "中国一线城市引进,价格 5-15 万" },
+      { "year": "2020s", "event": "中国 '豹猫' 网红效应,成为高端家宠代表" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2-3 顿,80-120g,高蛋白(运动量大)",
+    "exercise": "每日 60 分钟高强度,可训练散步,爱玩水",
+    "health": "HCM 肥厚型心肌病 · PRA · 髋关节发育不良 · 肠道敏感",
+    "training": "极聪慧,可学开门/取物,需大量环境刺激"
+  },
+
+  "famous": [
+    "全球唯一合法家养'豹纹'猫(野外亚洲豹猫是保护动物)",
+    "是少数不怕水甚至爱玩水的猫品种",
+    "TICA 认证 1986 年,争议性杂交品种",
+    "中国小红书'养豹猫'成为高端家宠身份象征"
+  ],
+
+  "tags": ["中型猫", "短毛", "豹纹", "运动型", "高端猫", "网红猫"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-2-02.png",
+    "art/atlas-2-03.png",
+    "art/atlas-2-04.png",
+    "art/atlas-2-05.png",
+    "art/atlas-2-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

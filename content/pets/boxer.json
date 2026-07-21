@@ -1,0 +1,82 @@
+{
+  "slug": "boxer",
+  "name": {
+    "zh": "拳师犬",
+    "en": "Boxer",
+    "alias": {
+      "zh": ["拳师", "拳师犬", "德国拳师"]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-20",
+
+  "origin": {
+    "country": "德国",
+    "region": "慕尼黑",
+    "coordinates": [48.1, 11.6]
+  },
+
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "53-63",
+    "weightKg": "25-32",
+    "lifespanYears": "10-12",
+    "coat": "短光滑贴身,无底绒",
+    "coatColors": ["黄褐色", "浅黄褐色", "虎斑", "白色(罕见)"],
+    "eyeColors": ["深棕色", "黑色"]
+  },
+
+  "personality": {
+    "affection": 9,
+    "activity": 9,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "活力爆表小保镖",
+    "tags": ["活泼", "勇敢", "忠诚", "爱玩", "警觉", "粘人"]
+  },
+
+  "history": {
+    "timeline": [
+      { "year": "1800s", "event": "德国慕尼黑从斗牛犬 × 德国獒犬培育" },
+      { "year": "1895", "event": "首次德国犬展亮相,稳定外形" },
+      { "year": "1904", "event": "AKC 正式认证" },
+      { "year": "1940s", "event": "二战中美军 '军营犬' 备受欢迎" },
+      { "year": "2010s", "event": "全球最受欢迎工作犬 TOP10" }
+    ]
+  },
+
+  "care": {
+    "diet": "每日 2 顿,300-400g,高蛋白支持肌肉",
+    "exercise": "每日 90-120 分钟,需大量奔跑和玩耍",
+    "health": "短头综合征 · 髋关节发育不良 · 心脏病 · 淋巴瘤",
+    "training": "聪明好训但有主见,需早期社会化避免对其他犬攻击"
+  },
+
+  "famous": [
+    "二战美军军营 'Buster' 系列吉祥物",
+    "全球最受欢迎工作犬之一,常作警犬导盲犬",
+    "前拳王泰森养多只拳师,称 'Buster 们'",
+    "皮克斯《赛车总动员》Mater 原型含拳师基因"
+  ],
+
+  "tags": ["中型犬", "工作犬", "短鼻犬", "家庭友好", "运动型", "保镖犬"],
+
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-1-02.png",
+    "art/atlas-1-03.png",
+    "art/atlas-1-04.png",
+    "art/atlas-1-05.png",
+    "art/atlas-1-06.png"
+  ],
+
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}
