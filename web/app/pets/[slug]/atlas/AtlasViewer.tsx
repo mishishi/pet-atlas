@@ -268,10 +268,10 @@ export default function AtlasViewer({
             <button
               onClick={() => goTo(page - 1, "prev")}
               disabled={page === 1}
-              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
               aria-label="上一张"
             >
-              <span className="inline-block w-9 h-9 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
+              <span className="inline-block w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
                 ←
               </span>
               <span className="hidden md:inline">上一张</span>
@@ -313,11 +313,11 @@ export default function AtlasViewer({
             <button
               onClick={() => goTo(page + 1, "next")}
               disabled={page === total}
-              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="group flex items-center gap-2 text-sm text-brown-700 hover:text-brown-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed min-h-[44px]"
               aria-label="下一张"
             >
               <span className="hidden md:inline">下一张</span>
-              <span className="inline-block w-9 h-9 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
+              <span className="inline-block w-11 h-11 md:w-12 md:h-12 rounded-full border-2 border-brown-300 group-hover:border-brown-700 group-hover:bg-brown-700 group-hover:text-oat-100 transition-all flex items-center justify-center text-lg">
                 →
               </span>
             </button>
@@ -392,7 +392,7 @@ export default function AtlasViewer({
           <div className="flex flex-col gap-2 md:gap-3 lg:items-end">
             <button
               onClick={toggleFullscreen}
-              className="group inline-flex items-center gap-2 px-4 py-2 text-sm text-brown-700 hover:text-brown-900 border border-brown-300 hover:border-brown-700 transition-colors self-start lg:self-end"
+              className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm text-brown-700 hover:text-brown-900 border border-brown-300 hover:border-brown-700 transition-colors self-start lg:self-end min-h-[44px]"
               style={{ background: "rgba(245, 233, 208, 0.5)" }}
               aria-label="全屏"
             >
@@ -408,7 +408,7 @@ export default function AtlasViewer({
             </button>
             <Link
               href={detailHref}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-brown-900 border-2 border-brown-700 hover:bg-brown-700 hover:text-oat-100 transition-colors self-start lg:self-end"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm text-brown-900 border-2 border-brown-700 hover:bg-brown-700 hover:text-oat-100 transition-colors self-start lg:self-end min-h-[44px]"
               style={{ background: "rgba(245, 233, 208, 0.4)" }}
             >
               <span>返回详情</span>

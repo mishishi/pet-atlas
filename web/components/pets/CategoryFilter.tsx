@@ -32,7 +32,7 @@ export function CategoryFilter({ categories }: { categories: CategoryOption[] })
           <a
             key={cat.key}
             href={`#cat-${cat.key}`}
-            className="group shrink-0 inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full border border-brown-200 bg-oat-50 hover:bg-brown-700 hover:text-oat-100 hover:border-brown-700 transition-all"
+            className="group shrink-0 inline-flex items-center gap-2 px-3 md:px-4 py-2.5 rounded-full border border-brown-200 bg-oat-50 hover:bg-brown-700 hover:text-oat-100 hover:border-brown-700 transition-all min-h-[40px]"
           >
             <span className="font-serif text-sm">{cat.zh}</span>
             <span className="font-mono text-[10px] text-brown-500 group-hover:text-oat-200 transition-colors">
