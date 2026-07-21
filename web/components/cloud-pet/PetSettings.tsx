@@ -14,7 +14,7 @@
 
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import {
   type CloudPet,
   type Personality,
@@ -43,7 +43,17 @@ const COLOR_OPTIONS: Array<{ key: ColorPreference; hex: string }> = [
   { key: "blue", hex: "#7B9DB8" },
 ];
 
-/** mood → 短句(给 speech 念) */
+/** mood → 预生成音频路径(public/sounds/pet-voice/ 由 build 时打包) */
+const MOOD_AUDIO: Record<string, string> = {
+  happy: "/sounds/pet-voice/happy.mp3",
+  calm: "/sounds/pet-voice/calm.mp3",
+  hungry: "/sounds/pet-voice/hungry.mp3",
+  sleepy: "/sounds/pet-voice/sleepy.mp3",
+  bored: "/sounds/pet-voice/bored.mp3",
+  sad: "/sounds/pet-voice/sad.mp3",
+};
+
+/** mood → web speech fallback 短句(用 petName) */
 function moodLine(mood: keyof typeof MOOD_META, petName: string): string {
   const lines: Record<string, string> = {
     happy: `${petName}今天心情好好,在阳光下打滚,摇尾巴呢`,
@@ -56,7 +66,8 @@ function moodLine(mood: keyof typeof MOOD_META, petName: string): string {
   return lines[mood] || `${petName}在这里呢`;
 }
 
-function speak(text: string): boolean {
+/** web speech fallback(用于 <audio> 加载失败) */
+function speakFallback(text: string): boolean {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) {
     return false;
   }
@@ -64,19 +75,18 @@ function speak(text: string): boolean {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "zh-CN";
     u.rate = 1.0;
-    u.pitch = 1.15; // 偏高,可爱
+    u.pitch = 1.15;
     u.volume = 0.9;
-    // 优先选中文女声
     const voices = window.speechSynthesis.getVoices();
     const zhVoice = voices.find(
       (v) => v.lang.startsWith("zh") && /female|xiaoxiao|yunxi|yunyang/i.test(v.name)
     );
     if (zhVoice) u.voice = zhVoice;
-    window.speechSynthesis.cancel(); // 取消上一次的
+    window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
     return true;
   } catch (err) {
-    console.warn("[PetSettings] speech 失败", err);
+    console.warn("[PetSettings] speech fallback 失败", err);
     return false;
   }
 }
@@ -88,6 +98,7 @@ export function PetSettings() {
   const [nameInput, setNameInput] = useState("");
   const [toast, setToast] = useState<string | null>(null);
   const [speaking, setSpeaking] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     setPet(getAdoptedPet());
@@ -101,7 +112,7 @@ export function PetSettings() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  // 预热 speech voices(Chrome 懒加载)
+  // 预热 web speech voices(只在 audio 不可用时需要)
   useEffect(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.getVoices();
@@ -153,17 +164,55 @@ export function PetSettings() {
   const handleSpeak = useCallback(() => {
     if (!pet) return;
     const mood = stats ? deriveMood(stats) : "calm";
-    const line = moodLine(mood, pet.petName);
-    const ok = speak(line);
-    if (ok) {
-      setSpeaking(true);
-      // TTS 估计时长 ≈ 字数 × 200ms
-      const ms = Math.max(1500, line.length * 200);
-      setTimeout(() => setSpeaking(false), ms);
-    } else {
-      flash("当前浏览器不支持语音");
+    // 1. 优先用预生成 audio(高质量 + 0 延迟)
+    const audioUrl = MOOD_AUDIO[mood];
+    if (audioRef.current && audioUrl) {
+      try {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        audioRef.current.src = audioUrl;
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setSpeaking(true);
+              // 监听 ended
+              const onEnded = () => {
+                setSpeaking(false);
+                audioRef.current?.removeEventListener("ended", onEnded);
+              };
+              audioRef.current?.addEventListener("ended", onEnded);
+              // 兜底超时(防止 ended 不触发)
+              setTimeout(() => setSpeaking(false), 6000);
+            })
+            .catch((err) => {
+              // autoplay 失败(用户未交互)或 src 加载失败 → fallback
+              console.warn("[PetSettings] audio 播放失败, fallback to web speech", err);
+              fallbackSpeak(mood, pet.petName);
+            });
+        }
+        return;
+      } catch (err) {
+        console.warn("[PetSettings] audio 异常, fallback", err);
+      }
     }
+    fallbackSpeak(mood, pet.petName);
   }, [pet, stats, flash]);
+
+  const fallbackSpeak = useCallback(
+    (mood: keyof typeof MOOD_META, petName: string) => {
+      const line = moodLine(mood, petName);
+      const ok = speakFallback(line);
+      if (ok) {
+        setSpeaking(true);
+        const ms = Math.max(1500, line.length * 200);
+        setTimeout(() => setSpeaking(false), ms);
+      } else {
+        flash("当前浏览器不支持语音");
+      }
+    },
+    [flash]
+  );
 
   if (!pet) return null;
 
@@ -308,6 +357,9 @@ export function PetSettings() {
           {toast}
         </div>
       )}
+
+      {/* 隐藏 audio 元素(预生成中文 TTS 短句) */}
+      <audio ref={audioRef} preload="none" />
     </div>
   );
 }
