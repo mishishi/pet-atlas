@@ -160,7 +160,7 @@ export function PetsBrowser({ pets }: { pets: Pet[] }) {
               role="tab"
               aria-selected={!urlFilter}
               onClick={() => setFilter("all")}
-              className={`px-4 py-1.5 rounded-full font-serif text-sm transition-all ${
+              className={`px-5 py-2.5 rounded-full font-serif text-sm transition-all min-h-[40px] ${
                 !urlFilter
                   ? "bg-brown-700 text-oat-50 shadow-sm"
                   : "text-brown-700 hover:text-brown-900"
@@ -179,7 +179,7 @@ export function PetsBrowser({ pets }: { pets: Pet[] }) {
               role="tab"
               aria-selected={urlFilter}
               onClick={() => setFilter("favorites")}
-              className={`px-4 py-1.5 rounded-full font-serif text-sm transition-all inline-flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-full font-serif text-sm transition-all inline-flex items-center gap-1.5 min-h-[40px] ${
                 urlFilter
                   ? "bg-brick text-oat-50 shadow-sm"
                   : "text-brown-700 hover:text-brown-900"
