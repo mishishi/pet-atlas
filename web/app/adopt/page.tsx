@@ -2,7 +2,7 @@
  * web/app/adopt/page.tsx · 领养云宠物
  *
  * 流程(单页 3 步):
- * 1. 选品种:50 个 grid,按品类分组
+ * 1. 选品种:从 BREED_FEATURES 渲染,按品类分组
  * 2. 配置:起名 + 性格 + 颜色 + 显示 3 个变体
  * 3. 确认:展示最终选择,点"领养" → 写 localStorage → 跳 /profile
  *
@@ -153,7 +153,7 @@ export default function AdoptPage() {
                 领养你的云宠物
               </h1>
               <p className="text-sm md:text-base text-brown-700">
-                从 50 个品种里选一只,起个名字,AI 帮你生成专属立绘
+                从 {BREED_FEATURES.length} 个品种里选一只,起个名字,AI 帮你生成专属立绘
               </p>
             </div>
 
