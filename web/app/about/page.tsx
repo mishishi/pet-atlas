@@ -210,12 +210,12 @@ export default function AboutPage() {
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link href="/pets">
-                <Button variant="primary" size="lg">
+                <Button variant="outline" size="lg">
                   浏览全部 100 个品种
                 </Button>
               </Link>
               <Link href="/adopt">
-                <Button variant="secondary" size="lg">
+                <Button variant="primary" size="lg">
                   领养一只 →
                 </Button>
               </Link>
