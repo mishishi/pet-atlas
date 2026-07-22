@@ -1,0 +1,104 @@
+{
+  "slug": "parrotlet",
+  "name": {
+    "zh": "小鹦鹉",
+    "en": "Parrotlet",
+    "alias": {
+      "zh": [
+        "太平洋鹦哥",
+        "蓝太平洋鹦鹉",
+        "袖珍鹦鹉"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "中美洲",
+    "region": "中美洲 / 南美北部",
+    "coordinates": [
+      12.1,
+      -85.3
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "12-14",
+    "weightKg": "0.030-0.040",
+    "lifespanYears": "15-20",
+    "coat": "羽毛短密,体型迷你鹦鹉",
+    "coatColors": [
+      "绿色(经典)",
+      "蓝色",
+      "黄色",
+      "白色",
+      "杂色"
+    ],
+    "eyeColors": [
+      "深棕色"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 7,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 7,
+    "summary": "袖珍大嘴小鹦鹉",
+    "tags": [
+      "聪明",
+      "活泼",
+      "领地强",
+      "粘人",
+      "爱玩",
+      "小型"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1500s",
+        "event": "中美洲原住民驯化饲养"
+      },
+      {
+        "year": "1900s",
+        "event": "欧美宠物市场兴起,人工繁育"
+      },
+      {
+        "year": "1980s",
+        "event": "蓝色变种在美国培育成功,风靡全球"
+      },
+      {
+        "year": "2000s",
+        "event": "全球最受欢迎小型鹦鹉 TOP3"
+      },
+      {
+        "year": "2010s",
+        "event": "中国异宠市场兴起,1500-4000 元/只"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+蔬果+专用颗粒+墨鱼骨补钙",
+    "exercise": "需大笼(60cm+)横栖杆,每日 1-2 小时放飞",
+    "health": "羽虱 · 喙羽症 PBFD · 鹦鹉热 · 脂肪瘤",
+    "training": "极聪明可学说话(5-10 词)+ trick,领地意识强需单养"
+  },
+  "famous": [
+    "全球最小的鹦鹉之一,体型如麻雀",
+    "蓝色变种是 1980s 美国培育代表",
+    "极聪明可学说话+ trick 的小型鹦鹉",
+    "中国异宠市场热门小型鹦鹉 TOP3"
+  ],
+  "tags": [
+    "小型鸟",
+    "鹦鹉",
+    "聪明",
+    "会说话",
+    "领地",
+    "颜值高"
+  ]
+}

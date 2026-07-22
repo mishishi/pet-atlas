@@ -1,0 +1,109 @@
+{
+  "slug": "turkish-angora",
+  "name": {
+    "zh": "土耳其安哥拉猫",
+    "en": "Turkish Angora",
+    "alias": {
+      "zh": [
+        "安哥拉猫",
+        "土耳其长毛猫",
+        "安卡拉猫"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "土耳其",
+    "region": "土耳其安卡拉",
+    "coordinates": [
+      39.9,
+      32.9
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-28",
+    "weightKg": "3-5",
+    "lifespanYears": "12-18",
+    "coat": "中长毛丝滑单层,几乎无底绒",
+    "coatColors": [
+      "纯白(经典)",
+      "黑色",
+      "蓝灰色",
+      "玳瑁色",
+      "奶油色",
+      "虎斑"
+    ],
+    "eyeColors": [
+      "蓝色",
+      "绿色",
+      "金色",
+      "鸳鸯眼(异色,白猫常见)"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 8,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 6,
+    "intelligence": 9,
+    "summary": "安卡拉丝绒舞者",
+    "tags": [
+      "聪明",
+      "活泼",
+      "优雅",
+      "粘人",
+      "爱玩水",
+      "贵族气质"
+    ],
+    "clingy": 7
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "15世纪",
+        "event": "土耳其安卡拉地区起源,奥斯曼帝国贵族宠儿"
+      },
+      {
+        "year": "1700s",
+        "event": "经欧洲商人传入法国/英国"
+      },
+      {
+        "year": "1917",
+        "event": "土耳其国父 Atatürk 亲自保护本土品种"
+      },
+      {
+        "year": "1960s",
+        "event": "美国从土耳其动物园进口,正式繁育"
+      },
+      {
+        "year": "1970s",
+        "event": "CFA 正式认证"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,高蛋白支持长毛",
+    "exercise": "每日 30-45 分钟,喜攀爬高处以观察",
+    "health": "肥厚型心肌病 HCM · 共济失调(白色蓝眼) · 耳聋(白猫)",
+    "training": "极聪明可学开门+ trick,爱玩水(猫中罕见)"
+  },
+  "famous": [
+    "奥斯曼帝国苏丹宫廷御猫",
+    "全球纯白鸳鸯眼猫种代表",
+    "土耳其国宝,动物园繁育保护",
+    "猫中罕见爱玩水的代表品种"
+  ],
+  "tags": [
+    "中型猫",
+    "长毛",
+    "优雅",
+    "高智商",
+    "贵族",
+    "国宝"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "havanese",
+  "name": {
+    "zh": "哈瓦那犬",
+    "en": "Havanese",
+    "alias": {
+      "zh": [
+        "哈瓦那",
+        "哈瓦那比雄犬",
+        "古巴丝毛犬"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "古巴",
+    "region": "古巴哈瓦那",
+    "coordinates": [
+      23.1,
+      -82.4
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "22-27",
+    "weightKg": "3-6",
+    "lifespanYears": "14-16",
+    "coat": "长毛丝滑柔软,波浪或卷曲,极少掉毛",
+    "coatColors": [
+      "白色",
+      "奶油色",
+      "金色",
+      "红棕色",
+      "银灰色",
+      "巧克力色",
+      "黑色",
+      "多色混合"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "琥珀色"
+    ]
+  },
+  "personality": {
+    "affection": 10,
+    "activity": 6,
+    "obedience": 8,
+    "independence": 4,
+    "vocalization": 5,
+    "intelligence": 8,
+    "summary": "古巴丝毛小太阳",
+    "tags": [
+      "粘人",
+      "聪明",
+      "温和",
+      "爱玩",
+      "亲人",
+      "马戏团"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1500s",
+        "event": "西班牙/意大利移民带入古巴的丝毛犬后裔"
+      },
+      {
+        "year": "1800s",
+        "event": "古巴贵族宠爱的小型玩赏犬"
+      },
+      {
+        "year": "1959",
+        "event": "古巴革命后几乎绝迹,少数流亡者带出"
+      },
+      {
+        "year": "1996",
+        "event": "AKC 正式认证"
+      },
+      {
+        "year": "2010s",
+        "event": "全球家庭宠物犬 TOP20 热门"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,80-120g,小型犬高蛋白粮",
+    "exercise": "每日 30 分钟散步+室内玩耍",
+    "health": "髌骨脱位 · 白内障 · 髋关节发育不良 · 耳聋(罕见)",
+    "training": "极聪明可学 trick,正向激励最有效,需持续陪伴"
+  },
+  "famous": [
+    "古巴国犬,被称作'古巴丝毛小太阳'",
+    "极少掉毛的友好犬种,过敏人群首选",
+    "AKC 玩具犬组认证最年轻品种之一",
+    "全球家庭宠物犬 TOP20 热门"
+  ],
+  "tags": [
+    "小型犬",
+    "长毛",
+    "不掉毛",
+    "粘人",
+    "高智商",
+    "家庭友好"
+  ]
+}

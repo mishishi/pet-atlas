@@ -276,6 +276,17 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "jack-russell-terrier",
   "old-english-sheepdog",
   "sun-conure",
+  // C 批 2 扩品种 10 个(2026-07-22,80→90)
+  "blue-tongued-skink",
+  "dalmatian",
+  "havanese",
+  "hermann-tortoise",
+  "java-sparrow",
+  "parrotlet",
+  "red-footed-tortoise",
+  "society-finch",
+  "somali",
+  "turkish-angora",
 ]);
 
 /**
