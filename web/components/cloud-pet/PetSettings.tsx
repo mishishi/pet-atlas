@@ -258,12 +258,7 @@ export function PetSettings() {
           }
         };
         tryPlay(urls.primary, () => tryPlay(urls.fallback, () => flash("播放失败,请点击页面任意位置再试")));
-            })
-            .catch((err) => {
-              console.warn("[PetSettings] test voice 失败", err);
-              flash("播放失败,请点击页面任意位置再试");
-            });
-        }
+        return;
       } catch (err) {
         console.warn("[PetSettings] test voice 异常", err);
       }
