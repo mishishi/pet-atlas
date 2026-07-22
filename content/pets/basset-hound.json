@@ -1,0 +1,104 @@
+{
+  "slug": "basset-hound",
+  "name": {
+    "zh": "巴吉度",
+    "en": "Basset Hound",
+    "alias": {
+      "zh": [
+        "巴塞特",
+        "短腿猎犬",
+        "巴吉度猎犬"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "法国",
+    "region": "法国阿尔登地区",
+    "coordinates": [
+      49.7,
+      4.6
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "33-38",
+    "weightKg": "20-29",
+    "lifespanYears": "10-12",
+    "coat": "短毛光滑,皮肤松弛多褶",
+    "coatColors": [
+      "三色",
+      "红白色",
+      "柠檬色",
+      "黑白棕"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "榛色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 4,
+    "obedience": 5,
+    "independence": 7,
+    "vocalization": 7,
+    "intelligence": 6,
+    "summary": "垂耳大耳短腿绅士",
+    "tags": [
+      "温和",
+      "固执",
+      "嗅觉强",
+      "友善",
+      "慵懒",
+      "爱叫"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1500s",
+        "event": "法国修道院培育嗅觉猎犬"
+      },
+      {
+        "year": "1800s",
+        "event": "引入英国用于矮腿猎野兔"
+      },
+      {
+        "year": "1885",
+        "event": "AKC 正式认证"
+      },
+      {
+        "year": "1928",
+        "event": "Time 杂志封面明星"
+      },
+      {
+        "year": "2010s",
+        "event": "全球宠物犬 TOP30 热门"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,150-200g,严格控量防肥胖",
+    "exercise": "每日 30-45 分钟短腿散步,不宜剧烈跳跃",
+    "health": "椎间盘疾病 · 髋关节发育不良 · 耳道感染 · 肘关节发育不良",
+    "training": "嗅觉本能强但固执,需耐心正向激励,食物诱导最有效"
+  },
+  "famous": [
+    "世界最长大耳犬种(可达 30cm)",
+    "Time 杂志 1928 封面犬原型",
+    "全球宠物犬 TOP30 常客",
+    "Inspector Clouseau《粉红豹》搭档犬原型"
+  ],
+  "tags": [
+    "中型犬",
+    "短毛",
+    "猎犬",
+    "家庭友好",
+    "嗅觉",
+    "温和"
+  ]
+}

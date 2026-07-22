@@ -1,0 +1,103 @@
+{
+  "slug": "burmese",
+  "name": {
+    "zh": "缅甸猫",
+    "en": "Burmese",
+    "alias": {
+      "zh": [
+        "缅甸",
+        "黑貂猫"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "缅甸",
+    "region": "缅甸仰光",
+    "coordinates": [
+      16.8,
+      96.2
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "23-28",
+    "weightKg": "3-6",
+    "lifespanYears": "12-16",
+    "coat": "短密丝绒般紧贴",
+    "coatColors": [
+      "深棕貂色",
+      "蓝色",
+      "巧克力色",
+      "淡紫"
+    ],
+    "eyeColors": [
+      "金黄色",
+      "黄色"
+    ]
+  },
+  "personality": {
+    "affection": 10,
+    "activity": 7,
+    "obedience": 8,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "绸缎包裹小话痨",
+    "tags": [
+      "粘人",
+      "聪明",
+      "活泼",
+      "爱社交",
+      "话痨",
+      "狗一样"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1930s",
+        "event": "美国旧金山 Wong Mau 母猫作为缅甸猫鼻祖"
+      },
+      {
+        "year": "1936",
+        "event": "CFA 正式认证"
+      },
+      {
+        "year": "1940s",
+        "event": "英国引入并发展欧洲型缅甸猫"
+      },
+      {
+        "year": "1950s",
+        "event": "蓝色/巧克力色等新色系被认证"
+      },
+      {
+        "year": "2010s",
+        "event": "全球短毛猫 TOP10 热门"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,高蛋白支持高代谢",
+    "exercise": "每日 30-45 分钟,喜互动玩具与攀爬",
+    "health": "肥厚型心肌病 HCM · 糖尿病 · 头部缺陷(罕见)",
+    "training": "极聪明可学 trick,像狗一样可训练捡球,需持续陪伴"
+  },
+  "famous": [
+    "1930s Wong Mau 是全球所有缅甸猫的母系鼻祖",
+    "狗一样能学 trick + 捡球的代表猫种",
+    "CFA 早期认证品种之一",
+    "全球粘人指数最高的猫种代表"
+  ],
+  "tags": [
+    "小型猫",
+    "短毛",
+    "粘人",
+    "高智商",
+    "家庭友好",
+    "网红猫"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "slug": "jack-russell-terrier",
+  "name": {
+    "zh": "杰克罗素梗",
+    "en": "Jack Russell Terrier",
+    "alias": {
+      "zh": [
+        "杰克罗素",
+        "罗素梗",
+        "JR"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "英国",
+    "region": "英格兰德文郡",
+    "coordinates": [
+      50.7,
+      -3.5
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-30",
+    "weightKg": "5-8",
+    "lifespanYears": "13-16",
+    "coat": "短毛粗硬或断毛",
+    "coatColors": [
+      "白色为主",
+      "黑白棕",
+      "三色"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "黑色杏仁形"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 10,
+    "obedience": 5,
+    "independence": 8,
+    "vocalization": 8,
+    "intelligence": 9,
+    "summary": "迷你闪电工作狂",
+    "tags": [
+      "活泼",
+      "勇敢",
+      "聪明",
+      "爱叫",
+      "好动",
+      "独立"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1819",
+        "event": "英国牧师 John Russell 培育猎狐梗"
+      },
+      {
+        "year": "1900s",
+        "event": "澳大利亚引入并改良体型"
+      },
+      {
+        "year": "1990s",
+        "event": "因《变相怪杰》Wishbone 风靡美国"
+      },
+      {
+        "year": "2012",
+        "event": "AKC 正式认证为独立品种"
+      },
+      {
+        "year": "2010s",
+        "event": "中国'杰克罗素'昵称家喻户晓"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,80-120g,高蛋白支持高消耗",
+    "exercise": "每日 90-120 分钟高强度运动,需大运动量",
+    "health": "髌骨脱位 · 眼病 · 耳聋(白狗高发)",
+    "training": "极聪明但独立性强,需早起训练+持续智力刺激,否则破坏性"
+  },
+  "famous": [
+    "《变相怪杰》'Wishbone' 风靡美国",
+    "世界敏捷犬赛常胜军品种",
+    "高智商但极独立,训犬师最大挑战",
+    "白色为主是 Russell 牧师防止误伤猎狐的颜色要求"
+  ],
+  "tags": [
+    "小型犬",
+    "短毛",
+    "梗犬",
+    "运动型",
+    "高智商",
+    "工作犬"
+  ]
+}

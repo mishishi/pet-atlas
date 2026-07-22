@@ -1,0 +1,104 @@
+{
+  "slug": "english-springer-spaniel",
+  "name": {
+    "zh": "英国史宾格",
+    "en": "English Springer Spaniel",
+    "alias": {
+      "zh": [
+        "史宾格",
+        "英国跳猎犬",
+        "英国激飞猎犬"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "英国",
+    "region": "英格兰",
+    "coordinates": [
+      52,
+      -1
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "46-56",
+    "weightKg": "18-25",
+    "lifespanYears": "12-14",
+    "coat": "中长毛波浪,耳/胸/腹有饰毛",
+    "coatColors": [
+      "黑白",
+      "肝白色",
+      "蓝洛",
+      "三色"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "榛色"
+    ]
+  },
+  "personality": {
+    "affection": 9,
+    "activity": 8,
+    "obedience": 8,
+    "independence": 4,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "猎场小太阳",
+    "tags": [
+      "亲人",
+      "活泼",
+      "聪明",
+      "友善",
+      "爱玩",
+      "工作"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1600s",
+        "event": "英国最古老的猎枪犬之一"
+      },
+      {
+        "year": "1800s",
+        "event": "被分为 Springer 与 Cocker 两个亚种"
+      },
+      {
+        "year": "1902",
+        "event": "英国犬舍俱乐部正式认证"
+      },
+      {
+        "year": "1910",
+        "event": "AKC 认证为独立品种"
+      },
+      {
+        "year": "2010s",
+        "event": "全球家庭犬 TOP20 热门"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,200-300g,高蛋白支持高消耗",
+    "exercise": "每日 60-90 分钟中等强度,需嗅闻与奔跑",
+    "health": "髋关节发育不良 · 耳道感染 · PRA 视网膜病变",
+    "training": "极聪明且服从,可学复杂指令,猎场犬训练最有效"
+  },
+  "famous": [
+    "英国王室最爱猎枪犬,查尔斯国王现任 3 只史宾格",
+    "起源可追溯至 16 世纪英国文艺复兴时期",
+    "全球嗅探犬+缉毒犬+搜救犬主力品种",
+    "全球家庭犬 TOP20 常客"
+  ],
+  "tags": [
+    "中型犬",
+    "中长毛",
+    "猎枪犬",
+    "家庭友好",
+    "工作犬",
+    "友善"
+  ]
+}
