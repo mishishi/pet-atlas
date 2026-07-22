@@ -29,6 +29,7 @@ import { ShareModal } from "@/components/cloud-pet/ShareModal";
 import { MoodPortrait } from "@/components/cloud-pet/MoodPortrait";
 import { PetSettings } from "@/components/cloud-pet/PetSettings";
 import { ProgressionCard } from "@/components/cloud-pet/ProgressionCard";
+import { MiniGameLauncher } from "@/components/cloud-pet/MiniGameLauncher";
 import { FavoritesList } from "@/components/brand/FavoritesList";
 import { syncFromTcb } from "@/lib/petStats";
 import { setupNetworkListeners } from "@/lib/tcbSync";
@@ -147,6 +148,9 @@ export default function ProfilePage() {
 
               {/* M2 · 宠物状态卡(喂食/玩耍/休息) */}
               <PetStatusCard />
+
+              {/* M2.5 · 互动游戏入口 */}
+              <MiniGameLauncher />
 
               {/* M2.5 · 进度卡(等级/XP/签到/streak/badges) */}
               <ProgressionCard />

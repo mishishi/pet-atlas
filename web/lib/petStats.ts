@@ -352,6 +352,17 @@ export function clearPetStats(): void {
   localStorage.removeItem(KEY_STATS);
 }
 
+/** 通用 stats 写入(用于游戏结果、自定义修改等) */
+export function setStats(stats: PetStats): void {
+  writeJSON(KEY_STATS, stats);
+  // fire-and-forget 同步到 TCB
+  if (isClient()) {
+    import("./tcbSync")
+      .then(({ pushPetStatsToTcb }) => pushPetStatsToTcb(stats))
+      .catch((err) => console.warn("[petStats] setStats sync 失败", err));
+  }
+}
+
 // ===== M2.5 TCB 同步(M2.5+) =====
 
 /**
