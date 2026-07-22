@@ -1,0 +1,104 @@
+{
+  "slug": "blue-tongued-skink",
+  "name": {
+    "zh": "蓝舌石龙子",
+    "en": "Blue-tongued Skink",
+    "alias": {
+      "zh": [
+        "蓝舌蜥",
+        "蓝色舌头石龙子",
+        "松果蜥"
+      ]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "澳大利亚",
+    "region": "澳大利亚北部 / 东部",
+    "coordinates": [
+      -25.3,
+      133.8
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "40-50(全长含尾)",
+    "weightKg": "0.5-1.0",
+    "lifespanYears": "15-20",
+    "coat": "鳞片光滑,腹部浅色,舌头钴蓝色",
+    "coatColors": [
+      "银灰色",
+      "棕黄色",
+      "深褐色",
+      "橘色条纹(北部亚种)"
+    ],
+    "eyeColors": [
+      "黑色",
+      "橙黄色"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 4,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 2,
+    "intelligence": 7,
+    "summary": "澳洲蓝舌绅士",
+    "tags": [
+      "温顺",
+      "慢吞",
+      "可上手",
+      "杂食",
+      "易养",
+      "宠物蜥蜴代表"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "澳大利亚原住民传统食物+宠物"
+      },
+      {
+        "year": "1800s",
+        "event": "欧洲殖民者发现并记录"
+      },
+      {
+        "year": "1980s",
+        "event": "美国异宠市场兴起"
+      },
+      {
+        "year": "2000s",
+        "event": "人工繁育成熟,价格亲民"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎宠物蜥蜴 TOP3"
+      }
+    ]
+  },
+  "care": {
+    "diet": "杂食:猫狗粮 40% + 蔬果 40% + 昆虫 20%(每周)",
+    "exercise": "需大饲养箱(1.2m+)+ UVB 灯+晒台+水盆",
+    "health": "呼吸道感染 · 代谢骨病 MBD · 寄生虫 · 肥胖",
+    "training": "温顺可上手,会认主,受惊吓时张大嘴亮蓝舌示威"
+  },
+  "famous": [
+    "受惊吓时张开蓝色舌头威吓的代表蜥蜴",
+    "全球最受欢迎宠物蜥蜴 TOP3",
+    "澳大利亚原生,人工繁育成熟",
+    "寿命 15-20 年,需长期饲养准备"
+  ],
+  "tags": [
+    "爬虫",
+    "蜥蜴",
+    "温顺",
+    "可上手",
+    "杂食",
+    "宠物蜥蜴"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "slug": "java-sparrow",
+  "name": {
+    "zh": "禾雀",
+    "en": "Java Sparrow",
+    "alias": {
+      "zh": [
+        "爪哇禾雀",
+        "禾雀",
+        "灰芙蓉"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "印尼",
+    "region": "印尼爪哇岛 / 巴厘岛",
+    "coordinates": [
+      -7.6,
+      110.8
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "15-17",
+    "weightKg": "0.025-0.030",
+    "lifespanYears": "7-10",
+    "coat": "羽毛丰满,灰背红颊白腹",
+    "coatColors": [
+      "灰色(经典)",
+      "白变种",
+      "银色",
+      "驼色",
+      "黑色(罕见)"
+    ],
+    "eyeColors": [
+      "黑色",
+      "眼圈红色"
+    ]
+  },
+  "personality": {
+    "affection": 5,
+    "activity": 6,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 7,
+    "intelligence": 6,
+    "summary": "印尼银灰宝石",
+    "tags": [
+      "温顺",
+      "爱叫",
+      "群居",
+      "颜值高",
+      "新手友好",
+      "日本文化"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "印尼爪哇岛原生种"
+      },
+      {
+        "year": "1600s",
+        "event": "因食稻米被印尼/日本视为害鸟"
+      },
+      {
+        "year": "1700s",
+        "event": "荷兰商人引入欧洲作笼鸟"
+      },
+      {
+        "year": "1920s",
+        "event": "日本爱鸟协会规模化繁育,白色变种诞生"
+      },
+      {
+        "year": "2000s",
+        "event": "全球宠物鸟市场常见"
+      }
+    ]
+  },
+  "care": {
+    "diet": "禾雀专用粮+蔬果+墨鱼骨补钙",
+    "exercise": "需大笼(60cm+)横栖杆,群养最佳",
+    "health": "羽虱 · 螨虫 · 蛋阻 · 球虫病",
+    "training": "温顺可上手,会学简单口令,需陪伴"
+  },
+  "famous": [
+    "印尼原生稻米害鸟,变全球热门笼鸟",
+    "日本'幸運之鸟'文化代表,白色变种最受欢迎",
+    "全球笼鸟颜值代表",
+    "2007 年印尼重新将其列入保护鸟"
+  ],
+  "tags": [
+    "小型鸟",
+    "鸣鸟",
+    "颜值高",
+    "群居",
+    "笼鸟",
+    "新手友好"
+  ]
+}

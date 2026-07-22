@@ -1,0 +1,103 @@
+{
+  "slug": "dalmatian",
+  "name": {
+    "zh": "大麦町犬",
+    "en": "Dalmatian",
+    "alias": {
+      "zh": [
+        "斑点狗",
+        "达尔马提亚犬",
+        "马车犬"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "克罗地亚",
+    "region": "克罗地亚达尔马提亚地区",
+    "coordinates": [
+      43.5,
+      16.4
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "48-61",
+    "weightKg": "20-32",
+    "lifespanYears": "11-13",
+    "coat": "短毛硬挺光滑,白底黑/肝色斑点",
+    "coatColors": [
+      "白底黑斑",
+      "白底肝色斑"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "蓝色",
+      "异色眼(罕见)"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 9,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "斑点马车护卫",
+    "tags": [
+      "活泼",
+      "忠诚",
+      "耐力强",
+      "聪明",
+      "爱跑",
+      "消防队"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "克罗地亚达尔马提亚地区起源"
+      },
+      {
+        "year": "1700s",
+        "event": "英国用作马车护卫犬"
+      },
+      {
+        "year": "1800s",
+        "event": "美国消防队吉祥物原型"
+      },
+      {
+        "year": "1888",
+        "event": "AKC 正式认证"
+      },
+      {
+        "year": "1961",
+        "event": "迪士尼《101忠狗》风靡全球"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,200-300g,大型犬活跃量配方",
+    "exercise": "每日 1-2 小时高强度运动,需大空间奔跑",
+    "health": "耳聋(高发 15-30%) · 尿路结石 · 髋关节发育不良 · 皮肤过敏",
+    "training": "高能量需大量运动消耗,幼犬期需大量社交化训练"
+  },
+  "famous": [
+    "全球消防队吉祥物原型(马车犬历史)",
+    "迪士尼《101忠狗》主角犬种",
+    "新生幼犬纯白,斑点 2-3 周才显现",
+    "先天性耳聋高发犬种(15-30%)"
+  ],
+  "tags": [
+    "中型犬",
+    "短毛",
+    "斑点",
+    "活泼",
+    "高运动量",
+    "护卫"
+  ]
+}
