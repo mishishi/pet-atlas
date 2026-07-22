@@ -1,0 +1,108 @@
+{
+  "slug": "birman",
+  "name": {
+    "zh": "伯曼猫",
+    "en": "Birman",
+    "alias": {
+      "zh": [
+        "缅甸圣猫",
+        "波曼猫",
+        "拉哥"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "缅甸/法国",
+    "region": "缅甸仰光 → 法国培育",
+    "coordinates": [
+      16.8,
+      96.2
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-28",
+    "weightKg": "3-6",
+    "lifespanYears": "12-16",
+    "coat": "中长毛丝滑单层,无底绒,色点型(面/耳/腿/尾深色)",
+    "coatColors": [
+      "海豹色点(经典)",
+      "蓝色点",
+      "巧克力点",
+      "丁香点",
+      "红色点",
+      "奶油点",
+      "玳瑁点",
+      "山猫点"
+    ],
+    "eyeColors": [
+      "深蓝色(永远)"
+    ]
+  },
+  "personality": {
+    "affection": 9,
+    "activity": 5,
+    "obedience": 6,
+    "independence": 5,
+    "vocalization": 4,
+    "intelligence": 7,
+    "summary": "缅甸圣殿蓝眼僧侣",
+    "tags": [
+      "温顺",
+      "亲人",
+      "安静",
+      "粘人",
+      "甜美",
+      "蓝眼"
+    ],
+    "clingy": 8
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "缅甸拉哥寺庙僧侣饲养的圣猫(传说)"
+      },
+      {
+        "year": "1919",
+        "event": "法国从缅甸首次进口"
+      },
+      {
+        "year": "1925",
+        "event": "法国猫会正式认证"
+      },
+      {
+        "year": "1967",
+        "event": "CFA 正式认证"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎色点猫代表"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,中型猫高蛋白",
+    "exercise": "每日 30 分钟温和互动",
+    "health": "肥厚型心肌病 HCM · 先天性血液病 · 眼部疾病",
+    "training": "极温顺安静适合家庭,需持续陪伴(粘人)"
+  },
+  "famous": [
+    "缅甸拉哥寺庙圣猫传说,白手套 + 蓝眼是标志",
+    "永远是深蓝色眼睛(品种标准)",
+    "全球最受欢迎色点猫代表,色点比暹罗更柔",
+    "温顺安静适合家庭,需持续陪伴"
+  ],
+  "tags": [
+    "中型猫",
+    "中长毛",
+    "色点",
+    "蓝眼",
+    "圣猫",
+    "温顺"
+  ]
+}

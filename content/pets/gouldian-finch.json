@@ -1,0 +1,104 @@
+{
+  "slug": "gouldian-finch",
+  "name": {
+    "zh": "七彩文鸟",
+    "en": "Gouldian Finch",
+    "alias": {
+      "zh": [
+        "彩虹文鸟",
+        "胡锦鸟",
+        "Lord Gouldian Finch"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "澳大利亚",
+    "region": "澳大利亚北部",
+    "coordinates": [
+      -12.5,
+      130.8
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "13-15",
+    "weightKg": "0.015-0.020",
+    "lifespanYears": "4-6(野生) / 8-12(人工)",
+    "coat": "羽毛七彩绚丽,头/胸/腹/尾多色组合",
+    "coatColors": [
+      "红头+紫胸+黄腹(经典)",
+      "黑头+紫胸+黄腹",
+      "黄头+紫胸+黄腹",
+      "蓝变种"
+    ],
+    "eyeColors": [
+      "黑色",
+      "眼圈蓝紫色"
+    ]
+  },
+  "personality": {
+    "affection": 3,
+    "activity": 7,
+    "independence": 8,
+    "intelligence": 4,
+    "vocalization": 6,
+    "social": 6,
+    "summary": "澳洲彩虹宝石",
+    "tags": [
+      "颜值高",
+      "群居",
+      "胆小",
+      "需温控",
+      "稀有",
+      "彩虹色"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "澳大利亚北部热带草原原生"
+      },
+      {
+        "year": "1840s",
+        "event": "英国鸟类学家 John Gould 命名发现"
+      },
+      {
+        "year": "1900s",
+        "event": "欧洲贵族追捧作笼鸟,大量捕猎"
+      },
+      {
+        "year": "1970s",
+        "event": "澳大利亚政府颁布保护法令,禁止野生捕猎"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最颜值爆表小型鸟 TOP3(观赏用)"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+蔬果+墨鱼骨补钙+活虫(繁殖期)",
+    "exercise": "需大笼(80cm+)群养,日行性需温控(25-30°C)",
+    "health": "螨虫 · 呼吸道感染 · 蛋阻 · 球虫病",
+    "training": "观赏鸟不亲人,需群养 + 严格温控,难繁殖"
+  },
+  "famous": [
+    "澳大利亚北部热带草原原生,世界最颜值爆表小型鸟",
+    "红头/黑头/黄头 3 种头色变种,稀有度极高",
+    "1970s 澳大利亚政府保护,禁止野生捕猎",
+    "需严格温控(25-30°C),饲养难度高"
+  ],
+  "tags": [
+    "小型鸟",
+    "鸣鸟",
+    "彩虹色",
+    "稀有",
+    "温控",
+    "颜值"
+  ]
+}

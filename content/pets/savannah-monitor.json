@@ -1,0 +1,104 @@
+{
+  "slug": "savannah-monitor",
+  "name": {
+    "zh": "草原巨蜥",
+    "en": "Savannah Monitor",
+    "alias": {
+      "zh": [
+        "草原巨蜥",
+        "草原巨蜥蜴",
+        "南非巨蜥"
+      ]
+    }
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "非洲",
+    "region": "撒哈拉以南非洲草原",
+    "coordinates": [
+      -5.0,
+      20.0
+    ]
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "90-150(全长含尾)",
+    "weightKg": "1-3",
+    "lifespanYears": "10-15",
+    "coat": "鳞片粗糙,棕灰底+黄色圆斑",
+    "coatColors": [
+      "棕灰色",
+      "黄色圆斑",
+      "深褐色",
+      "尾部环纹"
+    ],
+    "eyeColors": [
+      "黑色",
+      "琥珀色"
+    ]
+  },
+  "personality": {
+    "affection": 4,
+    "activity": 6,
+    "independence": 8,
+    "intelligence": 6,
+    "vocalization": 2,
+    "social": 3,
+    "summary": "非洲草原大蜥蜴",
+    "tags": [
+      "独立",
+      "力量大",
+      "需大空间",
+      "食肉",
+      "新手挑战",
+      "挖洞"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "非洲原住民传统食物+宠物"
+      },
+      {
+        "year": "1800s",
+        "event": "欧洲探险家记录"
+      },
+      {
+        "year": "1990s",
+        "event": "美国异宠市场兴起"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎大型宠物蜥蜴 TOP3"
+      },
+      {
+        "year": "2020s",
+        "event": "CITES 出口管理,合法野生种群减少"
+      }
+    ]
+  },
+  "care": {
+    "diet": "肉食:昆虫 60% + 鼠/鱼 30% + 鸡蛋 10%(成体)",
+    "exercise": "需超大饲养箱(2m+)+ 深沙土挖洞区 + UVB + 晒台",
+    "health": "代谢骨病 MBD · 寄生虫 · 肥胖 · 呼吸道感染",
+    "training": "可驯化但需大量时间,需深沙土挖洞环境(野生习性)"
+  },
+  "famous": [
+    "非洲草原原生大型蜥蜴,可达 1.5m",
+    "全球最受欢迎大型宠物蜥蜴 TOP3",
+    "野生挖洞习性强,需深沙土环境",
+    "新手挑战:力量大需严格饲养管理"
+  ],
+  "tags": [
+    "爬虫",
+    "蜥蜴",
+    "大型",
+    "挖洞",
+    "肉食",
+    "新手挑战"
+  ]
+}
