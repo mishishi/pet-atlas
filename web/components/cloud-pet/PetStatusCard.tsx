@@ -119,6 +119,23 @@ export function PetStatusCard() {
       setRipples((r) => ({ ...r, [action]: r[action] + 1 }));
       // 1.5s 自动消失
       setTimeout(() => setToast(null), 1500);
+      // M2.5: 触发 xp 增量 + 升级检测
+      import("@/lib/petProgression")
+        .then(({ addXp, ACTION_XP }) => {
+          const xpGained = ACTION_XP[action];
+          const newProg = addXp(xpGained);
+          // 升级 toast
+          const leveledUp = (newProg as { _leveledUp?: boolean })._leveledUp;
+          if (leveledUp) {
+            setTimeout(() => {
+              setToast(`🎉 升级了! 现在是 Lv ${newProg.level}`);
+              setTimeout(() => setToast(null), 2500);
+            }, 1700);
+          }
+          // 触发 storage 事件让 ProgressionCard re-render
+          window.dispatchEvent(new Event("storage"));
+        })
+        .catch((err) => console.warn("[PetStatusCard] addXp 失败", err));
     } else {
       // 冷却中:简短提示
       setToast(result.reason);

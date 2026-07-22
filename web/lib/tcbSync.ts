@@ -344,3 +344,10 @@ export function teardownNetworkListeners(): void {
   _onlineHandler = null;
   _offlineHandler = null;
 }
+
+// ===== M2.5 进度同步 stub =====
+// petProgression.ts 调用,目前是 noop(留待 M3 真正实现 TCB 端表结构)
+export async function pushProgressionToTcb(_p: unknown): Promise<boolean> {
+  // 留待 M3 真正实现,目前 fire-and-forget 不报错即可
+  return true;
+}
