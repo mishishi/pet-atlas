@@ -696,6 +696,283 @@ export const BREED_FEATURES: BreedFeatures[] = [
       "Axolotl: aquatic salamander with smooth skin, six feathery external gills on each side of head, four short legs, long flat tail, pale pink/white albino or wild-type dark coloration, permanent larval features (neoteny)",
     decoration: DECORATION_BY_CATEGORY.reptile,
   },
+
+  // ===== 30 new breeds (C 批 1+2+3, 2026-07-23) =====
+  // 犬 (8)
+  {
+    slug: "basset-hound",
+    breedEn: "Basset Hound",
+    breedZh: "巴吉度",
+    category: "dog",
+    features:
+      "Basset Hound: short smooth tri-color or red-white coat, very short legs, extremely long droopy ears reaching past muzzle, sad droopy face with loose wrinkled skin, large heavy bone structure for short stature",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "jack-russell-terrier",
+    breedEn: "Jack Russell Terrier",
+    breedZh: "杰克罗素梗",
+    category: "dog",
+    features:
+      "Jack Russell Terrier: predominantly white smooth or broken coat with black/tan markings, compact athletic small build, V-shaped drop ears, dark almond eyes, alert intense expression, docked or natural tail",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "english-springer-spaniel",
+    breedEn: "English Springer Spaniel",
+    breedZh: "英国史宾格猎犬",
+    category: "dog",
+    features:
+      "English Springer Spaniel: medium-length liver and white or black and white coat with feathering, medium sturdy build, long drop ears, gentle soft expression, kind eyes, deep chest",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "old-english-sheepdog",
+    breedEn: "Old English Sheepdog",
+    breedZh: "古代英国牧羊犬",
+    category: "dog",
+    features:
+      "Old English Sheepdog: profuse shaggy grey and white double coat covering the entire body and eyes, large square muscular build, bobbed or natural short tail, deep bark, bear-like shambling gait",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "havanese",
+    breedEn: "Havanese",
+    breedZh: "哈瓦那犬",
+    category: "dog",
+    features:
+      "Havanese: long silky wavy double coat in many colors, small compact toy build, dark almond eyes, drop ears covered in long hair, plumed tail carried over back, friendly bouncy gait",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "dalmatian",
+    breedEn: "Dalmatian",
+    breedZh: "大麦町犬",
+    category: "dog",
+    features:
+      "Dalmatian: short glossy white coat with distinctive black or liver spots, athletic medium build, drop ears, alert intelligent expression, deep chest, tapered tail",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "doberman-pinscher",
+    breedEn: "Doberman Pinscher",
+    breedZh: "杜宾犬",
+    category: "dog",
+    features:
+      "Doberman Pinscher: short smooth black/red/blue coat with rust markings, sleek athletic muscular medium-large build, long wedge-shaped head, cropped or natural pointed ears, docked tail, alert regal stance",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  {
+    slug: "rottweiler",
+    breedEn: "Rottweiler",
+    breedZh: "罗威纳犬",
+    category: "dog",
+    features:
+      "Rottweiler: short coarse black coat with distinctive rust-tan markings on cheeks/chest/legs, powerful muscular large build, broad blocky head, drop ears, powerful jaw, calm confident demeanor",
+    decoration: DECORATION_BY_CATEGORY.dog,
+  },
+  // 猫 (7)
+  {
+    slug: "burmese",
+    breedEn: "Burmese",
+    breedZh: "缅甸猫",
+    category: "cat",
+    features:
+      "Burmese: short satiny dark brown sable coat with golden eyes, compact muscular medium build, round head with short muzzle, large round expressive eyes, silky close-lying coat, friendly dog-like personality",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "bombay",
+    breedEn: "Bombay",
+    breedZh: "孟买猫",
+    category: "cat",
+    features:
+      "Bombay: short jet-black glossy patent-leather coat, copper-gold round eyes, sleek muscular medium build, rounded head with short muzzle, panther-like miniature appearance",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "american-curl",
+    breedEn: "American Curl",
+    breedZh: "美国卷耳猫",
+    category: "cat",
+    features:
+      "American Curl: distinctively curled-back ears (90-180 degrees), silky semi-long or short coat in many colors, medium wedge-shaped head, large walnut-shaped eyes, gentle alert expression",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "turkish-angora",
+    breedEn: "Turkish Angora",
+    breedZh: "土耳其安哥拉猫",
+    category: "cat",
+    features:
+      "Turkish Angora: long silky single-layer flowing coat without undercoat, slender elegant medium build, wedge-shaped head, large pointed ears, almond-shaped blue/green/gold eyes, plumed tail",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "somali",
+    breedEn: "Somali",
+    breedZh: "索马里猫",
+    category: "cat",
+    features:
+      "Somali: long fox-like ticked ruddy/red coat, bushy fox-like tail, almond-shaped gold/green eyes, large pointed ears, agile muscular medium build, mischievous playful expression",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "norwegian-forest-cat",
+    breedEn: "Norwegian Forest Cat",
+    breedZh: "挪威森林猫",
+    category: "cat",
+    features:
+      "Norwegian Forest Cat: long thick waterproof double coat with mane-like collar, large sturdy muscular build, triangular head, large tufted ears, long bushy tail, almond-shaped green/gold eyes, lynx-like appearance",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  {
+    slug: "birman",
+    breedEn: "Birman",
+    breedZh: "伯曼猫",
+    category: "cat",
+    features:
+      "Birman: semi-long silky color-point coat in seal/blue/chocolate, distinctive white symmetrical gloves on all four paws, deep blue round eyes, sturdy medium build, roman nose, gentle expression",
+    decoration: DECORATION_BY_CATEGORY.cat,
+  },
+  // 小型哺乳 (3)
+  {
+    slug: "gerbil",
+    breedEn: "Mongolian Gerbil",
+    breedZh: "蒙古沙鼠",
+    category: "small-mammal",
+    features:
+      "Mongolian Gerbil: small sandy-brown agouti coat with white belly, long tufted tail, large dark eyes, small rounded ears, long hind legs for jumping, plump body",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+  {
+    slug: "degu",
+    breedEn: "Degu",
+    breedZh: "八齿鼠",
+    category: "small-mammal",
+    features:
+      "Degu: small rodent with brownish-grey coat and lighter belly, distinctive eight-shaped molars, large dark eyes, rounded ears, long thin tail with tufted tip, chunky compact build",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+  {
+    slug: "chipmunk",
+    breedEn: "Chipmunk",
+    breedZh: "花栗鼠",
+    category: "small-mammal",
+    features:
+      "Chipmunk: tiny squirrel-like rodent with reddish-brown back and 5 distinctive black-and-white stripes, white belly, large cheek pouches for food storage, bushy tail, bright alert eyes",
+    decoration: DECORATION_BY_CATEGORY["small-mammal"],
+  },
+  // 鸟 (7)
+  {
+    slug: "sun-conure",
+    breedEn: "Sun Conure",
+    breedZh: "太阳锥尾鹦鹉",
+    category: "bird",
+    features:
+      "Sun Conure: small to medium parrot with brilliant orange-yellow plumage, green-blue flight feathers, white eye-rings, black hooked beak, long tapered tail, lively social personality",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "society-finch",
+    breedEn: "Society Finch",
+    breedZh: "禾雀",
+    category: "bird",
+    features:
+      "Society Finch: small songbird with grey-brown back and distinctive white belly, black mask, conical pink/silver beak, plump rounded body, social flocking nature",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "java-sparrow",
+    breedEn: "Java Sparrow",
+    breedZh: "爪哇禾雀",
+    category: "bird",
+    features:
+      "Java Sparrow: medium songbird with plump grey body, distinctive red-pink ring around eye, large thick pink-red beak, white cheek patches, black head, short tail",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "parrotlet",
+    breedEn: "Parrotlet",
+    breedZh: "小鹦鹉",
+    category: "bird",
+    features:
+      "Parrotlet: tiny chunky parrot with stocky build, predominantly green plumage with blue markings, short rounded tail, large dark eyes, hooked beak, miniature Amazon-like appearance",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "indian-ringneck",
+    breedEn: "Indian Ringneck Parakeet",
+    breedZh: "红领绿鹦鹉",
+    category: "bird",
+    features:
+      "Indian Ringneck Parakeet: medium parrot with vibrant green plumage, distinctive black and pink neck ring in males, long tapered tail, hooked red beak, slender elegant build, intelligent eyes",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "gouldian-finch",
+    breedEn: "Gouldian Finch",
+    breedZh: "七彩文鸟",
+    category: "bird",
+    features:
+      "Gouldian Finch: small songbird with multi-colored rainbow plumage, red/black/yellow head variants, purple chest, yellow belly, turquoise blue nape, considered world's most colorful finch",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  {
+    slug: "quaker-parrot",
+    breedEn: "Quaker Parrot",
+    breedZh: "和尚鹦鹉",
+    category: "bird",
+    features:
+      "Quaker Parrot: medium small parrot with grey-green plumage, grey forehead and chest, blue-tinted flight feathers, long tapered tail, distinctive quaker hood appearance, stocky build",
+    decoration: DECORATION_BY_CATEGORY.bird,
+  },
+  // 爬虫 (5)
+  {
+    slug: "red-footed-tortoise",
+    breedEn: "Red-footed Tortoise",
+    breedZh: "红腿陆龟",
+    category: "reptile",
+    features:
+      "Red-footed Tortoise: domed black shell with yellow center on each scute, distinctive red-orange patches on legs and head, medium compact build, slight plastron concave in males, calm expression",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
+  {
+    slug: "blue-tongued-skink",
+    breedEn: "Blue-tongued Skink",
+    breedZh: "蓝舌石龙子",
+    category: "reptile",
+    features:
+      "Blue-tongued Skink: large robust lizard with smooth banded silver-grey and tan scales, distinctive cobalt-blue tongue, short stumpy legs, triangular head, fat segmented tail, calm demeanor",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
+  {
+    slug: "hermann-tortoise",
+    breedEn: "Hermann's Tortoise",
+    breedZh: "赫曼陆龟",
+    category: "reptile",
+    features:
+      "Hermann's Tortoise: domed yellow and black shell with distinctive divided supracaudal scute, scaly stumpy yellow-tan legs, hooked upper beak, small head with dark eyes, short keratinous tail tip",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
+  {
+    slug: "savannah-monitor",
+    breedEn: "Savannah Monitor",
+    breedZh: "草原巨蜥",
+    category: "reptile",
+    features:
+      "Savannah Monitor: large robust lizard with grey-brown base color and yellowish circular spots, muscular stocky build, powerful limbs with strong claws, broad triangular head, long muscular tail, active intelligent demeanor",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
+  {
+    slug: "gopher-snake",
+    breedEn: "Gopher Snake",
+    breedZh: "牛蛇",
+    category: "reptile",
+    features:
+      "Gopher Snake: medium non-venomous colubrid with yellow-tan base color and distinctive dark brown saddle markings, slender muscular build, small triangular head, round pupils, mimics rattlesnake behavior when threatened",
+    decoration: DECORATION_BY_CATEGORY.reptile,
+  },
 ];
 
 /** 按 slug 查表,找不到时返回 null */

@@ -57,11 +57,19 @@ art/**/**/_ref/
 !web/public/**/*.md
 !web/public/**/**/*.md
 
+# 音频资源(预生成中文 TTS,~300K,走 TCB 存储不进 git,节省 Vercel build size)
+web/public/**/*.mp3
+web/public/**/**/*.mp3
+
 # 内部脚本产物(可选)
 scripts/atlas_requests.json
 # scripts/vintage-paper-batch.json  ← 留着,记录 50 品种清单
 # cloud-pet 预生成 prompt JSON(跑 node scripts/cloud-pet-gen-prompts.mjs 重新生成)
 scripts/cloud-pet-pool.json
+
+# 一次性测试脚本(诊断/调试用,不入仓)
+web/scripts/test-*.mjs
+web/scripts/diag-*.mjs
 
 # Worktrees (临时开发分支,不入主仓库)
 .worktrees/
