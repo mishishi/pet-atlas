@@ -1,0 +1,106 @@
+{
+  "slug": "gerbil",
+  "name": {
+    "zh": "蒙古沙鼠",
+    "en": "Mongolian Gerbil",
+    "alias": {
+      "zh": [
+        "沙鼠",
+        "长爪沙鼠",
+        "通心粉鼠"
+      ]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "蒙古 / 中国西北",
+    "region": "蒙古草原与中国内蒙古",
+    "coordinates": [
+      44,
+      105
+    ]
+  },
+  "physical": {
+    "sizeGroup": "toy",
+    "heightCm": "10-12(含尾)",
+    "weightKg": "0.05-0.08",
+    "lifespanYears": "3-5",
+    "coat": "短密柔顺",
+    "coatColors": [
+      "野生色",
+      "金黄色",
+      "白色",
+      "黑色",
+      "斑点",
+      "薰衣草色"
+    ],
+    "eyeColors": [
+      "黑色",
+      "红色(白化)"
+    ]
+  },
+  "personality": {
+    "affection": 6,
+    "activity": 8,
+    "obedience": 3,
+    "independence": 6,
+    "vocalization": 2,
+    "intelligence": 7,
+    "summary": "日行小沙精灵",
+    "tags": [
+      "日行",
+      "活泼",
+      "好奇",
+      "群居",
+      "爱挖",
+      "小巧"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1866",
+        "event": "法国传教士 Armand David 在蒙古首次科学记录"
+      },
+      {
+        "year": "1935",
+        "event": "日本从蒙古引入实验动物"
+      },
+      {
+        "year": "1954",
+        "event": "美国作为宠物首次进口 20 只"
+      },
+      {
+        "year": "1960s",
+        "event": "美国宠物市场流行'Gerbil'昵称"
+      },
+      {
+        "year": "2010s",
+        "event": "中国异宠市场兴起,价格 50-300"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+少量蔬果+昆虫蛋白,需补维生素E",
+    "exercise": "需大笼+沙浴+跑轮,日行性白天活动",
+    "health": "癫痫(高发) · 牙齿过长 · 皮肤病 · 肿瘤",
+    "training": "可上手但需温柔,需同种同伴(群居动物)"
+  },
+  "famous": [
+    "1960s 美国宠物店从蒙古进口 20 只繁衍至今",
+    "日行性沙鼠与夜行性仓鼠根本区别",
+    "常被误认为'沙漠仓鼠'但完全不同科",
+    "原产地蒙古与中国西北的群居小型啮齿"
+  ],
+  "tags": [
+    "微型",
+    "短毛",
+    "日行",
+    "群居",
+    "异宠",
+    "草原"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "slug": "american-curl",
+  "name": {
+    "zh": "美国卷耳猫",
+    "en": "American Curl",
+    "alias": {
+      "zh": [
+        "卷耳猫",
+        "美卷"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "美国",
+    "region": "加利福尼亚州莱克伍德",
+    "coordinates": [
+      33.85,
+      -118.13
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "23-28",
+    "weightKg": "3-5",
+    "lifespanYears": "12-16",
+    "coat": "短毛或中长毛,丝滑柔软",
+    "coatColors": [
+      "全色系(70+ 颜色)",
+      "重点色",
+      "玳瑁",
+      "虎斑"
+    ],
+    "eyeColors": [
+      "全色系",
+      "蓝色",
+      "金色",
+      "绿色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 6,
+    "vocalization": 4,
+    "intelligence": 7,
+    "summary": "卷耳小天使",
+    "tags": [
+      "亲人",
+      "温和",
+      "聪明",
+      "安静",
+      "爱玩",
+      "稀有"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1981",
+        "event": "加州 Joe 与 Grace Ruga 发现流浪卷耳猫 Shulamith"
+      },
+      {
+        "year": "1983",
+        "event": "开始系统繁育"
+      },
+      {
+        "year": "1986",
+        "event": "CFA 临时认证"
+      },
+      {
+        "year": "1993",
+        "event": "CFA 正式认证"
+      },
+      {
+        "year": "2010s",
+        "event": "因独特卷耳造型成为中国网红猫"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,标准高蛋白猫粮",
+    "exercise": "每日 30 分钟温和互动即可",
+    "health": "耳软骨较脆弱(卷耳基因) · 整体健康",
+    "training": "温顺聪明,易与人相处,需注意耳道清洁"
+  },
+  "famous": [
+    "源自 1981 加州流浪猫 Shulamith 单一基因突变",
+    "全球所有卷耳猫的共同祖先",
+    "卷耳角度 90-180° 是品种标准",
+    "TICA 1979 成立后首批认证品种之一"
+  ],
+  "tags": [
+    "小型猫",
+    "短毛/中长毛",
+    "卷耳",
+    "家庭友好",
+    "稀有",
+    "网红猫"
+  ]
+}

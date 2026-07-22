@@ -1,0 +1,103 @@
+{
+  "slug": "sun-conure",
+  "name": {
+    "zh": "太阳锥尾鹦鹉",
+    "en": "Sun Conure",
+    "alias": {
+      "zh": [
+        "太阳锥尾",
+        "金太阳",
+        "葵花凤头鹦鹉"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "南美洲",
+    "region": "圭亚那 / 委内瑞拉 / 巴西北部",
+    "coordinates": [
+      5,
+      -55
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "30-32(含尾)",
+    "weightKg": "0.1-0.12",
+    "lifespanYears": "15-25(野生) / 25-30(人工)",
+    "coat": "羽毛浓密,通体金黄橘红",
+    "coatColors": [
+      "金黄",
+      "橘红",
+      "翼尖蓝绿",
+      "尾尖橄榄绿"
+    ],
+    "eyeColors": [
+      "深棕色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 8,
+    "obedience": 5,
+    "independence": 5,
+    "vocalization": 9,
+    "intelligence": 7,
+    "summary": "橘色尖叫小太阳",
+    "tags": [
+      "爱叫",
+      "活泼",
+      "聪明",
+      "粘人",
+      "爱玩",
+      "群居"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1700s",
+        "event": "欧洲博物学家在南美首次记录"
+      },
+      {
+        "year": "1800s",
+        "event": "因羽毛华丽被大量捕猎"
+      },
+      {
+        "year": "1970s",
+        "event": "CITES 列入保护,宠物贸易兴起"
+      },
+      {
+        "year": "2000s",
+        "event": "美国宠物市场热门中型鹦鹉"
+      },
+      {
+        "year": "2010s",
+        "event": "中国异宠市场兴起,价格 1500-4000"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+蔬果+专用颗粒+墨鱼骨补钙",
+    "exercise": "需 60cm+ 笼子,横栖杆,每日 2-3 小时放飞",
+    "health": "羽毛啄咬 PBFD · 喙羽症 · 鹦鹉热",
+    "training": "极聪明可学说话(10-30 词),但叫声大不适合公寓"
+  },
+  "famous": [
+    "全球叫声最响亮的鹦鹉之一(可达 120 分贝)",
+    "橘红色羽毛象征'小太阳'昵称",
+    "全球最受欢迎的中小型鹦鹉 TOP3",
+    "寿命可达 30 年,需长期饲养准备"
+  ],
+  "tags": [
+    "中型鸟",
+    "鸣叫",
+    "群居",
+    "笼养",
+    "长寿命",
+    "高智商"
+  ]
+}
