@@ -1,0 +1,104 @@
+{
+  "slug": "indian-ringneck",
+  "name": {
+    "zh": "红领绿鹦鹉",
+    "en": "Indian Ringneck Parakeet",
+    "alias": {
+      "zh": [
+        "红领鹦鹉",
+        "印度环颈鹦鹉",
+        "亚历山大鹦鹉(近亲)"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "南亚",
+    "region": "印度 / 斯里兰卡 / 巴基斯坦",
+    "coordinates": [
+      20.6,
+      78.9
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "37-43(含尾)",
+    "weightKg": "0.115-0.140",
+    "lifespanYears": "20-30",
+    "coat": "羽毛鲜绿色,颈环+喙红色(雄性成鸟)",
+    "coatColors": [
+      "绿色(经典)",
+      "蓝色变种",
+      "黄色变种",
+      "白色变种",
+      "灰色变种"
+    ],
+    "eyeColors": [
+      "深黄色"
+    ]
+  },
+  "personality": {
+    "affection": 6,
+    "activity": 7,
+    "obedience": 5,
+    "independence": 6,
+    "vocalization": 8,
+    "intelligence": 8,
+    "summary": "印度环颈绿鹦哥",
+    "tags": [
+      "聪明",
+      "能说话",
+      "活泼",
+      "需陪伴",
+      "爱叫",
+      "智商高"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "印度王公贵族传统宠物,3000 年历史"
+      },
+      {
+        "year": "1600s",
+        "event": "欧洲殖民者引入欧洲,维多利亚女王宠爱"
+      },
+      {
+        "year": "1900s",
+        "event": "美国宠物市场普及,蓝色变种培育成功"
+      },
+      {
+        "year": "2000s",
+        "event": "全球最受欢迎中型鹦鹉 TOP5"
+      },
+      {
+        "year": "2010s",
+        "event": "中国异宠市场兴起,800-3000 元/只"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+蔬果+专用颗粒+墨鱼骨补钙",
+    "exercise": "需大笼(80cm+)横栖杆,每日 2-3 小时放飞",
+    "health": "PBFD 喙羽症 · 鹦鹉热 · 脂肪瘤 · 喙过长",
+    "training": "极聪明可学说话(20-50 词)+ trick,需大量互动防抑郁"
+  },
+  "famous": [
+    "印度王公 3000 年历史贵族宠物",
+    "雄性成鸟颈环+喙红色是品种标志",
+    "极聪明可学 20-50 词,中型鹦鹉学话王",
+    "全球最受欢迎中型鹦鹉 TOP5"
+  ],
+  "tags": [
+    "中型鸟",
+    "鹦鹉",
+    "会说话",
+    "聪明",
+    "印度",
+    "贵族"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "slug": "doberman-pinscher",
+  "name": {
+    "zh": "杜宾犬",
+    "en": "Doberman Pinscher",
+    "alias": {
+      "zh": [
+        "杜宾",
+        "都柏文",
+        "笃宾犬"
+      ]
+    }
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "德国",
+    "region": "德国图林根州阿波尔达",
+    "coordinates": [
+      50.9,
+      11.5
+    ]
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "63-72",
+    "weightKg": "27-45",
+    "lifespanYears": "10-13",
+    "coat": "短毛光滑贴身,黑/红/蓝/浅黄底+铁锈色斑纹",
+    "coatColors": [
+      "黑色+铁锈色",
+      "红色+铁锈色",
+      "蓝色+铁锈色",
+      "浅黄色(伊莎贝拉)+铁锈色"
+    ],
+    "eyeColors": [
+      "深棕色",
+      "蓝色",
+      "黑色"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 8,
+    "obedience": 8,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 9,
+    "summary": "铁锈色护卫绅士",
+    "tags": [
+      "忠诚",
+      "聪明",
+      "警觉",
+      "勇敢",
+      "护卫",
+      "高运动量"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1890s",
+        "event": "德国税务官 Karl Friedrich Louis Dobermann 培育"
+      },
+      {
+        "year": "1900",
+        "event": "德国官方正式认证"
+      },
+      {
+        "year": "1908",
+        "event": "AKC 正式认证"
+      },
+      {
+        "year": "二战",
+        "event": "美军'海军陆战队战犬'代表品种"
+      },
+      {
+        "year": "2010s",
+        "event": "全球家庭护卫犬 TOP5 热门"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,300-400g,大型犬活跃量配方",
+    "exercise": "每日 1.5-2 小时高强度运动,需大空间奔跑",
+    "health": "扩张型心肌病 DCM(高发) · 髋关节发育不良 · 冯·维勒布兰德病 · 颈椎病 Wobbler",
+    "training": "极聪明需早期训练+社交化,忠诚护卫本能强,需正向激励"
+  },
+  "famous": [
+    "1890s 德国税务官 Karl Dobermann 培育作护卫犬",
+    "二战美军'海军陆战队战犬'代表品种",
+    "全球家庭护卫犬 TOP5 热门",
+    "扩张型心肌病 DCM 高发品种(需心脏体检)"
+  ],
+  "tags": [
+    "大型犬",
+    "短毛",
+    "护卫",
+    "高智商",
+    "高运动量",
+    "黑铁锈色"
+  ]
+}

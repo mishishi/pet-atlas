@@ -1,0 +1,103 @@
+{
+  "slug": "quaker-parrot",
+  "name": {
+    "zh": "和尚鹦鹉",
+    "en": "Quaker Parrot",
+    "alias": {
+      "zh": [
+        "和尚小鹦",
+        "灰胸鹦哥",
+        "贵妇鹦鹉"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "南美洲",
+    "region": "南美巴西/阿根廷/玻利维亚",
+    "coordinates": [
+      -23.5,
+      -58.0
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "28-30",
+    "weightKg": "0.090-0.120",
+    "lifespanYears": "20-30",
+    "coat": "羽毛灰绿,胸/面灰白,腿蓝绿",
+    "coatColors": [
+      "野生色(灰绿)",
+      "蓝色变种",
+      "黄色变种",
+      "白变种"
+    ],
+    "eyeColors": [
+      "深棕色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 8,
+    "intelligence": 8,
+    "summary": "南美灰胸小话痨",
+    "tags": [
+      "聪明",
+      "会说话",
+      "粘人",
+      "活泼",
+      "爱玩",
+      "会建巢"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "南美原住民传统宠物"
+      },
+      {
+        "year": "1800s",
+        "event": "欧洲引入作笼鸟"
+      },
+      {
+        "year": "1960s",
+        "event": "美国宠物市场普及,会学话能力受关注"
+      },
+      {
+        "year": "2000s",
+        "event": "美国部分州禁养(农业害鸟入侵)"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎小型鹦鹉 TOP3(亚洲市场)"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+蔬果+专用颗粒+墨鱼骨补钙",
+    "exercise": "需大笼(60cm+),每日 2-3 小时放飞,需树枝啃咬",
+    "health": "PBFD 喙羽症 · 鹦鹉热 · 脂肪肝 · 螨虫",
+    "training": "极聪明可学说话(10-40 词)+ trick,会自建大巢穴(需提供材料)"
+  },
+  "famous": [
+    "唯一会自建大型公共巢穴的鹦鹉(野生/笼养都建)",
+    "极聪明可学 10-40 词,小型鹦鹉学话王",
+    "美国部分州禁养(野生种群破坏农业)",
+    "全球最受欢迎小型鹦鹉 TOP3"
+  ],
+  "tags": [
+    "小型鸟",
+    "鹦鹉",
+    "会说话",
+    "建巢",
+    "聪明",
+    "禁养争议"
+  ]
+}

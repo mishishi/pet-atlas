@@ -118,6 +118,17 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "society-finch",
   "somali",
   "turkish-angora",
+  // C 批 3 扩品种 10 个(2026-07-22,90→100)
+  "birman",
+  "chipmunk",
+  "doberman-pinscher",
+  "gopher-snake",
+  "gouldian-finch",
+  "indian-ringneck",
+  "norwegian-forest-cat",
+  "quaker-parrot",
+  "rottweiler",
+  "savannah-monitor",
 ]);
 
 /** category → 目录名映射 */

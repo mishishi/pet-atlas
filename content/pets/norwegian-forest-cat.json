@@ -1,0 +1,110 @@
+{
+  "slug": "norwegian-forest-cat",
+  "name": {
+    "zh": "挪威森林猫",
+    "en": "Norwegian Forest Cat",
+    "alias": {
+      "zh": [
+        "挪威林猫",
+        "森林猫",
+        "NFO"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "挪威",
+    "region": "挪威斯堪的纳维亚",
+    "coordinates": [
+      60.5,
+      8.5
+    ]
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "23-30",
+    "weightKg": "5-9",
+    "lifespanYears": "14-16",
+    "coat": "长毛双层防水平滑,颈毛鬃毛状,尾毛蓬松",
+    "coatColors": [
+      "棕虎斑(经典)",
+      "黑色",
+      "蓝色",
+      "红色",
+      "银虎斑",
+      "玳瑁色",
+      "白色"
+    ],
+    "eyeColors": [
+      "绿色",
+      "金色",
+      "古铜色",
+      "蓝色(白猫)"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 5,
+    "independence": 7,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "北欧森林大脚怪",
+    "tags": [
+      "温顺",
+      "聪明",
+      "亲人",
+      "爱攀爬",
+      "独立",
+      "森林系"
+    ],
+    "clingy": 6
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "北欧维京人家庭/农场工作猫,1000 年历史"
+      },
+      {
+        "year": "1930s",
+        "event": "挪威育种家开始正式保护繁育计划"
+      },
+      {
+        "year": "1970s",
+        "event": "挪威国王 Olaf 五世指定为挪威国猫"
+      },
+      {
+        "year": "1979",
+        "event": "FIFe 正式认证"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎长毛猫 TOP5"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,80-120g,大型猫高蛋白支持长毛",
+    "exercise": "每日 30-45 分钟,极爱攀爬(挪威森林习性)",
+    "health": "肥厚型心肌病 HCM · 髋关节发育不良 · 糖原贮积病 IV 型",
+    "training": "温顺聪明但独立性强,需大空间+高猫爬架"
+  },
+  "famous": [
+    "北欧维京人家猫 1000 年历史,挪威国猫",
+    "防水平滑双层长毛 + 蓬松尾是品种标志",
+    "极爱攀爬,需大型猫爬架",
+    "全球最受欢迎长毛猫 TOP5"
+  ],
+  "tags": [
+    "大型猫",
+    "长毛",
+    "森林",
+    "攀爬",
+    "国猫",
+    "防风"
+  ]
+}
