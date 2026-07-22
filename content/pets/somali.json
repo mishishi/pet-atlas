@@ -1,0 +1,107 @@
+{
+  "slug": "somali",
+  "name": {
+    "zh": "索马里猫",
+    "en": "Somali",
+    "alias": {
+      "zh": [
+        "索马里",
+        "长毛阿比西尼亚",
+        "狐狸猫"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "美国",
+    "region": "美国(起源于阿比西尼亚猫长毛变种)",
+    "coordinates": [
+      38.9,
+      -77.0
+    ]
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "23-26",
+    "weightKg": "3-5",
+    "lifespanYears": "11-16",
+    "coat": "中长毛双层,狐狸样蓬松尾巴",
+    "coatColors": [
+      "栗色(经典)",
+      "红褐色",
+      "蓝灰色",
+      "鹿色",
+      "巧克力色"
+    ],
+    "eyeColors": [
+      "金黄色",
+      "绿色",
+      "榛色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 9,
+    "obedience": 6,
+    "independence": 6,
+    "vocalization": 5,
+    "intelligence": 9,
+    "summary": "狐尾长毛舞者",
+    "tags": [
+      "活泼",
+      "聪明",
+      "好奇",
+      "爱玩",
+      "亲人",
+      "运动健将"
+    ],
+    "clingy": 6
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1900s",
+        "event": "英国阿比西尼亚猫繁育中长毛变种出现"
+      },
+      {
+        "year": "1930s",
+        "event": "因不符合短毛标准被弃,50 年代美国育种家重新发现"
+      },
+      {
+        "year": "1967",
+        "event": "美国 CFA 注册 'Somali' 名称"
+      },
+      {
+        "year": "1979",
+        "event": "CFA 正式认证"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎长毛猫 TOP10"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,高蛋白支持高代谢",
+    "exercise": "每日 45-60 分钟高强度互动,需大空间攀爬",
+    "health": "丙酮酸激酶缺乏 PKD · 视网膜萎缩 PRA · 牙龈炎",
+    "training": "极聪明可学开门+ trick,似狗行为(捡球+听指令)"
+  },
+  "famous": [
+    "阿比西尼亚猫长毛变种,1960s 才独立成种",
+    "蓬松狐狸样尾巴是品种标志",
+    "猫中运动健将,可学 trick",
+    "全球最受欢迎长毛猫 TOP10"
+  ],
+  "tags": [
+    "中型猫",
+    "长毛",
+    "活泼",
+    "高智商",
+    "运动健将",
+    "狐狸"
+  ]
+}

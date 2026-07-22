@@ -1,0 +1,105 @@
+{
+  "slug": "society-finch",
+  "name": {
+    "zh": "禾雀",
+    "en": "Society Finch",
+    "alias": {
+      "zh": [
+        "白腰文鸟",
+        "社会织雀",
+        "十姊妹"
+      ]
+    }
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "亚洲",
+    "region": "东南亚 / 中国华南",
+    "coordinates": [
+      22.5,
+      114.1
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "10-12",
+    "weightKg": "0.012-0.015",
+    "lifespanYears": "5-10",
+    "coat": "羽毛灰褐腰白",
+    "coatColors": [
+      "灰褐色",
+      "白腰",
+      "黑头",
+      "巧克力变种",
+      "白色变种",
+      "驼色变种"
+    ],
+    "eyeColors": [
+      "黑色"
+    ]
+  },
+  "personality": {
+    "affection": 6,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 4,
+    "vocalization": 8,
+    "intelligence": 5,
+    "summary": "群居小歌姬",
+    "tags": [
+      "群居",
+      "爱叫",
+      "温和",
+      "易养",
+      "能群养",
+      "新手友好"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古代",
+        "event": "中国华南及东南亚原住民传统笼养鸟"
+      },
+      {
+        "year": "1700s",
+        "event": "欧洲殖民者引入欧洲作笼鸟"
+      },
+      {
+        "year": "1900s",
+        "event": "日本从中国引入,培育十姊妹品系"
+      },
+      {
+        "year": "1950s",
+        "event": "美国宠物市场普及"
+      },
+      {
+        "year": "2010s",
+        "event": "全球最受欢迎小型鸣鸟 TOP3"
+      }
+    ]
+  },
+  "care": {
+    "diet": "种子粮+少量蔬果+墨鱼骨补钙",
+    "exercise": "需大笼(60cm+)横栖杆,群养 2-3 只以上",
+    "health": "羽虱 · 螨虫 · 蛋阻(母鸟产蛋难) · 呼吸道感染",
+    "training": "温顺不咬人,适合新手家庭,需群居否则抑郁"
+  },
+  "famous": [
+    "全球最易养小型鸣鸟代表,新手友好",
+    "必须群居(2-3 只以上),单只易抑郁",
+    "日本'十姊妹'品系是驯化最彻底的小鸟",
+    "可当'养父母'代孵其他小鸟蛋"
+  ],
+  "tags": [
+    "小型鸟",
+    "鸣鸟",
+    "群居",
+    "新手友好",
+    "笼鸟",
+    "温顺"
+  ]
+}
