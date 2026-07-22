@@ -43,15 +43,20 @@ const COLOR_OPTIONS: Array<{ key: ColorPreference; hex: string }> = [
   { key: "blue", hex: "#7B9DB8" },
 ];
 
-/** mood → 预生成音频路径(public/sounds/pet-voice/ 由 build 时打包) */
-const MOOD_AUDIO: Record<string, string> = {
-  happy: "/sounds/pet-voice/happy.mp3",
-  calm: "/sounds/pet-voice/calm.mp3",
-  hungry: "/sounds/pet-voice/hungry.mp3",
-  sleepy: "/sounds/pet-voice/sleepy.mp3",
-  bored: "/sounds/pet-voice/bored.mp3",
-  sad: "/sounds/pet-voice/sad.mp3",
-};
+/** mood → 预生成音频 URL
+ * 优先 TCB (CDN 加速,节省 Vercel build size)
+ * 退化 public(本地 fallback,build 打包)
+ */
+const TCB_VOICE_BASE =
+  "https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la/pet-atlas/pet-voice";
+const PUBLIC_VOICE_BASE = "/sounds/pet-voice";
+
+function moodAudioUrls(mood: string): { primary: string; fallback: string } {
+  return {
+    primary: `${TCB_VOICE_BASE}/${mood}.mp3`,
+    fallback: `${PUBLIC_VOICE_BASE}/${mood}.mp3`,
+  };
+}
 
 /** mood → web speech fallback 短句(用 petName) */
 function moodLine(mood: keyof typeof MOOD_META, petName: string): string {
@@ -167,32 +172,36 @@ export function PetSettings() {
     if (!pet) return;
     const mood = stats ? deriveMood(stats) : "calm";
     // 1. 优先用预生成 audio(高质量 + 0 延迟)
-    const audioUrl = MOOD_AUDIO[mood];
-    if (audioRef.current && audioUrl) {
+    const urls = moodAudioUrls(mood);
+    if (audioRef.current) {
       try {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
-        audioRef.current.src = audioUrl;
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setSpeaking(true);
-              // 监听 ended
-              const onEnded = () => {
-                setSpeaking(false);
-                audioRef.current?.removeEventListener("ended", onEnded);
-              };
-              audioRef.current?.addEventListener("ended", onEnded);
-              // 兜底超时(防止 ended 不触发)
-              setTimeout(() => setSpeaking(false), 6000);
-            })
-            .catch((err) => {
-              // autoplay 失败(用户未交互)或 src 加载失败 → fallback
-              console.warn("[PetSettings] audio 播放失败, fallback to web speech", err);
-              fallbackSpeak(mood, pet.petName);
-            });
-        }
+        // 尝试 TCB,失败 fallback 到 public
+        const tryPlay = (src: string, onError?: () => void) => {
+          if (!audioRef.current) return;
+          audioRef.current.src = src;
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                setSpeaking(true);
+                const onEnded = () => {
+                  setSpeaking(false);
+                  audioRef.current?.removeEventListener("ended", onEnded);
+                };
+                audioRef.current?.addEventListener("ended", onEnded);
+                setTimeout(() => setSpeaking(false), 6000);
+              })
+              .catch((err) => {
+                console.warn("[PetSettings] audio play failed:", src, err);
+                if (onError) onError();
+                else fallbackSpeak(mood, pet.petName);
+              });
+          }
+        };
+        // 第一发 TCB,onError 触发时切到 public
+        tryPlay(urls.primary, () => tryPlay(urls.fallback, () => fallbackSpeak(mood, pet.petName)));
         return;
       } catch (err) {
         console.warn("[PetSettings] audio 异常, fallback", err);
@@ -219,25 +228,36 @@ export function PetSettings() {
   /** 试听 6 段:直接播指定 mood 的预生成音频 */
   const handleTestVoice = useCallback(
     (mood: string) => {
-      const audioUrl = MOOD_AUDIO[mood];
-      if (!audioRef.current || !audioUrl) return;
+      const urls = moodAudioUrls(mood);
+      if (!audioRef.current) return;
       try {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
-        audioRef.current.src = audioUrl;
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setActiveVoice(mood);
-              const onEnded = () => {
-                setActiveVoice((cur) => (cur === mood ? null : cur));
-                audioRef.current?.removeEventListener("ended", onEnded);
-              };
-              audioRef.current?.addEventListener("ended", onEnded);
-              setTimeout(() => {
-                setActiveVoice((cur) => (cur === mood ? null : cur));
-              }, 6000);
+        const tryPlay = (src: string, onError?: () => void) => {
+          if (!audioRef.current) return;
+          audioRef.current.src = src;
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                setActiveVoice(mood);
+                const onEnded = () => {
+                  setActiveVoice((cur) => (cur === mood ? null : cur));
+                  audioRef.current?.removeEventListener("ended", onEnded);
+                };
+                audioRef.current?.addEventListener("ended", onEnded);
+                setTimeout(() => {
+                  setActiveVoice((cur) => (cur === mood ? null : cur));
+                }, 6000);
+              })
+              .catch((err) => {
+                console.warn("[PetSettings] test voice failed:", src, err);
+                if (onError) onError();
+                else flash("播放失败,请点击页面任意位置再试");
+              });
+          }
+        };
+        tryPlay(urls.primary, () => tryPlay(urls.fallback, () => flash("播放失败,请点击页面任意位置再试")));
             })
             .catch((err) => {
               console.warn("[PetSettings] test voice 失败", err);
