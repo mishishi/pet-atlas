@@ -265,6 +265,17 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "tenrec",
   "yorkshire-terrier",
   "zebra-finch",
+  // C 批扩品种 10 个(2026-07-22)
+  "american-curl",
+  "basset-hound",
+  "bombay",
+  "burmese",
+  "degu",
+  "english-springer-spaniel",
+  "gerbil",
+  "jack-russell-terrier",
+  "old-english-sheepdog",
+  "sun-conure",
 ]);
 
 /**

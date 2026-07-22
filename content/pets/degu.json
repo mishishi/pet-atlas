@@ -1,0 +1,105 @@
+{
+  "slug": "degu",
+  "name": {
+    "zh": "八齿鼠",
+    "en": "Degu",
+    "alias": {
+      "zh": [
+        "八齿鼠",
+        "智利豚鼠",
+        "Degu"
+      ]
+    }
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "智利",
+    "region": "智利安第斯山脉",
+    "coordinates": [
+      -33,
+      -70
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-30(含尾)",
+    "weightKg": "0.17-0.3",
+    "lifespanYears": "5-8(野生) / 6-10(人工)",
+    "coat": "短密粗硬",
+    "coatColors": [
+      "野生棕色",
+      "灰色",
+      "沙色",
+      "黑色",
+      "蓝色变种"
+    ],
+    "eyeColors": [
+      "黑色",
+      "深棕色"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 8,
+    "obedience": 4,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 9,
+    "summary": "智利迷你海狸",
+    "tags": [
+      "日行",
+      "群居",
+      "聪明",
+      "爱叫",
+      "爱挖",
+      "长寿"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1782",
+        "event": "智利植物学家 Juan Ignacio Molina 首次科学描述"
+      },
+      {
+        "year": "1900s",
+        "event": "智利当地农业害兽,挖洞毁作物"
+      },
+      {
+        "year": "1960s",
+        "event": "美国实验室作为研究动物进口"
+      },
+      {
+        "year": "1990s",
+        "event": "欧洲异宠市场兴起"
+      },
+      {
+        "year": "2010s",
+        "event": "中国异宠市场引进,价格 300-800"
+      }
+    ]
+  },
+  "care": {
+    "diet": "草食:干草 70% + 蔬果 25% + 颗粒 5%,禁糖(糖尿病)",
+    "exercise": "需大笼(高 1.5m+),沙浴+啃咬玩具+每日放风",
+    "health": "糖尿病(高发,禁糖) · 牙齿过长 · 肝脂沉积",
+    "training": "极聪明可学简单 trick,需群居(同种)否则抑郁"
+  },
+  "famous": [
+    "全球啮齿动物中智商最高之一,相当于仓鼠 5 倍",
+    "群居动物单独饲养易抑郁甚至自残",
+    "糖尿病高发,禁糖是关键",
+    "8 颗牙('Octodon' 是其学名由来)"
+  ],
+  "tags": [
+    "小型",
+    "短毛",
+    "日行",
+    "群居",
+    "异宠",
+    "长寿啮齿"
+  ]
+}

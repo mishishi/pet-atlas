@@ -1,0 +1,101 @@
+{
+  "slug": "bombay",
+  "name": {
+    "zh": "孟买猫",
+    "en": "Bombay",
+    "alias": {
+      "zh": [
+        "孟买",
+        "小黑豹",
+        "漆皮猫"
+      ]
+    }
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-22",
+  "origin": {
+    "country": "美国",
+    "region": "肯塔基州路易斯维尔",
+    "coordinates": [
+      38.25,
+      -85.76
+    ]
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "23-30",
+    "weightKg": "3-5",
+    "lifespanYears": "12-16",
+    "coat": "短密黑亮如漆皮",
+    "coatColors": [
+      "纯黑色"
+    ],
+    "eyeColors": [
+      "古铜色",
+      "深金色"
+    ]
+  },
+  "personality": {
+    "affection": 9,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 6,
+    "intelligence": 8,
+    "summary": "漆皮小黑豹",
+    "tags": [
+      "粘人",
+      "聪明",
+      "活泼",
+      "爱社交",
+      "爱玩",
+      "黑猫"
+    ]
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1953",
+        "event": "美国育种家 Nikki Horner 培育'漆皮黑豹'"
+      },
+      {
+        "year": "1958",
+        "event": "首次参展"
+      },
+      {
+        "year": "1976",
+        "event": "CFA 正式认证"
+      },
+      {
+        "year": "1990s",
+        "event": "全球黑猫崇拜文化代表品种"
+      },
+      {
+        "year": "2010s",
+        "event": "中国'小黑豹'昵称家喻户晓"
+      }
+    ]
+  },
+  "care": {
+    "diet": "每日 2-3 顿,60-80g,高蛋白支持活泼性格",
+    "exercise": "每日 30-45 分钟,喜攀爬与互动玩具",
+    "health": "肥厚型心肌病 HCM · 糖尿病(高发) · 肥胖",
+    "training": "聪明可学 trick,需持续智力刺激,粘人需陪伴"
+  },
+  "famous": [
+    "Nikki Horner 1958 首次展出的'小黑豹'",
+    "因毛色黑亮+金眼被称为'活漆皮'",
+    "全球最黑最亮的猫种代表",
+    "东方猫系最小众但最吸睛的品种"
+  ],
+  "tags": [
+    "小型猫",
+    "短毛",
+    "粘人",
+    "高智商",
+    "家庭友好",
+    "黑猫"
+  ]
+}
