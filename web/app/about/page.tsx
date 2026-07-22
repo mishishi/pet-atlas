@@ -61,9 +61,14 @@ export default function AboutPage() {
               <LeafDivider className="w-48 md:w-64 h-auto" />
             </div>
             <p className="font-serif text-lg md:text-xl text-brown-700 max-w-2xl mx-auto leading-relaxed">
-              pet-atlas 是一个非商业的视觉收藏项目 —— 把 AI 生成的 51 种
+              pet-atlas 是一个非商业的视觉收藏项目 —— 把 AI 生成的 100 种
               动物图谱,装进 19 世纪博物馆标本卡的画框里。
             </p>
+            <div className="inline-block mt-4 px-4 py-1.5 rounded-full border border-warm-brown/30 bg-oat-50/60">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brick">
+                v1.0 · 100 breeds milestone · 2026-07-23
+              </span>
+            </div>
           </div>
 
           {/* 三大问题 */}
@@ -72,7 +77,7 @@ export default function AboutPage() {
               no="I"
               title="标本卡"
               zh="Specimen Card"
-              body="19 世纪博物学家在田野里收集样本,带回博物馆编号入册。每张卡片都按固定格式登记:编号、种名、产地、采集者、年份。我们用同样的格式给 51 种动物做了一套'当代标本卡'。"
+              body="19 世纪博物学家在田野里收集样本,带回博物馆编号入册。每张卡片都按固定格式登记:编号、种名、产地、采集者、年份。我们用同样的格式给 100 种动物做了一套'当代标本卡'。"
             />
             <ValueCard
               no="II"
@@ -82,9 +87,9 @@ export default function AboutPage() {
             />
             <ValueCard
               no="III"
-              title="翻页触感"
-              zh="Flip Touch"
-              body="9:16 竖屏 + CSS 3D 翻页 + 键盘 ←→ + 触摸滑动,让用户感觉像在翻一本厚重的精装图鉴,而不是刷一列推荐流。"
+              title="翻页触感 + 养宠"
+              zh="Flip Touch + Pet Care"
+              body="9:16 竖屏 + CSS 3D 翻页 + 键盘 ←→ + 触摸滑动,像翻精装图鉴。同时支持领养一只 cloud-pet:喂食/抚摸/写日记/解锁 6 段心情试听,把它从立绘养成'朋友'。"
             />
           </div>
 
@@ -101,8 +106,8 @@ export default function AboutPage() {
               </span>
             </h2>
             <p className="font-serif text-brown-700 max-w-3xl mb-10 leading-relaxed">
-              51 种动物 × 6 张图 = 306 张,全部由 AI 生成 + 手工 prompt
-              调教。每张图都有一份同名 .md 文档记录当时的 prompt,方便回溯和复现。
+              100 种动物 × 6 张图 = 600 张图谱 + 300 张 1:1 立绘(cloud-pet 用),
+              全部由 AI 生成 + 手工 prompt 调教。每张图都有一份同名 .md 文档记录当时的 prompt,方便回溯和复现。
             </p>
 
             <ol className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl">
@@ -153,10 +158,10 @@ export default function AboutPage() {
                 </span>
               </h2>
               <dl className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <Stat label="品种" value="51" sub="breeds" />
-                <Stat label="图谱" value="306" sub="plates" />
+                <Stat label="品种" value="100" sub="breeds" />
+                <Stat label="图谱" value="600" sub="plates" />
+                <Stat label="立绘" value="300" sub="portraits" />
                 <Stat label="图床" value="TCB" sub="tencent cloud" />
-                <Stat label="页面" value="110" sub="static pages" />
               </dl>
             </div>
           </section>
@@ -206,7 +211,12 @@ export default function AboutPage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link href="/pets">
                 <Button variant="primary" size="lg">
-                  浏览全部 51 个品种
+                  浏览全部 100 个品种
+                </Button>
+              </Link>
+              <Link href="/adopt">
+                <Button variant="secondary" size="lg">
+                  领养一只 →
                 </Button>
               </Link>
               <a
@@ -219,6 +229,17 @@ export default function AboutPage() {
                 </Button>
               </a>
             </div>
+            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-brown-500">
+              📝 完整 v1.0 release note 见{" "}
+              <a
+                href="https://github.com/mishishi/pet-atlas/blob/main/docs/RELEASE-NOTES-v1.0.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brick hover:underline"
+              >
+                GitHub docs/RELEASE-NOTES-v1.0.md
+              </a>
+            </p>
           </section>
         </Container>
       </main>
