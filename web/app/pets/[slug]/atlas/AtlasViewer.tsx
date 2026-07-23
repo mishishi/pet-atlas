@@ -371,7 +371,7 @@ export default function AtlasViewer({
                 <h1 className="font-serif text-xl md:text-2xl font-bold text-brown-900">
                   {currentLabel}
                 </h1>
-                <p className="mt-0.5 font-serif italic text-sm text-brown-500">
+                <p className="mt-0.5 font-display italic text-sm text-brown-500 tracking-wide">
                   {currentEn}
                 </p>
                 {textMode && !canTextMode && (

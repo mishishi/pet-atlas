@@ -202,9 +202,10 @@ export default async function PetDetailPage({
 
         {/* ============ Hero Section: 大画框 + 文字 ============ */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start mb-12 md:mb-20">
-          {/* 左:大画框 */}
-          <div className="md:col-span-5 lg:col-span-5 flex justify-center md:justify-end">
-            <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px]">
+          {/* 左:大画框 + 标本编号印章 */}
+          <div className="md:col-span-5 lg:col-span-5 flex flex-col items-center md:items-end">
+            <SpecimenNumberStamp number={petNum(pet.slug)} category={pet.category} />
+            <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px] mt-4">
               <SpecimenFrame
                 url={getCoverUrl(pet.slug, "medium") || ""}
                 fallbackUrl={getCoverUrl(pet.slug, "full") || undefined}
@@ -215,22 +216,26 @@ export default async function PetDetailPage({
                 showRibbon
               />
             </div>
+            {/* 大画框下面的拉丁名带 罗马数字 plate */}
+            <p className="mt-3 font-display italic text-sm text-brown-500 tracking-wider">
+              — Plate I · Tabula Prima —
+            </p>
           </div>
 
           {/* 右:文字区 */}
           <div className="md:col-span-7 lg:col-span-7">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-3 md:mb-4 flex items-center gap-3">
               <span className="inline-block w-8 h-px bg-brick" />
-              标本卡 · Specimen
+              标本卡 · Specimen Card
             </div>
 
             <h1
-              className="font-serif font-bold text-brown-900 leading-[1] tracking-tight"
+              className="font-serif font-bold text-brown-900 leading-[0.95] tracking-tight"
               style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
             >
               {pet.name.zh}
             </h1>
-            <p className="mt-2 md:mt-3 font-serif italic text-brown-600 text-lg md:text-xl">
+            <p className="mt-2 md:mt-3 font-display italic text-brown-600 text-lg md:text-xl tracking-wide">
               {pet.name.en}
             </p>
             {pet.name.alias?.zh && pet.name.alias.zh.length > 0 && (
@@ -246,7 +251,7 @@ export default async function PetDetailPage({
             {/* 性格 summary(若有) */}
             {personality?.summary && (
               <p className="font-serif text-xl md:text-2xl text-brown-800 italic leading-snug mb-6 md:mb-8">
-                "{personality.summary}"
+                &ldquo;{personality.summary}&rdquo;
               </p>
             )}
 
@@ -722,7 +727,7 @@ function ScoreBar({ label, v, en }: { label: string; v: number; en: string }) {
   );
 }
 
-/** 段头 */
+/** 段头 (vintage 标本卡风: 罗马数字 + 拉丁 + 中文大字) */
 function SectionHeading({
   eyebrow,
   title,
@@ -743,7 +748,7 @@ function SectionHeading({
         </div>
         <h2 className="font-serif text-2xl md:text-3xl font-bold text-brown-900 leading-tight">
           {title}
-          <span className="ml-3 font-serif italic text-base md:text-lg text-brown-500 font-normal">
+          <span className="ml-3 font-display italic text-base md:text-lg text-brown-500 font-normal tracking-wide">
             {en}
           </span>
         </h2>
@@ -820,6 +825,38 @@ function BotanicalDecoration({
         />
       ))}
     </svg>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* 标本编号印章 (N° 001 · Category) — vintage 18 世纪印刷机风            */
+/* ------------------------------------------------------------------ */
+function SpecimenNumberStamp({
+  number,
+  category,
+}: {
+  number: string;
+  category: string;
+}) {
+  return (
+    <div
+      className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-warm-brown/40"
+      style={{
+        background: "rgba(245, 233, 208, 0.5)",
+        boxShadow: "inset 0 0 0 1px rgba(139, 111, 71, 0.12)",
+      }}
+    >
+      <span className="font-display italic text-[10px] uppercase tracking-[0.3em] text-warm-brown/70">
+        N°
+      </span>
+      <span className="font-mono text-sm font-medium text-brick tracking-widest">
+        {number}
+      </span>
+      <span className="inline-block w-px h-3 bg-warm-brown/30" />
+      <span className="font-display italic text-[10px] uppercase tracking-[0.25em] text-warm-brown/70">
+        {category}
+      </span>
+    </div>
   );
 }
 

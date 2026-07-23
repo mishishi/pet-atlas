@@ -1,8 +1,13 @@
 /**
- * Header · 顶部 sticky 导航
+ * Header · 顶部 sticky 导航 (v1.2 vintage 重设计)
+ *
+ * 加 vintage 标本卡元素:
+ *  - 圆形品牌印章 (含 "PET ATLAS · 1876" 复古风)
+ *  - 拉丁/英文 logo 用 IM Fell English (18 世纪印刷机)
+ *  - 标本号 N° 数字用 Special Elite 打字机
  *
  * variant:
- *  - "default"  默认 cream 半透明背景(详情页等)
+ *  - "default"  默认 cream 半透明背景
  *  - "overlay"  透明(用于主页 hero 上叠加)
  */
 import Link from "next/link";
@@ -25,52 +30,68 @@ export function Header({
       }`}
     >
       <Container size="xl" className="flex items-center justify-between h-16">
-        {/* Logo */}
+        {/* Logo + vintage 印章 */}
         <Link
           href="/"
-          className="group flex items-baseline gap-3 transition-opacity hover:opacity-80"
+          className="group flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          <span className="font-serif font-bold text-2xl tracking-tight text-brown-900">
-            宠物大百科
-          </span>
+          {/* 圆形品牌印章 */}
           <span
-            className={`hidden sm:inline-block font-mono text-xs uppercase tracking-[0.2em] ${
-              isOverlay ? "text-brown-700" : "text-brown-500"
-            }`}
+            aria-hidden
+            className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border-2 border-warm-brown text-warm-brown shrink-0 transition-transform group-hover:rotate-[-6deg]"
+            style={{
+              background: "rgba(245, 233, 208, 0.4)",
+              boxShadow: "inset 0 0 0 1px rgba(139, 111, 71, 0.2)",
+            }}
           >
-            Pet Atlas
+            <span className="font-display italic text-[10px] leading-none text-center">
+              <span className="block">P.A.</span>
+              <span className="block text-[8px] tracking-widest mt-px">1876</span>
+            </span>
           </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-serif font-bold text-xl sm:text-2xl tracking-tight text-brown-900">
+              宠物大百科
+            </span>
+            <span
+              className={`font-display italic text-[10px] sm:text-[11px] uppercase tracking-[0.25em] ${
+                isOverlay ? "text-brown-700" : "text-brown-500"
+              }`}
+            >
+              Pet Atlas · Museum of Breeds
+            </span>
+          </div>
         </Link>
 
         {/* Center nav */}
         <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
           <Link
             href="/pets"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             全部品种
           </Link>
           <Link
             href="/pets#categories"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             分类
           </Link>
           <Link
             href="/adopt"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             领养
           </Link>
           <Link
             href="/profile"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             我的
           </Link>
           <Link
             href="/about"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             关于
           </Link>
@@ -78,16 +99,16 @@ export function Header({
             href="https://github.com/mishishi/pet-atlas"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brown-700 hover:text-brown-900 transition-colors"
+            className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
           >
             GitHub
           </a>
         </nav>
 
-        {/* Specimen number + Auth menu */}
+        {/* 标本号 + Auth menu */}
         <div className="flex items-center gap-3">
           <span
-            className={`font-mono text-[10px] uppercase tracking-[0.2em] hidden sm:inline ${
+            className={`font-display italic text-[10px] uppercase tracking-[0.25em] hidden sm:inline ${
               isOverlay ? "text-brown-700" : "text-brown-500"
             }`}
           >

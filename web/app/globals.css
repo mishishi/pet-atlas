@@ -103,11 +103,19 @@
   --color-ink-soft: var(--ink-soft);
   --color-accent: var(--accent);
 
-  /* Fonts */
-  --font-serif: var(--font-noto-serif-sc), "Songti SC", "STSong", Georgia, serif;
-  --font-sans: var(--font-noto-sans-sc), "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), "SF Mono", Menlo, Consolas, monospace;
+  /* Fonts (vintage 标本卡 typography system)
+   * --font-serif: 拉丁/英文 display + 中文衬线 (IM Fell English + Noto Serif SC)
+   * --font-sans:  正文 (全部用衬线,像老书/标本说明卡)
+   * --font-mono:  数字/标签/编号 (Special Elite 打字机)
+   * --font-display:  标题专用,优先 IM Fell English (拉丁)
+   */
+  --font-serif: var(--font-im-fell-english), var(--font-noto-serif-sc),
+    "Songti SC", "STSong", "Garamond", Georgia, serif;
+  --font-sans: var(--font-noto-serif-sc), var(--font-im-fell-english),
+    "Songti SC", "STSong", "Garamond", Georgia, serif;
+  --font-mono: var(--font-special-elite), "Courier New", Courier, monospace;
+  --font-display: var(--font-im-fell-english), var(--font-im-fell-english-sc),
+    var(--font-noto-serif-sc), "Garamond", Georgia, serif;
 
   --shadow-paper: var(--shadow-paper);
   --shadow-paper-md: var(--shadow-paper-md);
