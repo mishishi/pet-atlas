@@ -149,11 +149,13 @@ export function AtlasTextCard(props: AtlasTextCardProps) {
 }
 
 function PersonalityContent({ personality }: { personality: NonNullable<AtlasTextCardProps["personality"]> }) {
+  // 4 个 breed (鸟/爬/小哺乳) 缺 obedience, 用 independence 兜底 (非哺乳类"独立"≈"不易训练")
+  const obey = personality.obedience ?? personality.independence ?? 5;
   // 综合评分 = 6 维平均
   const scores = [
     personality.affection,
     personality.activity,
-    personality.obedience,
+    obey,
     personality.independence,
     personality.vocalization,
     personality.intelligence,
@@ -182,7 +184,8 @@ function PersonalityContent({ personality }: { personality: NonNullable<AtlasTex
       {/* 6 维条形图 */}
       <div className="space-y-2">
         {PERSONALITY_LABELS.map(({ key, label }) => {
-          const v = personality[key] as number;
+          // 缺 obedience 时用 independence 兜底
+          const v = (key === "obedience" ? obey : personality[key]) as number;
           return (
             <div key={key} className="flex items-center gap-2">
               <span className="w-14 sm:w-16 font-serif text-sm text-brown-800 shrink-0">
@@ -192,14 +195,14 @@ function PersonalityContent({ personality }: { personality: NonNullable<AtlasTex
                 <div
                   className="h-full rounded-full transition-all"
                   style={{
-                    width: `${v * 10}%`,
+                    width: `${(v ?? 0) * 10}%`,
                     background:
                       "linear-gradient(90deg, #C9A876 0%, #8B6F47 100%)",
                   }}
                 />
               </div>
               <span className="w-8 text-right font-mono text-sm text-brown-900 font-bold">
-                {v}
+                {v ?? 0}
               </span>
             </div>
           );

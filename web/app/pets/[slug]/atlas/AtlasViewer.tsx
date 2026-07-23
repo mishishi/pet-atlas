@@ -79,13 +79,41 @@ export default function AtlasViewer({
   const router = useRouter();
   const sp = useSearchParams();
   const initialPage = clamp(parseInt(sp?.get("page") ?? "1", 10) || 1, 1, ATLAS_PAGE_COUNT);
-  // 文字版 toggle:?text=1 启用(03/04/06 槽位用纯文字卡片替代 AI 图)
-  const initialTextMode = sp?.get("text") === "1";
+  // 文字版 toggle:
+  //   - URL 优先级最高: ?text=1 强制开, ?text=0 强制关
+  //   - 否则读 localStorage 记忆
+  //   - 都没就 default = true (v0.6 推广后,文字版是 default, AI 图是 fallback)
+  const initialTextMode = (() => {
+    const urlFlag = sp?.get("text");
+    if (urlFlag === "1") return true;
+    if (urlFlag === "0") return false;
+    if (typeof window !== "undefined") {
+      const stored = window.localStorage.getItem("atlas-text-mode");
+      if (stored === "1") return true;
+      if (stored === "0") return false;
+    }
+    return true; // default: 文字版
+  })();
   const [page, setPage] = useState(initialPage);
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isFlipping, setIsFlipping] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [textMode, setTextMode] = useState(initialTextMode);
+  const [textMode, setTextModeState] = useState(initialTextMode);
+
+  // 文字版 toggle 包装: 同时写 localStorage 记忆
+  const setTextMode = useCallback((v: boolean | ((prev: boolean) => boolean)) => {
+    setTextModeState((prev) => {
+      const next = typeof v === "function" ? v(prev) : v;
+      if (typeof window !== "undefined") {
+        try {
+          window.localStorage.setItem("atlas-text-mode", next ? "1" : "0");
+        } catch {
+          /* ignore quota / private mode */
+        }
+      }
+      return next;
+    });
+  }, []);
 
   // 当前 slot 是不是可以用文字版(03-personality / 04-history / 06-famous)
   const TEXT_SLOTS: ReadonlySet<number> = new Set([3, 4, 6]);
@@ -346,6 +374,11 @@ export default function AtlasViewer({
                 <p className="mt-0.5 font-serif italic text-sm text-brown-500">
                   {currentEn}
                 </p>
+                {textMode && !canTextMode && (
+                  <p className="mt-2 text-[10px] text-brown-500 font-mono tracking-wider">
+                    翻到第 3、4、6 页看文字版
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -475,13 +508,19 @@ export default function AtlasViewer({
               style={!textMode ? { background: "rgba(245, 233, 208, 0.5)" } : undefined}
               aria-label="文字版 toggle"
               aria-pressed={textMode}
-              title={canTextMode ? "切换文字版(03/04/06 槽位)" : "本页无文字版(仅 03/04/06)"}
+              title={
+                canTextMode
+                  ? textMode
+                    ? "当前:文字版(03/04/06 用 HTML 卡片,根除 AI 图字体问题)"
+                    : "当前:AI 图版 · 切换后只对当前品种生效"
+                  : "本页无文字版(仅 03/04/06 槽位支持)"
+              }
             >
-              <span aria-hidden className="text-base">¶</span>
+              <span aria-hidden className="text-base">{textMode ? "¶" : "🖼"}</span>
               <span className="font-mono text-[10px] uppercase tracking-wider">
-                {textMode ? "文字版 ON" : "文字版"}
+                {textMode ? "文字版" : "AI 图版"}
               </span>
-              <span className="font-mono text-[9px] text-brown-300 ml-1 hidden sm:inline">
+              <span className={`font-mono text-[9px] ml-1 hidden sm:inline ${textMode ? "text-brown-300" : "text-brown-400"}`}>
                 T
               </span>
             </button>
