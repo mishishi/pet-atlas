@@ -130,7 +130,9 @@ pet-atlas/
 │   ├── UX-DESIGN.md              # UX 设计规范
 │   ├── ATLAS-PIPELINE.md         # Atlas 批量生成流程
 │   ├── COS-MIGRATION.md          # TCB CDN 迁移
-│   └── GITHUB-DEPLOY.md          # GitHub auto-deploy 流程
+│   ├── GITHUB-DEPLOY.md          # GitHub auto-deploy 流程
+│   ├── ARCHITECTURE.md           # 系统架构 / 关键设计决策
+│   └── SCREENSHOTS.md            # 真实生产图展示(5 品类代表)
 │
 └── README.md                     # 你正在看
 ```
@@ -179,6 +181,21 @@ npx serve out -l tcp://0.0.0.0:3000
 
 ---
 
+## 📖 完整文档
+
+| 文档 | 用途 |
+|------|------|
+| 📘 [**ARCHITECTURE.md**](./ARCHITECTURE.md) | 系统架构 / Atlas 文字版 / TCB 同步 / PWA / 用户系统 / 数据流 / 关键设计决策 |
+| 🖼️ [**SCREENSHOTS.md**](./SCREENSHOTS.md) | 真实生产图展示(5 品类代表品种 × 6 页图鉴 + 3 张立绘) |
+| 📜 [**docs/RELEASE-NOTES-v1.0.md**](./docs/RELEASE-NOTES-v1.0.md) | v1.0 完整发布说明(5 批扩张 + M2 阶段 + 已知限制) |
+| 🎨 [**docs/UX-DESIGN.md**](./docs/UX-DESIGN.md) | UX 设计规范(色板 / 字体 / 间距 / 动效) |
+| ⚙️ [**docs/ATLAS-PIPELINE.md**](./docs/ATLAS-PIPELINE.md) | Atlas 批量生成流程(模板 → prompt → image_synthesize → TCB) |
+| 🚀 [**docs/M2-RELEASE.md**](./docs/M2-RELEASE.md) | M2 互动生态(6 模块:摸摸 / 日记 / 收藏 / 分享 / 心情 / 等级) |
+| ☁️ [**docs/COS-MIGRATION.md**](./docs/COS-MIGRATION.md) | 腾讯云 CloudBase 资源迁移 |
+| 🐙 [**docs/GITHUB-DEPLOY.md**](./docs/GITHUB-DEPLOY.md) | GitHub auto-deploy 流程 |
+
+---
+
 ## 🛠️ 技术栈
 
 - **Framework**: [Next.js 16](https://nextjs.org) + React 19(App Router + 静态导出)
@@ -219,7 +236,7 @@ npx serve out -l tcp://0.0.0.0:3000
 
 ### v1.1(规划中)
 - 删 `art/` 下 03/04/06 AI 图(释放 ~600MB)
-- README + 文档完整化
+- README + 文档完整化 ✅
 - Atlas OG image 优化(social share)
 - M4 stage 3: TCB `users` collection 跨设备登录同步
 
