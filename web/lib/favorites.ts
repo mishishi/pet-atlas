@@ -1,14 +1,16 @@
 /**
- * web/lib/favorites.ts · 收藏管理 (M3 polish · 2026-07-21)
+ * web/lib/favorites.ts · 收藏管理 (M4 stage 2.5)
  *
- * localStorage 存收藏品种 slug 列表
- * - 不依赖 userId(deviceId 关联,M3 加 userId 时可平滑迁移)
- * - storage 事件自动同步多 tab
+ * localStorage 主 + TCB 跨设备同步
+ * - write: localStorage 即时 → 防抖 2s 后 fire-and-forget push TCB
+ * - read 入口: 客户端组件首次 mount 时,如果 TCB 有更新版本,merge 到 localStorage
  *
- * 同步到 TCB 留待 M3+ (个人版先不接)
+ * 升级路径:
+ * - M4 stage 1 已用 _openid 主键,user / device 模式兼容
  */
 
 const KEY_FAVORITES = "pet-atlas:favorites:v1";
+const SYNC_DEBOUNCE_MS = 2000;
 
 function isClient(): boolean {
   return typeof window !== "undefined" && typeof localStorage !== "undefined";
@@ -40,6 +42,19 @@ function writeRaw(slugs: string[]): void {
   }
 }
 
+let _syncTimer: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleSync(): void {
+  if (!isClient()) return;
+  if (_syncTimer) clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(() => {
+    _syncTimer = null;
+    import("./tcbSync")
+      .then((m) => m.pushFavoritesToTcb?.(readRaw()))
+      .catch(() => {});
+  }, SYNC_DEBOUNCE_MS);
+}
+
 export function getFavorites(): string[] {
   return readRaw();
 }
@@ -60,9 +75,54 @@ export function toggleFavorite(slug: string): boolean {
     added = true;
   }
   writeRaw(next);
+  scheduleSync(); // 跨设备同步(防抖)
   return added;
 }
 
 export function getFavoritesCount(): number {
   return readRaw().length;
+}
+
+/**
+ * 首次 mount 拉一次(让其他设备的数据回流)
+ * - TCB 有 → 跟 localStorage 合并(取并集,新加的放前面)
+ * - TCB 无 → push 当前 localStorage 上传
+ *
+ * 调用方:AuthMenu / ProfilePage 等 client component mount 时
+ */
+export async function syncFavoritesFromCloud(): Promise<void> {
+  if (!isClient()) return;
+  try {
+    const m = await import("./tcbSync");
+    const remote = await m.fetchFavoritesFromTcb?.();
+    if (remote == null) {
+      // TCB 还没记录,push 当前 localStorage 上去
+      const local = readRaw();
+      if (local.length > 0) {
+        await m.pushFavoritesToTcb?.(local);
+      }
+      return;
+    }
+    // 合并:取并集(新加的优先)
+    const local = readRaw();
+    const merged = mergeFavorites(local, remote);
+    if (JSON.stringify(merged) !== JSON.stringify(local)) {
+      writeRaw(merged);
+    }
+  } catch (err) {
+    console.warn("[favorites] sync from cloud 失败", err);
+  }
+}
+
+function mergeFavorites(a: string[], b: string[]): string[] {
+  const set = new Set<string>();
+  const result: string[] = [];
+  // a 在前(本地最新),b 在后(云端)
+  for (const s of [...a, ...b]) {
+    if (!set.has(s)) {
+      set.add(s);
+      result.push(s);
+    }
+  }
+  return result;
 }

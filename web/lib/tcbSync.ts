@@ -345,9 +345,149 @@ export function teardownNetworkListeners(): void {
   _offlineHandler = null;
 }
 
-// ===== M2.5 进度同步 stub =====
-// petProgression.ts 调用,目前是 noop(留待 M3 真正实现 TCB 端表结构)
-export async function pushProgressionToTcb(_p: unknown): Promise<boolean> {
-  // 留待 M3 真正实现,目前 fire-and-forget 不报错即可
-  return true;
+// ===== pet_progression 同步 =====
+
+/**
+ * 上传 progression 到 TCB(用 pet_progression collection,主键 _openid)
+ * last-write-wins: 直接覆盖 (progression 总量小,无冲突)
+ */
+export async function pushProgressionToTcb(prog: unknown): Promise<boolean> {
+  const db = await tryDb();
+  if (!db) return false;
+  const ownerId = getOwnerId();
+  if (!ownerId) return false;
+  try {
+    setStatus("syncing");
+    const p = prog as {
+      xp: number;
+      level: number;
+      totalCheckIns: number;
+      streakDays: number;
+      lastCheckInDate: string;
+      unlockedBadges: string[];
+    };
+    const existing = await db
+      .collection("pet_progression")
+      .where({ _openid: ownerId })
+      .limit(1)
+      .get();
+    const payload = {
+      _openid: ownerId,
+      xp: p.xp,
+      level: p.level,
+      totalCheckIns: p.totalCheckIns,
+      streakDays: p.streakDays,
+      lastCheckInDate: p.lastCheckInDate,
+      unlockedBadges: p.unlockedBadges,
+      _syncedAt: Date.now(),
+    };
+    if (existing?.data?.length > 0) {
+      const id = existing.data[0]._id;
+      await db.collection("pet_progression").doc(id).update(payload);
+    } else {
+      await db.collection("pet_progression").add(payload);
+    }
+    return true;
+  } catch (err) {
+    console.warn("[tcbSync] push progression 失败", err);
+    return false;
+  }
+}
+
+/**
+ * 拉取 TCB 上的 progression
+ * 返回 null 表示没记录/失败
+ */
+export async function fetchProgressionFromTcb(): Promise<{
+  xp: number;
+  level: number;
+  totalCheckIns: number;
+  streakDays: number;
+  lastCheckInDate: string;
+  unlockedBadges: string[];
+} | null> {
+  const db = await tryDb();
+  if (!db) return null;
+  const ownerId = getOwnerId();
+  if (!ownerId) return null;
+  try {
+    const res = await db
+      .collection("pet_progression")
+      .where({ _openid: ownerId })
+      .limit(1)
+      .get();
+    const list = (res?.data || []) as any[];
+    if (list.length === 0) return null;
+    const r = list[0];
+    return {
+      xp: r.xp || 0,
+      level: r.level || 1,
+      totalCheckIns: r.totalCheckIns || 0,
+      streakDays: r.streakDays || 0,
+      lastCheckInDate: r.lastCheckInDate || "",
+      unlockedBadges: Array.isArray(r.unlockedBadges) ? r.unlockedBadges : [],
+    };
+  } catch (err) {
+    console.warn("[tcbSync] fetch progression 失败", err);
+    return null;
+  }
+}
+
+// ===== favorites 同步 =====
+/**
+ * 上传 favorites (slug 数组) 到 TCB
+ * - 一条记录 = 一个 ownerId,slugs 数组按 addedAt 倒序
+ * - last-write-wins: 整体覆盖
+ */
+export async function pushFavoritesToTcb(slugs: string[]): Promise<boolean> {
+  const db = await tryDb();
+  if (!db) return false;
+  const ownerId = getOwnerId();
+  if (!ownerId) return false;
+  try {
+    setStatus("syncing");
+    const existing = await db
+      .collection("user_favorites")
+      .where({ _openid: ownerId })
+      .limit(1)
+      .get();
+    const payload = {
+      _openid: ownerId,
+      slugs,
+      _syncedAt: Date.now(),
+    };
+    if (existing?.data?.length > 0) {
+      const id = existing.data[0]._id;
+      await db.collection("user_favorites").doc(id).update(payload);
+    } else {
+      await db.collection("user_favorites").add(payload);
+    }
+    return true;
+  } catch (err) {
+    console.warn("[tcbSync] push favorites 失败", err);
+    return false;
+  }
+}
+
+/**
+ * 拉取 TCB 上的 favorites
+ */
+export async function fetchFavoritesFromTcb(): Promise<string[] | null> {
+  const db = await tryDb();
+  if (!db) return null;
+  const ownerId = getOwnerId();
+  if (!ownerId) return null;
+  try {
+    const res = await db
+      .collection("user_favorites")
+      .where({ _openid: ownerId })
+      .limit(1)
+      .get();
+    const list = (res?.data || []) as any[];
+    if (list.length === 0) return null;
+    return Array.isArray(list[0].slugs) ? list[0].slugs : [];
+  } catch (err) {
+    console.warn("[tcbSync] fetch favorites 失败", err);
+    return null;
+  }
 }

@@ -77,6 +77,20 @@ export default function ProfilePage() {
       } catch (err) {
         console.warn("[profile] diary TCB merge 失败", err);
       }
+      // M4 stage 2.5: 拉 favorites 跨设备合并
+      try {
+        const { syncFavoritesFromCloud } = await import("@/lib/favorites");
+        await syncFavoritesFromCloud();
+      } catch (err) {
+        console.warn("[profile] favorites TCB sync 失败", err);
+      }
+      // M4 stage 2.5: 拉 progression 跨设备合并
+      try {
+        const { syncProgressionFromCloud } = await import("@/lib/petProgression");
+        await syncProgressionFromCloud();
+      } catch (err) {
+        console.warn("[profile] progression TCB sync 失败", err);
+      }
       // 强制刷新页面(因为 PetStatusCard 自己 useEffect 只在 mount 读一次)
       window.dispatchEvent(new StorageEvent("storage", { key: "pet-atlas:pet-stats:v1" }));
     })();

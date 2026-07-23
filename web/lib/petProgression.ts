@@ -148,6 +148,63 @@ export function getProgression(): Progression {
   return readRaw();
 }
 
+/**
+ * 首次 mount 拉一次(让其他设备的 progression 合并)
+ * - last-write-wins: 用 max(xp, streakDays, totalCheckIns)
+ * - unlockedBadges 取并集
+ * - TCB 没记录 → push 当前 localStorage 上去
+ */
+export async function syncProgressionFromCloud(): Promise<void> {
+  if (typeof window === "undefined") return;
+  try {
+    const m = await import("./tcbSync");
+    const remote = await m.fetchProgressionFromTcb?.();
+    const local = readRaw();
+    if (remote == null) {
+      if (local.xp > 0 || local.totalCheckIns > 0) {
+        await m.pushProgressionToTcb?.(local);
+      }
+      return;
+    }
+    const merged: Progression = {
+      xp: Math.max(local.xp, remote.xp),
+      level: 0, // 下面重算
+      totalCheckIns: Math.max(local.totalCheckIns, remote.totalCheckIns),
+      streakDays: Math.max(local.streakDays, remote.streakDays),
+      lastCheckInDate:
+        local.lastCheckInDate > remote.lastCheckInDate
+          ? local.lastCheckInDate
+          : remote.lastCheckInDate,
+      unlockedBadges: Array.from(
+        new Set([...local.unlockedBadges, ...remote.unlockedBadges])
+      ),
+    };
+    // 重算 level
+    merged.level = levelForXp(merged.xp);
+    if (
+      merged.xp !== local.xp ||
+      merged.totalCheckIns !== local.totalCheckIns ||
+      merged.streakDays !== local.streakDays ||
+      merged.lastCheckInDate !== local.lastCheckInDate ||
+      merged.unlockedBadges.length !== local.unlockedBadges.length
+    ) {
+      writeRaw(merged);
+    }
+  } catch (err) {
+    console.warn("[progression] sync from cloud 失败", err);
+  }
+}
+
+function levelForXp(xp: number): number {
+  // 复用 levelProgress 反查
+  let lv = 1;
+  for (let i = 1; i < 100; i++) {
+    if (xp >= xpForLevel(i + 1)) lv = i + 1;
+    else break;
+  }
+  return lv;
+}
+
 /** 客户端初始化:检查 streak 连续性(如果昨天没签就重置) */
 export function refreshProgression(): Progression {
   const p = readRaw();
