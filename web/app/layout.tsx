@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { fontVariables } from "./fonts";
+import { PWAInstallPrompt } from "@/components/pwa/PWAInstallPrompt";
 
 const DEFAULT_OG = "https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la/pet-atlas/atlas/dog/golden-retriever/01-cover.png";
 
@@ -123,6 +124,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-oat-200 text-brown-900">
         {children}
+        {/* PWA 安装引导 — 监听 beforeinstallprompt + iOS 手动引导 */}
+        <PWAInstallPrompt />
         {/* Service Worker 注册 — PWA 离线能力 */}
         <script
           dangerouslySetInnerHTML={{
