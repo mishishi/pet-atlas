@@ -14,6 +14,7 @@
 import { Header } from "@/components/nav/Header";
 import { Footer } from "@/components/nav/Footer";
 import { HeroPoster } from "@/components/brand/HeroPoster";
+import { SpecimenStats } from "@/components/brand/SpecimenStats";
 import { FeaturedBreeds } from "@/components/brand/FeaturedBreeds";
 import { CategoryStrip } from "@/components/brand/CategoryStrip";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Header variant="overlay" />
       <main>
         <HeroPoster />
+        <SpecimenStats />
         <FeaturedBreeds />
         <CategoryStrip />
       </main>
