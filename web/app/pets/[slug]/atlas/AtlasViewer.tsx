@@ -47,6 +47,26 @@ interface AtlasViewerProps {
 }
 
 const EN_LABELS = ["Cover", "Traits", "Personality", "History", "Care", "Famous"];
+/** 拉丁 chapter 名,用于章节扉页 (Tabula I-VI) */
+const LATIN_LABELS = [
+  "Tabula Prima",     // I 封面
+  "Tabula Secunda",    // II 形态
+  "Tabula Tertia",     // III 性格
+  "Tabula Quarta",     // IV 历史
+  "Tabula Quinta",     // V 养护
+  "Tabula Sexta",      // VI 名场面
+];
+/** 罗马数字 I-VI */
+const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
+/** 章节扉页短句 (拉丁) */
+const CHAPTER_QUOTES = [
+  "Operis initium",           // 封面 - 工程开始
+  "Forma et natura",          // 形态 - 形态与本质
+  "Animi nota",               // 性格 - 性格特征
+  "Temporis memoria",         // 历史 - 时间记忆
+  "Cura et vigilantia",      // 养护 - 照料与守护
+  "Fama et memoria",          // 名场面 - 名声与回忆
+];
 
 function clamp(n: number, min: number, max: number) {
   if (!Number.isFinite(n)) return min;
@@ -65,6 +85,71 @@ function deriveSlotKey(page: number): string {
     default:
       return "";
   }
+}
+
+/** 大画框下面的章节扉页 (vintage 标本卡风) */
+function ChapterHeader({
+  page,
+  total,
+  label,
+  en,
+  latin,
+  roman,
+  quote,
+  showTextModeHint,
+}: {
+  page: number;
+  total: number;
+  label: string;
+  en: string;
+  latin: string;
+  roman: string;
+  quote: string;
+  showTextModeHint: boolean;
+}) {
+  return (
+    <div className="mt-8 md:mt-10 max-w-md mx-auto text-center">
+      {/* 装饰上横线 */}
+      <div className="flex items-center justify-center gap-3 mb-3">
+        <span className="inline-block h-px w-12 bg-warm-brown/40" />
+        <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-warm-brown/70">
+          Tabula {roman} · {String(page).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
+        <span className="inline-block h-px w-12 bg-warm-brown/40" />
+      </div>
+
+      {/* 中文名 (大字) */}
+      <h1 className="font-serif text-2xl md:text-3xl font-bold text-brown-900 leading-tight">
+        {label}
+      </h1>
+
+      {/* 拉丁名 (italic) */}
+      <p className="mt-1 font-display italic text-base md:text-lg text-warm-brown tracking-wide">
+        {latin}
+      </p>
+
+      {/* 装饰小横线 + 短句 */}
+      <div className="mt-2 mb-3 inline-flex items-center gap-2">
+        <span className="inline-block w-1 h-1 rounded-full bg-warm-brown/40" />
+        <span className="font-display italic text-[11px] text-brown-500/80 tracking-wider">
+          {quote}
+        </span>
+        <span className="inline-block w-1 h-1 rounded-full bg-warm-brown/40" />
+      </div>
+
+      {/* 英文小副标题 */}
+      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-brown-500">
+        {en}
+      </p>
+
+      {/* 文字版提示 */}
+      {showTextModeHint && (
+        <p className="mt-3 text-[10px] text-brown-500 font-mono tracking-wider">
+          翻到第 3、4、6 页看文字版
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default function AtlasViewer({
@@ -363,23 +448,17 @@ export default function AtlasViewer({
                   shadowLevel="lg"
                 />
               )}
-              {/* 大画框下面的页标 */}
-              <div className="mt-6 md:mt-8 text-center">
-                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-1">
-                  Plate {String(page).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                </div>
-                <h1 className="font-serif text-xl md:text-2xl font-bold text-brown-900">
-                  {currentLabel}
-                </h1>
-                <p className="mt-0.5 font-display italic text-sm text-brown-500 tracking-wide">
-                  {currentEn}
-                </p>
-                {textMode && !canTextMode && (
-                  <p className="mt-2 text-[10px] text-brown-500 font-mono tracking-wider">
-                    翻到第 3、4、6 页看文字版
-                  </p>
-                )}
-              </div>
+              {/* 大画框下面的页标 + 章节扉页 */}
+              <ChapterHeader
+                page={page}
+                total={total}
+                label={currentLabel}
+                en={currentEn}
+                latin={LATIN_LABELS[page - 1] ?? ""}
+                roman={ROMAN[page - 1] ?? String(page)}
+                quote={CHAPTER_QUOTES[page - 1] ?? ""}
+                showTextModeHint={textMode && !canTextMode}
+              />
             </div>
           </div>
 
