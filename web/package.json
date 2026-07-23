@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/build-pets-data.mjs",
-    "predev": "node scripts/build-pets-data.mjs",
+    "prebuild": "node scripts/build-pets-data.mjs && node scripts/build-pwa-assets.mjs",
+    "predev": "node scripts/build-pets-data.mjs && node scripts/build-pwa-assets.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

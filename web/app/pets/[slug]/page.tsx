@@ -50,10 +50,14 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `/pets/${slug}`,
+    },
     openGraph: {
       type: "article",
       title,
       description,
+      url: `https://out-three-tan.vercel.app/pets/${slug}`,
       images: cover
         ? [
             {
@@ -91,6 +95,23 @@ export default async function PetDetailPage({
 
   return (
     <>
+      {/* JSON-LD Pet type,搜索结果富媒体 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Pet",
+            name: pet.name.zh,
+            alternateName: pet.name.en,
+            description: `${pet.name.zh}(${pet.name.en})vintage 标本卡图谱,共 6 张。${pet.personality?.summary ?? ""}`,
+            image: coverUrl ?? undefined,
+            url: `https://out-three-tan.vercel.app/pets/${slug}`,
+            ...(physical?.lifespanYears ? { lifespan: physical.lifespanYears } : {}),
+            ...(pet.origin?.country ? { origin: pet.origin.country } : {}),
+          }),
+        }}
+      />
       {/* 2026-07-20: 读图鉴解锁 1 次 reroll(无 UI,纯 side effect) */}
       <BreedReadTracker slug={slug} />
       <div

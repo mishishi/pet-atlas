@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /profile/
+Disallow: /profile/reroll/
+
+Sitemap: https://out-three-tan.vercel.app/sitemap.xml
+Host: https://out-three-tan.vercel.app

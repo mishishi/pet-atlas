@@ -1,0 +1,40 @@
+{
+  "name": "宠物大百科 · Pet Atlas",
+  "short_name": "宠物大百科",
+  "description": "为爱宠收藏一整套图鉴 — 100 种动物的 vintage 标本卡图谱,犬、猫、小型哺乳、鸟、爬虫。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#8B6F47",
+  "background_color": "#F5EFE0",
+  "lang": "zh-CN",
+  "categories": [
+    "education",
+    "lifestyle",
+    "books"
+  ],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la/pet-atlas/atlas/dog/golden-retriever/01-cover.png",
+      "sizes": "1536x2752",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "图鉴示例:金毛寻回犬"
+    }
+  ]
+}
