@@ -80,3 +80,8 @@ package-lock.json
 web/.env.local
 web/.env.local
 .env*
+
+# PWA / SEO 预生成产物 (prebuild 跑 web/scripts/build-pwa-assets.mjs 重新生成)
+web/public/manifest.webmanifest
+web/public/sitemap.xml
+web/public/robots.txt
