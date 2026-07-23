@@ -25,12 +25,25 @@ import {
 } from "react";
 import { ATLAS_PAGE_COUNT, ATLAS_SLOTS } from "@/lib/atlas-constants";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
+import { AtlasTextCard } from "./AtlasTextCard";
 
 interface AtlasViewerProps {
   slug: string;
   nameZh: string;
   nameEn: string;
   gallery: string[];
+  personality?: {
+    affection: number;
+    activity: number;
+    obedience: number;
+    independence: number;
+    vocalization: number;
+    intelligence: number;
+    summary?: string;
+    tags?: string[];
+  };
+  history?: { year: string; event: string }[];
+  famous?: { title: string; subtitle: string; description: string }[] | string[];
 }
 
 const EN_LABELS = ["Cover", "Traits", "Personality", "History", "Care", "Famous"];
@@ -40,19 +53,44 @@ function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
+/** 由 page number 推导 slot key,给 AtlasTextCard 用 */
+function deriveSlotKey(page: number): string {
+  switch (page) {
+    case 3:
+      return "03-personality";
+    case 4:
+      return "04-history";
+    case 6:
+      return "06-famous";
+    default:
+      return "";
+  }
+}
+
 export default function AtlasViewer({
   slug,
   nameZh,
   nameEn,
   gallery,
+  personality,
+  history,
+  famous,
 }: AtlasViewerProps) {
   const router = useRouter();
   const sp = useSearchParams();
   const initialPage = clamp(parseInt(sp?.get("page") ?? "1", 10) || 1, 1, ATLAS_PAGE_COUNT);
+  // 文字版 toggle:?text=1 启用(03/04/06 槽位用纯文字卡片替代 AI 图)
+  const initialTextMode = sp?.get("text") === "1";
   const [page, setPage] = useState(initialPage);
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isFlipping, setIsFlipping] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [textMode, setTextMode] = useState(initialTextMode);
+
+  // 当前 slot 是不是可以用文字版(03-personality / 04-history / 06-famous)
+  const TEXT_SLOTS: ReadonlySet<number> = new Set([3, 4, 6]);
+  const canTextMode = TEXT_SLOTS.has(page);
+  const showTextCard = textMode && canTextMode;
 
   const detailHref = `/pets/${slug}`;
   const total = ATLAS_PAGE_COUNT;
@@ -81,9 +119,11 @@ export default function AtlasViewer({
 
   // URL 同步(不刷新页面,不滚动)
   useEffect(() => {
-    const url = `/pets/${slug}/atlas?page=${page}`;
-    router.replace(url, { scroll: false });
-  }, [page, slug, router]);
+    const params = new URLSearchParams();
+    params.set("page", String(page));
+    if (textMode) params.set("text", "1");
+    router.replace(`/pets/${slug}/atlas?${params.toString()}`, { scroll: false });
+  }, [page, slug, router, textMode]);
 
   /* ==================== 键盘 ←/→ 翻页 ==================== */
   useEffect(() => {
@@ -106,6 +146,9 @@ export default function AtlasViewer({
       } else if (e.key === "End") {
         e.preventDefault();
         goTo(total, "next");
+      } else if (e.key === "t" || e.key === "T") {
+        e.preventDefault();
+        setTextMode((v) => !v);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -269,15 +312,29 @@ export default function AtlasViewer({
               className={`w-full max-w-[420px] sm:max-w-[480px] md:max-w-[560px] ${flipClass}`}
               key={page}
             >
-              <SpecimenFrame
-                url={currentImage || fullCoverUrl}
-                nameZh={nameZh}
-                nameEn={nameEn}
-                width="100%"
-                priority
-                showRibbon
-                shadowLevel="lg"
-              />
+              {showTextCard ? (
+                <AtlasTextCard
+                  slug={slug}
+                  nameZh={nameZh}
+                  nameEn={nameEn}
+                  slot={deriveSlotKey(page) as "03-personality" | "04-history" | "06-famous"}
+                  pageNumber={page}
+                  totalPages={total}
+                  personality={personality}
+                  history={history}
+                  famous={famous}
+                />
+              ) : (
+                <SpecimenFrame
+                  url={currentImage || fullCoverUrl}
+                  nameZh={nameZh}
+                  nameEn={nameEn}
+                  width="100%"
+                  priority
+                  showRibbon
+                  shadowLevel="lg"
+                />
+              )}
               {/* 大画框下面的页标 */}
               <div className="mt-6 md:mt-8 text-center">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-1">
@@ -406,8 +463,28 @@ export default function AtlasViewer({
             })}
           </ol>
 
-          {/* 右侧工具栏:全屏 + 返回详情 */}
+          {/* 右侧工具栏:文字版 toggle + 全屏 + 返回详情 */}
           <div className="flex flex-col gap-2 md:gap-3 lg:items-end">
+            <button
+              onClick={() => setTextMode((v) => !v)}
+              className={`group inline-flex items-center gap-2 px-4 py-2.5 text-sm border transition-colors self-start lg:self-end min-h-[44px] ${
+                textMode
+                  ? "text-oat-100 bg-brown-700 border-brown-700 hover:bg-brown-900"
+                  : "text-brown-700 hover:text-brown-900 border-brown-300 hover:border-brown-700"
+              }`}
+              style={!textMode ? { background: "rgba(245, 233, 208, 0.5)" } : undefined}
+              aria-label="文字版 toggle"
+              aria-pressed={textMode}
+              title={canTextMode ? "切换文字版(03/04/06 槽位)" : "本页无文字版(仅 03/04/06)"}
+            >
+              <span aria-hidden className="text-base">¶</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider">
+                {textMode ? "文字版 ON" : "文字版"}
+              </span>
+              <span className="font-mono text-[9px] text-brown-300 ml-1 hidden sm:inline">
+                T
+              </span>
+            </button>
             <button
               onClick={toggleFullscreen}
               className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm text-brown-700 hover:text-brown-900 border border-brown-300 hover:border-brown-700 transition-colors self-start lg:self-end min-h-[44px]"
@@ -438,7 +515,7 @@ export default function AtlasViewer({
         {/* 键盘快捷键提示(全屏时隐藏) */}
         {!isFullscreen && (
           <div className="mt-6 text-center text-[10px] text-brown-500 font-mono tracking-wider hidden sm:block">
-            ← → 翻页 · F 全屏 · Home/End 首尾
+            ← → 翻页 · F 全屏 · T 文字版 · Home/End 首尾
           </div>
         )}
       </main>

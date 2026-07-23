@@ -30,6 +30,9 @@ export default async function AtlasPage({
         nameZh={pet.name.zh}
         nameEn={pet.name.en}
         gallery={atlas.gallery}
+        personality={pet.personality}
+        history={pet.history?.timeline}
+        famous={pet.famous}
       />
     </Suspense>
   );
