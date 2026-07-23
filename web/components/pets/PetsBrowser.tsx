@@ -136,13 +136,18 @@ export function PetsBrowser({ pets }: { pets: Pet[] }) {
             <span className="inline-block w-8 h-px bg-brick" />
             {urlFilter ? "My Collection · 我的收藏" : "Index · 全部品种"}
           </div>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-brown-900 tracking-tight leading-[1.05] mb-4 max-w-[20ch]">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-brown-900 tracking-tight leading-[0.95] mb-3 max-w-[20ch]">
             {urlFilter
               ? mounted
                 ? `${visibleCount} 个收藏`
                 : "我的收藏"
               : `${pets.length} 个标本`}
           </h1>
+          <p className="font-display italic text-base md:text-lg text-warm-brown tracking-wide mb-3">
+            {urlFilter
+              ? "— Collectio Mea —"
+              : "— Index of Breeds · Tabula Indicis —"}
+          </p>
           <p className="text-lg text-brown-600 max-w-[60ch] mb-6">
             {urlFilter
               ? "你点过 ♡ 的品种,按收藏时间倒序。"
@@ -286,20 +291,20 @@ export function PetsBrowser({ pets }: { pets: Pet[] }) {
                     id={`cat-${group.key}`}
                     className="scroll-mt-32"
                   >
-                    <div className="flex items-end justify-between flex-wrap gap-4 mb-8 pb-4 border-b border-brown-200">
+                    <div className="flex items-end justify-between flex-wrap gap-4 mb-8 pb-4 border-b-2 border-brown-200">
                       <div>
                         <div className="flex items-baseline gap-4 mb-2">
-                          <span className="font-mono text-2xl text-brown-300">
-                            {String(i + 1).padStart(2, "0")}
+                          <span className="font-display italic text-2xl text-brown-400">
+                            Tabula {["I", "II", "III", "IV", "V"][i] ?? String(i + 1)}
                           </span>
                           <h2 className="font-serif text-3xl md:text-4xl font-bold text-brown-900 tracking-tight">
                             {group.zh}
                           </h2>
-                          <span className="font-mono text-sm italic text-brown-500">
+                          <span className="font-display italic text-sm text-brown-500 tracking-wide">
                             {group.en}
                           </span>
                         </div>
-                        <p className="text-sm text-brown-500 ml-12">{group.desc}</p>
+                        <p className="text-sm text-brown-500 ml-16 font-serif italic">{group.desc}</p>
                       </div>
                       <div className="font-mono text-xs text-brown-500">
                         {hasQuery
