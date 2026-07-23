@@ -18,6 +18,7 @@ import type { Metadata } from "next";
 import type { Pet } from "@/lib/types";
 import {
   ATLAS_SLOTS,
+  getAllPets,
   getBreedAtlas,
   getCoverUrl,
   getPetBySlug,
@@ -28,6 +29,7 @@ import { BotanicalBorder, LeafDivider } from "@/components/brand/BotanicalBorder
 import { ScrollProgress } from "@/components/brand/ScrollProgress";
 import { FavoriteButton } from "@/components/brand/FavoriteButton";
 import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
+import { NotebookCallToAction } from "@/components/brand/NotebookCallToAction";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
 export async function generateStaticParams() {
@@ -593,6 +595,14 @@ export default async function PetDetailPage({
           </p>
         )}
 
+        {/* ============ 收藏到笔记本 CTA ============ */}
+        <NotebookCallToAction
+          slug={pet.slug}
+          nameZh={pet.name.zh}
+          nameEn={pet.name.en}
+          related={getRelatedBreeds(pet, 3)}
+        />
+
         {/* Footer */}
         <div className="mt-12 md:mt-16 text-center">
           <Link
@@ -826,6 +836,26 @@ function BotanicalDecoration({
       ))}
     </svg>
   );
+}
+
+/* ------------------------------------------------------------------ */
+/* 推荐 breed: 同类别随机 3 个(用 slug 算稳定 hash,SSR 友好)            */
+/* ------------------------------------------------------------------ */
+function getRelatedBreeds(current: Pet, count: number): Pet[] {
+  // 直接调 getAllPets (server-only, 安全)
+  const all = getAllPets();
+  const sameCat = all.filter((p) => p.category === current.category && p.slug !== current.slug);
+  if (sameCat.length === 0) {
+    return all.filter((p) => p.slug !== current.slug).slice(0, count);
+  }
+  // 稳定 hash:取 current.slug 的前 N 个 char,跟 sameCat 配对排序
+  const seed = current.slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+  const sorted = [...sameCat].sort((a, b) => {
+    const ha = (a.slug.charCodeAt(0) + seed) % 100;
+    const hb = (b.slug.charCodeAt(0) + seed) % 100;
+    return ha - hb;
+  });
+  return sorted.slice(0, count);
 }
 
 /* ------------------------------------------------------------------ */
