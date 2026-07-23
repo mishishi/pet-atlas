@@ -3,7 +3,7 @@ import "./globals.css";
 import { fontVariables } from "./fonts";
 import { PWAInstallPrompt } from "@/components/pwa/PWAInstallPrompt";
 
-const DEFAULT_OG = "https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la/pet-atlas/atlas/dog/golden-retriever/01-cover.png";
+const DEFAULT_OG = "/og/home.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://out-three-tan.vercel.app"),
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: DEFAULT_OG,
-        width: 1536,
-        height: 2752,
+        width: 1200,
+        height: 630,
         alt: "Pet Atlas — 100 种动物 vintage 标本卡图谱",
       },
     ],

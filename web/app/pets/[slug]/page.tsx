@@ -35,7 +35,7 @@ export async function generateStaticParams() {
   return getAllPets().map((p) => ({ slug: p.slug }));
 }
 
-/** Per-breed OG meta — 分享时显示该品种的封面 + 名字 */
+/** Per-breed OG meta — 分享时显示该品种的预生成 OG image */
 export async function generateMetadata({
   params,
 }: {
@@ -44,9 +44,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const pet = getPetBySlug(slug);
   if (!pet) return {};
-  const cover = getCoverUrl(slug, "medium") || getCoverUrl(slug, "full");
   const title = `${pet.name.zh} · ${pet.name.en}`;
   const description = `查看 ${pet.name.zh} 的 6 页 vintage 标本卡图谱 —— 形态、性格、历史、养护。${pet.origin?.country ? `原产 ${pet.origin.country}。` : ""}`;
+  // 用预生成的 1200×630 OG image (build-og-images.mjs prebuild)
+  const ogImage = `/og/${slug}.png`;
   return {
     title,
     description,
@@ -58,22 +59,20 @@ export async function generateMetadata({
       title,
       description,
       url: `https://out-three-tan.vercel.app/pets/${slug}`,
-      images: cover
-        ? [
-            {
-              url: cover,
-              width: 1024,
-              height: 1820,
-              alt: `${pet.name.zh} vintage 标本卡`,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${pet.name.zh} vintage 标本卡`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: cover ? [cover] : undefined,
+      images: [ogImage],
     },
   };
 }
