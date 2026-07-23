@@ -148,6 +148,10 @@ async function main() {
   console.log("[build-og-text] starting…");
   await fs.mkdir(PUBLIC_OG, { recursive: true });
 
+  // Idempotent: 文字版 OG 不需要 TCB fetch,可以纯本地生成
+  // 但仍提供 FORCE_OG_REBUILD 跳过
+  // 不依赖外部资源,build 永远不会 fail
+
   const files = await fs.readdir(CONTENT_PETS);
   const pets = [];
   for (const f of files) {
@@ -160,19 +164,25 @@ async function main() {
   }
   console.log(`[build-og-text] loaded ${pets.length} breeds`);
 
-  let ok = 0, fail = 0;
+  let ok = 0, skip = 0, fail = 0;
   for (const pet of pets) {
+    const outPath = path.join(PUBLIC_OG, `${pet.slug}-text.png`);
+    const exists = await fs.access(outPath).then(() => true).catch(() => false);
+    if (exists && process.env.FORCE_OG_REBUILD !== "1") {
+      skip++;
+      continue;
+    }
     try {
       const buf = await sharp(Buffer.from(textBreedSvg(pet))).png().toBuffer();
-      await fs.writeFile(path.join(PUBLIC_OG, `${pet.slug}-text.png`), buf);
+      await fs.writeFile(outPath, buf);
       ok++;
-      if (ok % 20 === 0) console.log(`  ${ok}/${pets.length}…`);
+      if ((ok + skip) % 20 === 0) console.log(`  ${ok + skip}/${pets.length}…`);
     } catch (e) {
       fail++;
       console.warn(`  ✗ ${pet.slug}: ${e.message}`);
     }
   }
-  console.log(`[build-og-text] done: ${ok} ok, ${fail} fail`);
+  console.log(`[build-og-text] done: ${ok} ok, ${skip} skipped, ${fail} fail`);
 }
 
 main().catch(e => {

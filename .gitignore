@@ -45,6 +45,9 @@ art/**/**/*.png
 # web 构建用的图(从 art 同步过来,1GB)
 web/public/**/*.png
 web/public/**/**/*.png
+# 但 OG image 要进 git (避免 Vercel prebuild 拉 TCB 超时,production 必须有)
+!web/public/og/
+!web/public/og/**/*.png
 # 设计稿(_design 目录下是早期图,也不进)
 art/_design/*.png
 # 参考图临时目录(被 image_synthesize 用过)

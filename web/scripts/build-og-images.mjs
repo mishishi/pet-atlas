@@ -173,6 +173,14 @@ async function main() {
   console.log("[build-og-images] starting…");
   await fs.mkdir(PUBLIC_OG, { recursive: true });
 
+  // Idempotent: home.png 已存在 + per-breed 都已存在 → 跳过
+  const homePath = path.join(PUBLIC_OG, "home.png");
+  const hasHome = await fs.access(homePath).then(() => true).catch(() => false);
+  if (hasHome && process.env.FORCE_OG_REBUILD !== "1") {
+    console.log("[build-og-images] home.png exists, skipping (set FORCE_OG_REBUILD=1 to force)");
+    return;
+  }
+
   const files = await fs.readdir(CONTENT_PETS);
   const pets = [];
   for (const f of files) {
@@ -195,22 +203,28 @@ async function main() {
   await fs.writeFile(path.join(PUBLIC_OG, "home.png"), homeBuf);
   console.log(`  ✓ home.png (${(homeBuf.length / 1024).toFixed(1)} KB)`);
 
-  // per-breed
-  let ok = 0, fail = 0;
+  // per-breed: 已存在则跳过 (idempotent)
+  let ok = 0, skip = 0, fail = 0;
   for (const pet of pets) {
+    const outPath = path.join(PUBLIC_OG, `${pet.slug}.png`);
+    const exists = await fs.access(outPath).then(() => true).catch(() => false);
+    if (exists && process.env.FORCE_OG_REBUILD !== "1") {
+      skip++;
+      continue;
+    }
     try {
       const petImg = await fetchBuffer(`${TCB}/pet-atlas/cloud-pets/pool/${pet.slug}-v1.png`).catch(() => labBuf);
       const cropped = await circleCrop(petImg, 320);
       const buf = await buildBreed(pet, cropped);
-      await fs.writeFile(path.join(PUBLIC_OG, `${pet.slug}.png`), buf);
+      await fs.writeFile(outPath, buf);
       ok++;
-      if (ok % 20 === 0) console.log(`  ${ok}/${pets.length}…`);
+      if ((ok + skip) % 20 === 0) console.log(`  ${ok + skip}/${pets.length}…`);
     } catch (e) {
       fail++;
       console.warn(`  ✗ ${pet.slug}: ${e.message}`);
     }
   }
-  console.log(`[build-og-images] done: ${ok} ok, ${fail} fail`);
+  console.log(`[build-og-images] done: ${ok} ok, ${skip} skipped, ${fail} fail`);
 }
 
 main().catch(e => {
