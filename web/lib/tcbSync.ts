@@ -9,10 +9,10 @@
  *
  * 数据集合结构 (TCB):
  * - pet_stats
- *   { _id, deviceId, hunger, energy, happiness, lastFedAt,
+ *   { _id, _openid, hunger, energy, happiness, lastFedAt,
  *     lastPlayedAt, lastRestedAt, lastUpdatedAt, _updateTime }
  * - cloud_pets
- *   { _id, deviceId, petId, petName, breedSlug, breedZh, breedCategory,
+ *   { _id, _openid, petId, petName, breedSlug, breedZh, breedCategory,
  *     personality, colorPreference, variantIndex, tcbUrl,
  *     createdAt, _updateTime }
  *
@@ -21,7 +21,7 @@
  * 升级路径: 未来加 userId 时,改 where 条件为 { $or: [{deviceId}, {userId}] } 即可
  */
 
-import { getDeviceId } from "./deviceId";
+import { getOwnerId, getDeviceId } from "./deviceId";
 import { getDatabase, isTcbConfigured } from "./tcb";
 import type { PetStats } from "./petStats";
 import type { CloudPet } from "./cloudPet";
@@ -75,12 +75,12 @@ async function tryDb() {
 export async function fetchPetStatsFromTcb(): Promise<PetStats | null> {
   const db = await tryDb();
   if (!db) return null;
-  const deviceId = getDeviceId();
-  if (!deviceId) return null;
+  const ownerId = getOwnerId();
+  if (!ownerId) return null;
   try {
     const res = await db
       .collection("pet_stats")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(1)
       .get();
     const list = res?.data || [];
@@ -108,18 +108,18 @@ export async function fetchPetStatsFromTcb(): Promise<PetStats | null> {
 export async function pushPetStatsToTcb(stats: PetStats): Promise<boolean> {
   const db = await tryDb();
   if (!db) return false;
-  const deviceId = getDeviceId();
-  if (!deviceId) return false;
+  const ownerId = getOwnerId();
+  if (!ownerId) return false;
   try {
     setStatus("syncing");
     // 先查 _id(若有则 update,若无则 add)
     const existing = await db
       .collection("pet_stats")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(1)
       .get();
     const payload = {
-      deviceId,
+      _openid: ownerId,
       hunger: stats.hunger,
       energy: stats.energy,
       happiness: stats.happiness,
@@ -148,12 +148,12 @@ export async function pushPetStatsToTcb(stats: PetStats): Promise<boolean> {
 export async function fetchCloudPetFromTcb(): Promise<CloudPet | null> {
   const db = await tryDb();
   if (!db) return null;
-  const deviceId = getDeviceId();
-  if (!deviceId) return null;
+  const ownerId = getOwnerId();
+  if (!ownerId) return null;
   try {
     const res = await db
       .collection("cloud_pets")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(1)
       .get();
     const list = res?.data || [];
@@ -180,17 +180,17 @@ export async function fetchCloudPetFromTcb(): Promise<CloudPet | null> {
 export async function pushCloudPetToTcb(pet: CloudPet): Promise<boolean> {
   const db = await tryDb();
   if (!db) return false;
-  const deviceId = getDeviceId();
-  if (!deviceId) return false;
+  const ownerId = getOwnerId();
+  if (!ownerId) return false;
   try {
     setStatus("syncing");
     const existing = await db
       .collection("cloud_pets")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(1)
       .get();
     const payload = {
-      deviceId,
+      _openid: ownerId,
       petId: pet.petId,
       breedSlug: pet.breedSlug,
       breedZh: pet.breedZh,
@@ -220,12 +220,12 @@ export async function pushCloudPetToTcb(pet: CloudPet): Promise<boolean> {
 export async function deleteCloudPetFromTcb(): Promise<boolean> {
   const db = await tryDb();
   if (!db) return false;
-  const deviceId = getDeviceId();
-  if (!deviceId) return false;
+  const ownerId = getOwnerId();
+  if (!ownerId) return false;
   try {
     const existing = await db
       .collection("cloud_pets")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(1)
       .get();
     if (existing?.data?.length > 0) {
@@ -247,12 +247,12 @@ import type { DiaryEntry } from "./petDiary";
 export async function fetchDiaryEntriesFromTcb(): Promise<DiaryEntry[]> {
   const db = await tryDb();
   if (!db) return [];
-  const deviceId = getDeviceId();
-  if (!deviceId) return [];
+  const ownerId = getOwnerId();
+  if (!ownerId) return [];
   try {
     const res = await db
       .collection("pet_diary")
-      .where({ deviceId })
+      .where({ _openid: ownerId })
       .limit(500) // 单设备单宠物最多 200,留余量
       .get();
     const list = (res?.data || []) as any[];
@@ -291,15 +291,15 @@ export async function pushDiaryEntriesToTcb(
   if (!entries.length) return [];
   const db = await tryDb();
   if (!db) return [];
-  const deviceId = getDeviceId();
-  if (!deviceId) return [];
+  const ownerId = getOwnerId();
+  if (!ownerId) return [];
   const successIds: string[] = [];
   try {
     setStatus("syncing");
     for (const entry of entries) {
       try {
         await db.collection("pet_diary").add({
-          deviceId,
+          _openid: ownerId,
           entryId: entry.id, // 业务 id 存为字段(供 last-write-wins 去重)
           timestamp: entry.timestamp,
           actionType: entry.actionType,
