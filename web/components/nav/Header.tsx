@@ -7,6 +7,7 @@
  */
 import Link from "next/link";
 import { Container } from "../ui/Container";
+import { AuthMenu } from "../auth/AuthMenu";
 
 export function Header({
   variant = "default",
@@ -83,8 +84,8 @@ export function Header({
           </a>
         </nav>
 
-        {/* Specimen number */}
-        <div className="flex items-center gap-2">
+        {/* Specimen number + Auth menu */}
+        <div className="flex items-center gap-3">
           <span
             className={`font-mono text-[10px] uppercase tracking-[0.2em] hidden sm:inline ${
               isOverlay ? "text-brown-700" : "text-brown-500"
@@ -95,6 +96,7 @@ export function Header({
           <span className="font-mono text-sm font-medium text-brick tracking-wider">
             No. 051
           </span>
+          <AuthMenu />
         </div>
       </Container>
     </header>

@@ -6,11 +6,16 @@
  * - 存 localStorage,永不变
  * - TCB 数据库按 deviceId 分区,实现"匿名跨设备同步"
  *
- * 升级路径:
- * - 未来上 OAuth 登录时,把 deviceId 绑到 userId
- * - 数据迁移:userId 登录后,把 deviceId 名下的记录复制到 userId 下
- * - 旧数据保留,新数据走 userId
+ * M4 升级:
+ * - 登录后,userId 绑到当前 deviceId(1:1)
+ * - getOwnerId() 抽象返回 userId(若已登录并绑定) || deviceId
+ * - 老 deviceId 数据保留,新数据自动走 userId
  */
+
+import { getCurrentUser, getOwnerMapping, bindDeviceToCurrentUser } from "./auth";
+
+// re-export for convenience
+export { bindDeviceToCurrentUser };
 
 const KEY = "pet-atlas:device-id:v1";
 
@@ -30,10 +35,29 @@ export function getDeviceId(): string | null {
     console.warn("[deviceId] 写入失败", err);
     return null;
   }
+  // 首次生成时,如果用户已登录,自动绑定
+  if (getCurrentUser()) {
+    bindDeviceToCurrentUser(fresh);
+  }
   return fresh;
 }
 
-/** 强制重置(调试用,M3 加 OAuth 迁移时也会用到) */
+/**
+ * 取当前数据主键(登录后用 userId,否则用 deviceId)
+ * 登录 + 绑定后,所有数据走 userId
+ */
+export function getOwnerId(): string | null {
+  const u = getCurrentUser();
+  if (u) {
+    const mapping = getOwnerMapping();
+    if (mapping && mapping.userId === u.userId) {
+      return mapping.userId; // user 模式
+    }
+  }
+  return getDeviceId(); // 匿名 fallback
+}
+
+/** 强制重置 deviceId(调试用) */
 export function resetDeviceId(): string | null {
   if (!isClient()) return null;
   localStorage.removeItem(KEY);
@@ -44,6 +68,5 @@ function generateDeviceId(): string {
   if (typeof crypto !== "undefined" && crypto.randomUUID) {
     return crypto.randomUUID();
   }
-  // Fallback: 32-char base36 from time + random
   return `dev-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
