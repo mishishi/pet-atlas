@@ -1,0 +1,72 @@
+{
+  "slug": "mata-mata",
+  "name": {
+    "zh": "玛塔龟",
+    "en": "Mata Mata"
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "南美洲",
+    "region": "亚马逊"
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "55-70",
+    "weightKg": "25-45",
+    "lifespanYears": "8-13",
+    "coat": "",
+    "coatColors": [],
+    "eyeColors": []
+  },
+  "personality": {
+    "affection": 4,
+    "activity": 3,
+    "obedience": 3,
+    "independence": 9,
+    "vocalization": 2,
+    "intelligence": 4,
+    "summary": "沉默的观察者",
+    "tags": [
+      "爬虫",
+      "鳞甲",
+      "异宠",
+      "玛塔龟",
+      "large型"
+    ]
+  },
+  "care": {
+    "diet": "活饵/冻鼠+钙粉",
+    "exercise": "UVB 灯+晒台",
+    "health": "定期驱虫+口腔检查",
+    "training": "少打扰,环境稳定"
+  },
+  "famous": [
+    "恐龙时代近亲",
+    "异宠圈新贵",
+    "饲养门槛高"
+  ],
+  "tags": [
+    "爬虫",
+    "鳞甲",
+    "异宠",
+    "玛塔龟",
+    "large型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

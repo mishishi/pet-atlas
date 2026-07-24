@@ -1,0 +1,72 @@
+{
+  "slug": "jerboa",
+  "name": {
+    "zh": "跳鼠",
+    "en": "Jerboa"
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "北非",
+    "region": "撒哈拉"
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-40",
+    "weightKg": "4-10",
+    "lifespanYears": "10-15",
+    "coat": "",
+    "coatColors": [],
+    "eyeColors": []
+  },
+  "personality": {
+    "affection": 6,
+    "activity": 5,
+    "obedience": 4,
+    "independence": 7,
+    "vocalization": 3,
+    "intelligence": 5,
+    "summary": "安静的陪伴",
+    "tags": [
+      "小型哺乳",
+      "口袋宠物",
+      "治愈",
+      "跳鼠",
+      "small型"
+    ]
+  },
+  "care": {
+    "diet": "专用饲料+少量蔬果",
+    "exercise": "笼内跑轮+放风",
+    "health": "定期检查牙齿+体重",
+    "training": "温柔接触,避免惊吓"
+  },
+  "famous": [
+    "儿童文学常客",
+    "异宠市场新秀",
+    "安静不扰民"
+  ],
+  "tags": [
+    "小型哺乳",
+    "口袋宠物",
+    "治愈",
+    "跳鼠",
+    "small型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

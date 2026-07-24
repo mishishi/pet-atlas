@@ -1,0 +1,71 @@
+{
+  "slug": "woma-python",
+  "name": {
+    "zh": "沃玛蟒",
+    "en": "Woma Python"
+  },
+  "category": "reptile",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "澳大利亚"
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "40-55",
+    "weightKg": "10-25",
+    "lifespanYears": "10-14",
+    "coat": "",
+    "coatColors": [],
+    "eyeColors": []
+  },
+  "personality": {
+    "affection": 4,
+    "activity": 3,
+    "obedience": 3,
+    "independence": 9,
+    "vocalization": 2,
+    "intelligence": 4,
+    "summary": "沉默的观察者",
+    "tags": [
+      "爬虫",
+      "鳞甲",
+      "异宠",
+      "沃玛蟒",
+      "medium型"
+    ]
+  },
+  "care": {
+    "diet": "活饵/冻鼠+钙粉",
+    "exercise": "UVB 灯+晒台",
+    "health": "定期驱虫+口腔检查",
+    "training": "少打扰,环境稳定"
+  },
+  "famous": [
+    "恐龙时代近亲",
+    "异宠圈新贵",
+    "饲养门槛高"
+  ],
+  "tags": [
+    "爬虫",
+    "鳞甲",
+    "异宠",
+    "沃玛蟒",
+    "medium型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

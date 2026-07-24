@@ -1,0 +1,76 @@
+{
+  "slug": "norfolk-terrier",
+  "name": {
+    "zh": "诺福克梗",
+    "en": "Norfolk Terrier"
+  },
+  "category": "dog",
+  "template": 1,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "英国",
+    "region": "英格兰东部"
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-40",
+    "weightKg": "4-10",
+    "lifespanYears": "10-15",
+    "coat": "短毛,易护理",
+    "coatColors": [
+      "多种"
+    ],
+    "eyeColors": [
+      "深色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "忠诚的伙伴",
+    "tags": [
+      "犬",
+      "忠诚",
+      "人类伙伴",
+      "诺福克梗",
+      "small型"
+    ]
+  },
+  "care": {
+    "diet": "每日 2 顿,按体重调整",
+    "exercise": "每日 30-60 分钟运动",
+    "health": "需定期体检+疫苗",
+    "training": "社交化训练+服从性"
+  },
+  "famous": [
+    "《忠犬八公》原型",
+    "AKC 认证品种",
+    "人类最古老的伙伴"
+  ],
+  "tags": [
+    "犬",
+    "忠诚",
+    "人类伙伴",
+    "诺福克梗",
+    "small型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

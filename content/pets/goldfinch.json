@@ -1,0 +1,71 @@
+{
+  "slug": "goldfinch",
+  "name": {
+    "zh": "金翅雀",
+    "en": "European Goldfinch"
+  },
+  "category": "bird",
+  "template": 4,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "欧洲"
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-40",
+    "weightKg": "4-10",
+    "lifespanYears": "10-15",
+    "coat": "",
+    "coatColors": [],
+    "eyeColors": []
+  },
+  "personality": {
+    "affection": 6,
+    "activity": 8,
+    "obedience": 5,
+    "independence": 7,
+    "vocalization": 7,
+    "intelligence": 7,
+    "summary": "聒噪的精灵",
+    "tags": [
+      "鸟",
+      "羽毛",
+      "鸣禽",
+      "金翅雀",
+      "small型"
+    ]
+  },
+  "care": {
+    "diet": "混合种子+蔬果+墨鱼骨",
+    "exercise": "笼外放飞+玩具",
+    "health": "喙爪修剪+体检",
+    "training": "声音互动+社交"
+  },
+  "famous": [
+    "鹦鹉学舌网红",
+    "宠物鸟首选",
+    "羽色艳丽"
+  ],
+  "tags": [
+    "鸟",
+    "羽毛",
+    "鸣禽",
+    "金翅雀",
+    "small型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}

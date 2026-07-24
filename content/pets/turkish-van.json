@@ -1,0 +1,76 @@
+{
+  "slug": "turkish-van",
+  "name": {
+    "zh": "土耳其梵猫",
+    "en": "Turkish Van"
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "土耳其",
+    "region": "凡湖"
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "55-70",
+    "weightKg": "25-45",
+    "lifespanYears": "8-13",
+    "coat": "",
+    "coatColors": [
+      "多种"
+    ],
+    "eyeColors": [
+      "深色"
+    ]
+  },
+  "personality": {
+    "affection": 7,
+    "activity": 6,
+    "obedience": 5,
+    "independence": 8,
+    "vocalization": 5,
+    "intelligence": 7,
+    "summary": "独立的优雅",
+    "tags": [
+      "猫",
+      "独立",
+      "优雅",
+      "土耳其梵猫",
+      "large型"
+    ]
+  },
+  "care": {
+    "diet": "优质猫粮,定时定量",
+    "exercise": "猫爬架+玩具自娱",
+    "health": "年度体检+疫苗",
+    "training": "砂盆清洁+磨爪"
+  },
+  "famous": [
+    "古埃及圣猫",
+    "网络表情包常客",
+    "独立性格代表"
+  ],
+  "tags": [
+    "猫",
+    "独立",
+    "优雅",
+    "土耳其梵猫",
+    "large型"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0,
+    "completeness": 100
+  }
+}
