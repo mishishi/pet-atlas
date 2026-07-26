@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s · 宠物大百科",
   },
   description:
-    "为爱宠收藏一整套图鉴 — 100 种动物的 vintage 标本卡图谱,犬、猫、小型哺乳、鸟、爬虫。每只宠物 6 张图谱 + 3 张立绘。",
+    "为爱宠收藏一整套图鉴 — 150 种动物的 vintage 标本卡图谱,犬、猫、小型哺乳、鸟、爬虫。每只宠物 6 张图谱 + 3 张立绘。",
   keywords: [
     "宠物",
     "宠物百科",
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     siteName: "宠物大百科 · Pet Atlas",
     title: "宠物大百科 · Pet Atlas",
     description:
-      "为爱宠收藏一整套图鉴 — 100 种动物的 vintage 标本卡图谱,每只 6 张图谱 + 3 张立绘。",
+      "为爱宠收藏一整套图鉴 — 150 种动物的 vintage 标本卡图谱,每只 6 张图谱 + 3 张立绘。",
     images: [
       {
         url: DEFAULT_OG,
         width: 1200,
         height: 630,
-        alt: "Pet Atlas — 100 种动物 vintage 标本卡图谱",
+        alt: "Pet Atlas — 150 种动物 vintage 标本卡图谱",
       },
     ],
   },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "宠物大百科 · Pet Atlas",
     description:
-      "为爱宠收藏一整套图鉴 — 100 种动物的 vintage 标本卡图谱。",
+      "为爱宠收藏一整套图鉴 — 150 种动物的 vintage 标本卡图谱。",
     images: [DEFAULT_OG],
   },
   alternates: {
@@ -101,7 +101,7 @@ export default function RootLayout({
                   url: "https://out-three-tan.vercel.app",
                   name: "宠物大百科 · Pet Atlas",
                   description:
-                    "为爱宠收藏一整套图鉴 — 100 种动物的 vintage 标本卡图谱。",
+                    "为爱宠收藏一整套图鉴 — 150 种动物的 vintage 标本卡图谱。",
                   inLanguage: "zh-CN",
                   potentialAction: {
                     "@type": "SearchAction",
