@@ -1,0 +1,87 @@
+{
+  "slug": "manx",
+  "name": {
+    "zh": "曼岛猫",
+    "en": "Manx"
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "英国",
+    "region": "马恩岛"
+  },
+  "physical": {
+    "sizeGroup": "medium",
+    "heightCm": "25-30",
+    "weightKg": "3.5-5.5",
+    "lifespanYears": "14-16",
+    "coat": "短毛或长毛,双层被毛",
+    "coatColors": [
+      "多种",
+      "虎斑",
+      "纯色",
+      "玳瑁",
+      "三花",
+      "白底"
+    ],
+    "eyeColors": [
+      "铜色",
+      "绿色",
+      "金色",
+      "蓝色",
+      "异色"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 6,
+    "obedience": 7,
+    "independence": 5,
+    "vocalization": 4,
+    "intelligence": 7,
+    "summary": "独特的无尾圆球",
+    "tags": [
+      "猫",
+      "无尾",
+      "马恩岛",
+      "曼岛",
+      "medium型"
+    ]
+  },
+  "care": {
+    "diet": "均衡猫粮,控体重",
+    "exercise": "跳跃力强,喜欢攀高",
+    "health": "脊柱裂(无尾基因)·便秘·角膜营养不良",
+    "training": "聪明温顺,易训练"
+  },
+  "famous": [
+    "源自英国马恩岛,有数百年历史",
+    "因基因突变完全无尾(或短尾)",
+    "后腿比前腿长,呈兔子般跳跃步态",
+    "成为马恩岛象征,印在硬币上"
+  ],
+  "tags": [
+    "猫",
+    "无尾",
+    "马恩岛",
+    "曼岛",
+    "medium型",
+    "独特",
+    "后腿长"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

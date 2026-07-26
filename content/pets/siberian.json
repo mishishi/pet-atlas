@@ -1,0 +1,88 @@
+{
+  "slug": "siberian",
+  "name": {
+    "zh": "西伯利亚森林猫",
+    "en": "Siberian"
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "俄罗斯",
+    "region": "西伯利亚"
+  },
+  "physical": {
+    "sizeGroup": "large",
+    "heightCm": "28-38",
+    "weightKg": "4.5-9",
+    "lifespanYears": "12-20",
+    "coat": "三层被毛,防水,半长毛",
+    "coatColors": [
+      "棕虎斑",
+      "银虎斑",
+      "蓝色",
+      "红色",
+      "纯黑",
+      "纯白",
+      "玳瑁",
+      "金色"
+    ],
+    "eyeColors": [
+      "绿色",
+      "金色",
+      "铜色",
+      "蓝色(部分)"
+    ]
+  },
+  "personality": {
+    "affection": 8,
+    "activity": 7,
+    "obedience": 7,
+    "independence": 6,
+    "vocalization": 4,
+    "intelligence": 8,
+    "summary": "森林中的温柔巨人",
+    "tags": [
+      "猫",
+      "长毛",
+      "森林",
+      "西伯利亚",
+      "large型"
+    ]
+  },
+  "care": {
+    "diet": "高蛋白猫粮,因体型大食量大",
+    "exercise": "喜爱攀爬跳跃,需大空间",
+    "health": "整体健康,偶发肥厚性心肌病",
+    "training": "极聪明,可学开门取物"
+  },
+  "famous": [
+    "俄罗斯国猫,有 1000+ 年历史",
+    "普京曾赠送给日本秋田县知事",
+    "因低过敏性被俄罗斯儿童医院用做治疗",
+    "三层防水被毛适应西伯利亚严寒"
+  ],
+  "tags": [
+    "猫",
+    "长毛",
+    "森林",
+    "西伯利亚",
+    "large型",
+    "低敏",
+    "耐寒"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

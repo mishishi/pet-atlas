@@ -1,0 +1,88 @@
+{
+  "slug": "devon-rex",
+  "name": {
+    "zh": "德文卷毛猫",
+    "en": "Devon Rex"
+  },
+  "category": "cat",
+  "template": 2,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "英国",
+    "region": "德文郡"
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "25-30",
+    "weightKg": "2.5-4",
+    "lifespanYears": "12-15",
+    "coat": "极短柔软卷毛,波浪形",
+    "coatColors": [
+      "纯白",
+      "纯黑",
+      "蓝色",
+      "红色",
+      "奶油色",
+      "玳瑁",
+      "重点色",
+      "三花"
+    ],
+    "eyeColors": [
+      "蓝色",
+      "绿色",
+      "金色",
+      "异色"
+    ]
+  },
+  "personality": {
+    "affection": 9,
+    "activity": 8,
+    "obedience": 6,
+    "independence": 4,
+    "vocalization": 5,
+    "intelligence": 8,
+    "summary": "精灵般的卷毛小可爱",
+    "tags": [
+      "猫",
+      "卷毛",
+      "精灵脸",
+      "德文",
+      "small型"
+    ]
+  },
+  "care": {
+    "diet": "高蛋白猫粮,食量因活力大",
+    "exercise": "高运动量,需大量互动",
+    "health": "马凡综合征(少数)·先天性脱毛症",
+    "training": "极聪明,可学复杂指令"
+  },
+  "famous": [
+    "1959 年英国德文郡一窝野猫中首次发现",
+    "因精灵般外貌走红网络",
+    "被称为'猫中精灵'或'外星猫'",
+    "掉毛极少,适合过敏人群"
+  ],
+  "tags": [
+    "猫",
+    "卷毛",
+    "精灵脸",
+    "德文",
+    "small型",
+    "网红",
+    "低敏"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-02-traits.png",
+    "art/atlas-03-personality.png",
+    "art/atlas-04-history.png",
+    "art/atlas-05-care.png",
+    "art/atlas-06-famous.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  }
+}

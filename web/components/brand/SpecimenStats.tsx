@@ -4,47 +4,48 @@
  * 4 格数据展示,放在 HeroPoster 和 FeaturedBreeds 之间
  * 视觉: vintage 标本卡风 + 罗马数字 plate + 拉丁短句
  *
- * 4 个数据:
- *  - 100 品种 (5 大品类)
- *  - 600 图谱 (6 张/品种)
- *  - 300 立绘 (3 张/品种)
- *  - 5 品类 (犬/猫/小哺乳/鸟/爬虫)
+ * Props: totalBreeds / totalPlates / totalPortraits (动态)
  */
 
 import { Container } from "../ui/Container";
 
-const STATS = [
-  {
-    n: "100",
-    label: "个品种",
-    en: "Specimina",
-    desc: "5 大品类,200+ 年图鉴传统",
-    roman: "I",
-  },
-  {
-    n: "600",
-    label: "张图谱",
-    en: "Tabulae",
-    desc: "6 张/品种,vintage 标本卡",
-    roman: "II",
-  },
-  {
-    n: "300",
-    label: "张立绘",
-    en: "Icones",
-    desc: "3 张/品种,治愈水彩风",
-    roman: "III",
-  },
-  {
-    n: "5",
-    label: "大品类",
-    en: "Classes",
-    desc: "犬 · 猫 · 小哺乳 · 鸟 · 爬虫",
-    roman: "IV",
-  },
-];
+interface Props {
+  totalBreeds: number;
+  totalPlates: number;
+  totalPortraits: number;
+}
 
-export function SpecimenStats() {
+export function SpecimenStats({ totalBreeds, totalPlates, totalPortraits }: Props) {
+  const STATS = [
+    {
+      n: String(totalBreeds),
+      label: "个品种",
+      en: "Specimina",
+      desc: "5 大品类,200+ 年图鉴传统",
+      roman: "I",
+    },
+    {
+      n: String(totalPlates),
+      label: "张图谱",
+      en: "Tabulae",
+      desc: "6 张/品种,vintage 标本卡",
+      roman: "II",
+    },
+    {
+      n: String(totalPortraits),
+      label: "张立绘",
+      en: "Icones",
+      desc: "3 张/品种,治愈水彩风",
+      roman: "III",
+    },
+    {
+      n: "5",
+      label: "大品类",
+      en: "Classes",
+      desc: "犬 · 猫 · 小哺乳 · 鸟 · 爬虫",
+      roman: "IV",
+    },
+  ];
   return (
     <section className="relative py-16 md:py-20 bg-oat-100/60 border-y-2 border-warm-brown/20">
       {/* 装饰上横线 */}
