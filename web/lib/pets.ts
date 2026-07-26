@@ -111,6 +111,12 @@ export function getCoverUrl(
   if (!hasBreedAtlas(slug)) return null;
   const pet = getPetBySlug(slug);
   if (!pet) return null;
+  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
+  // 🚨 2026-07-26 fix: 主页 / 列表 150 张图全 404 修复,thumb/medium 走 full
+  // 长期 P1: prebuild 用 sharp 生成 thumb/medium + 上传 TCB
+  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
+    return atlasPublicUrl(pet, 1);
+  }
   if (!ATLAS_BASE_URL || size === "full") {
     return atlasPublicUrl(pet, 1);
   }
