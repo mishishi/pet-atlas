@@ -61,7 +61,7 @@ export default function AboutPage() {
               <LeafDivider className="w-48 md:w-64 h-auto" />
             </div>
             <p className="font-serif text-lg md:text-xl text-brown-700 max-w-2xl mx-auto leading-relaxed">
-              pet-atlas 是一个非商业的视觉收藏项目 —— 把 AI 生成的 100 种
+              pet-atlas 是一个非商业的视觉收藏项目 —— 把 AI 生成的 150 种
               动物图谱,装进 19 世纪博物馆标本卡的画框里。
             </p>
             <div className="inline-block mt-4 px-4 py-1.5 rounded-full border border-warm-brown/30 bg-oat-50/60">
@@ -77,7 +77,7 @@ export default function AboutPage() {
               no="I"
               title="标本卡"
               zh="Specimen Card"
-              body="19 世纪博物学家在田野里收集样本,带回博物馆编号入册。每张卡片都按固定格式登记:编号、种名、产地、采集者、年份。我们用同样的格式给 100 种动物做了一套'当代标本卡'。"
+              body="19 世纪博物学家在田野里收集样本,带回博物馆编号入册。每张卡片都按固定格式登记:编号、种名、产地、采集者、年份。我们用同样的格式给 150 种动物做了一套'当代标本卡'。"
             />
             <ValueCard
               no="II"
@@ -106,7 +106,7 @@ export default function AboutPage() {
               </span>
             </h2>
             <p className="font-serif text-brown-700 max-w-3xl mb-10 leading-relaxed">
-              100 种动物 × 6 张图 = 600 张图谱 + 300 张 1:1 立绘(cloud-pet 用),
+              150 种动物 × 6 张图 = 900 张图谱 + 450 张 1:1 立绘(cloud-pet 用),
               全部由 AI 生成 + 手工 prompt 调教。每张图都有一份同名 .md 文档记录当时的 prompt,方便回溯和复现。
             </p>
 
@@ -211,7 +211,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link href="/pets">
                 <Button variant="outline" size="lg">
-                  浏览全部 100 个品种
+                  浏览全部 150 个品种
                 </Button>
               </Link>
               <Link href="/adopt">
