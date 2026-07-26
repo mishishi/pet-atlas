@@ -129,6 +129,68 @@ export const VINTAGE_PAPER_DONE: ReadonlySet<string> = new Set([
   "quaker-parrot",
   "rottweiler",
   "savannah-monitor",
+  // D 批扩品种 50 个同步(2026-07-26, 跟 lib/pets.ts VINTAGE_PAPER_DONE 100→150 同步)
+  // 减 4: tibetan-mastiff / emu / vasa-parrot / hawk-headed-parrot (不普及/罕见)
+  // 加 4: devon-rex / siberian / manx / fennec-fox (网红 + 普及)
+  // 跑超 24 个老 breed 也补图: basenji / borzoi / ...
+  // D 批 5×10 严格均衡: dog 40, cat 33, small-mammal 29, bird 24, reptile 25
+  // dog 跑超 (10)
+  "basenji",
+  "borzoi",
+  "chinese-crested",
+  "giant-schnauzer",
+  "japanese-spitz",
+  "keeshond",
+  "norfolk-terrier",
+  "plott",
+  "scottish-terrier",
+  "soft-coated-wheaten-terrier",
+  // cat 跑超 (5)
+  "asian-semi-longhair",
+  "balinese",
+  "european-shorthair",
+  "korat",
+  "nebelung",
+  "snowshoe",
+  "turkish-van",
+  // D 批新加 cat 4 (网红/普及)
+  "devon-rex",
+  "siberian",
+  "manx",
+  // small-mammal 跑超 (8)
+  "agouti",
+  "common-chinchilla",
+  "flying-squirrel",
+  "jerboa",
+  "kangaroo-rat",
+  "meadow-vole",
+  "naked-mole-rat",
+  "patagonian-mara",
+  "greater-glider",
+  // D 批新加 small-mammal 1 (网红)
+  "fennec-fox",
+  // bird 跑超 (9)
+  "alexandrine-parakeet",
+  "blue-fronted-amazon",
+  "common-myna",
+  "eclectus-parrot",
+  "goldfinch",
+  "jandaya-parakeet",
+  "majestic-rosella",
+  "plum-headed-parakeet",
+  "red-capped-parrot",
+  "senegal-parrot",
+  // reptile 跑超 (8)
+  "chinese-water-dragon",
+  "emerald-tree-skink",
+  "frilled-lizard",
+  "green-iguana",
+  "indian-star-tortoise",
+  "leopard-tortoise",
+  "mata-mata",
+  "panther-chameleon",
+  "woma-python",
+  "yellow-margined-box-turtle",
 ]);
 
 /** category → 目录名映射 */
