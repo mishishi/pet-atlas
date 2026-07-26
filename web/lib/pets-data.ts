@@ -148,7 +148,10 @@ const ATLAS_BASE_URL = (process.env.NEXT_PUBLIC_ATLAS_BASE_URL || "").replace(
  * 封面 URL (client-safe 版本,无 fs 扫描)
  * - 有 ATLAS_BASE_URL (走 TCB):走云端 URL
  * - 无 (走本地):返回 /<cat>/<slug>/01-cover.png
- * - 缩略图只在 TCB 模式下有 (本地没 thumb)
+ *
+ * 🚨 2026-07-26 fix: TCB 模式没有 thumb/medium 文件(upload-atlas-tcb.mjs 只传 01-cover.png),
+ * 所以 thumb/medium 全部回落到 full,避免主页 / 列表 150 张图全 404
+ * 长期 P1: 在 prebuild 用 sharp 生成 thumb/medium + 上传 TCB,改回原逻辑
  */
 export function getCoverUrl(
   slug: string,
@@ -157,6 +160,10 @@ export function getCoverUrl(
   if (!VINTAGE_PAPER_DONE.has(slug)) return null;
   const pet = allPets.find((p) => p.slug === slug);
   if (!pet) return null;
+  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
+  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
+    return `${ATLAS_BASE_URL}/${atlasDirName(pet.category)}/${pet.slug}/01-cover.png`;
+  }
   if (!ATLAS_BASE_URL || size === "full") {
     return `${ATLAS_BASE_URL || ""}/${atlasDirName(pet.category)}/${pet.slug}/01-cover.png`;
   }

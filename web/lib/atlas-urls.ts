@@ -38,12 +38,22 @@ export function buildAtlasUrl(
   return ATLAS_BASE_URL ? `${ATLAS_BASE_URL}${path}` : path;
 }
 
-/** 封面图 URL 构造(带尺寸变体) */
+/**
+ * 封面图 URL 构造(带尺寸变体)
+ *
+ * 🚨 2026-07-26 fix: TCB 模式没有 thumb/medium 文件(upload-atlas-tcb.mjs 只传 01-cover.png),
+ * 所以 thumb/medium 全部回落到 full,避免主页 / 列表 150 张图全 404
+ * 长期 P1: 在 prebuild 用 sharp 生成 thumb/medium + 上传 TCB,改回原逻辑
+ */
 export function buildCoverUrl(
   category: string,
   slug: string,
   size: CoverSize = "full"
 ): string {
+  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
+  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
+    return buildAtlasUrl(category, slug, 1);
+  }
   if (!ATLAS_BASE_URL || size === "full") {
     return buildAtlasUrl(category, slug, 1);
   }
