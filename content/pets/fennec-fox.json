@@ -1,0 +1,95 @@
+{
+  "slug": "fennec-fox",
+  "name": {
+    "zh": "耳廓狐",
+    "en": "Fennec Fox"
+  },
+  "category": "small-mammal",
+  "template": 3,
+  "status": "published",
+  "publishedAt": "2026-07-24",
+  "origin": {
+    "country": "北非",
+    "region": "撒哈拉沙漠"
+  },
+  "physical": {
+    "sizeGroup": "small",
+    "heightCm": "20-40",
+    "weightKg": "0.7-1.6",
+    "lifespanYears": "10-14",
+    "coat": "短毛,奶白沙色,极柔软",
+    "coatColors": [
+      "奶白沙色",
+      "浅黄褐色",
+      "白色腹"
+    ],
+    "eyeColors": [
+      "深棕色"
+    ]
+  },
+  "personality": {
+    "affection": 5,
+    "activity": 8,
+    "obedience": 3,
+    "independence": 9,
+    "vocalization": 5,
+    "intelligence": 8,
+    "summary": "沙漠大耳精灵",
+    "tags": [
+      "小型",
+      "短毛",
+      "大耳",
+      "耳廓狐"
+    ]
+  },
+  "care": {
+    "diet": "高蛋白肉类+少量蔬果,需补钙",
+    "exercise": "需大空间+沙土挖掘",
+    "health": "需干燥环境,呼吸道敏感",
+    "training": "野生动物本能强,难家养,需专业饲养"
+  },
+  "famous": [
+    "世界上最小狐狸(体重不到 1.5kg)",
+    "巨大耳朵可达 15cm,散热+听声",
+    "撒哈拉原住民传说中的精灵",
+    "近年因大耳萌照走红社交网络"
+  ],
+  "tags": [
+    "小型",
+    "短毛",
+    "大耳",
+    "耳廓狐",
+    "异宠",
+    "夜行",
+    "沙漠"
+  ],
+  "coverImage": "art/atlas-01-cover.png",
+  "gallery": [
+    "art/atlas-01-cover.png",
+    "art/atlas-3-02.png",
+    "art/atlas-3-03.png",
+    "art/atlas-3-04.png",
+    "art/atlas-3-05.png",
+    "art/atlas-3-06.png"
+  ],
+  "meta": {
+    "views": 0,
+    "favorites": 0
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "古文明",
+        "event": "在 撒哈拉沙漠 已存在千年"
+      },
+      {
+        "year": "近代",
+        "event": "因外形独特被人类关注"
+      },
+      {
+        "year": "20-21 世纪",
+        "event": "因异宠热度走入家庭"
+      }
+    ]
+  }
+}

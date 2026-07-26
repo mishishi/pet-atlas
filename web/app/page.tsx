@@ -17,15 +17,25 @@ import { HeroPoster } from "@/components/brand/HeroPoster";
 import { SpecimenStats } from "@/components/brand/SpecimenStats";
 import { FeaturedBreeds } from "@/components/brand/FeaturedBreeds";
 import { CategoryStrip } from "@/components/brand/CategoryStrip";
+import { getAllPets } from "@/lib/pets";
 
 export default function Home() {
+  const pets = getAllPets();
+  const totalBreeds = pets.length;
+  const totalPlates = totalBreeds * 6;
+  const totalPortraits = totalBreeds * 3;
+
   return (
     <>
       {/* 主页专用:透明 overlay header,叠加在 hero 海报上 */}
       <Header variant="overlay" />
       <main>
         <HeroPoster />
-        <SpecimenStats />
+        <SpecimenStats
+          totalBreeds={totalBreeds}
+          totalPlates={totalPlates}
+          totalPortraits={totalPortraits}
+        />
         <FeaturedBreeds />
         <CategoryStrip />
       </main>
