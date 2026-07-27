@@ -5,7 +5,7 @@
     "en": "Korat"
   },
   "category": "cat",
-  "template": 2,
+  "template": "2",
   "status": "published",
   "publishedAt": "2026-07-24",
   "origin": {
@@ -14,59 +14,76 @@
   },
   "physical": {
     "sizeGroup": "small",
-    "heightCm": "25-40",
-    "weightKg": "4-10",
-    "lifespanYears": "10-15",
-    "coat": "",
-    "coatColors": [
-      "多种"
-    ],
-    "eyeColors": [
-      "深色"
-    ]
+    "heightCm": "25-35",
+    "weightKg": "2.5-4.5",
+    "lifespanYears": "12-15",
+    "coat": "单层短毛,毛尖银色使整体呈银蓝色光泽",
+    "coatColors": ["银蓝", "单蓝色"],
+    "eyeColors": ["翠绿", "橄榄绿"]
   },
   "personality": {
-    "affection": 7,
+    "affection": 8,
     "activity": 6,
-    "obedience": 5,
-    "independence": 8,
+    "obedience": 7,
+    "independence": 5,
+    "intelligence": 8,
     "vocalization": 5,
-    "intelligence": 7,
-    "summary": "独立的优雅",
+    "summary": "泰国幸运猫",
     "tags": [
       "猫",
-      "独立",
-      "优雅",
-      "科拉特猫",
+      "短毛",
+      "东方",
+      "蓝猫",
       "small型"
     ]
   },
   "care": {
-    "diet": "优质猫粮,定时定量",
-    "exercise": "猫爬架+玩具自娱",
-    "health": "年度体检+疫苗",
-    "training": "砂盆清洁+磨爪"
+    "diet": "优质猫粮+优质蛋白(蓝猫对肉质要求高)",
+    "exercise": "互动玩具+中等强度活动,避免过度肥胖",
+    "health": "GM1/GM2 神经节苷脂病基因检测,常规体检",
+    "training": "敏感型训练,正向激励为主"
+  },
+  "history": {
+    "timeline": [
+      {
+        "year": "1350-1767",
+        "event": "泰国古书《猫诗》(Smud Khoi) 首次记载 SI-SAWAT 蓝猫"
+      },
+      {
+        "year": "1959",
+        "event": "美国驻泰国大使赠送给 Jean Johnson 夫妇一对科拉特猫"
+      },
+      {
+        "year": "1965",
+        "event": "美国 CFA 正式认证 Korat 品种"
+      },
+      {
+        "year": "1990s",
+        "event": "泰国定为'幸运猫',常作为新婚贺礼"
+      }
+    ]
   },
   "famous": [
-    "古埃及圣猫",
-    "网络表情包常客",
-    "独立性格代表"
+    "泰国'幸运之猫',传统结婚礼物",
+    "古书《猫诗》记载的 17 种幸运猫之一",
+    "银蓝毛色独特,一生只换一次毛色",
+    "好莱坞明星 Vivien Leigh 与 Laurence Olivier 钟爱的猫"
   ],
   "tags": [
     "猫",
-    "独立",
-    "优雅",
-    "科拉特猫",
+    "短毛",
+    "东方",
+    "蓝猫",
     "small型"
   ],
-  "coverImage": "art/atlas-01-cover.png",
+  "coverImage": "art/cat/korat/01-cover.png",
   "gallery": [
-    "art/atlas-01-cover.png",
-    "art/atlas-02-traits.png",
-    "art/atlas-03-personality.png",
-    "art/atlas-04-history.png",
-    "art/atlas-05-care.png",
-    "art/atlas-06-famous.png"
+    "art/cat/korat/01-cover.png",
+    "art/cat/korat/02-traits.png",
+    "art/cat/korat/03-personality.png",
+    "art/cat/korat/04-history.png",
+    "art/cat/korat/05-care.png",
+    "art/cat/korat/06-famous.png"
   ],
   "meta": {
     "views": 0,
