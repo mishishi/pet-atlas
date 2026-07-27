@@ -111,17 +111,14 @@ export function getCoverUrl(
   if (!hasBreedAtlas(slug)) return null;
   const pet = getPetBySlug(slug);
   if (!pet) return null;
-  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
-  // 🚨 2026-07-26 fix: 主页 / 列表 150 张图全 404 修复,thumb/medium 走 full
-  // 长期 P1: prebuild 用 sharp 生成 thumb/medium + 上传 TCB
-  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
-    return atlasPublicUrl(pet, 1);
-  }
-  if (!ATLAS_BASE_URL || size === "full") {
-    return atlasPublicUrl(pet, 1);
-  }
-  const fileName = `01-cover-${size}.png`;
-  return `${ATLAS_BASE_URL}/${atlasDirName(pet.category)}/${pet.slug}/${fileName}`;
+  const base = `/${atlasDirName(pet.category)}/${pet.slug}`;
+
+  // 2026-07-27 fix: thumb/medium 走本地 (commit 进 git,首屏 LCP 优化)
+  // full 走 TCB (本地无,1-5MB 太大不进 git)
+  if (size === "thumb") return `${base}/01-cover-thumb.jpg`;
+  if (size === "medium") return `${base}/01-cover-medium.jpg`;
+
+  return ATLAS_BASE_URL ? `${ATLAS_BASE_URL}${base}/01-cover.png` : `${base}/01-cover.png`;
 }
 
 /**

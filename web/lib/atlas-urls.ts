@@ -41,23 +41,35 @@ export function buildAtlasUrl(
 /**
  * 封面图 URL 构造(带尺寸变体)
  *
- * 🚨 2026-07-26 fix: TCB 模式没有 thumb/medium 文件(upload-atlas-tcb.mjs 只传 01-cover.png),
- * 所以 thumb/medium 全部回落到 full,避免主页 / 列表 150 张图全 404
- * 长期 P1: 在 prebuild 用 sharp 生成 thumb/medium + 上传 TCB,改回原逻辑
+ * 2026-07-27: 加入 thumb/medium 缩略图(150 张 × ~50KB,commit 进 git)
+ * - thumb: 384px 宽(列表页 / PetCard 用,本地 01-cover-thumb.jpg)
+ * - medium: 768px 宽(详情页 spec 用,本地 01-cover-medium.jpg)
+ * - full: TCB CDN(原图,~1-5MB,首屏不要拉)
+ *
+ * 缩略图走本地是因为:(1) commit 进 git production 永远有兜底
+ * (2) 首屏 LCP 优化,避免首屏去 TCB 拉 1-5MB 大图
  */
 export function buildCoverUrl(
   category: string,
   slug: string,
   size: CoverSize = "full"
 ): string {
-  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
-  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
-    return buildAtlasUrl(category, slug, 1);
+  const dir = atlasDirName(category);
+  const basePath = `/${dir}/${slug}`;
+
+  // thumb/medium 走本地 (commit 进 git,production 永远可用)
+  if (size === "thumb") {
+    return `${basePath}/01-cover-thumb.jpg`;
   }
-  if (!ATLAS_BASE_URL || size === "full") {
-    return buildAtlasUrl(category, slug, 1);
+  if (size === "medium") {
+    return `${basePath}/01-cover-medium.jpg`;
   }
-  return `${ATLAS_BASE_URL}/${atlasDirName(category)}/${slug}/01-cover-${size}.png`;
+
+  // full 走 TCB (本地无,1-5MB 太大不进 git)
+  if (ATLAS_BASE_URL) {
+    return `${ATLAS_BASE_URL}${basePath}/01-cover.png`;
+  }
+  return `${basePath}/01-cover.png`;
 }
 
 /** TCB 模式判断(纯 env 判断) */

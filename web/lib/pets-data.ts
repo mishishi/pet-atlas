@@ -212,8 +212,8 @@ const ATLAS_BASE_URL = (process.env.NEXT_PUBLIC_ATLAS_BASE_URL || "").replace(
  * - 无 (走本地):返回 /<cat>/<slug>/01-cover.png
  *
  * 🚨 2026-07-26 fix: TCB 模式没有 thumb/medium 文件(upload-atlas-tcb.mjs 只传 01-cover.png),
- * 所以 thumb/medium 全部回落到 full,避免主页 / 列表 150 张图全 404
- * 长期 P1: 在 prebuild 用 sharp 生成 thumb/medium + 上传 TCB,改回原逻辑
+ * thumb/medium 走本地 (commit 进 git,production 永远可用)
+ * full 走 TCB (本地无,1-5MB 太大不进 git)
  */
 export function getCoverUrl(
   slug: string,
@@ -222,13 +222,15 @@ export function getCoverUrl(
   if (!VINTAGE_PAPER_DONE.has(slug)) return null;
   const pet = allPets.find((p) => p.slug === slug);
   if (!pet) return null;
-  // TCB 模式 + 缩略图尺寸 → 直接返回 full URL (TCB 上没 thumb/medium)
-  if (ATLAS_BASE_URL && (size === "thumb" || size === "medium")) {
-    return `${ATLAS_BASE_URL}/${atlasDirName(pet.category)}/${pet.slug}/01-cover.png`;
-  }
-  if (!ATLAS_BASE_URL || size === "full") {
-    return `${ATLAS_BASE_URL || ""}/${atlasDirName(pet.category)}/${pet.slug}/01-cover.png`;
-  }
-  const fileName = `01-cover-${size}.png`;
-  return `${ATLAS_BASE_URL}/${atlasDirName(pet.category)}/${pet.slug}/${fileName}`;
+  const dir = atlasDirName(pet.category);
+  const base = `/${dir}/${pet.slug}`;
+
+  // thumb/medium 走本地 (commit 进 git,首屏 LCP 优化)
+  if (size === "thumb") return `${base}/01-cover-thumb.jpg`;
+  if (size === "medium") return `${base}/01-cover-medium.jpg`;
+
+  // full 走 TCB (本地无,1-5MB 太大)
+  return ATLAS_BASE_URL
+    ? `${ATLAS_BASE_URL}${base}/01-cover.png`
+    : `${base}/01-cover.png`;
 }
