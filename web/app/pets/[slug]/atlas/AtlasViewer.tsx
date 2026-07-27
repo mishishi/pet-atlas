@@ -335,6 +335,12 @@ export default function AtlasViewer({
     return direction === "next" ? "atlas-flip-out-left" : "atlas-flip-out-right";
   }, [isFlipping, direction]);
 
+  // 计算 chapter 动画 class (跟 flip 方向配合,first page 不动画)
+  const chapterAnimClass = useMemo(() => {
+    if (page === 1) return "";
+    return direction === "next" ? "chapter-in-from-right" : "chapter-in-from-left";
+  }, [page, direction]);
+
   return (
     <div
       ref={containerRef}
@@ -448,17 +454,19 @@ export default function AtlasViewer({
                   shadowLevel="lg"
                 />
               )}
-              {/* 大画框下面的页标 + 章节扉页 */}
-              <ChapterHeader
-                page={page}
-                total={total}
-                label={currentLabel}
-                en={currentEn}
-                latin={LATIN_LABELS[page - 1] ?? ""}
-                roman={ROMAN[page - 1] ?? String(page)}
-                quote={CHAPTER_QUOTES[page - 1] ?? ""}
-                showTextModeHint={textMode && !canTextMode}
-              />
+              {/* 大画框下面的页标 + 章节扉页 — 用 key={page} 触发翻页时 fade 动画 */}
+              <div key={page} className={chapterAnimClass}>
+                <ChapterHeader
+                  page={page}
+                  total={total}
+                  label={currentLabel}
+                  en={currentEn}
+                  latin={LATIN_LABELS[page - 1] ?? ""}
+                  roman={ROMAN[page - 1] ?? String(page)}
+                  quote={CHAPTER_QUOTES[page - 1] ?? ""}
+                  showTextModeHint={textMode && !canTextMode}
+                />
+              </div>
             </div>
           </div>
 
@@ -660,6 +668,28 @@ export default function AtlasViewer({
         }
         :global(.atlas-flip-in) {
           animation: atlasFlipIn 0.32s ease-out;
+        }
+        /* 章节扉页 fade 动画 — 跟 flip 方向一致 (Tabula I-VI 切换) */
+        @keyframes chapterFadeInFromRight {
+          0% { transform: translateX(24px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes chapterFadeInFromLeft {
+          0% { transform: translateX(-24px); opacity: 0; }
+          100% { transform: translateX(0); opacity: 1; }
+        }
+        :global(.chapter-in-from-right) {
+          animation: chapterFadeInFromRight 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        :global(.chapter-in-from-left) {
+          animation: chapterFadeInFromLeft 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        /* 尊重 reduce-motion 用户 */
+        @media (prefers-reduced-motion: reduce) {
+          :global(.chapter-in-from-right),
+          :global(.chapter-in-from-left) {
+            animation: none;
+          }
         }
       `}</style>
     </div>
