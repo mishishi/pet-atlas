@@ -173,14 +173,7 @@ async function main() {
   console.log("[build-og-images] starting…");
   await fs.mkdir(PUBLIC_OG, { recursive: true });
 
-  // Idempotent: home.png 已存在 + per-breed 都已存在 → 跳过
-  const homePath = path.join(PUBLIC_OG, "home.png");
-  const hasHome = await fs.access(homePath).then(() => true).catch(() => false);
-  if (hasHome && process.env.FORCE_OG_REBUILD !== "1") {
-    console.log("[build-og-images] home.png exists, skipping (set FORCE_OG_REBUILD=1 to force)");
-    return;
-  }
-
+  // 先读 breed 列表 (不管幂等性如何都需要)
   const files = await fs.readdir(CONTENT_PETS);
   const pets = [];
   for (const f of files) {
@@ -193,15 +186,46 @@ async function main() {
   }
   console.log(`[build-og-images] loaded ${pets.length} breeds`);
 
+  // Idempotent: home + per-breed 全部已存在 → 跳过整个脚本
+  // (修复 B-6:之前只看 home.png,有 home 就 return,新加的 breed 永远跑不到)
+  const homePath = path.join(PUBLIC_OG, "home.png");
+  const hasHome = await fs.access(homePath).then(() => true).catch(() => false);
+  if (hasHome && process.env.FORCE_OG_REBUILD !== "1") {
+    const breedChecks = await Promise.all(
+      pets.map(async p => {
+        const exists = await fs
+          .access(path.join(PUBLIC_OG, `${p.slug}.png`))
+          .then(() => true)
+          .catch(() => false);
+        return { slug: p.slug, exists };
+      })
+    );
+    const missingCount = breedChecks.filter(c => !c.exists).length;
+    if (missingCount === 0) {
+      console.log(
+        `[build-og-images] all ${pets.length + 1} images exist, skipping (set FORCE_OG_REBUILD=1 to force)`
+      );
+      return;
+    }
+    console.log(
+      `[build-og-images] home.png exists but ${missingCount} breeds missing, continuing per-breed loop`
+    );
+  }
+
   // 拉 labrador 立绘 (home 用)
   console.log("[build-og-images] fetching labrador preview…");
   const labBuf = await fetchBuffer(`${TCB}/pet-atlas/cloud-pets/pool/labrador-retriever-v1.png`);
   const labCropped = await circleCrop(labBuf, 360);
 
-  console.log("[build-og-images] build home.png…");
-  const homeBuf = await buildHome(labCropped);
-  await fs.writeFile(path.join(PUBLIC_OG, "home.png"), homeBuf);
-  console.log(`  ✓ home.png (${(homeBuf.length / 1024).toFixed(1)} KB)`);
+  // home: 已存在则跳过 (idempotent)
+  if (hasHome) {
+    console.log("[build-og-images] home.png exists, skipping (set FORCE_OG_REBUILD=1 to force)");
+  } else {
+    console.log("[build-og-images] build home.png…");
+    const homeBuf = await buildHome(labCropped);
+    await fs.writeFile(homePath, homeBuf);
+    console.log(`  ✓ home.png (${(homeBuf.length / 1024).toFixed(1)} KB)`);
+  }
 
   // per-breed: 已存在则跳过 (idempotent)
   let ok = 0, skip = 0, fail = 0;
