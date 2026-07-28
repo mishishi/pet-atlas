@@ -218,9 +218,9 @@ function PersonalityContent({ personality }: { personality: NonNullable<AtlasTex
             性格标签
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {personality.tags.map((tag) => (
+            {personality.tags.map((tag, i) => (
               <span
-                key={tag}
+                key={`${i}-${tag}`}
                 className="px-2.5 py-1 rounded-full font-serif text-xs text-brown-800 border border-warm-brown/30"
                 style={{ background: "rgba(245, 233, 208, 0.7)" }}
               >

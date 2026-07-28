@@ -468,9 +468,9 @@ export default async function PetDetailPage({
                     style={{ height: 1, background: "rgba(139, 111, 71, 0.15)" }}
                   />
                   <ul className="flex flex-wrap gap-2 justify-center">
-                    {personality.tags.map((t) => (
+                    {personality.tags.map((t, i) => (
                       <li
-                        key={t}
+                        key={`${i}-${t}`}
                         className="font-serif text-sm px-3 py-1 rounded-full"
                         style={{
                           background: "rgba(139, 111, 71, 0.08)",
