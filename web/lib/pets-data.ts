@@ -234,3 +234,22 @@ export function getCoverUrl(
     ? `${ATLAS_BASE_URL}${base}/01-cover.png`
     : `${base}/01-cover.png`;
 }
+
+/* ------------------------------------------------------------------ */
+/* 标本编号 (client-safe) — 跟 server 端 /lib/collection.ts 字典序一致 */
+/* B-15 Top 3-1 修 N° 编号越界 bug: BreedCard 从 petNum (hash % 999)    */
+/* 切到 getSpecimenNumberClient (字典序 1-150),跟 detail page 一致      */
+/* ------------------------------------------------------------------ */
+
+const _sortedSlugs: readonly string[] = allPets
+  .map((p) => p.slug)
+  .sort();
+
+/** Client-safe: 1-based 标本编号 (0 表示未发布) */
+export function getSpecimenNumberClient(slug: string): number {
+  const idx = _sortedSlugs.indexOf(slug);
+  return idx >= 0 ? idx + 1 : 0;
+}
+
+/** Client-safe: 总件数 (跟 server 端 TOTAL_SPECIMENS 一致) */
+export const TOTAL_SPECIMENS_CLIENT: number = _sortedSlugs.length;

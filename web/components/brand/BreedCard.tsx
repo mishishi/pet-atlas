@@ -9,7 +9,7 @@
  */
 import Link from "next/link";
 // 用 pets-data (client-safe) 而不是 lib/pets (有 fs)
-import { getCoverUrl } from "@/lib/pets-data";
+import { getCoverUrl, getSpecimenNumberClient } from "@/lib/pets-data";
 import { SafeImage } from "../ui/SafeImage";
 import type { Pet } from "@/lib/types";
 
@@ -50,13 +50,9 @@ function toRoman(n: number): string {
   return result;
 }
 
-/** 从 slug 算稳定编号 (跟 detail page 的 petNum 逻辑一致) */
+/** 从 slug 算 1-based 标本编号 (跟 detail page 的 getSpecimenNumber 一致) */
 function petNum(slug: string): string {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) {
-    h = (h * 31 + slug.charCodeAt(i)) | 0;
-  }
-  return String(Math.abs(h) % 999).padStart(3, "0");
+  return String(getSpecimenNumberClient(slug)).padStart(3, "0");
 }
 
 export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps) {

@@ -21,7 +21,7 @@ export function SpecimenStats({ totalBreeds, totalPlates, totalPortraits }: Prop
       n: String(totalBreeds),
       label: "个品种",
       en: "Specimina",
-      desc: "5 大品类,200+ 年图鉴传统",
+      desc: "5 大品类 · 治愈水彩 · 拉丁小标",
       roman: "I",
     },
     {

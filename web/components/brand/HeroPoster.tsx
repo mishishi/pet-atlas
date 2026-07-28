@@ -3,7 +3,7 @@
  *
  * 风格:标本卡海报 / Vintage Museum Specimen Card
  * - 大标题 + 叶片装饰
- * - 红色印章 "No. 051 / 050"(顶右)
+ * - 红色印章 "No. 051 / 150"(顶右)
  * - 罗马数字 I / II / III(桌机)
  * - 3 个大画框(中前左后右错位)+ VINTAGE PAPER 飘带(桌机)
  * - 移动端(<md):只显示 1 个主画框,植物图鉴 / 罗马数字隐藏
@@ -329,7 +329,7 @@ export function HeroPoster() {
   );
 }
 
-/* 红色印章 "No. 051 / 050" */
+/* 红色印章 "No. 051 / 150" */
 function SpecimenStamp() {
   return (
     <div className="relative inline-block stamp-ink stamp-pulse cursor-pointer">
@@ -347,7 +347,7 @@ function SpecimenStamp() {
           <span>No.</span>
           <span className="text-sm sm:text-base md:text-xl font-bold">051</span>
           <span className="opacity-60">/</span>
-          <span className="text-sm sm:text-base md:text-xl font-bold">050</span>
+          <span className="text-sm sm:text-base md:text-xl font-bold">150</span>
         </div>
         <div
           className="absolute inset-0 pointer-events-none opacity-40"

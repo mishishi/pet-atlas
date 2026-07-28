@@ -128,7 +128,7 @@ export function DailyPick({ todaySlug, todayDate, candidates }: DailyPickProps) 
             color: "var(--warm-brown)",
           }}
         >
-          翻一翻,看今天命运推荐了哪只
+          今天属于你的标本卡
         </div>
       </div>
 
@@ -265,7 +265,7 @@ export function DailyPick({ todaySlug, todayDate, candidates }: DailyPickProps) 
           color: "var(--brown-500)",
         }}
       >
-        所有人今天看到的都是同一只 — 命运之选
+        每天 0 点刷新 · 所有人都看到同一只
       </p>
     </section>
   );
