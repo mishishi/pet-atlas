@@ -26,6 +26,7 @@ import {
 import { ATLAS_PAGE_COUNT, ATLAS_SLOTS } from "@/lib/atlas-constants";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
 import { AtlasTextCard } from "./AtlasTextCard";
+import { AtlasPageHint } from "./AtlasPageHint";
 
 interface AtlasViewerProps {
   slug: string;
@@ -697,6 +698,9 @@ export default function AtlasViewer({
           </div>
         )}
       </main>
+
+      {/* 首次访问翻页浮层提示 (P1-1) — 6s 自动消失,翻页/ESC/点背景也可关闭 */}
+      <AtlasPageHint />
 
       {/* 全屏动画 keyframes */}
       <style jsx>{`
