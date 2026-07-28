@@ -67,6 +67,31 @@ const CHAPTER_QUOTES = [
   "Cura et vigilantia",      // 养护 - 照料与守护
   "Fama et memoria",          // 名场面 - 名声与回忆
 ];
+/** v0.7 polish: 每章独立配色 (quote line + 装饰 dot + 缩略图 active ring)
+ *  - I Prima  → brown-500  默认暖棕,品牌主色
+ *  - II Secunda → brown-700 加深,带"学术"感
+ *  - III Tertia → sage 薄荷,凸显 personality
+ *  - IV Quarta → brown-400 偏淡,做"历史"褪色感
+ *  - V Quinta  → brown-300 柔,呼应"养护"温和
+ *  - VI Sexta  → brick 砖红,做收尾的"记忆"
+ */
+const CHAPTER_ACCENTS = [
+  "var(--brown-500)",
+  "var(--brown-700)",
+  "var(--sage)",
+  "var(--brown-400)",
+  "var(--brown-300)",
+  "var(--brick)",
+];
+/** Tailwind ring class 映射 (CSS var 不能直接给 Tailwind ring 颜色用) */
+const CHAPTER_RING = [
+  "ring-brown-500",
+  "ring-brown-700",
+  "ring-sage",
+  "ring-brown-400",
+  "ring-brown-300",
+  "ring-brick",
+];
 
 function clamp(n: number, min: number, max: number) {
   if (!Number.isFinite(n)) return min;
@@ -97,6 +122,7 @@ function ChapterHeader({
   roman,
   quote,
   showTextModeHint,
+  accent,
 }: {
   page: number;
   total: number;
@@ -106,16 +132,26 @@ function ChapterHeader({
   roman: string;
   quote: string;
   showTextModeHint: boolean;
+  accent: string;
 }) {
   return (
     <div className="mt-8 md:mt-10 max-w-md mx-auto text-center">
-      {/* 装饰上横线 */}
+      {/* 装饰上横线 (v0.7 用 chapter accent 渐变) */}
       <div className="flex items-center justify-center gap-3 mb-3">
-        <span className="inline-block h-px w-12 bg-warm-brown/40" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-warm-brown/70">
+        <span
+          className="inline-block h-px w-12"
+          style={{ backgroundColor: accent, opacity: 0.4 }}
+        />
+        <span
+          className="font-mono text-[9px] uppercase tracking-[0.4em]"
+          style={{ color: accent, opacity: 0.7 }}
+        >
           Tabula {roman} · {String(page).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
-        <span className="inline-block h-px w-12 bg-warm-brown/40" />
+        <span
+          className="inline-block h-px w-12"
+          style={{ backgroundColor: accent, opacity: 0.4 }}
+        />
       </div>
 
       {/* 中文名 (大字) */}
@@ -124,17 +160,29 @@ function ChapterHeader({
       </h1>
 
       {/* 拉丁名 (italic) */}
-      <p className="mt-1 font-display italic text-base md:text-lg text-warm-brown tracking-wide">
+      <p
+        className="mt-1 font-display italic text-base md:text-lg tracking-wide"
+        style={{ color: accent }}
+      >
         {latin}
       </p>
 
-      {/* 装饰小横线 + 短句 */}
+      {/* 装饰小横线 + 短句 (v0.7 quote 跟 accent 同色) */}
       <div className="mt-2 mb-3 inline-flex items-center gap-2">
-        <span className="inline-block w-1 h-1 rounded-full bg-warm-brown/40" />
-        <span className="font-display italic text-[11px] text-brown-500/80 tracking-wider">
+        <span
+          className="inline-block w-1 h-1 rounded-full"
+          style={{ backgroundColor: accent, opacity: 0.6 }}
+        />
+        <span
+          className="font-display italic text-[11px] text-brown-500/80 tracking-wider"
+          style={{ color: accent, opacity: 0.85 }}
+        >
           {quote}
         </span>
-        <span className="inline-block w-1 h-1 rounded-full bg-warm-brown/40" />
+        <span
+          className="inline-block w-1 h-1 rounded-full"
+          style={{ backgroundColor: accent, opacity: 0.6 }}
+        />
       </div>
 
       {/* 英文小副标题 */}
@@ -465,6 +513,7 @@ export default function AtlasViewer({
                   roman={ROMAN[page - 1] ?? String(page)}
                   quote={CHAPTER_QUOTES[page - 1] ?? ""}
                   showTextModeHint={textMode && !canTextMode}
+                  accent={CHAPTER_ACCENTS[page - 1] ?? "var(--brown-500)"}
                 />
               </div>
             </div>
@@ -528,14 +577,15 @@ export default function AtlasViewer({
               const isActive = n === page;
               const isPast = n < page;
               const isFuture = n > page;
+              const ringClass = CHAPTER_RING[i] ?? "ring-brick";
               return (
                 <li key={url}>
                   <button
                     onClick={() => goTo(n, n > page ? "next" : "prev")}
                     aria-label={`跳到第 ${n} 页 · ${ATLAS_SLOTS[i]}`}
-                    className={`block w-full relative transition-all ${
+                    className={`block w-full relative transition-all duration-300 ease-out ${
                       isActive
-                        ? "scale-105 ring-2 ring-brick ring-offset-2 ring-offset-oat-200 z-10"
+                        ? `scale-105 ring-2 ${ringClass} ring-offset-2 ring-offset-oat-200 z-10 thumb-active`
                         : isPast
                         ? "opacity-70 hover:opacity-100"
                         : isFuture
@@ -562,9 +612,9 @@ export default function AtlasViewer({
                           className="w-full h-full object-cover"
                         />
                         <div
-                          className="absolute top-1 left-1 rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-mono font-bold"
+                          className="absolute top-1 left-1 rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-mono font-bold transition-colors duration-300"
                           style={{
-                            background: isActive ? "var(--brick)" : "rgba(0,0,0,0.7)",
+                            background: isActive ? CHAPTER_ACCENTS[i] ?? "var(--brick)" : "rgba(0,0,0,0.7)",
                             color: "#F5E9D0",
                           }}
                         >
@@ -684,10 +734,14 @@ export default function AtlasViewer({
         :global(.chapter-in-from-left) {
           animation: chapterFadeInFromLeft 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
         }
+        /* v0.7 polish: 缩略图 active 时 ring color 跟着 chapter accent 切换
+         *  transition-all duration-300 ease-out 已经覆盖 ring/box-shadow 过渡,
+         *  此处只需在 reduce-motion 时关闭,无新增 keyframe */
         /* 尊重 reduce-motion 用户 */
         @media (prefers-reduced-motion: reduce) {
           :global(.chapter-in-from-right),
-          :global(.chapter-in-from-left) {
+          :global(.chapter-in-from-left),
+          :global(.thumb-active) {
             animation: none;
           }
         }
