@@ -158,11 +158,166 @@ export default function AboutPage() {
                 </span>
               </h2>
               <dl className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <Stat label="品种" value="100" sub="breeds" />
-                <Stat label="图谱" value="600" sub="plates" />
-                <Stat label="立绘" value="300" sub="portraits" />
+                <Stat label="品种" value="150" sub="breeds" />
+                <Stat label="图谱" value="900" sub="plates" />
+                <Stat label="立绘" value="450" sub="portraits" />
                 <Stat label="图床" value="TCB" sub="tencent cloud" />
               </dl>
+            </div>
+          </section>
+
+          {/* ============ 馆藏时间线 (v0.9 polish) ============ */}
+          <section className="mb-16 md:mb-24">
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-3 flex items-center gap-3">
+              <span
+                className="inline-block w-8 h-px"
+                style={{ background: "var(--brick)" }}
+              />
+              No. 04
+            </div>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-brown-900 leading-tight mb-3">
+              馆藏之旅
+              <span className="ml-3 font-serif italic text-lg text-brown-500 font-normal">
+                The Collection&apos;s Journey
+              </span>
+            </h2>
+            <p className="font-serif text-brown-700 max-w-3xl mb-10 leading-relaxed">
+              从 51 个品种起步,到今天 150 件馆藏。每一次扩张都是手工挑选 + 真实资料校对,
+              拒绝 AI 幻觉、追求品种可考。
+            </p>
+
+            <ol className="relative max-w-3xl mx-auto pl-8 md:pl-0">
+              <div
+                className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px"
+                style={{ background: "rgba(139, 111, 71, 0.2)" }}
+                aria-hidden
+              />
+              {[
+                {
+                  date: "2026 · 5",
+                  title: "项目立项",
+                  desc: "首批 51 个犬猫仓鼠品种,纯文字卡片版本。",
+                },
+                {
+                  date: "2026 · 6",
+                  title: "首批图谱",
+                  desc: "vintage paper 美学确立:暖棕画框 + 治愈水彩。",
+                },
+                {
+                  date: "2026 · 7 · 23",
+                  title: "v1.0 · 100 馆藏",
+                  desc: "100 件完整图谱 + M2 互动 + M3 PWA + 用户系统。",
+                },
+                {
+                  date: "2026 · 7 · 25",
+                  title: "D 批扩馆",
+                  desc: "50 个新 breed 入馆,150 件全 v1 vintage。",
+                },
+                {
+                  date: "2026 · 7 · 28",
+                  title: "v0.8 + v0.9 polish",
+                  desc: "drop cap / pull quote / wax seal / passport / Care 章节 / 404 / 列表 intro。",
+                },
+              ].map((node, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <li
+                    key={node.date}
+                    className={`relative mb-5 md:mb-7 md:flex ${
+                      isLeft ? "md:justify-start" : "md:justify-end"
+                    }`}
+                  >
+                    <div
+                      className="absolute -left-5 md:left-1/2 md:-translate-x-1/2 top-1.5 w-3 h-3 rounded-full"
+                      style={{
+                        background: "var(--brown-600)",
+                        boxShadow: "0 0 0 3px rgba(245, 233, 208, 1)",
+                      }}
+                      aria-hidden
+                    />
+                    <div
+                      className={`md:w-[calc(50%-2rem)] ${
+                        isLeft ? "md:pr-8 md:text-right" : "md:pl-8"
+                      }`}
+                    >
+                      <div className="font-mono text-sm font-bold text-brick">
+                        {node.date}
+                      </div>
+                      <h4 className="font-serif text-base font-bold text-brown-900 mt-1">
+                        {node.title}
+                      </h4>
+                      <p className="mt-1 font-serif text-sm text-brown-700 leading-relaxed">
+                        {node.desc}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+
+          {/* ============ 技术铭牌 (v0.9 polish) ============ */}
+          <section className="mb-16 md:mb-24">
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-3 flex items-center gap-3">
+              <span
+                className="inline-block w-8 h-px"
+                style={{ background: "var(--brick)" }}
+              />
+              No. 05
+            </div>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-brown-900 leading-tight mb-3">
+              技术铭牌
+              <span className="ml-3 font-serif italic text-lg text-brown-500 font-normal">
+                Curator&apos;s Technical Notes
+              </span>
+            </h2>
+            <p className="font-serif text-brown-700 max-w-3xl mb-8 leading-relaxed">
+              整套馆藏系统的技术栈 — 像博物馆每件展品下方的铭牌,告诉你这是怎么造的。
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <TechPlaque
+                no="I"
+                zh="前端"
+                en="Frontend"
+                stack={["Next.js 16", "React 19", "Tailwind v4", "TypeScript"]}
+                desc="静态导出 + Vercel Git 集成,一行 git push 上线。"
+              />
+              <TechPlaque
+                no="II"
+                zh="AI 图谱"
+                en="Atlas Generation"
+                stack={["image_synthesize", "vintage paper 模板", "OCR spot check"]}
+                desc="150 × 6 = 900 张图谱,每张都有同名 .md prompt 文档。"
+              />
+              <TechPlaque
+                no="III"
+                zh="云端"
+                en="Cloud"
+                stack={["腾讯云 CloudBase", "cos-nodejs-sdk-v5"]}
+                desc="所有 atlas + cloud-pet 走 TCB CDN,首屏 11MB → 360KB(thumb 缩略图)。"
+              />
+              <TechPlaque
+                no="IV"
+                zh="本地优先"
+                en="Local-first"
+                stack={["localStorage", "PBKDF2 密码哈希", "deviceId"]}
+                desc="收藏 / 日记 / 护照 / 进度 全部本地,无登录也能用。"
+              />
+              <TechPlaque
+                no="V"
+                zh="设计系统"
+                en="Design System"
+                stack={["IM Fell English", "Noto Serif SC", "Special Elite", "warm brown + sage"]}
+                desc="19 世纪博物学专著排印风,3 套衬线 + 1 套打字机。"
+              />
+              <TechPlaque
+                no="VI"
+                zh="代码组织"
+                en="Code"
+                stack={["150 breed JSON", "4 atlas 模板", "1500 行 breedFeatures"]}
+                desc="所有数据可机读、可回溯、可再生,prompt + 内容一一对应。"
+              />
             </div>
           </section>
 
@@ -170,7 +325,7 @@ export default function AboutPage() {
           <section className="mb-16 md:mb-24">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brick mb-3 flex items-center gap-3">
               <span className="inline-block w-8 h-px bg-brick" />
-              No. 04
+              No. 06
             </div>
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-brown-900 leading-tight mb-3">
               致谢
@@ -346,6 +501,73 @@ function Stat({
         </span>
         <span className="ml-2 font-mono text-xs text-brown-500 italic">{sub}</span>
       </dd>
+    </div>
+  );
+}
+
+/** 技术铭牌 (博物馆展品下方的技术介绍) */
+function TechPlaque({
+  no,
+  zh,
+  en,
+  stack,
+  desc,
+}: {
+  no: string;
+  zh: string;
+  en: string;
+  stack: string[];
+  desc: string;
+}) {
+  return (
+    <div
+      className="relative p-4 md:p-5 rounded-lg"
+      style={{
+        background: "rgba(245, 233, 208, 0.5)",
+        boxShadow: "var(--shadow-paper)",
+        border: "1px solid rgba(139, 111, 71, 0.12)",
+      }}
+    >
+      <div
+        className="flex items-baseline gap-2 mb-2"
+        style={{ borderBottom: "1px solid rgba(139, 111, 71, 0.2)", paddingBottom: 6 }}
+      >
+        <span
+          className="font-serif italic font-bold"
+          style={{ fontSize: 18, color: "var(--brown-700)" }}
+        >
+          {no}
+        </span>
+        <span
+          className="font-serif font-bold"
+          style={{ fontSize: 16, color: "var(--brown-900)" }}
+        >
+          {zh}
+        </span>
+        <span
+          className="font-mono text-[9px] uppercase tracking-[0.2em]"
+          style={{ color: "var(--brown-500)" }}
+        >
+          {en}
+        </span>
+      </div>
+      <div className="flex flex-wrap gap-1.5 mb-2">
+        {stack.map((s) => (
+          <span
+            key={s}
+            className="font-mono text-[10px] px-1.5 py-0.5"
+            style={{
+              background: "rgba(139, 111, 71, 0.1)",
+              color: "var(--brown-700)",
+              border: "1px solid rgba(139, 111, 71, 0.2)",
+              borderRadius: 2,
+            }}
+          >
+            {s}
+          </span>
+        ))}
+      </div>
+      <p className="font-serif text-xs text-brown-700 leading-relaxed">{desc}</p>
     </div>
   );
 }

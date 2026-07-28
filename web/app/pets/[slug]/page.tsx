@@ -368,6 +368,14 @@ export default async function PetDetailPage({
               图谱
             </a>
           )}
+          {pet.care && (pet.care.diet || pet.care.exercise || pet.care.health || pet.care.training) && (
+            <a
+              href="#care"
+              className="px-3 py-1.5 font-serif text-sm text-brown-700 hover:text-brown-900 hover:bg-oat-200 rounded transition-colors"
+            >
+              养护
+            </a>
+          )}
           {pet.history?.timeline && pet.history.timeline.length > 0 && (
             <a
               href="#history"
@@ -391,6 +399,9 @@ export default async function PetDetailPage({
           sections={[
             ...(personality ? [{ id: "personality", label: "性格", en: "Personality" }] : []),
             ...(atlas ? [{ id: "atlas", label: "图谱", en: "Plates" }] : []),
+            ...(pet.care && (pet.care.diet || pet.care.exercise || pet.care.health || pet.care.training)
+              ? [{ id: "care", label: "养护", en: "Care" }]
+              : []),
             ...(pet.history?.timeline && pet.history.timeline.length > 0
               ? [{ id: "history", label: "历史", en: "History" }]
               : []),
@@ -541,10 +552,65 @@ export default async function PetDetailPage({
           </section>
         )}
 
+        {/* ============ Care Section (v0.9 polish) ============ */}
+        {pet.care && (pet.care.diet || pet.care.exercise || pet.care.health || pet.care.training) && (
+          <section id="care" className="mb-12 md:mb-20 scroll-mt-20">
+            <SectionHeading eyebrow="No. 04" title="养护" en="Care & Keeping" />
+
+            <div
+              className="rounded-2xl p-6 md:p-8"
+              style={{
+                background: "rgba(245, 233, 208, 0.5)",
+                boxShadow: "var(--shadow-paper-md)",
+                border: "1px solid rgba(139, 111, 71, 0.15)",
+              }}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                {pet.care.diet && (
+                  <CareCard
+                    icon="🍽"
+                    iconBg="var(--brown-300)"
+                    label="饮食"
+                    en="Diet"
+                    content={pet.care.diet}
+                  />
+                )}
+                {pet.care.exercise && (
+                  <CareCard
+                    icon="🏃"
+                    iconBg="var(--sage)"
+                    label="运动"
+                    en="Exercise"
+                    content={pet.care.exercise}
+                  />
+                )}
+                {pet.care.health && (
+                  <CareCard
+                    icon="✚"
+                    iconBg="var(--brick)"
+                    label="健康"
+                    en="Health"
+                    content={pet.care.health}
+                  />
+                )}
+                {pet.care.training && (
+                  <CareCard
+                    icon="★"
+                    iconBg="var(--brown-500)"
+                    label="训练"
+                    en="Training"
+                    content={pet.care.training}
+                  />
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ============ History Timeline ============ */}
         {pet.history?.timeline && pet.history.timeline.length > 0 && (
           <section id="history" className="mb-12 md:mb-20 scroll-mt-20">
-            <SectionHeading eyebrow="No. 04" title="历史" en="History" />
+            <SectionHeading eyebrow="No. 05" title="历史" en="History" />
 
             <ol className="relative max-w-2xl mx-auto pl-8 md:pl-0">
               {/* 中线 */}
@@ -593,7 +659,7 @@ export default async function PetDetailPage({
         {/* ============ Famous ============ */}
         {pet.famous && pet.famous.length > 0 && (
           <section id="famous" className="mb-12 md:mb-20 scroll-mt-20">
-            <SectionHeading eyebrow="No. 05" title="名场面" en="Famous For" />
+            <SectionHeading eyebrow="No. 06" title="名场面" en="Famous For" />
             <ul className="max-w-2xl mx-auto space-y-3">
               {pet.famous.map((item, i) => (
                 <li
@@ -750,6 +816,55 @@ function Stat({
       {sub && (
         <dd className="mt-0.5 text-xs text-brown-600">{sub}</dd>
       )}
+    </div>
+  );
+}
+
+/** 养护卡片(饮食/运动/健康/训练) */
+function CareCard({
+  icon,
+  iconBg,
+  label,
+  en,
+  content,
+}: {
+  icon: string;
+  iconBg: string;
+  label: string;
+  en: string;
+  content: string;
+}) {
+  return (
+    <div
+      className="flex items-start gap-3 p-4 rounded-xl"
+      style={{
+        background: "rgba(245, 233, 208, 0.55)",
+        boxShadow: "var(--shadow-paper)",
+        border: "1px solid rgba(139, 111, 71, 0.12)",
+      }}
+    >
+      <div
+        className="shrink-0 flex items-center justify-center rounded-full text-lg font-mono"
+        style={{
+          width: 40,
+          height: 40,
+          background: iconBg,
+          color: "var(--oat-100)",
+          fontWeight: 600,
+        }}
+        aria-hidden
+      >
+        {icon}
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-brown-500">
+          {en}
+        </div>
+        <div className="font-serif text-base font-semibold text-brown-900 mb-1">
+          {label}
+        </div>
+        <p className="text-sm text-brown-700 leading-relaxed">{content}</p>
+      </div>
     </div>
   );
 }
