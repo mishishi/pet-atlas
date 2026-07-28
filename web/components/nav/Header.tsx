@@ -6,6 +6,9 @@
  *  - 拉丁/英文 logo 用 IM Fell English (18 世纪印刷机)
  *  - 标本号 N° 数字用 Special Elite 打字机
  *
+ * v0.9 polish: 加 HeaderSearch 全局搜索(150 个品种全可搜)
+ *  - ⌘K 打开 / ESC 关闭
+ *
  * variant:
  *  - "default"  默认 cream 半透明背景
  *  - "overlay"  透明(用于主页 hero 上叠加)
@@ -13,6 +16,8 @@
 import Link from "next/link";
 import { Container } from "../ui/Container";
 import { AuthMenu } from "../auth/AuthMenu";
+import { HeaderSearch } from "./HeaderSearch";
+import { getAllPets } from "@/lib/pets";
 
 export function Header({
   variant = "default",
@@ -20,6 +25,16 @@ export function Header({
   variant?: "default" | "overlay";
 }) {
   const isOverlay = variant === "overlay";
+  // 准备搜索数据 (server-side 算,server 组件可以)
+  const allPets = getAllPets()
+    .filter((p) => p.status === "published")
+    .map((p) => ({
+      slug: p.slug,
+      nameZh: p.name.zh,
+      nameEn: p.name.en,
+      aliasZh: p.name.alias?.zh,
+      category: p.category,
+    }));
 
   return (
     <header
@@ -64,7 +79,7 @@ export function Header({
         </Link>
 
         {/* Center nav */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
           <Link
             href="/pets"
             className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
@@ -103,10 +118,16 @@ export function Header({
           >
             GitHub
           </a>
+          {/* v0.9 polish: 全局搜索 (desktop) */}
+          <HeaderSearch pets={allPets} />
         </nav>
 
         {/* 标本号 + Auth menu */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* v0.9 polish: 移动端搜索 (sm 以下) */}
+          <div className="md:hidden">
+            <HeaderSearch pets={allPets} />
+          </div>
           <span
             className={`font-display italic text-[10px] uppercase tracking-[0.25em] hidden sm:inline ${
               isOverlay ? "text-brown-700" : "text-brown-500"
