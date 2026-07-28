@@ -35,7 +35,10 @@ import { WaxSeal, WaxSealFilter } from "@/components/brand/WaxSeal";
 import { DropCapParagraph } from "@/components/brand/DropCapParagraph";
 import { PullQuote } from "@/components/brand/PullQuote";
 import { CollectionTracker } from "@/components/brand/CollectionPassport";
+import type { SpecimenStamp } from "@/components/brand/CollectionPassport";
+import { DailyPick } from "@/components/brand/DailyPick";
 import { getSpecimenNumber, TOTAL_SPECIMENS } from "@/lib/collection";
+import { getTodaySlug, getTodayDate } from "@/lib/daily-pick";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
 export async function generateStaticParams() {
@@ -99,6 +102,21 @@ export default async function PetDetailPage({
   const personality = pet.personality;
   const physical = pet.physical;
   const showLegacyBanner = Boolean(atlas) && !isVintagePaperBreed(slug);
+
+  // v0.8 polish: 今日份 — server-side 算 today slug + 准备 candidates
+  const allPets = getAllPets();
+  const allSlugs = allPets
+    .filter((p) => p.status === "published")
+    .map((p) => p.slug)
+    .sort();
+  const todaySlug = getTodaySlug(allSlugs.filter((s) => s !== slug));
+  const todayDate = getTodayDate();
+  const dailyCandidates: SpecimenStamp[] = allPets.map((p) => ({
+    slug: p.slug,
+    category: p.category,
+    initial: (p.name.en?.charAt(0) || p.name.zh?.charAt(0) || "·").toUpperCase(),
+    nameZh: p.name.zh,
+  }));
 
   return (
     <>
@@ -630,6 +648,13 @@ export default async function PetDetailPage({
           nameZh={pet.name.zh}
           nameEn={pet.name.en}
           related={getRelatedBreeds(pet, 3)}
+        />
+
+        {/* ============ 今日份 命运之选 ============ */}
+        <DailyPick
+          todaySlug={todaySlug}
+          todayDate={todayDate}
+          candidates={dailyCandidates}
         />
 
         {/* Footer */}

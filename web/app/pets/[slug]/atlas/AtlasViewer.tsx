@@ -377,11 +377,12 @@ export default function AtlasViewer({
   };
 
   /* ==================== 渲染 ==================== */
-  // 计算 flip 动画 class
+  // 计算 flip 动画 class (仅 image 页面用,text card 走自己的 animClass)
   const flipClass = useMemo(() => {
     if (!isFlipping) return "";
+    if (canTextMode) return ""; // text card 页面不用 3D flip (防止 AtlasTextCard 双重动画冲突)
     return direction === "next" ? "atlas-flip-out-left" : "atlas-flip-out-right";
-  }, [isFlipping, direction]);
+  }, [isFlipping, direction, canTextMode]);
 
   // 计算 chapter 动画 class (跟 flip 方向配合,first page 不动画)
   const chapterAnimClass = useMemo(() => {
@@ -490,6 +491,7 @@ export default function AtlasViewer({
                   personality={personality}
                   history={history}
                   famous={famous}
+                  animClass={chapterAnimClass}
                 />
               ) : (
                 <SpecimenFrame

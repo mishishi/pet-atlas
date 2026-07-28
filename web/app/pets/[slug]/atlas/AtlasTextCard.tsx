@@ -28,6 +28,8 @@ interface AtlasTextCardProps {
   slot: "03-personality" | "04-history" | "06-famous";
   pageNumber: number;
   totalPages: number;
+  /** v0.8 polish: 翻页动画 class (跟 chapter + flip 方向一致) */
+  animClass?: string;
   // 03-personality 数据
   personality?: {
     affection: number;
@@ -64,7 +66,7 @@ export function AtlasTextCard(props: AtlasTextCardProps) {
   const meta = SLOT_META[props.slot];
   return (
     <div
-      className="relative w-full overflow-hidden rounded-xl"
+      className={`relative w-full overflow-hidden rounded-xl ${props.animClass ?? ""}`}
       style={{
         background: "linear-gradient(180deg, #F5EFE0 0%, #EFE0BE 100%)",
         boxShadow: "var(--shadow-paper-lg)",
