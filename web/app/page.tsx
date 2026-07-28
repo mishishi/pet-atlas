@@ -11,6 +11,7 @@
  * - 头部 overlay 在 hero 上方(透明)
  * - 下方 FeaturedBreeds + CategoryStrip 保持不变
  * - v0.8 polish: 加 CollectionPassport 段(在 SpecimenStats 跟 FeaturedBreeds 之间)
+ * - v0.9 polish: 加 DailyPick 段(命运之选,所有人今天看到的同一只)
  */
 // import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
@@ -22,7 +23,9 @@ import {
   CollectionPassport,
   type SpecimenStamp,
 } from "@/components/brand/CollectionPassport";
+import { DailyPick } from "@/components/brand/DailyPick";
 import { getAllPets } from "@/lib/pets";
+import { getTodaySlug, getTodayDate } from "@/lib/daily-pick";
 
 export default function Home() {
   const pets = getAllPets();
@@ -37,6 +40,14 @@ export default function Home() {
     initial: (p.name.en?.charAt(0) || p.name.zh?.charAt(0) || "·").toUpperCase(),
     nameZh: p.name.zh,
   }));
+
+  // v0.9 polish: 命运之选 (server-side 算今天 stable slug)
+  const allSlugs = pets
+    .filter((p) => p.status === "published")
+    .map((p) => p.slug)
+    .sort();
+  const todaySlug = getTodaySlug(allSlugs);
+  const todayDate = getTodayDate();
 
   return (
     <>
@@ -53,6 +64,14 @@ export default function Home() {
           <div className="max-w-md mx-auto">
             <CollectionPassport specimens={specimens} />
           </div>
+        </section>
+        {/* v0.9 polish: 今日份 命运之选 */}
+        <section className="mx-auto max-w-3xl px-4 sm:px-6 py-6 md:py-10">
+          <DailyPick
+            todaySlug={todaySlug}
+            todayDate={todayDate}
+            candidates={specimens}
+          />
         </section>
         <FeaturedBreeds />
         <CategoryStrip />
