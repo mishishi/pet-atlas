@@ -6,7 +6,7 @@
  */
 
 import Link from "next/link";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { getAllPets } from "@/lib/pets";
 
@@ -46,7 +46,7 @@ export default function NotFound() {
 
   return (
     <>
-      <Header />
+
       <main
         className="relative w-full overflow-hidden"
         style={{

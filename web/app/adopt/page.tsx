@@ -19,7 +19,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { BottomNav } from "@/components/nav/BottomNav";
 import { Confetti } from "@/components/brand/Confetti";
@@ -146,7 +146,7 @@ export default function AdoptPage() {
   return (
     <>
       {showConfetti && <Confetti count={50} />}
-      <Header />
+
       <main className="pb-24 md:pb-12 min-h-screen">
         <div
           className="relative w-full overflow-hidden"

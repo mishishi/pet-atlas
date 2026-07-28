@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { fontVariables } from "./fonts";
 import { PWAInstallPrompt } from "@/components/pwa/PWAInstallPrompt";
+import { HeaderWithSearch } from "@/components/nav/HeaderWithSearch";
 
 const DEFAULT_OG = "/og/home.png";
 
@@ -123,6 +124,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-oat-200 text-brown-900">
+        {/* v0.9 polish: Header 移到 root layout (server) — 各 page 不再单独 import
+         * 之前 register/login 是 client component 拉 Header,导致 pets.ts 的 fs 被拉进 client bundle
+         * 现在 Header 是 server 渲染,search 数据在 root layout 准备一次 */}
+        <HeaderWithSearch />
         {children}
         {/* PWA 安装引导 — 监听 beforeinstallprompt + iOS 手动引导 */}
         <PWAInstallPrompt />

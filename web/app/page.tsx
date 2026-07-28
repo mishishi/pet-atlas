@@ -12,7 +12,7 @@
  * - 下方 FeaturedBreeds + CategoryStrip 保持不变
  * - v0.8 polish: 加 CollectionPassport 段(在 SpecimenStats 跟 FeaturedBreeds 之间)
  */
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { HeroPoster } from "@/components/brand/HeroPoster";
 import { SpecimenStats } from "@/components/brand/SpecimenStats";
@@ -40,8 +40,7 @@ export default function Home() {
 
   return (
     <>
-      {/* 主页专用:透明 overlay header,叠加在 hero 海报上 */}
-      <Header variant="overlay" />
+      {/* Header 移到 root layout,这里不重复 */}
       <main>
         <HeroPoster />
         <SpecimenStats

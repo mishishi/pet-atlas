@@ -8,7 +8,7 @@
  */
 
 import Link from "next/link";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -23,7 +23,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Header />
+
       <main
         className="relative w-full overflow-hidden"
         style={{

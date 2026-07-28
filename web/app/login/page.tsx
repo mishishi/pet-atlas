@@ -7,7 +7,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -42,7 +42,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <Header />
+
       <main
         className="relative w-full min-h-screen overflow-hidden"
         style={{

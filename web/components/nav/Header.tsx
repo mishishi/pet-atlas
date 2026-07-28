@@ -9,6 +9,9 @@
  * v0.9 polish: 加 HeaderSearch 全局搜索(150 个品种全可搜)
  *  - ⌘K 打开 / ESC 关闭
  *
+ * 注意:searchPets 从外部传入(由 root layout / page 准备好)
+ *       Header 自己不拉 pets.ts,避免 client component 链路把 fs 拉进 client bundle
+ *
  * variant:
  *  - "default"  默认 cream 半透明背景
  *  - "overlay"  透明(用于主页 hero 上叠加)
@@ -17,24 +20,17 @@ import Link from "next/link";
 import { Container } from "../ui/Container";
 import { AuthMenu } from "../auth/AuthMenu";
 import { HeaderSearch } from "./HeaderSearch";
-import { getAllPets } from "@/lib/pets";
+import type { SearchPet } from "@/lib/search-pets";
 
 export function Header({
   variant = "default",
+  searchPets = [],
 }: {
   variant?: "default" | "overlay";
+  searchPets?: SearchPet[];
 }) {
   const isOverlay = variant === "overlay";
-  // 准备搜索数据 (server-side 算,server 组件可以)
-  const allPets = getAllPets()
-    .filter((p) => p.status === "published")
-    .map((p) => ({
-      slug: p.slug,
-      nameZh: p.name.zh,
-      nameEn: p.name.en,
-      aliasZh: p.name.alias?.zh,
-      category: p.category,
-    }));
+  const allPets = searchPets;
 
   return (
     <header

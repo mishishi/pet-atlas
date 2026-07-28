@@ -10,7 +10,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { BottomNav } from "@/components/nav/BottomNav";
 import {
   getAdoptedPet,
@@ -37,7 +37,7 @@ export default function RerollPage() {
   if (!mounted) {
     return (
       <>
-        <Header />
+
         <main className="pb-24 md:pb-12 min-h-screen flex items-center justify-center">
           <div className="text-brown-500">载入中...</div>
         </main>
@@ -49,7 +49,7 @@ export default function RerollPage() {
   if (!pet) {
     return (
       <>
-        <Header />
+
         <main className="pb-24 md:pb-12 min-h-screen flex items-center justify-center">
           <div className="text-center">
             <p className="text-brown-600 mb-4">还没有领养宠物</p>
@@ -69,7 +69,7 @@ export default function RerollPage() {
   if (!canReroll()) {
     return (
       <>
-        <Header />
+
         <main className="pb-24 md:pb-12 min-h-screen">
           <div
             className="relative w-full"
@@ -128,7 +128,7 @@ export default function RerollPage() {
 
   return (
     <>
-      <Header />
+
       <main className="pb-24 md:pb-12 min-h-screen">
         <div
           className="relative w-full"

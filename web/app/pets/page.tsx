@@ -14,7 +14,7 @@
  */
 
 import { Suspense } from "react";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { Footer } from "@/components/nav/Footer";
 import { PetsBrowser } from "@/components/pets/PetsBrowser";
 import { PetsListIntro } from "@/components/pets/PetsListIntro";
@@ -36,7 +36,6 @@ export default function PetsListPage() {
 
   return (
     <>
-      <Header />
       <main className="flex-1">
         <PetsListIntro totalCount={pets.length} allSlugs={allSlugs} />
         <Suspense fallback={<PetsBrowserFallback />}>

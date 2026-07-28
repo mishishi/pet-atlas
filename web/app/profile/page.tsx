@@ -10,7 +10,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Header } from "@/components/nav/Header";
+// import { HeaderWithSearch as Header } from "@/components/nav/HeaderWithSearch"; // moved to root layout
 import { BottomNav } from "@/components/nav/BottomNav";
 import { Footer } from "@/components/nav/Footer";
 import {
@@ -99,7 +99,7 @@ export default function ProfilePage() {
   if (!mounted) {
     return (
       <>
-        <Header />
+
         <main className="pb-24 md:pb-12 min-h-screen flex items-center justify-center">
           <div className="text-brown-500">载入中...</div>
         </main>
@@ -117,7 +117,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <Header />
+
       <main className="pb-24 md:pb-12 min-h-screen">
         <div
           className="relative w-full overflow-hidden"
@@ -304,7 +304,7 @@ function RerollButton({
 function EmptyProfile() {
   return (
     <>
-      <Header />
+
       <main className="pb-24 md:pb-12 min-h-screen flex items-center justify-center">
         <div
           className="relative w-full"
