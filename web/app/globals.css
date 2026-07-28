@@ -373,3 +373,48 @@ body::before {
   margin-bottom: var(--space-1);
   filter: grayscale(0.3);
 }
+
+/* P1-2: 详情页标本编号印章响应式 (mobile 缩窄,desk 完整版) */
+.specimen-number-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transform: rotate(-3deg);
+  color: var(--brick);
+}
+.specimen-number-stamp > div:first-child {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  border: 1.5px solid var(--brick);
+  padding: 4px 12px;
+  border-radius: 2px;
+  background: rgba(164, 74, 63, 0.04);
+  line-height: 1;
+  font-family: "Special Elite", monospace;
+}
+.specimen-number-stamp > div:first-child span {
+  font-size: 10px;
+  color: var(--brown-500);
+}
+.specimen-number-stamp > div:last-child {
+  font-size: 8px;
+  font-family: "Special Elite", monospace;
+  color: var(--brown-500);
+}
+@media (min-width: 768px) {
+  .specimen-number-stamp {
+    transform: rotate(-3deg);
+  }
+  .specimen-number-stamp > div:first-child {
+    font-size: 18px;
+    border: 2px solid var(--brick);
+    padding: 6px 16px;
+  }
+  .specimen-number-stamp > div:first-child span {
+    font-size: 12px;
+  }
+  .specimen-number-stamp > div:last-child {
+    font-size: 9px;
+  }
+}

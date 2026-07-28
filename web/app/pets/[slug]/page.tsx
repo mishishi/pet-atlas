@@ -231,14 +231,17 @@ export default async function PetDetailPage({
 
         {/* ============ Hero Section: 大画框 + 文字 ============ */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start mb-12 md:mb-20">
-          {/* 左:大画框 + 标本编号印章 */}
+          {/* 左:大画框 + 标本编号印章 (P1-2 mobile 优化)
+              - 移动端: 编号小+居中, frame 240px (避免窄屏溢出)
+              - 桌机: 编号大+右对齐, frame 满宽 340px
+          */}
           <div className="md:col-span-5 lg:col-span-5 flex flex-col items-center md:items-end">
             <SpecimenNumberStamp
               number={getSpecimenNumber(pet.slug)}
               total={TOTAL_SPECIMENS}
               category={pet.category}
             />
-            <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px] mt-4">
+            <div className="w-[240px] sm:w-[300px] md:w-full max-w-[340px] mt-4">
               <SpecimenFrame
                 url={getCoverUrl(pet.slug, "medium") || ""}
                 fallbackUrl={getCoverUrl(pet.slug, "full") || undefined}
@@ -262,19 +265,27 @@ export default async function PetDetailPage({
               标本卡 · Specimen Card
             </div>
 
-            <div className="flex items-center gap-3 md:gap-4 flex-wrap">
+            <div className="flex items-start sm:items-center gap-3 md:gap-4 flex-wrap">
               <h1
                 className="font-serif font-bold text-brown-900 leading-[0.95] tracking-tight"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+                style={{ fontSize: "clamp(1.75rem, 6.5vw, 4.5rem)" }}
               >
                 {pet.name.zh}
               </h1>
-              {/* v0.8 polish: 蜡封印章 (按 category 显示) */}
+              {/* v0.8 polish: 蜡封印章 (按 category 显示)
+                  - 桌机: 56px 大章,跟标题同排
+                  - 移动: 36px 小章,inline 在名字后面 (small chip) */}
               <WaxSeal
                 category={pet.category}
                 slug={pet.slug}
                 size={56}
                 className="hidden sm:block shrink-0"
+              />
+              <WaxSeal
+                category={pet.category}
+                slug={pet.slug}
+                size={36}
+                className="sm:hidden shrink-0 -mt-0.5"
               />
             </div>
             <p className="mt-2 md:mt-3 font-display italic text-brown-600 text-lg md:text-xl tracking-wide">
@@ -1029,6 +1040,7 @@ function getRelatedBreeds(current: Pet, count: number): Pet[] {
 
 /* ------------------------------------------------------------------ */
 /* 标本编号印章 (N° 042 / 150) — v0.8 升级:打字机字体 + 墨印边框 + 倾斜     */
+/* P1-2: 用 Tailwind 响应式 class 自动适配 mobile/tablet/desktop          */
 /* ------------------------------------------------------------------ */
 function SpecimenNumberStamp({
   number,
@@ -1042,36 +1054,15 @@ function SpecimenNumberStamp({
   const paddedNum = String(number).padStart(3, "0");
   return (
     <div
-      className="inline-flex flex-col items-center gap-1"
+      className="specimen-number-stamp"
       style={{
-        transform: "rotate(-3deg)",
         filter: "url(#wax-ink-bleed)",
       }}
     >
-      <div
-        className="font-mono"
-        style={{
-          fontSize: 18,
-          letterSpacing: "0.15em",
-          color: "var(--brick)",
-          border: "2px solid var(--brick)",
-          padding: "6px 16px",
-          borderRadius: 2,
-          background: "rgba(164, 74, 63, 0.04)",
-          lineHeight: 1,
-        }}
-      >
-        N° {paddedNum} <span style={{ color: "var(--brown-500)", fontSize: 12 }}>/ {total}</span>
+      <div className="font-mono">
+        N° {paddedNum} <span className="opacity-70">/ {total}</span>
       </div>
-      <div
-        style={{
-          fontFamily: '"Special Elite", monospace',
-          fontSize: 9,
-          letterSpacing: "0.3em",
-          textTransform: "uppercase",
-          color: "var(--brown-500)",
-        }}
-      >
+      <div className="font-mono tracking-[0.3em] uppercase">
         CATALOGUE · {category}
       </div>
     </div>
