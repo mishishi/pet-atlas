@@ -83,8 +83,14 @@ export function PetDiary() {
 
       {/* Timeline */}
       {entries.length === 0 ? (
-        <div className="text-center py-6 text-sm text-brown-500">
-          还没有日记 · 喂食或玩耍后会自动记一笔
+        <div className="text-center py-8 px-4 rounded-lg" style={{ background: "rgba(245, 233, 208, 0.4)", border: "1px dashed rgba(139, 111, 71, 0.2)" }}>
+          <div className="text-3xl mb-2 opacity-60">📔</div>
+          <p className="text-sm text-brown-700 font-medium mb-1">
+            日记本还是空的
+          </p>
+          <p className="text-xs text-brown-500">
+            喂食、玩耍或看图鉴后,会自动记一笔
+          </p>
         </div>
       ) : (
         <ol className="space-y-3">

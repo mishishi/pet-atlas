@@ -17,6 +17,7 @@ import { getFavorites } from "@/lib/favorites";
 import { allPets, getCoverUrl } from "@/lib/pets-data";
 import type { Pet } from "@/lib/types";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { EmptyState } from "./EmptyState";
 
 const STORAGE_KEY = "pet-atlas:favorites:v1";
 
@@ -48,29 +49,22 @@ export function FavoritesList() {
 
   if (favSlugs.length === 0 || favPets.length === 0) {
     return (
-      <div
-        className="mt-6 rounded-2xl p-6 text-center"
-        style={{
-          background: "rgba(245, 233, 208, 0.5)",
-          border: "1px solid rgba(139, 111, 71, 0.15)",
-        }}
-      >
-        <div className="text-3xl mb-2 opacity-60">🤍</div>
-        <p className="text-sm text-brown-700 mb-1">
-          {favSlugs.length === 0 ? "还没有收藏品种" : "收藏的品种还没有封面图谱"}
-        </p>
-        <p className="text-xs text-brown-500 mb-3">
-          {favSlugs.length === 0
-            ? "进图鉴点 ♡ 收藏喜欢的品种"
-            : "图鉴正在补全,敬请期待"}
-        </p>
-        <Link
-          href="/pets"
-          className="inline-block text-xs px-3 py-1.5 rounded-full border border-warm-brown text-warm-brown hover:bg-warm-brown/5 transition-colors"
-        >
-          去逛品种 →
-        </Link>
-      </div>
+      <EmptyState
+        illustration={favSlugs.length === 0 ? "🤍" : "🖼"}
+        latin="Tabula Vacua"
+        title={favSlugs.length === 0 ? "还没有收藏品种" : "收藏的品种还没有图谱"}
+        subtitle={
+          favSlugs.length === 0
+            ? "进图鉴点 ♡ 收藏喜欢的品种,它们会出现在这里随时翻阅。"
+            : "图谱正在补全,敬请期待。"
+        }
+        primaryCta={{ label: "去逛品种 →", href: "/pets" }}
+        secondaryCta={
+          favSlugs.length === 0
+            ? { label: "随机翻一张", href: "/pets?random=1" }
+            : undefined
+        }
+      />
     );
   }
 

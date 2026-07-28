@@ -128,6 +128,20 @@ export function CollectionPassport({
           </span>{" "}
           <span style={{ color: "var(--brown-500)" }}>/ {total}</span> 已翻开
         </div>
+        {visitedCount === 0 && (
+          <p
+            style={{
+              fontFamily: '"Noto Serif SC", serif',
+              fontSize: 11,
+              color: "var(--brown-500)",
+              marginTop: 4,
+              marginBottom: 4,
+              fontStyle: "italic",
+            }}
+          >
+            翻开你的第一张标本卡,开始计数
+          </p>
+        )}
         <div
           className="passport-bar"
           style={{
