@@ -138,47 +138,94 @@ export function ScrollProgress({ sections }: { sections: TocSection[] }) {
       <nav
         ref={tocRef}
         aria-label="本页目录"
-        className={`fixed top-1 left-0 right-0 z-40 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           stuck
             ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-2 pointer-events-none"
+            : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
         <div
-          className="mx-auto max-w-2xl px-3 py-1.5 backdrop-blur-md"
+          className="relative"
           style={{
-            background: "rgba(245, 233, 208, 0.85)",
-            borderBottom: "1px solid rgba(139, 111, 71, 0.15)",
-            boxShadow: "0 2px 8px -2px rgba(110, 86, 53, 0.15)",
+            background: "rgba(245, 233, 208, 0.96)",
+            borderBottom: "2px solid var(--brown-500)",
+            boxShadow: "0 4px 16px -2px rgba(110, 86, 53, 0.25)",
+            backdropFilter: "blur(8px)",
           }}
         >
-          <ul className="flex items-center gap-0.5 overflow-x-auto no-scrollbar">
-            {sections.map((s) => {
-              const active = activeId === s.id;
-              return (
-                <li key={s.id}>
-                  <a
-                    href={`#${s.id}`}
-                    onClick={(e) => handleClick(e, s.id)}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-serif text-xs whitespace-nowrap transition-colors ${
-                      active
-                        ? "text-warm-brown"
-                        : "text-brown-600 hover:text-brown-900"
-                    }`}
-                  >
-                    {active && (
-                      <span
-                        className="inline-block w-1.5 h-1.5 rounded-full"
-                        style={{ background: "var(--warm-brown)" }}
-                        aria-hidden
-                      />
-                    )}
-                    <span>{s.label}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          {/* 上下双线装饰 */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 4,
+              height: 1,
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(139, 111, 71, 0.25) 20%, rgba(139, 111, 71, 0.25) 80%, transparent 100%)",
+            }}
+          />
+          <div className="mx-auto max-w-4xl px-3 md:px-6 py-2 md:py-2.5">
+            <ul className="flex items-center gap-1 md:gap-1.5 overflow-x-auto no-scrollbar">
+              <li className="hidden sm:flex items-center pr-2 mr-1 border-r border-warm-brown/20">
+                <span
+                  className="font-mono text-[9px] uppercase tracking-[0.25em] text-warm-brown/70"
+                  style={{ whiteSpace: "nowrap" }}
+                >
+                  目录
+                </span>
+              </li>
+              {sections.map((s) => {
+                const active = activeId === s.id;
+                return (
+                  <li key={s.id}>
+                    <a
+                      href={`#${s.id}`}
+                      onClick={(e) => handleClick(e, s.id)}
+                      className={`relative flex items-center gap-1.5 px-2.5 md:px-3 py-1 rounded-md font-serif text-xs md:text-sm whitespace-nowrap transition-all ${
+                        active
+                          ? "text-brown-900 font-semibold"
+                          : "text-brown-600 hover:text-brown-900"
+                      }`}
+                      style={
+                        active
+                          ? {
+                              background: "var(--oat-300)",
+                              boxShadow: "inset 0 0 0 1px var(--brown-400)",
+                            }
+                          : undefined
+                      }
+                    >
+                      {active && (
+                        <span
+                          className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+                          style={{ background: "var(--brick)" }}
+                          aria-hidden
+                        />
+                      )}
+                      <span>{s.label}</span>
+                      {active && (
+                        <span
+                          aria-hidden
+                          style={{
+                            position: "absolute",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            bottom: -16,
+                            width: 24,
+                            height: 2,
+                            background: "var(--brick)",
+                            borderRadius: 1,
+                          }}
+                        />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </nav>
     </>
