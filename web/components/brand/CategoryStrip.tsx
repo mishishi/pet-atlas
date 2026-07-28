@@ -3,7 +3,8 @@
  */
 import Link from "next/link";
 import { Container } from "../ui/Container";
-import { getAllPets } from "@/lib/pets";
+// 跟 /pets 列表页用同一份数据,保证 5 个分类数字一致 (B-15 Top3-1 修 28/29 不一致)
+import { allPets } from "@/lib/pets-data";
 
 const CATEGORIES = [
   { key: "dog", zh: "犬", en: "Canis", desc: "最古老的伙伴" },
@@ -14,10 +15,11 @@ const CATEGORIES = [
 ] as const;
 
 export function CategoryStrip() {
-  const pets = getAllPets();
+  // allPets 已经过滤 status==='published (从 pets-data.ts)
+  // 跟 /pets 列表页 PetsBrowser props 完全一致 → 不再有 28/29 数字漂移
   const counts = CATEGORIES.map((c) => ({
     ...c,
-    count: pets.filter((p) => p.category === c.key).length,
+    count: allPets.filter((p) => p.category === c.key).length,
   }));
 
   return (

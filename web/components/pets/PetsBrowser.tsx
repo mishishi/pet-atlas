@@ -197,7 +197,7 @@ export function PetsBrowser({ pets }: { pets: Pet[] }) {
                   urlFilter ? "text-oat-200" : "text-brown-500"
                 }`}
               >
-                {String(mounted ? favSlugs.length : 0).padStart(2, "0")}
+                {mounted ? favSlugs.length : 0}
               </span>
             </button>
           </div>

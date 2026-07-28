@@ -1088,15 +1088,6 @@ function categoryLabel(cat: string): string {
   }[cat] || cat;
 }
 
-/** 从 slug 算一个稳定的 specimen 编号(只是装饰,不一定有意义) */
-function petNum(slug: string): string {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) {
-    h = (h * 31 + slug.charCodeAt(i)) | 0;
-  }
-  return String(Math.abs(h) % 999).padStart(3, "0");
-}
-
 /** 1-10 转罗马数字 */
 function toRoman(n: number): string {
   if (n <= 0 || n > 10) return String(n);
