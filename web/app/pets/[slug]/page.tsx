@@ -37,6 +37,8 @@ import { PullQuote } from "@/components/brand/PullQuote";
 import { CollectionTracker } from "@/components/brand/CollectionPassport";
 import type { SpecimenStamp } from "@/components/brand/CollectionPassport";
 import { DailyPick } from "@/components/brand/DailyPick";
+// P1-3: 滚到底部一次性 toast (复用 B-10 useCollection 计数)
+import { ExploredToast } from "./ExploredToast";
 import { getSpecimenNumber, TOTAL_SPECIMENS } from "@/lib/collection";
 import { getTodaySlug, getTodayDate } from "@/lib/daily-pick";
 
@@ -733,6 +735,9 @@ export default async function PetDetailPage({
           todayDate={todayDate}
           candidates={dailyCandidates}
         />
+
+        {/* ============ P1-3: 滚到底部一次性 toast (sentinel 在 ExploredToast 内部) ============ */}
+        <ExploredToast />
 
         {/* Footer */}
         <div className="mt-12 md:mt-16 text-center">
