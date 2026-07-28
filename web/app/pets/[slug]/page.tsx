@@ -30,6 +30,12 @@ import { ScrollProgress } from "@/components/brand/ScrollProgress";
 import { FavoriteButton } from "@/components/brand/FavoriteButton";
 import { BreedReadTracker } from "@/components/cloud-pet/BreedReadTracker";
 import { NotebookCallToAction } from "@/components/brand/NotebookCallToAction";
+// v0.8 polish: 蜡封 + drop cap + pull quote + passport
+import { WaxSeal, WaxSealFilter } from "@/components/brand/WaxSeal";
+import { DropCapParagraph } from "@/components/brand/DropCapParagraph";
+import { PullQuote } from "@/components/brand/PullQuote";
+import { CollectionTracker } from "@/components/brand/CollectionPassport";
+import { getSpecimenNumber, TOTAL_SPECIMENS } from "@/lib/collection";
 
 /** 为所有已发布品种生成静态页(构建期一次跑完) */
 export async function generateStaticParams() {
@@ -115,6 +121,9 @@ export default async function PetDetailPage({
       />
       {/* 2026-07-20: 读图鉴解锁 1 次 reroll(无 UI,纯 side effect) */}
       <BreedReadTracker slug={slug} />
+      {/* v0.8 polish: 蜡封 SVG filter (全局 defs) + 收藏追踪 */}
+      <WaxSealFilter />
+      <CollectionTracker slug={slug} />
       <div
         className="relative w-full overflow-hidden"
         style={{
@@ -180,7 +189,7 @@ export default async function PetDetailPage({
             {/* M3 polish: 收藏按钮 */}
             <FavoriteButton slug={pet.slug} />
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-brown-600 hidden sm:block">
-              {categoryLabel(pet.category)} · No. {petNum(slug)}
+              {categoryLabel(pet.category)} · N° {String(getSpecimenNumber(slug)).padStart(3, "0")} / {TOTAL_SPECIMENS}
             </div>
           </div>
         </div>
@@ -206,7 +215,11 @@ export default async function PetDetailPage({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start mb-12 md:mb-20">
           {/* 左:大画框 + 标本编号印章 */}
           <div className="md:col-span-5 lg:col-span-5 flex flex-col items-center md:items-end">
-            <SpecimenNumberStamp number={petNum(pet.slug)} category={pet.category} />
+            <SpecimenNumberStamp
+              number={getSpecimenNumber(pet.slug)}
+              total={TOTAL_SPECIMENS}
+              category={pet.category}
+            />
             <div className="w-[260px] sm:w-[300px] md:w-full max-w-[340px] mt-4">
               <SpecimenFrame
                 url={getCoverUrl(pet.slug, "medium") || ""}
@@ -231,12 +244,21 @@ export default async function PetDetailPage({
               标本卡 · Specimen Card
             </div>
 
-            <h1
-              className="font-serif font-bold text-brown-900 leading-[0.95] tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
-            >
-              {pet.name.zh}
-            </h1>
+            <div className="flex items-center gap-3 md:gap-4 flex-wrap">
+              <h1
+                className="font-serif font-bold text-brown-900 leading-[0.95] tracking-tight"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+              >
+                {pet.name.zh}
+              </h1>
+              {/* v0.8 polish: 蜡封印章 (按 category 显示) */}
+              <WaxSeal
+                category={pet.category}
+                slug={pet.slug}
+                size={56}
+                className="hidden sm:block shrink-0"
+              />
+            </div>
             <p className="mt-2 md:mt-3 font-display italic text-brown-600 text-lg md:text-xl tracking-wide">
               {pet.name.en}
             </p>
@@ -250,11 +272,18 @@ export default async function PetDetailPage({
               <LeafDivider className="w-full h-auto" />
             </div>
 
-            {/* 性格 summary(若有) */}
+            {/* 性格 summary(若有) — v0.8: drop cap + pull quote 升级 */}
             {personality?.summary && (
-              <p className="font-serif text-xl md:text-2xl text-brown-800 italic leading-snug mb-6 md:mb-8">
-                &ldquo;{personality.summary}&rdquo;
-              </p>
+              <>
+                <DropCapParagraph text={personality.summary} />
+                {/* 如果 famous 有内容,抽第一条做 pull quote (不同来源,跟 summary 不重复) */}
+                {pet.famous && pet.famous.length > 0 && (
+                  <PullQuote
+                    text={pet.famous[0]}
+                    source="Fama · 名场面之一"
+                  />
+                )}
+              </>
             )}
 
             {/* Stats grid */}
@@ -859,33 +888,52 @@ function getRelatedBreeds(current: Pet, count: number): Pet[] {
 }
 
 /* ------------------------------------------------------------------ */
-/* 标本编号印章 (N° 001 · Category) — vintage 18 世纪印刷机风            */
+/* 标本编号印章 (N° 042 / 150) — v0.8 升级:打字机字体 + 墨印边框 + 倾斜     */
 /* ------------------------------------------------------------------ */
 function SpecimenNumberStamp({
   number,
+  total,
   category,
 }: {
-  number: string;
+  number: number;
+  total: number;
   category: string;
 }) {
+  const paddedNum = String(number).padStart(3, "0");
   return (
     <div
-      className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-warm-brown/40"
+      className="inline-flex flex-col items-center gap-1"
       style={{
-        background: "rgba(245, 233, 208, 0.5)",
-        boxShadow: "inset 0 0 0 1px rgba(139, 111, 71, 0.12)",
+        transform: "rotate(-3deg)",
+        filter: "url(#wax-ink-bleed)",
       }}
     >
-      <span className="font-display italic text-[10px] uppercase tracking-[0.3em] text-warm-brown/70">
-        N°
-      </span>
-      <span className="font-mono text-sm font-medium text-brick tracking-widest">
-        {number}
-      </span>
-      <span className="inline-block w-px h-3 bg-warm-brown/30" />
-      <span className="font-display italic text-[10px] uppercase tracking-[0.25em] text-warm-brown/70">
-        {category}
-      </span>
+      <div
+        className="font-mono"
+        style={{
+          fontSize: 18,
+          letterSpacing: "0.15em",
+          color: "var(--brick)",
+          border: "2px solid var(--brick)",
+          padding: "6px 16px",
+          borderRadius: 2,
+          background: "rgba(164, 74, 63, 0.04)",
+          lineHeight: 1,
+        }}
+      >
+        N° {paddedNum} <span style={{ color: "var(--brown-500)", fontSize: 12 }}>/ {total}</span>
+      </div>
+      <div
+        style={{
+          fontFamily: '"Special Elite", monospace',
+          fontSize: 9,
+          letterSpacing: "0.3em",
+          textTransform: "uppercase",
+          color: "var(--brown-500)",
+        }}
+      >
+        CATALOGUE · {category}
+      </div>
     </div>
   );
 }

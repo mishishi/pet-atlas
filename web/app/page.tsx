@@ -10,6 +10,7 @@
  *   - 折痕纸背景
  * - 头部 overlay 在 hero 上方(透明)
  * - 下方 FeaturedBreeds + CategoryStrip 保持不变
+ * - v0.8 polish: 加 CollectionPassport 段(在 SpecimenStats 跟 FeaturedBreeds 之间)
  */
 import { Header } from "@/components/nav/Header";
 import { Footer } from "@/components/nav/Footer";
@@ -17,6 +18,10 @@ import { HeroPoster } from "@/components/brand/HeroPoster";
 import { SpecimenStats } from "@/components/brand/SpecimenStats";
 import { FeaturedBreeds } from "@/components/brand/FeaturedBreeds";
 import { CategoryStrip } from "@/components/brand/CategoryStrip";
+import {
+  CollectionPassport,
+  type SpecimenStamp,
+} from "@/components/brand/CollectionPassport";
 import { getAllPets } from "@/lib/pets";
 
 export default function Home() {
@@ -24,6 +29,14 @@ export default function Home() {
   const totalBreeds = pets.length;
   const totalPlates = totalBreeds * 6;
   const totalPortraits = totalBreeds * 3;
+
+  // v0.8: 给 passport 准备 stamp 列表 (server-side 算好传到 client component)
+  const specimens: SpecimenStamp[] = pets.map((p) => ({
+    slug: p.slug,
+    category: p.category,
+    initial: (p.name.en?.charAt(0) || p.name.zh?.charAt(0) || "·").toUpperCase(),
+    nameZh: p.name.zh,
+  }));
 
   return (
     <>
@@ -36,6 +49,12 @@ export default function Home() {
           totalPlates={totalPlates}
           totalPortraits={totalPortraits}
         />
+        {/* v0.8 polish: 收藏护照 (client component, 读 localStorage) */}
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 py-6 md:py-10">
+          <div className="max-w-md mx-auto">
+            <CollectionPassport specimens={specimens} />
+          </div>
+        </section>
         <FeaturedBreeds />
         <CategoryStrip />
       </main>
