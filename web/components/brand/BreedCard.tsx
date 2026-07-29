@@ -67,10 +67,10 @@ export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps)
   return (
     <Link
       href={`/pets/${pet.slug}`}
-      className="group block focus-visible:outline-2 focus-visible:outline-brown-500 focus-visible:outline-offset-4 rounded-[var(--radius)]"
+      className="group block h-full focus-visible:outline-2 focus-visible:outline-brown-500 focus-visible:outline-offset-4 rounded-[var(--radius)]"
     >
       <article
-        className="bg-oat-100 border-2 border-brown-200 rounded-[var(--radius)] overflow-hidden shadow-[var(--shadow-paper)] transition-all duration-500 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[var(--shadow-paper-lg)] group-hover:border-brown-500"
+        className="h-full flex flex-col bg-oat-100 border-2 border-brown-200 rounded-[var(--radius)] overflow-hidden shadow-[var(--shadow-paper)] transition-all duration-500 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[var(--shadow-paper-lg)] group-hover:border-brown-500"
       >
         <div className="relative aspect-[9/16] w-full overflow-hidden bg-oat-200">
           <SafeImage
@@ -102,7 +102,7 @@ export function BreedCard({ pet, size = "md", showMeta = true }: BreedCardProps)
 
         <div
           className={
-            "p-4 " +
+            "p-4 flex-1 flex flex-col " +
             (size === "lg" ? "md:p-6 " : "") +
             "border-t-2 border-brown-200 group-hover:border-warm-brown transition-colors"
           }
