@@ -113,35 +113,59 @@ async function processOne(slug, catDirName) {
 }
 
 async function main() {
-  // 读 150 个 breed — 用 walk-up 探测 content/pets
-  // Vercel build 路径结构跟本地不一致 (scripts 在 /vercel/path0/scripts 而非 web/scripts/),
-  // 走 import.meta.dirname 跟 cwd 都不一定对, 干脆从 cwd 一层层往上找
+  // 读 150 个 breed — 优先用 web/lib/pets-data.json (Vercel 也能访问),
+  // 兜底用 content/pets/*.json (本地开发).
   function findRepoRoot(startDir) {
     let cur = startDir;
     for (let i = 0; i < 8; i++) {
       if (fs.existsSync(path.join(cur, "content", "pets"))) return cur;
       const parent = path.dirname(cur);
-      if (parent === cur) break; // 到根了
+      if (parent === cur) break;
       cur = parent;
     }
     return null;
   }
-  const REPO_ROOT =
-    findRepoRoot(import.meta.dirname) ||
-    findRepoRoot(process.cwd()) ||
-    findRepoRoot("/") ||
-    (() => { throw new Error(`找不到 content/pets (cwd=${process.cwd()}, dirname=${import.meta.dirname})`); })();
 
-  const petFiles = fs
-    .readdirSync(path.join(REPO_ROOT, "content", "pets"))
-    .filter((f) => f.endsWith(".json"));
+  // 方案 A: 用已 build 过的 web/lib/pets-data.json (里面有全部 slug)
+  // walk up from cwd/import.meta.dirname 找 web/lib/pets-data.json
+  function findWebLibData() {
+    for (const start of [process.cwd(), import.meta.dirname, "/"]) {
+      let cur = start;
+      for (let i = 0; i < 8; i++) {
+        const candidate = path.join(cur, "web", "lib", "pets-data.json");
+        if (fs.existsSync(candidate)) return candidate;
+        const parent = path.dirname(cur);
+        if (parent === cur) break;
+        cur = parent;
+      }
+    }
+    return null;
+  }
+  const webDataPath = findWebLibData();
 
-  const pets = petFiles.map((f) => {
-    const d = JSON.parse(
-      fs.readFileSync(path.join(REPO_ROOT, "content", "pets", f), "utf-8")
-    );
-    return { slug: d.slug, cat: d.category };
-  });
+  // 方案 B: content/pets/*.json (本地, Vercel 找不到)
+  const REPO_ROOT = findRepoRoot(import.meta.dirname) || findRepoRoot(process.cwd());
+
+  let pets = [];
+  if (webDataPath) {
+    // web/lib/pets-data.json 是 [{slug, category}, ...]
+    const data = JSON.parse(fs.readFileSync(webDataPath, "utf-8"));
+    pets = data.map((p) => ({ slug: p.slug, cat: p.category }));
+    console.log(`[thumbs] 从 web/lib/pets-data.json 读到 ${pets.length} 个品种`);
+  } else if (REPO_ROOT) {
+    const petFiles = fs
+      .readdirSync(path.join(REPO_ROOT, "content", "pets"))
+      .filter((f) => f.endsWith(".json"));
+    pets = petFiles.map((f) => {
+      const d = JSON.parse(
+        fs.readFileSync(path.join(REPO_ROOT, "content", "pets", f), "utf-8")
+      );
+      return { slug: d.slug, cat: d.category };
+    });
+    console.log(`[thumbs] 从 content/pets/ 读到 ${pets.length} 个品种`);
+  } else {
+    throw new Error(`找不到任何 breed 数据源 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
+  }
 
   const counts = { ok: 0, skip: 0, dryrun: 0, fail: 0 };
   const queue = [...pets];
