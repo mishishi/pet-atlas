@@ -113,8 +113,8 @@ async function processOne(slug, catDirName) {
 }
 
 async function main() {
-  // 读 150 个 breed — 优先用 web/lib/pets-data.json (Vercel 也能访问),
-  // 兜底用 content/pets/*.json (本地开发).
+  // 读 150 个 breed — 优先用 lib/pets-data.json (Vercel 跟 local 都能找到),
+  // 兜底用 content/pets/*.json (本地开发, Vercel 找不到).
   function findRepoRoot(startDir) {
     let cur = startDir;
     for (let i = 0; i < 8; i++) {
@@ -126,18 +126,31 @@ async function main() {
     return null;
   }
 
-  // 方案 A: 用已 build 过的 web/lib/pets-data.json (里面有全部 slug)
-  // walk up from cwd/import.meta.dirname 找 web/lib/pets-data.json
+  // 方案 A: 用已 build 过的 lib/pets-data.json
+  // Vercel 把 web/ 内容铺平到 /vercel/path0/, 所以 lib/pets-data.json 直接在 cwd/lib/ 下
+  // Local: cwd = web/, lib/ 在 web/lib/
+  // Vercel: cwd = /vercel/path0/, lib/ 在 /vercel/path0/lib/ (无 web/ 前缀)
   function findWebLibData() {
-    for (const start of [process.cwd(), import.meta.dirname, "/"]) {
-      let cur = start;
-      for (let i = 0; i < 8; i++) {
-        const candidate = path.join(cur, "web", "lib", "pets-data.json");
-        if (fs.existsSync(candidate)) return candidate;
-        const parent = path.dirname(cur);
-        if (parent === cur) break;
-        cur = parent;
-      }
+    const candidates = [
+      // 1. cwd 下面有 lib/pets-data.json (Vercel flat 结构)
+      path.join(process.cwd(), "lib", "pets-data.json"),
+      // 2. cwd 下面有 web/lib/pets-data.json (嵌套结构)
+      path.join(process.cwd(), "web", "lib", "pets-data.json"),
+      // 3. import.meta.dirname 走 ../lib/pets-data.json
+      path.join(import.meta.dirname, "..", "lib", "pets-data.json"),
+      // 4. 全部 walk up
+    ];
+    for (const p of candidates) {
+      if (fs.existsSync(p)) return p;
+    }
+    // 备选: walk up from cwd 找 lib/pets-data.json
+    let cur = process.cwd();
+    for (let i = 0; i < 8; i++) {
+      const p = path.join(cur, "lib", "pets-data.json");
+      if (fs.existsSync(p)) return p;
+      const parent = path.dirname(cur);
+      if (parent === cur) break;
+      cur = parent;
     }
     return null;
   }
@@ -164,40 +177,6 @@ async function main() {
     });
     console.log(`[thumbs] 从 content/pets/ 读到 ${pets.length} 个品种`);
   } else {
-    // 调试: 打印 Vercel 容器实际结构, 帮助定位
-    function safeLs(p) {
-      try {
-        return fs.readdirSync(p);
-      } catch (e) {
-        return `ERR: ${e.code} ${e.message}`;
-      }
-    }
-    console.error(`[thumbs-debug] cwd=${process.cwd()}`);
-    console.error(`[thumbs-debug] dirname=${import.meta.dirname}`);
-    console.error(`[thumbs-debug] ls(cwd)=`, JSON.stringify(safeLs(process.cwd())));
-    console.error(`[thumbs-debug] ls(dirname)=`, JSON.stringify(safeLs(import.meta.dirname)));
-    console.error(`[thumbs-debug] ls(/)=`, JSON.stringify(safeLs("/")));
-    console.error(`[thumbs-debug] ls(/vercel)=`, JSON.stringify(safeLs("/vercel")));
-    console.error(`[thumbs-debug] ls(/vercel/path0)=`, JSON.stringify(safeLs("/vercel/path0")));
-    console.error(`[thumbs-debug] ls(/vercel/path0/web)=`, JSON.stringify(safeLs("/vercel/path0/web")));
-    console.error(`[thumbs-debug] ls(/vercel/path0/web/lib)=`, JSON.stringify(safeLs("/vercel/path0/web/lib")));
-    // 备用: 找一切 pets-data.json 文件
-    function findAllDataJson(dir, depth = 0) {
-      if (depth > 5) return [];
-      try {
-        const files = fs.readdirSync(dir, { withFileTypes: true });
-        const found = [];
-        for (const f of files) {
-          const p = path.join(dir, f.name);
-          if (f.isFile() && f.name === "pets-data.json") found.push(p);
-          else if (f.isDirectory()) found.push(...findAllDataJson(p, depth + 1));
-        }
-        return found;
-      } catch {
-        return [];
-      }
-    }
-    console.error(`[thumbs-debug] all pets-data.json:`, JSON.stringify(findAllDataJson("/")));
     throw new Error(`找不到任何 breed 数据源 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
   }
 
