@@ -25,6 +25,7 @@ import { Container } from "../ui/Container";
 import { AuthMenu } from "../auth/AuthMenu";
 import { HeaderSearch } from "./HeaderSearch";
 import { HeaderMobileMenu } from "./HeaderMobileMenu";
+import { NavLink } from "./NavLink";
 import type { SearchPet } from "@/lib/search-pets";
 
 /** Top3-2: 5 个主导航 (HeaderMobileMenu 复用) */
@@ -100,13 +101,9 @@ export function Header({
         {/* Center nav (desktop only) */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
           {PRIMARY_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-serif text-brown-700 hover:text-brown-900 transition-colors"
-            >
+            <NavLink key={item.href} href={item.href}>
               {item.label}
-            </Link>
+            </NavLink>
           ))}
           <a
             href="https://github.com/mishishi/pet-atlas"

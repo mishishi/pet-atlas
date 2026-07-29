@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AuthMenu } from "../auth/AuthMenu";
+import { NavLink } from "./NavLink";
 
 interface Props {
   /** 5 个主导航 */
@@ -121,33 +122,21 @@ export function HeaderMobileMenu({ primaryNav, categoryNav }: Props) {
 
         {/* 主体滚动区 */}
         <div className="flex-1 overflow-y-auto px-5 py-4">
-          {/* 5 个主导航 */}
+          {/* 5 个主导航 (复用 NavLink 高亮) */}
           <ul className="space-y-1 mb-6">
-            {primaryNav.map((item) => {
-              const isActive =
-                pathname === item.href ||
-                (item.href !== "/" && pathname.startsWith(item.href));
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`flex items-center justify-between py-3 px-3 rounded transition-colors ${
-                      isActive
-                        ? "bg-brown-100 text-brown-900"
-                        : "text-brown-700 hover:bg-oat-300/60 hover:text-brown-900"
-                    }`}
-                  >
-                    <span className="font-serif text-lg">{item.label}</span>
-                    <span
-                      aria-hidden
-                      className="text-brown-500 text-sm"
-                    >
-                      →
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
+            {primaryNav.map((item) => (
+              <li key={item.href}>
+                <NavLink
+                  href={item.href}
+                  className="flex items-center justify-between py-3 px-3 rounded text-lg hover:bg-oat-300/60"
+                >
+                  {item.label}
+                  <span aria-hidden className="text-brown-500 text-sm">
+                    →
+                  </span>
+                </NavLink>
+              </li>
+            ))}
           </ul>
 
           {/* 5 个 category 快捷入口 */}
