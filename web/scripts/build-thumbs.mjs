@@ -113,8 +113,20 @@ async function processOne(slug, catDirName) {
 }
 
 async function main() {
-  // 读 150 个 breed
-  const REPO_ROOT = path.join(import.meta.dirname, "..", "..");
+  // 读 150 个 breed — 从 import.meta.dirname (web/scripts/) 往上找 content/pets
+  // Vercel build 时 cwd = web/, import.meta.dirname 路径是 /vercel/path0/web/scripts/
+  // 走两层 .. 应该是 /vercel/path0 (repo root), 但保险起见也用 process.cwd() 探测
+  let REPO_ROOT = path.join(import.meta.dirname, "..", "..");
+  if (!fs.existsSync(path.join(REPO_ROOT, "content", "pets"))) {
+    // 备选: 从 cwd 探测
+    if (fs.existsSync(path.join(process.cwd(), "content", "pets"))) {
+      REPO_ROOT = process.cwd();
+    } else if (fs.existsSync(path.join(process.cwd(), "..", "content", "pets"))) {
+      REPO_ROOT = path.join(process.cwd(), "..");
+    } else {
+      throw new Error(`找不到 content/pets 目录 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
+    }
+  }
   const petFiles = fs
     .readdirSync(path.join(REPO_ROOT, "content", "pets"))
     .filter((f) => f.endsWith(".json"));
