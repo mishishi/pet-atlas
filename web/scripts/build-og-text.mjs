@@ -152,17 +152,25 @@ async function main() {
   // 但仍提供 FORCE_OG_REBUILD 跳过
   // 不依赖外部资源,build 永远不会 fail
 
-  const files = await fs.readdir(CONTENT_PETS);
-  const pets = [];
-  for (const f of files) {
-    if (!f.endsWith(".json")) continue;
-    try {
-      const raw = await fs.readFile(path.join(CONTENT_PETS, f), "utf8");
-      const d = JSON.parse(raw);
-      if (d?.slug && d?.name?.zh) pets.push(d);
-    } catch {}
+  // Vercel 找不到 content/pets/ → 用 lib/pets-data.json (committed)
+  let pets = [];
+  const dataPath = path.join(ROOT, "lib", "pets-data.json");
+  if (await fs.access(dataPath).then(() => true).catch(() => false)) {
+    const data = JSON.parse(await fs.readFile(dataPath, "utf8"));
+    pets = data.filter((d) => d?.slug && d?.name?.zh);
+    console.log(`[build-og-text] 从 lib/pets-data.json 加载 ${pets.length} breeds`);
+  } else {
+    const files = await fs.readdir(CONTENT_PETS);
+    for (const f of files) {
+      if (!f.endsWith(".json")) continue;
+      try {
+        const raw = await fs.readFile(path.join(CONTENT_PETS, f), "utf8");
+        const d = JSON.parse(raw);
+        if (d?.slug && d?.name?.zh) pets.push(d);
+      } catch {}
+    }
+    console.log(`[build-og-text] 从 content/pets/ 加载 ${pets.length} breeds`);
   }
-  console.log(`[build-og-text] loaded ${pets.length} breeds`);
 
   let ok = 0, skip = 0, fail = 0;
   for (const pet of pets) {

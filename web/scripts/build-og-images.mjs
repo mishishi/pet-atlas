@@ -174,17 +174,25 @@ async function main() {
   await fs.mkdir(PUBLIC_OG, { recursive: true });
 
   // 先读 breed 列表 (不管幂等性如何都需要)
-  const files = await fs.readdir(CONTENT_PETS);
-  const pets = [];
-  for (const f of files) {
-    if (!f.endsWith(".json")) continue;
-    try {
-      const raw = await fs.readFile(path.join(CONTENT_PETS, f), "utf8");
-      const d = JSON.parse(raw);
-      if (d?.slug && d?.name?.zh) pets.push(d);
-    } catch {}
+  // Vercel 找不到 content/pets/ → 用 lib/pets-data.json (committed)
+  let pets = [];
+  const dataPath = path.join(ROOT, "lib", "pets-data.json");
+  if (await fs.access(dataPath).then(() => true).catch(() => false)) {
+    const data = JSON.parse(await fs.readFile(dataPath, "utf8"));
+    pets = data.filter((d) => d?.slug && d?.name?.zh);
+    console.log(`[build-og-images] 从 lib/pets-data.json 加载 ${pets.length} breeds`);
+  } else {
+    const files = await fs.readdir(CONTENT_PETS);
+    for (const f of files) {
+      if (!f.endsWith(".json")) continue;
+      try {
+        const raw = await fs.readFile(path.join(CONTENT_PETS, f), "utf8");
+        const d = JSON.parse(raw);
+        if (d?.slug && d?.name?.zh) pets.push(d);
+      } catch {}
+    }
+    console.log(`[build-og-images] 从 content/pets/ 加载 ${pets.length} breeds`);
   }
-  console.log(`[build-og-images] loaded ${pets.length} breeds`);
 
   // Idempotent: home + per-breed 全部已存在 → 跳过整个脚本
   // (修复 B-6:之前只看 home.png,有 home 就 return,新加的 breed 永远跑不到)
