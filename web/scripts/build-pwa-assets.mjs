@@ -15,6 +15,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
+// Vercel Project Root 是 web/, build 时 web/ 平铺到 /vercel/path0/。本地: web/scripts/.. = web/, 再 .. = repo root
+// 所以 content/pets/ 在 path.join(ROOT, '..', 'content', 'pets') 本地/Vercel 都能找到
 const CONTENT_DIR = path.join(ROOT, '..', 'content', 'pets');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 
@@ -23,6 +25,15 @@ const TCB = 'https://636c-cloud1-d9gv1q8ikad5e9721-1442530204.tcb.qcloud.la';
 const NOW_ISO = new Date().toISOString();
 
 function readAllBreedSlugs() {
+  // Vercel 找不到 content/pets/ → 用 lib/pets-data.json (committed)
+  if (!fs.existsSync(CONTENT_DIR)) {
+    const dataPath = path.join(ROOT, 'lib', 'pets-data.json');
+    if (fs.existsSync(dataPath)) {
+      const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+      return data.map((p) => p.slug).sort();
+    }
+    throw new Error(`找不到 breed 数据 (${CONTENT_DIR} 或 ${dataPath} 都不存在)`);
+  }
   const files = fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.json'));
   return files.map(f => f.replace('.json', '')).sort();
 }
