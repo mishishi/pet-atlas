@@ -13,8 +13,22 @@ export {
 /**
  * 宠物 JSON 目录
  * 路径:web/ 的 process.cwd() 是 web/,所以 ../content/pets 指向仓库根的 content/pets
+ * Vercel 兼容: 找不到 content/pets/ 时回退到 lib/pets-data.json (committed)
  */
 const PETS_DIR = path.join(process.cwd(), "..", "content", "pets");
+const PETS_DATA_JSON = path.join(process.cwd(), "lib", "pets-data.json");
+
+/** Vercel 探测: content/pets/ 不在 deploy, 但 lib/pets-data.json 是 committed */
+function readFromCommittedJson(): Pet[] | null {
+  if (!fs.existsSync(PETS_DATA_JSON)) return null;
+  try {
+    const data = JSON.parse(fs.readFileSync(PETS_DATA_JSON, "utf-8")) as Pet[];
+    return data;
+  } catch (err) {
+    console.error(`[pets] 读 lib/pets-data.json 失败`, err);
+    return null;
+  }
+}
 
 /**
  * TCB CDN base URL(2026-07-19 切图到腾讯云)
@@ -29,12 +43,16 @@ const ATLAS_BASE_URL = (process.env.NEXT_PUBLIC_ATLAS_BASE_URL || "").replace(/\
 /**
  * 读取所有已发布品种
  * 容错:任一 JSON 解析失败时跳过该文件,不抛错阻断整体读取
+ * Vercel:content/pets 不在 deploy,回退到 lib/pets-data.json
  */
 export function getAllPets(): Pet[] {
   let entries: string[] = [];
   try {
     entries = fs.readdirSync(PETS_DIR);
   } catch (err) {
+    // Vercel 兼容:用 committed JSON
+    const fallback = readFromCommittedJson();
+    if (fallback) return fallback.filter((p) => p.status === "published");
     console.error(`[pets] 读取目录失败: ${PETS_DIR}`, err);
     return [];
   }
@@ -61,15 +79,23 @@ export function getPetBySlug(slug: string): Pet | null {
   if (!slug || typeof slug !== "string") return null;
   const safe = slug.replace(/[^a-z0-9-]/gi, "");
   if (safe !== slug) return null;
+  // Vercel 兼容: 优先试 content/pets/{slug}.json,失败回退到 lib/pets-data.json
   const full = path.join(PETS_DIR, `${slug}.json`);
-  if (!fs.existsSync(full)) return null;
-  try {
-    const raw = fs.readFileSync(full, "utf-8");
-    return JSON.parse(raw) as Pet;
-  } catch (err) {
-    console.error(`[pets] 读取失败: ${slug}`, err);
-    return null;
+  if (fs.existsSync(full)) {
+    try {
+      const raw = fs.readFileSync(full, "utf-8");
+      return JSON.parse(raw) as Pet;
+    } catch (err) {
+      console.error(`[pets] 读取失败: ${slug}`, err);
+    }
   }
+  // Vercel 回退: 从 committed JSON 里查
+  const fallback = readFromCommittedJson();
+  if (fallback) {
+    const found = fallback.find((p) => p.slug === slug);
+    if (found) return found;
+  }
+  return null;
 }
 
 /**
