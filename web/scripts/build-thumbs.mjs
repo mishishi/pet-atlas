@@ -165,23 +165,39 @@ async function main() {
     console.log(`[thumbs] 从 content/pets/ 读到 ${pets.length} 个品种`);
   } else {
     // 调试: 打印 Vercel 容器实际结构, 帮助定位
+    function safeLs(p) {
+      try {
+        return fs.readdirSync(p);
+      } catch (e) {
+        return `ERR: ${e.code} ${e.message}`;
+      }
+    }
     console.error(`[thumbs-debug] cwd=${process.cwd()}`);
     console.error(`[thumbs-debug] dirname=${import.meta.dirname}`);
-    try {
-      console.error(`[thumbs-debug] cwd contents:`, fs.readdirSync(process.cwd()).slice(0, 30));
-    } catch {}
-    try {
-      console.error(`[thumbs-debug] dirname contents:`, fs.readdirSync(import.meta.dirname).slice(0, 30));
-    } catch {}
-    try {
-      console.error(`[thumbs-debug] / contents:`, fs.readdirSync("/").slice(0, 30));
-    } catch {}
-    try {
-      console.error(`[thumbs-debug] /vercel contents:`, fs.readdirSync("/vercel").slice(0, 30));
-    } catch {}
-    try {
-      console.error(`[thumbs-debug] /vercel/path0 contents:`, fs.readdirSync("/vercel/path0").slice(0, 30));
-    } catch {}
+    console.error(`[thumbs-debug] ls(cwd)=`, JSON.stringify(safeLs(process.cwd())));
+    console.error(`[thumbs-debug] ls(dirname)=`, JSON.stringify(safeLs(import.meta.dirname)));
+    console.error(`[thumbs-debug] ls(/)=`, JSON.stringify(safeLs("/")));
+    console.error(`[thumbs-debug] ls(/vercel)=`, JSON.stringify(safeLs("/vercel")));
+    console.error(`[thumbs-debug] ls(/vercel/path0)=`, JSON.stringify(safeLs("/vercel/path0")));
+    console.error(`[thumbs-debug] ls(/vercel/path0/web)=`, JSON.stringify(safeLs("/vercel/path0/web")));
+    console.error(`[thumbs-debug] ls(/vercel/path0/web/lib)=`, JSON.stringify(safeLs("/vercel/path0/web/lib")));
+    // 备用: 找一切 pets-data.json 文件
+    function findAllDataJson(dir, depth = 0) {
+      if (depth > 5) return [];
+      try {
+        const files = fs.readdirSync(dir, { withFileTypes: true });
+        const found = [];
+        for (const f of files) {
+          const p = path.join(dir, f.name);
+          if (f.isFile() && f.name === "pets-data.json") found.push(p);
+          else if (f.isDirectory()) found.push(...findAllDataJson(p, depth + 1));
+        }
+        return found;
+      } catch {
+        return [];
+      }
+    }
+    console.error(`[thumbs-debug] all pets-data.json:`, JSON.stringify(findAllDataJson("/")));
     throw new Error(`找不到任何 breed 数据源 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
   }
 
