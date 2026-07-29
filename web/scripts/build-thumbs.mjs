@@ -113,20 +113,25 @@ async function processOne(slug, catDirName) {
 }
 
 async function main() {
-  // 读 150 个 breed — 从 import.meta.dirname (web/scripts/) 往上找 content/pets
-  // Vercel build 时 cwd = web/, import.meta.dirname 路径是 /vercel/path0/web/scripts/
-  // 走两层 .. 应该是 /vercel/path0 (repo root), 但保险起见也用 process.cwd() 探测
-  let REPO_ROOT = path.join(import.meta.dirname, "..", "..");
-  if (!fs.existsSync(path.join(REPO_ROOT, "content", "pets"))) {
-    // 备选: 从 cwd 探测
-    if (fs.existsSync(path.join(process.cwd(), "content", "pets"))) {
-      REPO_ROOT = process.cwd();
-    } else if (fs.existsSync(path.join(process.cwd(), "..", "content", "pets"))) {
-      REPO_ROOT = path.join(process.cwd(), "..");
-    } else {
-      throw new Error(`找不到 content/pets 目录 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
+  // 读 150 个 breed — 用 walk-up 探测 content/pets
+  // Vercel build 路径结构跟本地不一致 (scripts 在 /vercel/path0/scripts 而非 web/scripts/),
+  // 走 import.meta.dirname 跟 cwd 都不一定对, 干脆从 cwd 一层层往上找
+  function findRepoRoot(startDir) {
+    let cur = startDir;
+    for (let i = 0; i < 8; i++) {
+      if (fs.existsSync(path.join(cur, "content", "pets"))) return cur;
+      const parent = path.dirname(cur);
+      if (parent === cur) break; // 到根了
+      cur = parent;
     }
+    return null;
   }
+  const REPO_ROOT =
+    findRepoRoot(import.meta.dirname) ||
+    findRepoRoot(process.cwd()) ||
+    findRepoRoot("/") ||
+    (() => { throw new Error(`找不到 content/pets (cwd=${process.cwd()}, dirname=${import.meta.dirname})`); })();
+
   const petFiles = fs
     .readdirSync(path.join(REPO_ROOT, "content", "pets"))
     .filter((f) => f.endsWith(".json"));
