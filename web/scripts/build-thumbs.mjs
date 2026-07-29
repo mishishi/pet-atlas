@@ -164,6 +164,24 @@ async function main() {
     });
     console.log(`[thumbs] 从 content/pets/ 读到 ${pets.length} 个品种`);
   } else {
+    // 调试: 打印 Vercel 容器实际结构, 帮助定位
+    console.error(`[thumbs-debug] cwd=${process.cwd()}`);
+    console.error(`[thumbs-debug] dirname=${import.meta.dirname}`);
+    try {
+      console.error(`[thumbs-debug] cwd contents:`, fs.readdirSync(process.cwd()).slice(0, 30));
+    } catch {}
+    try {
+      console.error(`[thumbs-debug] dirname contents:`, fs.readdirSync(import.meta.dirname).slice(0, 30));
+    } catch {}
+    try {
+      console.error(`[thumbs-debug] / contents:`, fs.readdirSync("/").slice(0, 30));
+    } catch {}
+    try {
+      console.error(`[thumbs-debug] /vercel contents:`, fs.readdirSync("/vercel").slice(0, 30));
+    } catch {}
+    try {
+      console.error(`[thumbs-debug] /vercel/path0 contents:`, fs.readdirSync("/vercel/path0").slice(0, 30));
+    } catch {}
     throw new Error(`找不到任何 breed 数据源 (cwd=${process.cwd()}, dirname=${import.meta.dirname})`);
   }
 
