@@ -87,8 +87,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`h-full antialiased ${fontVariables}`}>
+    <html lang="zh-CN" className={`h-full antialiased ${fontVariables}`} suppressHydrationWarning>
       <head>
+        {/* P2 polish: 主题初始化 (避免 FOUC)
+         * 读 localStorage pet-atlas-theme, 默认跟随系统 prefers-color-scheme
+         * 在 hydration 之前给 <html> 加 .dark class */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('pet-atlas-theme');
+                  var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var theme = stored || (sysDark ? 'dark' : 'light');
+                  if (theme === 'dark') document.documentElement.classList.add('dark');
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         {/* JSON-LD: WebSite + Organization,搜索结果富媒体 */}
         <script
           type="application/ld+json"
