@@ -26,6 +26,7 @@ import {
 import { ATLAS_PAGE_COUNT, ATLAS_SLOTS } from "@/lib/atlas-constants";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
 import { SoundToggle } from "@/components/brand/SoundToggle";
+import { ShareButton } from "@/components/brand/ShareButton";
 import { playPageFlip, unlockAudio } from "@/lib/sounds";
 import { AtlasTextCard } from "./AtlasTextCard";
 import { AtlasPageHint } from "./AtlasPageHint";
@@ -695,6 +696,15 @@ export default function AtlasViewer({
               <span>返回详情</span>
               <span aria-hidden>→</span>
             </Link>
+            {/* P2 polish: 分享 atlas 6 页图鉴 */}
+            <div className="self-start lg:self-end">
+              <ShareButton
+                title={`${nameZh} · 6 页图鉴 · Pet Atlas`}
+                text={`${nameZh} (${nameEn}) 的 vintage 6 页标本卡图鉴 — 性格雷达 + 6 维评分 + 性格标签 + 完整历史`}
+                variant="outline"
+                className="!text-sm"
+              />
+            </div>
           </div>
         </div>
 

@@ -39,6 +39,7 @@ import type { SpecimenStamp } from "@/components/brand/CollectionPassport";
 import { DailyPick } from "@/components/brand/DailyPick";
 // P1-3: 滚到底部一次性 toast (复用 B-10 useCollection 计数)
 import { ExploredToast } from "./ExploredToast";
+import { ShareButton } from "@/components/brand/ShareButton";
 import { getSpecimenNumber, TOTAL_SPECIMENS } from "@/lib/collection";
 import { getTodaySlug, getTodayDate } from "@/lib/daily-pick";
 
@@ -747,6 +748,14 @@ export default async function PetDetailPage({
           >
             ← 返回品种列表
           </Link>
+          {/* P2 polish: 分享当前品种 (Web Share API + clipboard fallback) */}
+          <div className="mt-4">
+            <ShareButton
+              title={`${pet.name.zh} · Pet Atlas`}
+              text={`${pet.name.zh} (${pet.name.en}) — N° ${String(getSpecimenNumber(pet.slug)).padStart(3, "0")} · ${pet.physical?.sizeGroup ?? ""} · ${pet.physical?.lifespanYears ?? ""}年 · 在 Pet Atlas 翻看完整 6 页图鉴`}
+              variant="outline"
+            />
+          </div>
         </div>
       </main>
     </div>
