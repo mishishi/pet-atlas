@@ -25,6 +25,8 @@ import {
 } from "react";
 import { ATLAS_PAGE_COUNT, ATLAS_SLOTS } from "@/lib/atlas-constants";
 import { SpecimenFrame } from "@/components/brand/SpecimenFrame";
+import { SoundToggle } from "@/components/brand/SoundToggle";
+import { playPageFlip, unlockAudio } from "@/lib/sounds";
 import { AtlasTextCard } from "./AtlasTextCard";
 import { AtlasPageHint } from "./AtlasPageHint";
 
@@ -273,6 +275,9 @@ export default function AtlasViewer({
       else setDirection(clamped > page ? "next" : "prev");
       setIsFlipping(true);
       setPage(clamped);
+      // P2 polish: 翻页音效 (Web Audio API 合成, prefers-reduced-motion 静默)
+      unlockAudio();
+      playPageFlip();
       // 动画 350ms 后才允许下一次翻
       setTimeout(() => setIsFlipping(false), 380);
     },
@@ -470,6 +475,8 @@ export default function AtlasViewer({
               <span className="text-base font-bold">{page}</span>
               <span className="text-brown-500"> / {total}</span>
             </div>
+            {/* P2 polish: 翻页音效开关 */}
+            <SoundToggle />
           </div>
         </div>
 

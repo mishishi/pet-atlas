@@ -69,6 +69,67 @@
   --radius-pill: 999px;
 }
 
+/* =========================================================
+   Dark Mode (P2 polish, 2026-07-30) — 反色老纸色
+   - 主背景: 深暖棕 (像夜晚的标本馆木柜)
+   - 文字: 暖白 (oat 浅)
+   - 边框/装饰: 暗金 (brown-300)
+   - 砖红 accent 保持 (亮眼)
+   - 图片: 加 brightness 滤镜, 暗化白色封面
+   ========================================================= */
+:root.dark {
+  /* Inverted paper: oat 阶 → 暖墨阶, brown 阶 → 亮金阶 */
+  --oat-50: #1A1714;     /* 几乎黑, 卡片边 */
+  --oat-100: #221E1A;    /* 卡片底 */
+  --oat-200: #2A2520;    /* 主背景 (深暖棕) */
+  --oat-300: #332C25;    /* 浮起底色 */
+  --oat-400: #4A3F33;    /* 中间过渡 */
+  --oat-500: #6E5635;    /* 暗金 */
+  --oat-600: #A07A48;    /* 亮金 */
+
+  /* Brown 反转: 亮 oat 阶 → 暗 brown 阶 */
+  --brown-50: #FCFAF4;   /* 最亮 (高亮文字) */
+  --brown-100: #F5EFE0;  /* 主要文字 (oat-200 同色) */
+  --brown-200: #E8D9C5;  /* 副文字 */
+  --brown-300: #D2B999;  /* 浅描边 */
+  --brown-400: #B8956A;  /* hover 边 */
+  --brown-500: #A07A48;  /* 主 accent (亮金) */
+  --brown-600: #8B6F47;  /* 暗金 */
+  --brown-700: #6E5635;  /* 暗棕 */
+  --brown-800: #523E24;  /* 极暗 */
+  --brown-900: #382916;  /* 接近黑 */
+
+  /* Accents dark 微调 */
+  --brick: #D4665A;       /* 暗 mode 下偏亮 (让 active underline 仍可见) */
+  --forest: #6B8A5A;
+  --sage: #B8D5A8;
+  --rose: #D89A9A;
+
+  /* Legacy aliases 反色 */
+  --oat: var(--oat-200);
+  --oat-deep: var(--oat-300);
+  --ink: var(--brown-100);
+  --ink-soft: #B8A88A;  /* 暗 mode 下软文用沙色 */
+  --accent: var(--brown-400);
+  --warm-brown: var(--brown-400);
+
+  /* Shadow (暗 mode 用纯黑透明叠) */
+  --shadow-paper: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-paper-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-paper-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* 暗 mode 下 cover image 加 filter (白底变暗) */
+:root.dark img {
+  filter: brightness(0.85) contrast(1.05) saturate(0.9);
+}
+
+/* 暗 mode 下 paper texture noise 更轻 (避免太花) */
+:root.dark body::before {
+  opacity: 0.2;
+  mix-blend-mode: screen;
+}
+
 @theme inline {
   --color-oat-50: var(--oat-50);
   --color-oat-100: var(--oat-100);

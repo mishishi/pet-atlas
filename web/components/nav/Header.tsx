@@ -26,6 +26,7 @@ import { AuthMenu } from "../auth/AuthMenu";
 import { HeaderSearch } from "./HeaderSearch";
 import { HeaderMobileMenu } from "./HeaderMobileMenu";
 import { NavLink } from "./NavLink";
+import { ThemeToggle } from "../brand/ThemeToggle";
 import type { SearchPet } from "@/lib/search-pets";
 
 /** Top3-2: 5 个主导航 (HeaderMobileMenu 复用) */
@@ -123,6 +124,8 @@ export function Header({
           <div className="md:hidden">
             <HeaderSearch pets={allPets} />
           </div>
+          {/* P2 polish: 主题切换 (亮/暗) — 全断点显示 */}
+          <ThemeToggle />
           {/* 桌机装饰:标本号 */}
           <div className="hidden md:flex items-center gap-2">
             <span
