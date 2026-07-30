@@ -3,6 +3,7 @@ import "./globals.css";
 import { fontVariables } from "./fonts";
 import { PWAInstallPrompt } from "@/components/pwa/PWAInstallPrompt";
 import { HeaderWithSearch } from "@/components/nav/HeaderWithSearch";
+import { CollectionCompleteModal } from "@/components/brand/CollectionCompleteModal";
 
 const DEFAULT_OG = "/og/home.png";
 
@@ -146,6 +147,8 @@ export default function RootLayout({
          * 现在 Header 是 server 渲染,search 数据在 root layout 准备一次 */}
         <HeaderWithSearch />
         {children}
+        {/* P2 polish: 集齐 150 弹彩带 (跨过 150 阈值时触发, localStorage 防止重复) */}
+        <CollectionCompleteModal />
         {/* PWA 安装引导 — 监听 beforeinstallprompt + iOS 手动引导 */}
         <PWAInstallPrompt />
         {/* Service Worker 注册 — PWA 离线能力 */}
