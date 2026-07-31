@@ -31,11 +31,11 @@ import type { SearchPet } from "@/lib/search-pets";
 
 /** Top3-2: 5 个主导航 (HeaderMobileMenu 复用) */
 const PRIMARY_NAV = [
+  { href: "/match", label: "配对师" },
   { href: "/pets", label: "全部品种" },
   { href: "/pets?category=dog", label: "分类" },
   { href: "/adopt", label: "领养" },
   { href: "/profile", label: "我的" },
-  { href: "/about", label: "关于" },
 ] as const;
 
 /** Top3-2: 5 个 category 快捷入口 (drawer 内) */
